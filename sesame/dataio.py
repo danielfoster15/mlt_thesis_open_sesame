@@ -11,6 +11,30 @@ from conll09 import *
 from globalconfig import *
 from sentence import *
 
+def analyze_constits_fes(examples):
+    matchspan = 0.0
+    notmatch = 0.0
+    matchph = {}
+    for ex in examples:
+        for fe in ex.invertedfes:
+            if fe == FEDICT.getid(EMPTY_LABEL):
+                continue
+            for span in ex.invertedfes[fe]:
+                if span in ex.sentence.constitspans:
+                    matchspan += 1
+                    phrases = ex.sentence.constitspans[span]
+                    for phrase in phrases:
+                        if phrase not in matchph:
+                            matchph[phrase] = 0
+                        matchph[phrase] += 1
+                else:
+                    notmatch += 1
+    tot = matchspan + notmatch
+    sys.stderr.write("matches = %d %.2f%%\n"
+                     "non-matches = %d %.2f%%\n"
+                     "total = %d\n"
+                     % (matchspan, matchspan*100/tot, notmatch, notmatch*100/tot, tot))
+    sys.stderr.write("phrases which are constits = %d\n" %(len(matchph)))
 
 def read_conll(conll_file, syn_type=None):
     sys.stderr.write("\nReading {} ...\n".format(conll_file))
@@ -62,63 +86,6 @@ def read_conll(conll_file, syn_type=None):
         analyze_constits_fes(examples)
     return examples, missingargs, totalexamples
 
-
-def analyze_constits_fes(examples):
-    matchspan = 0.0
-    notmatch = 0.0
-    matchph = {}
-    for ex in examples:
-        for fe in ex.invertedfes:
-            if fe == FEDICT.getid(EMPTY_LABEL):
-                continue
-            for span in ex.invertedfes[fe]:
-                if span in ex.sentence.constitspans:
-                    matchspan += 1
-                    phrases = ex.sentence.constitspans[span]
-                    for phrase in phrases:
-                        if phrase not in matchph:
-                            matchph[phrase] = 0
-                        matchph[phrase] += 1
-                else:
-                    notmatch += 1
-    tot = matchspan + notmatch
-    sys.stderr.write("matches = %d %.2f%%\n"
-                     "non-matches = %d %.2f%%\n"
-                     "total = %d\n"
-                     % (matchspan, matchspan*100/tot, notmatch, notmatch*100/tot, tot))
-    sys.stderr.write("phrases which are constits = %d\n" %(len(matchph)))
-
-
-def create_target_frame_map(luIndex_file,  tf_map):
-    sys.stderr.write("\nReading the frame - lexunit map from " + LU_INDEX + " ...\n")
-
-    f = open(luIndex_file, "rb")
-    tree = et.parse(f)
-    root = tree.getroot()
-
-    multiplicity = 0
-    repeated = 0
-    tot = 0
-    for lu in root.iter('{http://framenet.icsi.berkeley.edu}lu'):
-        lu_name = lu.attrib["name"]
-        frame = lu.attrib["frameName"]
-        if lu_name not in tf_map:
-            tf_map[lu_name] = []
-        else:
-            repeated += 1
-        tf_map[lu_name].append(frame)
-        if len(tf_map[lu_name]) > multiplicity:
-            multiplicity = len(tf_map[lu_name])
-        tot += 1
-    f.close()
-
-    sys.stderr.write("# unique LUs = " + str(len(tf_map)) + "\n")
-    sys.stderr.write("# total LUs = " + str(tot) + "\n")
-    sys.stderr.write("# targets with multiple frames = " + str(repeated) + "\n")
-    sys.stderr.write("# max frames per target = " + str(multiplicity) + "\n\n")
-    return tf_map
-
-
 def create_target_lu_map():
     sys.stderr.write("\nReading the lexical unit index file: {}\n".format(LU_INDEX))
 
@@ -156,28 +123,33 @@ def create_target_lu_map():
 
 
 def read_fes_lus(frame_file):
+    #opens a frame file to parse xml
     f = open(frame_file, "rb")
     tree = et.parse(f)
     root = tree.getroot()
 
     frcount = 0
+    #for each "frame" in the frame file, get the frame name and put it in frame dict
     for frame in root.iter('{http://framenet.icsi.berkeley.edu}frame'):
         framename = frame.attrib["name"]
         frid = FRAMEDICT.addstr(framename)
         frcount += 1
-
+    #if there is for some reason more than one frame, raise an exception
     if frcount > 1:
         raise Exception("More than one frame?", frame_file, framename)
 
     fes = []
     corefes = []
+    #now you parse through the frame elements and get their names and append to FEDICT
     for fe in root.iter('{http://framenet.icsi.berkeley.edu}FE'):
         fename = fe.attrib["name"]
         feid = FEDICT.addstr(fename)
         fes.append(feid)
+        #core FE? dunno what this means
         if fe.attrib["coreType"] == "Core": corefes.append(feid)
 
     lus = []
+    #now for each LU associated with the frame, add it to the dict, split the . though and add LU to LUDICT and LUPOS to LUPOSDICT
     for lu in root.iter('{http://framenet.icsi.berkeley.edu}lexUnit'):
         lu_fields = lu.attrib["name"].split(".")
         luid = LUDICT.addstr(lu_fields[0])
