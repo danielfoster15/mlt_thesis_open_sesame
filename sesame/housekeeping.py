@@ -15,6 +15,7 @@ class FspDict:
         self._unks = set([])  # these are vocabulary items which were not in train, so we don't know parameters for.
 
     def addstr(self, itemstr):
+        itemstr = itemstr
         if self._posttrainlocked and itemstr not in self._strtoint:
             self._unks.add(itemstr)
         if self._locked:
@@ -54,7 +55,7 @@ class FspDict:
 
     def getstr(self, itemid):
         if itemid in self._inttostr:
-            return self._inttostr[itemid]
+            return self._inttostr[itemid].encode('utf-8')
         else:
             raise Exception("not in dictionary", itemid)
 

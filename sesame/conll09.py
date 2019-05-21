@@ -83,6 +83,7 @@ class CoNLL09Element:
         else:
             # ID    FORM    LEMMA   PLEMMA  POS PPOS    SENT#   PFEAT   HEAD    PHEAD   DEPREL  PDEPREL LU  FRAME ROLE
             # 0     1       2       3       4   5       6       7       8       9       10      11      12  13    14
+            #print(form)
             return "{}\t{}\t_\t{}\t{}\t{}\t{}\t_\t_\t{}\t_\t{}\t{}\t{}\t{}\n".format(
                 self.id, form, predicted_lemma, self.fn_pos, nltkpos, self.sent_num, dephead, deprel, lu, frame, rolelabel).encode('utf-8')
 

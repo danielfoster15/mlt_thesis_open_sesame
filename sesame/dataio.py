@@ -78,7 +78,9 @@ def read_conll(conll_file, syn_type=None):
 
                 elements = []
                 continue
-            elements.append(CoNLL09Element(l, read_depsyn))
+            else:
+                #print(l)
+                elements.append(CoNLL09Element(l, read_depsyn))
         cf.close()
     sys.stderr.write("# examples in %s : %d in %d sents\n" %(conll_file, len(examples), next_ex))
     sys.stderr.write("# examples with missing arguments : %d\n" %missingargs)
@@ -257,7 +259,7 @@ def get_wvec_map():
                         EMBEDDINGS_FILE)
     wvf = open(embs_file, 'r')
     wvf.readline()
-    wd_vecs = {VOCDICT.addstr(line.split(' ')[0]) :
+    wd_vecs = {VOCDICT.addstr(line.split(' ')[0]):
                 [float(f) for f in line.strip().split(' ')[1:]] for line in wvf}
     return wd_vecs
 
