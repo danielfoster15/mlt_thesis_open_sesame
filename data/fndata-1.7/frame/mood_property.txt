@@ -1,0 +1,2 @@
+LUs	mood	optative	indicative	imperative	subjunctive	
+FEs	fe_language_variety	fe_subclass	fe_mood_of	fe_data	fe_data_translation	

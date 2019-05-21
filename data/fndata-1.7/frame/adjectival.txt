@@ -1,0 +1,2 @@
+LUs	adjective	comparative	positive	superlative	
+FEs	fe_language_variety	fe_data	fe_data_translation	fe_subclass	

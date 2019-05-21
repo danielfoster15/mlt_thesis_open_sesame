@@ -1,0 +1,2 @@
+LUs	enclitic	
+FEs	fe_data_translation	fe_data	

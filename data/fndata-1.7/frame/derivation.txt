@@ -1,0 +1,2 @@
+LUs	derived	changed	transform	take	
+FEs	fe_word	fe_derivational_morpheme	fe_null_morpheme	fe_part_of_speech	fe_dni	fe_condition	fe_degree	fe_means	

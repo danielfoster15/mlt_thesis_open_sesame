@@ -1,0 +1,2 @@
+LUs	conjugation	declension	inflection	inflexion	
+FEs	fe_language_variety	fe_subclass	fe_location	

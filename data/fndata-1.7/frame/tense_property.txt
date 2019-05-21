@@ -1,0 +1,2 @@
+LUs	past	present	future	habitual	tense	
+FEs	fe_subclass	fe_language_variety	fe_lexeme	fe_data	fe_data_translation	

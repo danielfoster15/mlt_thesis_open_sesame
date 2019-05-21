@@ -1,0 +1,2 @@
+LUs	negation	negative	
+FEs	fe_subclass	

@@ -1,0 +1,2 @@
+LUs	copula	auxiliary	verb	intransitive	transitive	
+FEs	fe_language_variety	fe_data	fe_data_translation	fe_subclass	

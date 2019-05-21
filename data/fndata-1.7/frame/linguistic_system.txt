@@ -1,0 +1,2 @@
+LUs	variety	speech	standard	language	grammar	
+FEs	fe_language_subfamily	fe_language_family	fe_language_group	fe_language	fe_name	fe_subclass	fe_location	fe_spoken_by	

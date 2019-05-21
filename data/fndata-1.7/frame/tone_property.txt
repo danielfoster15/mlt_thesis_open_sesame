@@ -1,0 +1,2 @@
+LUs	accent	tone	pitch	
+FEs	fe_language_variety	fe_subclass	fe_data	fe_data_translation	

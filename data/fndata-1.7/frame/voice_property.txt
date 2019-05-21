@@ -1,0 +1,2 @@
+LUs	voice	active	passive	middle	impersonal	
+FEs	fe_language_variety	fe_subclass	fe_reference_language	

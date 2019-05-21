@@ -1,0 +1,2 @@
+LUs	root	stem	base	termination	derivation	
+FEs	fe_language_variety	fe_data_translation	fe_subclass	fe_data	fe_	

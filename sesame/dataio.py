@@ -87,6 +87,7 @@ def read_conll(conll_file, syn_type=None):
     return examples, missingargs, totalexamples
 
 def create_target_lu_map():
+    #for target id, do later
     sys.stderr.write("\nReading the lexical unit index file: {}\n".format(LU_INDEX))
 
     lu_index_file = open(LU_INDEX, "rb")
@@ -124,14 +125,13 @@ def create_target_lu_map():
 
 def read_fes_lus(frame_file):
     #opens a frame file to parse xml
-    f = open(frame_file, "rb")
-    tree = et.parse(f)
-    root = tree.getroot()
+    f = open(frame_file, "r")
 
     frcount = 0
     #for each "frame" in the frame file, get the frame name and put it in frame dict
-    for frame in root.iter('{http://framenet.icsi.berkeley.edu}frame'):
-        framename = frame.attrib["name"]
+    for line in f:
+        framename = line.strip()
+        #print("this is framename which gets a num from framedict:", framename)
         frid = FRAMEDICT.addstr(framename)
         frcount += 1
     #if there is for some reason more than one frame, raise an exception
@@ -145,8 +145,7 @@ def read_fes_lus(frame_file):
         fename = fe.attrib["name"]
         feid = FEDICT.addstr(fename)
         fes.append(feid)
-        #core FE? dunno what this means
-        if fe.attrib["coreType"] == "Core": corefes.append(feid)
+        corefes.append(feid)
 
     lus = []
     #now for each LU associated with the frame, add it to the dict, split the . though and add LU to LUDICT and LUPOS to LUPOSDICT
@@ -156,7 +155,7 @@ def read_fes_lus(frame_file):
         LUPOSDICT.addstr(lu_fields[1])
         lus.append(luid)
     f.close()
-
+    #fr is a number like 1047, fes is a list of numbers, corefes is a list of numbers, lus is a list of numbers
     return frid, fes, corefes, lus
 
 
@@ -207,7 +206,7 @@ def read_related_lus():
             continue
         tot_frames += 1
         frm, fes, corefes, lus = read_fes_lus(framef)
-
+        #print("here is what you need to make:   ", frm, fes, corefes, lus)
         for l in lus:
             tot_lus += 1
             if l not in lu_to_frame_dict:

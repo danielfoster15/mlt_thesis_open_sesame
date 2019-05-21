@@ -1,0 +1,2 @@
+LUs	dual	number	plural	singular	
+FEs	fe_subclass	fe_data	fe_data_translation	fe_language_variety	

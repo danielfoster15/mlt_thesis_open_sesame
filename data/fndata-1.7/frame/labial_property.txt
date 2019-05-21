@@ -1,0 +1,2 @@
+LUs	labial	denti-labial	
+FEs	fe_subclass	fe_data	fe_language_variety	fe_data_translation	

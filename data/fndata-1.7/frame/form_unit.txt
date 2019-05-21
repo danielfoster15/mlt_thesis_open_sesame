@@ -1,0 +1,2 @@
+LUs	consonant	vowel	letter	syllable	semi-consonant	semiconsonant	semivowel	tenuis	
+FEs	fe_subclass	fe_position	fe_data	fe_data_translation	
