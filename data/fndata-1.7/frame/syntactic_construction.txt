@@ -1,0 +1,3 @@
+Frame	syntactic_construction
+LUs	construction.n	
+FEs	fe_language_variety	fe_data	fe_data_translation	fe_name	fe_subclass	

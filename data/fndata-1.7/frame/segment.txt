@@ -1,0 +1,3 @@
+Frame	segment
+LUs	consonant.n	vowel.n	
+FEs	fe_subclass	fe_position	fe_data	fe_language_variety	

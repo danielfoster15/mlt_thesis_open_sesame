@@ -1,0 +1,3 @@
+Frame	clitic
+LUs	enclitic.n	
+FEs	fe_data_translation	fe_data	

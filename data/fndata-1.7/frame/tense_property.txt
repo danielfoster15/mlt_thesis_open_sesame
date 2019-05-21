@@ -1,0 +1,3 @@
+Frame	tense_property
+LUs	past.n	present.n	future.n	habitual.n	tense.n	
+FEs	fe_subclass	fe_language_variety	fe_lexeme	fe_data	fe_data_translation	

@@ -1,0 +1,3 @@
+Frame	case_property
+LUs	ablative.n	dative.n	genitive.n	instrumental.n	locative.n	nominative.n	oblique.n	terminative.n	vocative.n	objective.n	agent.n	obl.n	case.n	
+FEs	fe_sublass	fe_data	fe_data_translation	

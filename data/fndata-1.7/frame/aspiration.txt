@@ -1,3 +1,3 @@
 Frame	aspiration
-LUs	aspirate.v	disaspirate.v	aspiration.n	
+LUs	aspirate.v	disaspirate.v	aspiration.n	unaspirate.n	disaspiration.n	
 FEs	fe_aspirant	fe_degree	fe_condition	fe_purpose	fe_data	fe_data_translation	fe_language_variety	fe_frequency	fe_certainity	

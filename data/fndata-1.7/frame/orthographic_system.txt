@@ -1,0 +1,3 @@
+Frame	orthographic_system
+LUs	orthography.n	
+FEs	fe_language_variety	fe_sublass	fe_data	fe_data_translation	

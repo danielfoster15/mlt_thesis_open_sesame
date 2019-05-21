@@ -220,6 +220,7 @@ def identify_frames(builders, tokens, postags, lexunit, targetpositions, goldfra
 
     # only using the first target position - summing them hurts :(
     targetembs = [concatenate([fw_x[targetidx], bw_x[sentlen - targetidx - 1]]) for targetidx in targetpositions]
+    print(targetembs)
     targinit = tlstm.initial_state()
     target_vec = targinit.transduce(targetembs)[-1]
 
@@ -285,9 +286,9 @@ if options.mode in ["train", "refresh"]:
 
             inptoks = []
             unk_replace_tokens(trex.tokens, inptoks, VOCDICT, UNK_PROB, UNKTOKEN)
-            print('this is trex:   ', trex)
+            #print('this is trex:   ', trex)
             print(trex.targetframedict.keys())
-            print(lufrmmap)
+            # print(lufrmmap)
             trexloss,_ = identify_frames(
                 builders, inptoks, trex.postags, trex.lu, trex.targetframedict.keys(), trex.frame)
 

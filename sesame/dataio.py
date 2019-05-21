@@ -126,7 +126,6 @@ def create_target_lu_map():
 def read_fes_lus(frame_file):
     #opens a frame file to parse xml
     f = open(frame_file, "r")
-
     frcount = 0
     #for each "frame" in the frame file, get the frame name and put it in frame dict
     lus = []
@@ -136,9 +135,8 @@ def read_fes_lus(frame_file):
         line_items = line.strip().split()
         if line_items[0] == 'Frame':
             framename = line_items[1]
-        #print("this is framename which gets a num from framedict:", framename)
-        frid = FRAMEDICT.addstr(framename)
-        frcount += 1
+            frid = FRAMEDICT.addstr(framename)
+            frcount += 1
         #now you parse through the frame elements and get their names and append to FEDICT
         elif line_items[0] == 'FEs':
             for fe in line_items[1:]:
