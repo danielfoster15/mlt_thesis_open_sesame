@@ -129,31 +129,30 @@ def read_fes_lus(frame_file):
 
     frcount = 0
     #for each "frame" in the frame file, get the frame name and put it in frame dict
+    lus = []
+    fes = []
+    corefes = []
     for line in f:
-        framename = line.strip()
+        line_items = line.strip().split()
+        if line_items[0] == 'Frame':
+            framename = line_items[1]
         #print("this is framename which gets a num from framedict:", framename)
         frid = FRAMEDICT.addstr(framename)
         frcount += 1
-    #if there is for some reason more than one frame, raise an exception
-    if frcount > 1:
-        raise Exception("More than one frame?", frame_file, framename)
-
-    fes = []
-    corefes = []
-    #now you parse through the frame elements and get their names and append to FEDICT
-    for fe in root.iter('{http://framenet.icsi.berkeley.edu}FE'):
-        fename = fe.attrib["name"]
-        feid = FEDICT.addstr(fename)
-        fes.append(feid)
-        corefes.append(feid)
-
-    lus = []
-    #now for each LU associated with the frame, add it to the dict, split the . though and add LU to LUDICT and LUPOS to LUPOSDICT
-    for lu in root.iter('{http://framenet.icsi.berkeley.edu}lexUnit'):
-        lu_fields = lu.attrib["name"].split(".")
-        luid = LUDICT.addstr(lu_fields[0])
-        LUPOSDICT.addstr(lu_fields[1])
-        lus.append(luid)
+        #now you parse through the frame elements and get their names and append to FEDICT
+        elif line_items[0] == 'FEs':
+            for fe in line_items[1:]:
+                fename = fe
+                feid = FEDICT.addstr(fename)
+                fes.append(feid)
+                corefes.append(feid)
+        elif line_items[0] == 'LUs':
+            #now for each LU associated with the frame, add it to the dict, split the . though and add LU to LUDICT and LUPOS to LUPOSDICT
+            for lu in line_items[1:]:
+                lu_fields = lu.split(".")
+                luid = LUDICT.addstr(lu_fields[0])
+                LUPOSDICT.addstr(lu_fields[1])
+                lus.append(luid)
     f.close()
     #fr is a number like 1047, fes is a list of numbers, corefes is a list of numbers, lus is a list of numbers
     return frid, fes, corefes, lus

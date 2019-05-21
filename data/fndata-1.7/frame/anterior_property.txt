@@ -1,2 +1,3 @@
-LUs	alveolar	dental	
+Frame	anterior_property
+LUs	alveolar.n	dental.n	
 FEs	fe_language_variety	fe_subclass	fe_data	

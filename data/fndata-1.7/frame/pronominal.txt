@@ -1,2 +1,3 @@
-LUs	demonstrative	pronoun	
+Frame	pronominal
+LUs	demonstrative.n	pronoun.n	
 FEs	fe_language_variety	fe_data	fe_data_translation	fe_sublass	fe_	

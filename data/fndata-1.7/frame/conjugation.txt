@@ -1,2 +1,0 @@
-LUs	conjugate	agree	inflected	change	marked	conjugated	take	
-FEs	fe_verb	fe_grammatical_category	fe_argument	fe_dni	fe_morpheme	fe_null_morpheme	fe_degree	fe_manner	fe_condition	fe_means	fe_agent	

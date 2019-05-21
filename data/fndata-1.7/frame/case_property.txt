@@ -1,2 +1,0 @@
-LUs	ablative	dative	genitive	instrumental	locative	nominative	oblique	terminative	vocative	objective	agent	obl	case	
-FEs	fe_sublass	fe_data	fe_data_translation	

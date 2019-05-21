@@ -1,2 +1,3 @@
-LUs	gender	feminine	neuter	masculine	
+Frame	gender_property
+LUs	gender.n	feminine.n	neuter.n	masculine.n	
 FEs	fe_language_variety	fe_subclass	fe_data	fe_data_translation	

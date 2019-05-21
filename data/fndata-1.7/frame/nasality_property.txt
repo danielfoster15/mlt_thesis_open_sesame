@@ -1,2 +1,3 @@
-LUs	nasal	
+Frame	nasality_property
+LUs	nasal.n	
 FEs	fe_language_variety	fe_subclass	fe_data	fe_position	fe_data_translation	

@@ -1,2 +1,3 @@
-LUs	accent	tone	pitch	
+Frame	tone_property
+LUs	accent.n	tone.n	pitch.n	
 FEs	fe_language_variety	fe_subclass	fe_data	fe_data_translation	

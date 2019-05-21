@@ -1,2 +1,3 @@
-LUs	nasalize	nasalization	
+Frame	nasalization
+LUs	nasalize.v	nasalization.n	
 FEs	fe_data_translation	fe_script	fe_subclass	fe_data	fe_language_variety	

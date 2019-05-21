@@ -1,2 +1,0 @@
-LUs	postposition	preposition	
-FEs	fe_language_variety	fe_data_translation	fe_subclass	fe_data	fe_base	

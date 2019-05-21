@@ -1,2 +1,3 @@
-LUs	voice	active	passive	middle	impersonal	
+Frame	voice_property
+LUs	voice.n	active.n	passive.n	middle.n	impersonal.n	
 FEs	fe_language_variety	fe_subclass	fe_reference_language	

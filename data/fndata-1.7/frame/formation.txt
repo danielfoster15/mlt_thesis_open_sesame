@@ -1,2 +1,0 @@
-LUs	form	build	create	
-FEs	fe_formed_entity	fe_formed_from	fe_process	fe_degree	fe_certainty 	fe_language_variety	fe_reference_language	fe_data	fe_data_translation	fe_condition	

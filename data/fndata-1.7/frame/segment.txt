@@ -1,2 +1,0 @@
-LUs	consonant	vowel	
-FEs	fe_subclass	fe_position	fe_data	fe_language_variety	

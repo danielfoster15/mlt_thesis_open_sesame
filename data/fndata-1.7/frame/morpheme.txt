@@ -1,2 +1,3 @@
-LUs	root	stem	base	termination	derivation	
+Frame	morpheme
+LUs	root.n	stem.n	base.n	termination.n	derivation.n	
 FEs	fe_language_variety	fe_data_translation	fe_subclass	fe_data	fe_	

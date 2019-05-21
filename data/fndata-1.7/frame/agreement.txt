@@ -1,2 +1,3 @@
-LUs	agree	agreement	
+Frame	agreement
+LUs	agree.v	agreement.n	
 FEs	fe_participant_1	fe_participant_2	fe_manner	fe_degree	fe_frequency	fe_language_variety	fe_reference_language	fe_condition	

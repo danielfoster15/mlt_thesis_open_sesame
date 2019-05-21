@@ -1,2 +1,0 @@
-LUs	follow	order	precede	put	succession	
-FEs	fe_entity_1	fe_entity_2	fe_order	fe_entities	fe_language_variety	fe_reference_language	fe_condition	fe_frequency	fe_certainty	fe_data	fe_data_translation	

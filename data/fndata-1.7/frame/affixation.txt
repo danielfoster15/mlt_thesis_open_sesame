@@ -1,2 +1,3 @@
-LUs	affix	affixed	infix	infixed	postfixed	prefix	suffix	suffixed	prefixed	conjugate	conjugated	
+Frame	affixation
+LUs	affix.v	affixed.a	infix.v	infixed.a	postfixed.a	prefix.v	suffix.v	suffixed.a	prefixed.a	conjugate.v	conjugated.a	
 FEs	fe_stem	fe_affix	fe_language_user	fe_anthropomorphic_entity	fe_language_variety	fe_frequency	fe_manner	fe_purpose	fe_condition	fe_position	fe_degree	fe_data	fe_result	fe_reference_language	fe_location	fe_evidence	fe_data_translation	

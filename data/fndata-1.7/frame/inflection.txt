@@ -1,2 +1,3 @@
-LUs	inflected	conjugate	conjugated	declined	decline	
+Frame	inflection
+LUs	inflected.a	conjugate.v	conjugated.a	declined.a	decline.v	
 FEs	fe_inflectional_scheme	fe_form	fe_analogical_form	fe_language_user	fe_anthropomorphic_entity	fe_degree	fe_manner	fe_condition	fe_purpose	fe_means	fe_linguistic_example	fe_regularity	fe_frequency	fe_in_language_variety	fe_as_language_variety	fe_time	fe_exception	fe_context	fe_evidence	fe_example_pointer	fe_place	

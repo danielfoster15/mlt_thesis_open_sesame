@@ -1,2 +1,0 @@
-LUs	suffix	infix	prefix	
-FEs	fe_subclass	fe_data	fe_language_variety	

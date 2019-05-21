@@ -1,2 +1,3 @@
-LUs	dual	number	plural	singular	
+Frame	number_property
+LUs	dual.n	number.n	plural.n	singular.n	
 FEs	fe_subclass	fe_data	fe_data_translation	fe_language_variety	

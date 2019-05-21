@@ -1,2 +1,3 @@
-LUs	labial	denti-labial	
+Frame	labial_property
+LUs	labial.n	denti-labial.n	
 FEs	fe_subclass	fe_data	fe_language_variety	fe_data_translation	
