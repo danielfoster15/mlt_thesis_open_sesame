@@ -1,0 +1,3 @@
+Frame	frm_using
+LUs	use.v	
+FEs	fe_entity	fe_purpose	fe_role	fe_frequency	fe_language_variety	fe_reference_language	

@@ -222,7 +222,7 @@ def identify_frames(builders, tokens, postags, lexunit, targetpositions, goldfra
     targetembs = [concatenate([fw_x[targetidx], bw_x[sentlen - targetidx - 1]]) for targetidx in targetpositions]
     targinit = tlstm.initial_state()
     target_vec = targinit.transduce(targetembs)[-1]
-
+    print(lexunit)
     valid_frames = list(lufrmmap[lexunit.id])
     chosenframe = valid_frames[0]
     logloss = None
@@ -285,13 +285,13 @@ if options.mode in ["train", "refresh"]:
 
             inptoks = []
             unk_replace_tokens(trex.tokens, inptoks, VOCDICT, UNK_PROB, UNKTOKEN)
-            if trex.frame == None:
-                print(trex)
-                print('trex.get_str:    ', trex.get_str().strip())
+            print(trex.tokens)
+            print(trex.get_str())
+                #print(trex.tokens)
+                #print('trex.get_str:    ', trex.get_str().strip())
             #print('this is trex:   ', trex)
             # print(lufrmmap)
-            trexloss,_ = identify_frames(
-                builders, inptoks, trex.postags, trex.lu, trex.targetframedict.keys(), trex.frame)
+            trexloss,_ = identify_frames(builders, inptoks, trex.postags, trex.lu, trex.targetframedict.keys(), trex.frame)
 
             if trexloss is not None:
                 loss += trexloss.scalar_value()

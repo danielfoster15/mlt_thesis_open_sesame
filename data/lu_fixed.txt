@@ -151,3 +151,17 @@ order.n	frm_sequence
 precede.v	frm_sequence
 put.v	frm_sequence
 succession.v	frm_sequence
+denote.v	Sign
+express.v	Sign
+indicate.v	Sign
+mark.v	Sign
+denote.v	frm_sign
+express.v	frm_sign
+indicate.v	frm_sign
+mark.v	frm_sign
+use.v	frm_using
+follow.v	sequence
+order.n	sequence
+precede.v	sequence
+put.v	sequence
+succession.v	sequence

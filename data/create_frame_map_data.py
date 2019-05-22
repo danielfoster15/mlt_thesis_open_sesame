@@ -23,7 +23,20 @@ frame_df = pd.merge(lu_df, fe_df, how='outer', on='frame')
 
 
 frames = frame_df['frame'].unique().tolist()
+framelistcheck = ['formation', 'adjectival', 'character', 'agreement',
+       'linguistic_system', 'form_unit', 'segment', 'case_property',
+       'noun', 'number_property', 'affixation', 'affix', 'numeral',
+       'pronominal', 'verbal', 'morpheme', 'tense_property',
+       'person_property', 'mood_property', 'bound_morpheme', 'aspiration',
+       'polarity_property', 'gender_property', 'voice_property',
+       'semantic_unit', 'conjugation', 'phrase', 'particle',
+       'syntactic_construction', 'article', 'phonological_system',
+       'tone_property', 'frm_using', 'frm_sequence', 'nasality_property',
+       'adposition', 'clause', 'linguistic_sign', 'inflection',
+       'anterior_property', 'Sign', 'derivation']
+
 print(frames)
+print('problems:', [frame for frame in framelistcheck if frame not in frames])
 print(len(frames))
 
 for frame in frames:
