@@ -222,7 +222,7 @@ def identify_frames(builders, tokens, postags, lexunit, targetpositions, goldfra
     targetembs = [concatenate([fw_x[targetidx], bw_x[sentlen - targetidx - 1]]) for targetidx in targetpositions]
     targinit = tlstm.initial_state()
     target_vec = targinit.transduce(targetembs)[-1]
-    print(lexunit)
+    #print(lexunit.get_str(LUDICT, LUPOSDICT))
     valid_frames = list(lufrmmap[lexunit.id])
     chosenframe = valid_frames[0]
     logloss = None
@@ -255,9 +255,9 @@ def identify_frames(builders, tokens, postags, lexunit, targetpositions, goldfra
     return objective, prediction
 
 def print_as_conll(goldexamples, pred_targmaps):
-    with codecs.open(out_conll_file, "w", "utf-8") as f:
+    with codecs.open(out_conll_file, "w") as f:
         for g,p in zip(goldexamples, pred_targmaps):
-            result = g.get_predicted_frame_conll(p) + "\n"
+            result = g.get_predicted_frame_conll(p)#.decode('utf-8')+ "\n"
             f.write(result)
         f.close()
 
@@ -285,12 +285,13 @@ if options.mode in ["train", "refresh"]:
 
             inptoks = []
             unk_replace_tokens(trex.tokens, inptoks, VOCDICT, UNK_PROB, UNKTOKEN)
-            print(trex.tokens)
-            print(trex.get_str())
+            #print(trex.tokens)
+            #print(trex.get_str())
                 #print(trex.tokens)
                 #print('trex.get_str:    ', trex.get_str().strip())
             #print('this is trex:   ', trex)
-            # print(lufrmmap)
+            #for i in range(1,100):
+                #print(lufrmmap[i])
             trexloss,_ = identify_frames(builders, inptoks, trex.postags, trex.lu, trex.targetframedict.keys(), trex.frame)
 
             if trexloss is not None:

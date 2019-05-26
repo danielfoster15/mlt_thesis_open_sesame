@@ -21,7 +21,7 @@ class CoNLL09Element:
     """
 
     def __init__(self, conll_line, read_depsyn=None):
-        ele = conll_line.split("\t")
+        ele = conll_line.encode('utf-8').split("\t")
         lufields = ['_', '_']
         self.id = int(ele[0])
         self.form = VOCDICT.addstr(ele[1].lower())
@@ -85,7 +85,7 @@ class CoNLL09Element:
             # 0     1       2       3       4   5       6       7       8       9       10      11      12  13    14
             #print(form)
             return "{}\t{}\t_\t{}\t{}\t{}\t{}\t_\t_\t{}\t_\t{}\t{}\t{}\t{}\n".format(
-                self.id, form, predicted_lemma, self.fn_pos, nltkpos, self.sent_num, dephead, deprel, lu, frame, rolelabel).encode('utf-8')
+                self.id, form, predicted_lemma, self.fn_pos, nltkpos, self.sent_num, dephead, deprel, lu, frame, rolelabel)
 
 
 class CoNLL09Example(FrameSemParse):

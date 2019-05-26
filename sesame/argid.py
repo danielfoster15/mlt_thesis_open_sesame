@@ -76,8 +76,8 @@ post_train_lock_dicts()
 
 frmfemap, corefrmfemap, _ = read_frame_maps()
 # Hack to handle FE in version 1.5 annotation!
-frmfemap[FRAMEDICT.getid("Measurable_attributes")].append(FEDICT.getid("Dimension"))
-frmfemap[FRAMEDICT.getid("Removing")].append(FEDICT.getid("Frequency"))
+#frmfemap[FRAMEDICT.getid("Measurable_attributes")].append(FEDICT.getid("Dimension"))
+#frmfemap[FRAMEDICT.getid("Removing")].append(FEDICT.getid("Frequency"))
 
 if USE_WV:
     wvs = get_wvec_map()

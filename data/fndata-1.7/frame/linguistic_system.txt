@@ -1,3 +1,3 @@
 Frame	linguistic_system
-LUs	variety.n	speech.n	standard.n	language.n	grammar.n	
+LUs	variety.n	speech.n	dialect.n	standard.n	language.n	grammar.n
 FEs	fe_language_subfamily	fe_language_family	fe_language_group	fe_language	fe_name	fe_subclass	fe_location	fe_spoken_by	

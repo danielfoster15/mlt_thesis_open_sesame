@@ -10,6 +10,9 @@ from evaluation import *
 from raw_data import make_data_instance
 from semafor_evaluation import convert_conll_to_frame_elements
 
+# sys.setdefaultencoding() does not exist, here!
+reload(sys)  # Reload does the trick!
+sys.setdefaultencoding('UTF8')
 
 optpr = OptionParser()
 optpr.add_option("--mode", dest="mode", type="choice",

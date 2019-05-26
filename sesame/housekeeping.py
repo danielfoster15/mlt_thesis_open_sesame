@@ -55,7 +55,7 @@ class FspDict:
 
     def getstr(self, itemid):
         if itemid in self._inttostr:
-            return self._inttostr[itemid].encode('utf-8')
+            return self._inttostr[itemid]#.encode('utf-8')
         else:
             raise Exception("not in dictionary", itemid)
 
@@ -142,12 +142,14 @@ def filter_long_ex(dataset, use_span_clip, allowed_spanlen, notanfeid):
     longestfespan = 0
     tmpdataset = []
     for ex in dataset:
+        print(ex.get_str())
         haslongfe = False
         # print "before", ex.invertedfes
         for feid in ex.invertedfes:
             haslongspans = False
 
             for span in ex.invertedfes[feid]:
+                print(span)
                 spanlen = span[1] - span[0] + 1
                 if spanlen > allowed_spanlen:
                     haslongspans = True
