@@ -1,3 +1,3 @@
 Frame	derivational_morpheme
 LUs	derivation.n	
-FEs	fe_	fe_sublass	
+FEs	fe_	fe_subclass

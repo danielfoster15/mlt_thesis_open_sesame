@@ -955,7 +955,7 @@
 2	.	.	.	.	.	7106	_	1	1	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	7107	_	3	3	DET	DET	_	_	O
-2	personal	personal	personal	JJ	JJ	7107	_	3	3	AMOD	AMOD	_	_	S-sublass
+2	personal	personal	personal	JJ	JJ	7107	_	3	3	AMOD	AMOD	_	_	S-subclass
 3	pronouns	pronoun	pronoun	NNS	NNS	7107	_	6	6	NSUBJ	NSUBJ	pronoun.n	pronominal	O
 4	are	be	be	VBP	VBP	7107	_	6	6	COP	COP	_	_	O
 5	apparently	apparently	apparently	RB	RB	7107	_	6	6	ADVMOD	ADVMOD	_	_	O
@@ -966,7 +966,7 @@
 2	the	the	the	DT	DT	7110	_	3	3	DET	DET	_	_	O
 3	case	case	case	NN	NN	7110	_	8	8	NMOD	NMOD	_	_	O
 4	of	of	of	IN	IN	7110	_	6	6	CASE	CASE	_	_	O
-5	demonstrative	demonstrative	demonstrative	JJ	JJ	7110	_	6	6	AMOD	AMOD	_	_	S-sublass
+5	demonstrative	demonstrative	demonstrative	JJ	JJ	7110	_	6	6	AMOD	AMOD	_	_	S-subclass
 6	pronouns	pronoun	pronoun	NNS	NNS	7110	_	3	3	NMOD	NMOD	pronoun.n	pronominal	O
 7	we	we	we	PRP	PRP	7110	_	8	8	NSUBJ	NSUBJ	_	_	O
 8	find	find	find	VBP	VBP	7110	_	0	0	ROOT	ROOT	_	_	O
@@ -1396,7 +1396,7 @@
 4	perhaps	perhaps	perhaps	RB	RB	7171	_	8	8	ADVMOD	ADVMOD	_	_	O
 5	originally	originally	originally	RB	RB	7171	_	8	8	ADVMOD	ADVMOD	_	_	O
 6	the	the	the	DT	DT	7171	_	8	8	DET	DET	_	_	O
-7	possessive	possessive	possessive	JJ	JJ	7171	_	8	8	AMOD	AMOD	_	_	S-sublass
+7	possessive	possessive	possessive	JJ	JJ	7171	_	8	8	AMOD	AMOD	_	_	S-subclass
 8	pronoun	pronoun	pronoun	NN	NN	7171	_	0	0	ROOT	ROOT	pronoun.n	pronominal	O
 9	of	of	of	IN	IN	7171	_	12	12	CASE	CASE	_	_	O
 10	the	the	the	DT	DT	7171	_	12	12	DET	DET	_	_	O
@@ -1826,8 +1826,8 @@
 9	Daflā	Daflā	Daflā	NNP	NNP	7220	_	7	7	CONJ	CONJ	_	_	I-language_variety
 10	.	.	.	.	.	7220	_	1	1	PUNCT	PUNCT	_	_	O
 
-1	The	the	the	DT	DT	7222	_	3	3	DET	DET	_	_	S-sublass
-2	possessive	possessive	possessive	JJ	JJ	7222	_	3	3	AMOD	AMOD	_	_	S-sublass
+1	The	the	the	DT	DT	7222	_	3	3	DET	DET	_	_	S-subclass
+2	possessive	possessive	possessive	JJ	JJ	7222	_	3	3	AMOD	AMOD	_	_	S-subclass
 3	pronouns	pronoun	pronoun	NNS	NNS	7222	_	6	6	NSUBJ	NSUBJ	pronoun.n	pronominal	O
 4	are	be	be	VBP	VBP	7222	_	6	6	COP	COP	_	_	O
 5	the	the	the	DT	DT	7222	_	6	6	DET	DET	_	_	O
@@ -1838,8 +1838,8 @@
 10	ones	one	one	NNS	NNS	7222	_	6	6	NMOD	NMOD	_	_	O
 11	.	.	.	.	.	7222	_	6	6	PUNCT	PUNCT	_	_	O
 
-1	The	the	the	DT	DT	7226	_	3	3	DET	DET	_	_	B-sublass
-2	demonstrative	demonstrative	demonstrative	JJ	JJ	7226	_	3	3	AMOD	AMOD	_	_	I-sublass
+1	The	the	the	DT	DT	7226	_	3	3	DET	DET	_	_	B-subclass
+2	demonstrative	demonstrative	demonstrative	JJ	JJ	7226	_	3	3	AMOD	AMOD	_	_	I-subclass
 3	pronouns	pronoun	pronoun	NNS	NNS	7226	_	5	5	NSUBJ	NSUBJ	pronoun.n	pronominal	O
 4	are	be	be	VBP	VBP	7226	_	5	5	COP	COP	_	_	O
 5	ē-chā	ē-chā	ē-chā	JJ	JJ	7226	_	0	0	ROOT	ROOT	_	_	B-data
@@ -1855,8 +1855,8 @@
 15	that	that	that	WDT	WDT	7226	_	5	5	PARATAXIS	PARATAXIS	_	_	S-data_translation
 16	.	.	.	.	.	7226	_	5	5	PUNCT	PUNCT	_	_	O
 
-1	The	the	the	DT	DT	7227	_	3	3	DET	DET	_	_	B-sublass
-2	interrogative	interrogative	interrogative	JJ	JJ	7227	_	3	3	AMOD	AMOD	_	_	I-sublass
+1	The	the	the	DT	DT	7227	_	3	3	DET	DET	_	_	B-subclass
+2	interrogative	interrogative	interrogative	JJ	JJ	7227	_	3	3	AMOD	AMOD	_	_	I-subclass
 3	pronouns	pronoun	pronoun	NNS	NNS	7227	_	5	5	NSUBJ	NSUBJ	pronoun.n	pronominal	O
 4	are	be	be	VBP	VBP	7227	_	5	5	COP	COP	_	_	O
 5	shā	shā	shā	NN	NN	7227	_	0	0	ROOT	ROOT	_	_	B-data
@@ -1875,7 +1875,7 @@
 1	There	there	there	EX	EX	7229	_	2	2	EXPL	EXPL	_	_	O
 2	are	be	be	VBP	VBP	7229	_	0	0	ROOT	ROOT	_	_	O
 3	no	no	no	DT	DT	7229	_	5	5	NEG	NEG	_	_	O
-4	relative	relative	relative	JJ	JJ	7229	_	5	5	AMOD	AMOD	_	_	S-sublass
+4	relative	relative	relative	JJ	JJ	7229	_	5	5	AMOD	AMOD	_	_	S-subclass
 5	pronouns	pronoun	pronoun	NNS	NNS	7229	_	2	2	NSUBJ	NSUBJ	pronoun.n	pronominal	O
 6	.	.	.	.	.	7229	_	2	2	PUNCT	PUNCT	_	_	O
 
@@ -2723,7 +2723,7 @@
 2	use	use	use	NN	NN	7327	_	11	11	NSUBJ	NSUBJ	_	_	O
 3	of	of	of	IN	IN	7327	_	6	6	CASE	CASE	_	_	O
 4	the	the	the	DT	DT	7327	_	6	6	DET	DET	_	_	O
-5	agent	agent	agent	NN	NN	7327	_	6	6	COMPOUND	COMPOUND	_	_	S-sublass
+5	agent	agent	agent	NN	NN	7327	_	6	6	COMPOUND	COMPOUND	_	_	S-subclass
 6	case	case	case	NN	NN	7327	_	2	2	NMOD	NMOD	case.n	case_property	O
 7	is	be	be	VBZ	VBZ	7327	_	11	11	COP	COP	_	_	O
 8	,	,	,	,	,	7327	_	11	11	PUNCT	PUNCT	_	_	O
@@ -2756,7 +2756,7 @@
 3	example	example	example	NN	NN	7330	_	15	15	NMOD	NMOD	_	_	O
 4	of	of	of	IN	IN	7330	_	7	7	CASE	CASE	_	_	O
 5	the	the	the	DT	DT	7330	_	7	7	DET	DET	_	_	O
-6	agent	agent	agent	NN	NN	7330	_	7	7	COMPOUND	COMPOUND	_	_	S-sublass
+6	agent	agent	agent	NN	NN	7330	_	7	7	COMPOUND	COMPOUND	_	_	S-subclass
 7	case	case	case	NN	NN	7330	_	3	3	NMOD	NMOD	case.n	case_property	O
 8	,	,	,	,	,	7330	_	10	10	PUNCT	PUNCT	_	_	O
 9	we	we	we	PRP	PRP	7330	_	10	10	NSUBJ	NSUBJ	_	_	O
@@ -2770,7 +2770,7 @@
 
 1	For	for	for	IN	IN	7332	_	3	3	CASE	CASE	_	_	O
 2	the	the	the	DT	DT	7332	_	3	3	DET	DET	_	_	O
-3	dative-accusative	dative-accusative	dative-accusative	JJ	JJ	7332	_	5	5	NMOD	NMOD	dative.n	case_property	S-sublass
+3	dative-accusative	dative-accusative	dative-accusative	JJ	JJ	7332	_	5	5	NMOD	NMOD	dative.n	case_property	S-subclass
 4	we	we	we	PRP	PRP	7332	_	5	5	NSUBJ	NSUBJ	_	_	O
 5	have	have	have	VBP	VBP	7332	_	0	0	ROOT	ROOT	_	_	O
 6	the	the	the	DT	DT	7332	_	8	8	DET	DET	_	_	O
@@ -2895,10 +2895,10 @@
 2	pronouns	pronoun	pronoun	NNS	NNS	7353	_	9	9	NSUBJ	NSUBJ	pronoun.n	pronominal	O
 3	of	of	of	IN	IN	7353	_	8	8	CASE	CASE	_	_	O
 4	the	the	the	DT	DT	7353	_	8	8	DET	DET	_	_	O
-5	first	first	first	JJ	JJ	7353	_	8	8	AMOD	AMOD	_	_	B-sublass
-6	and	and	and	CC	CC	7353	_	5	5	CC	CC	_	_	I-sublass
-7	second	second	second	JJ	JJ	7353	_	5	5	CONJ	CONJ	_	_	I-sublass
-8	person	person	person	NN	NN	7353	_	2	2	NMOD	NMOD	_	_	I-sublass
+5	first	first	first	JJ	JJ	7353	_	8	8	AMOD	AMOD	_	_	B-subclass
+6	and	and	and	CC	CC	7353	_	5	5	CC	CC	_	_	I-subclass
+7	second	second	second	JJ	JJ	7353	_	5	5	CONJ	CONJ	_	_	I-subclass
+8	person	person	person	NN	NN	7353	_	2	2	NMOD	NMOD	_	_	I-subclass
 9	make	make	make	VBP	VBP	7353	_	0	0	ROOT	ROOT	_	_	O
 10	no	no	no	DT	DT	7353	_	11	11	NEG	NEG	_	_	O
 11	distinction	distinction	distinction	NN	NN	7353	_	9	9	DOBJ	DOBJ	_	_	O
@@ -2912,7 +2912,7 @@
 19	.	.	.	.	.	7353	_	9	9	PUNCT	PUNCT	_	_	O
 
 1	For	for	for	IN	IN	7357	_	4	4	MARK	MARK	_	_	O
-2	Demonstrative	demonstrative	demonstrative	JJ	JJ	7357	_	3	3	AMOD	AMOD	_	_	S-sublass
+2	Demonstrative	demonstrative	demonstrative	JJ	JJ	7357	_	3	3	AMOD	AMOD	_	_	S-subclass
 3	pronouns	pronoun	pronoun	NNS	NNS	7357	_	4	4	NSUBJ	NSUBJ	pronoun.n	pronominal	O
 4	(	(	(	VBP	VBP	7357	_	14	14	ADVCL	ADVCL	_	_	O
 5	including	include	include	VBG	VBG	7357	_	7	7	CASE	CASE	_	_	O
@@ -3579,13 +3579,13 @@
 
 1	The	the	the	DT	DT	7461	_	2	2	DET	DET	_	_	O
 2	cases	case	case	NNS	NNS	7461	_	10	10	NSUBJ	NSUBJ	case.n	case_property	O
-3	of	of	of	IN	IN	7461	_	5	5	CASE	CASE	_	_	B-sublass
-4	the	the	the	DT	DT	7461	_	5	5	DEP	DEP	_	_	I-sublass
-5	singular	singular	singular	JJ	JJ	7461	_	2	2	ACL	ACL	_	_	I-sublass
+3	of	of	of	IN	IN	7461	_	5	5	CASE	CASE	_	_	B-subclass
+4	the	the	the	DT	DT	7461	_	5	5	DEP	DEP	_	_	I-subclass
+5	singular	singular	singular	JJ	JJ	7461	_	2	2	ACL	ACL	_	_	I-subclass
 6	and	and	and	CC	CC	7461	_	5	5	CC	CC	_	_	O
-7	of	of	of	IN	IN	7461	_	9	9	CASE	CASE	_	_	B-sublass
-8	the	the	the	DT	DT	7461	_	9	9	DET	DET	_	_	I-sublass
-9	plural	plural	plural	NN	NN	7461	_	5	5	CONJ	CONJ	_	_	I-sublass
+7	of	of	of	IN	IN	7461	_	9	9	CASE	CASE	_	_	B-subclass
+8	the	the	the	DT	DT	7461	_	9	9	DET	DET	_	_	I-subclass
+9	plural	plural	plural	NN	NN	7461	_	5	5	CONJ	CONJ	_	_	I-subclass
 10	differ	differ	differ	VBP	VBP	7461	_	0	0	ROOT	ROOT	_	_	O
 11	in	in	in	IN	IN	7461	_	14	14	CASE	CASE	_	_	O
 12	the	the	the	DT	DT	7461	_	14	14	DET	DET	_	_	O
@@ -4136,7 +4136,7 @@
 2	following	follow	follow	VBG	VBG	7486	_	1	1	AMOD	AMOD	_	_	O
 3	are	be	be	VBP	VBP	7486	_	6	6	COP	COP	_	_	O
 4	the	the	the	DT	DT	7486	_	6	6	DET	DET	_	_	O
-5	personal	personal	personal	JJ	JJ	7486	_	6	6	AMOD	AMOD	_	_	S-sublass
+5	personal	personal	personal	JJ	JJ	7486	_	6	6	AMOD	AMOD	_	_	S-subclass
 6	pronouns	pronoun	pronoun	NNS	NNS	7486	_	0	0	ROOT	ROOT	pronoun.n	pronominal	O
 7	:	:	:	:	:	7486	_	6	6	PUNCT	PUNCT	_	_	O
 8	Note	note	note	VB	VB	7486	_	6	6	DEP	DEP	_	_	O
@@ -4181,7 +4181,7 @@
 33	person	person	person	NN	NN	7488	_	24	24	NMOD	NMOD	_	_	O
 34	.	.	.	.	.	7488	_	4	4	PUNCT	PUNCT	_	_	O
 
-1	Demonstrative	demonstrative	demonstrative	JJ	JJ	7490	_	2	2	AMOD	AMOD	_	_	S-sublass
+1	Demonstrative	demonstrative	demonstrative	JJ	JJ	7490	_	2	2	AMOD	AMOD	_	_	S-subclass
 2	pronouns	pronoun	pronoun	NNS	NNS	7490	_	4	4	NSUBJ	NSUBJ	pronoun.n	pronominal	O
 3	are	be	be	VBP	VBP	7490	_	4	4	COP	COP	_	_	O
 4	di	di	di	FW	FW	7490	_	0	0	ROOT	ROOT	_	_	O
@@ -4231,9 +4231,9 @@
 18	genitive	genitive	genitive	JJ	JJ	7491	_	15	15	NMOD	NMOD	_	_	O
 19	.	.	.	.	.	7491	_	1	1	PUNCT	PUNCT	_	_	O
 
-1	Interrogative	interrogative	interrogative	JJ	JJ	7492	_	4	4	AMOD	AMOD	_	_	S-sublass
+1	Interrogative	interrogative	interrogative	JJ	JJ	7492	_	4	4	AMOD	AMOD	_	_	S-subclass
 2	and	and	and	CC	CC	7492	_	1	1	CC	CC	_	_	O
-3	indefinite	indefinite	indefinite	JJ	JJ	7492	_	1	1	CONJ	CONJ	_	_	S-sublass
+3	indefinite	indefinite	indefinite	JJ	JJ	7492	_	1	1	CONJ	CONJ	_	_	S-subclass
 4	pronouns	pronoun	pronoun	NNS	NNS	7492	_	6	6	NSUBJ	NSUBJ	pronoun.n	pronominal	O
 5	are	be	be	VBP	VBP	7492	_	6	6	COP	COP	_	_	O
 6	ārī	ārī	ārī	NN	NN	7492	_	0	0	ROOT	ROOT	_	_	S-data
@@ -4242,14 +4242,14 @@
 9	?	?	?	.	.	7492	_	6	6	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	7501	_	3	3	DET	DET	_	_	O
-2	interrogative	interrogative	interrogative	JJ	JJ	7501	_	3	3	AMOD	AMOD	_	_	S-sublass
+2	interrogative	interrogative	interrogative	JJ	JJ	7501	_	3	3	AMOD	AMOD	_	_	S-subclass
 3	pronouns	pronoun	pronoun	NNS	NNS	7501	_	7	7	NSUBJPASS	NSUBJPASS	pronoun.n	pronominal	O
 4	can	can	can	MD	MD	7501	_	7	7	AUX	AUX	_	_	O
 5	also	also	also	RB	RB	7501	_	7	7	ADVMOD	ADVMOD	_	_	O
 6	be	be	be	VB	VB	7501	_	7	7	AUXPASS	AUXPASS	_	_	O
 7	used	use	use	VBN	VBN	7501	_	0	0	ROOT	ROOT	_	_	O
 8	as	as	as	IN	IN	7501	_	9	9	CASE	CASE	_	_	O
-9	relatives	relative	relative	NNS	NNS	7501	_	7	7	NMOD	NMOD	_	_	S-sublass
+9	relatives	relative	relative	NNS	NNS	7501	_	7	7	NMOD	NMOD	_	_	S-subclass
 10	;	;	;	:	:	7501	_	7	7	PUNCT	PUNCT	_	_	O
 11	thus	thus	thus	RB	RB	7501	_	41	41	ADVMOD	ADVMOD	_	_	O
 12	,	,	,	,	,	7501	_	15	15	PUNCT	PUNCT	_	_	O
@@ -5309,10 +5309,10 @@
 
 1	The	the	the	DT	DT	7565	_	2	2	DET	DET	_	_	O
 2	pronouns	pronoun	pronoun	NNS	NNS	7565	_	9	9	NSUBJPASS	NSUBJPASS	pronoun.n	pronominal	O
-3	of	of	of	IN	IN	7565	_	6	6	CASE	CASE	_	_	B-sublass
-4	the	the	the	DT	DT	7565	_	6	6	DET	DET	_	_	I-sublass
-5	third	third	third	JJ	JJ	7565	_	6	6	AMOD	AMOD	_	_	I-sublass
-6	person	person	person	NN	NN	7565	_	2	2	NMOD	NMOD	_	_	I-sublass
+3	of	of	of	IN	IN	7565	_	6	6	CASE	CASE	_	_	B-subclass
+4	the	the	the	DT	DT	7565	_	6	6	DET	DET	_	_	I-subclass
+5	third	third	third	JJ	JJ	7565	_	6	6	AMOD	AMOD	_	_	I-subclass
+6	person	person	person	NN	NN	7565	_	2	2	NMOD	NMOD	_	_	I-subclass
 7	are	be	be	VBP	VBP	7565	_	9	9	AUXPASS	AUXPASS	_	_	O
 8	also	also	also	RB	RB	7565	_	9	9	ADVMOD	ADVMOD	_	_	O
 9	used	use	use	VBN	VBN	7565	_	0	0	ROOT	ROOT	_	_	O
@@ -5331,7 +5331,7 @@
 22	,	,	,	,	,	7565	_	11	11	PUNCT	PUNCT	_	_	O
 23	etc.	etc.	etc.	FW	FW	7565	_	11	11	APPOS	APPOS	_	_	O
 
-1	Interrogative	interrogative	interrogative	JJ	JJ	7566	_	2	2	AMOD	AMOD	_	_	S-sublass
+1	Interrogative	interrogative	interrogative	JJ	JJ	7566	_	2	2	AMOD	AMOD	_	_	S-subclass
 2	pronouns	pronoun	pronoun	NNS	NNS	7566	_	4	4	NSUBJ	NSUBJ	pronoun.n	pronominal	O
 3	are	be	be	VBP	VBP	7566	_	4	4	COP	COP	_	_	O
 4	āsā	āsā	āsā	NN	NN	7566	_	0	0	ROOT	ROOT	_	_	S-data
@@ -5796,7 +5796,7 @@
 3	by	by	by	IN	IN	7603	_	4	4	CASE	CASE	_	_	O
 4	origin	origin	origin	NN	NN	7603	_	7	7	NMOD	NMOD	_	_	O
 5	a	a	a	DT	DT	7603	_	7	7	DET	DET	_	_	O
-6	demonstrative	demonstrative	demonstrative	JJ	JJ	7603	_	7	7	AMOD	AMOD	_	_	S-sublass
+6	demonstrative	demonstrative	demonstrative	JJ	JJ	7603	_	7	7	AMOD	AMOD	_	_	S-subclass
 7	pronoun	pronoun	pronoun	NN	NN	7603	_	0	0	ROOT	ROOT	pronoun.n	pronominal	O
 8	;	;	;	:	:	7603	_	7	7	PUNCT	PUNCT	_	_	O
 9	compare	compare	compare	VB	VB	7603	_	7	7	DEP	DEP	_	_	O
@@ -5837,7 +5837,7 @@
 2	following	follow	follow	VBG	VBG	7610	_	1	1	AMOD	AMOD	_	_	O
 3	are	be	be	VBP	VBP	7610	_	6	6	COP	COP	_	_	O
 4	the	the	the	DT	DT	7610	_	6	6	DET	DET	_	_	O
-5	personal	personal	personal	JJ	JJ	7610	_	6	6	AMOD	AMOD	_	_	S-sublass
+5	personal	personal	personal	JJ	JJ	7610	_	6	6	AMOD	AMOD	_	_	S-subclass
 6	pronouns	pronoun	pronoun	NNS	NNS	7610	_	0	0	ROOT	ROOT	pronoun.n	pronominal	O
 7	:	:	:	:	:	7610	_	6	6	PUNCT	PUNCT	_	_	O
 8	The	the	the	DT	DT	7610	_	16	16	NSUBJ	NSUBJ	_	_	O
@@ -5898,7 +5898,7 @@
 21	.	.	.	.	.	7612	_	9	9	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	7613	_	3	3	DET	DET	_	_	O
-2	nearer	nearer	nearer	IN	IN	7613	_	3	3	DEP	DEP	_	_	S-sublass
+2	nearer	nearer	nearer	IN	IN	7613	_	3	3	DEP	DEP	_	_	S-subclass
 3	demonstrative	demonstrative	demonstrative	JJ	JJ	7613	_	5	5	NSUBJ	NSUBJ	demonstrative.n	pronominal	O
 4	is	be	be	VBZ	VBZ	7613	_	5	5	COP	COP	_	_	O
 5	noko	noko	noko	NN	NN	7613	_	0	0	ROOT	ROOT	_	_	S-data
@@ -5908,7 +5908,7 @@
 9	this	this	this	DT	DT	7613	_	5	5	APPOS	APPOS	_	_	S-data_translation
 10	.	.	.	.	.	7613	_	5	5	PUNCT	PUNCT	_	_	O
 
-1	Interrogative	interrogative	interrogative	JJ	JJ	7614	_	2	2	AMOD	AMOD	_	_	S-sublass
+1	Interrogative	interrogative	interrogative	JJ	JJ	7614	_	2	2	AMOD	AMOD	_	_	S-subclass
 2	pronouns	pronoun	pronoun	NNS	NNS	7614	_	4	4	NSUBJ	NSUBJ	pronoun.n	pronominal	O
 3	are	be	be	VBP	VBP	7614	_	4	4	COP	COP	_	_	O
 4	āsā	āsā	āsā	NN	NN	7614	_	0	0	ROOT	ROOT	_	_	S-data
@@ -7197,9 +7197,9 @@
 7	of	of	of	IN	IN	7781	_	9	9	CASE	CASE	_	_	O
 8	the	the	the	DT	DT	7781	_	9	9	DET	DET	_	_	O
 9	case	case	case	NN	NN	7781	_	6	6	NMOD	NMOD	case.n	case_property	O
-10	of	of	of	IN	IN	7781	_	12	12	CASE	CASE	_	_	B-sublass
-11	the	the	the	DT	DT	7781	_	12	12	DET	DET	_	_	I-sublass
-12	Agent	Agent	Agent	NNP	NNP	7781	_	9	9	NMOD	NMOD	_	_	I-sublass
+10	of	of	of	IN	IN	7781	_	12	12	CASE	CASE	_	_	B-subclass
+11	the	the	the	DT	DT	7781	_	12	12	DET	DET	_	_	I-subclass
+12	Agent	Agent	Agent	NNP	NNP	7781	_	9	9	NMOD	NMOD	_	_	I-subclass
 13	,	,	,	,	,	7781	_	6	6	PUNCT	PUNCT	_	_	O
 14	and	and	and	CC	CC	7781	_	6	6	CC	CC	_	_	O
 15	the	the	the	DT	DT	7781	_	17	17	DET	DET	_	_	O
@@ -7515,14 +7515,14 @@
 17	.	.	.	.	.	7811	_	5	5	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	7817	_	3	3	DET	DET	_	_	O
-2	Personal	Personal	Personal	NNP	NNP	7817	_	3	3	COMPOUND	COMPOUND	_	_	S-sublass
+2	Personal	Personal	Personal	NNP	NNP	7817	_	3	3	COMPOUND	COMPOUND	_	_	S-subclass
 3	pronouns	pronoun	pronoun	NNS	NNS	7817	_	5	5	NSUBJ	NSUBJ	pronoun.n	pronominal	O
 4	are	be	be	VBP	VBP	7817	_	5	5	COP	COP	_	_	O
 5	Nom	Nom	Nom	NNP	NNP	7817	_	0	0	ROOT	ROOT	_	_	O
 6	.	.	.	.	.	7817	_	5	5	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	7819	_	3	3	DET	DET	_	_	O
-2	Demonstrative	demonstrative	demonstrative	JJ	JJ	7819	_	3	3	AMOD	AMOD	_	_	S-sublass
+2	Demonstrative	demonstrative	demonstrative	JJ	JJ	7819	_	3	3	AMOD	AMOD	_	_	S-subclass
 3	pronouns	pronoun	pronoun	NNS	NNS	7819	_	5	5	NSUBJPASS	NSUBJPASS	pronoun.n	pronominal	O
 4	are	be	be	VBP	VBP	7819	_	5	5	AUXPASS	AUXPASS	_	_	O
 5	used	use	use	VBN	VBN	7819	_	0	0	ROOT	ROOT	_	_	O
@@ -7533,7 +7533,7 @@
 10	.	.	.	.	.	7819	_	5	5	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	7820	_	3	3	DET	DET	_	_	O
-2	Possessive	possessive	possessive	JJ	JJ	7820	_	3	3	AMOD	AMOD	_	_	S-sublass
+2	Possessive	possessive	possessive	JJ	JJ	7820	_	3	3	AMOD	AMOD	_	_	S-subclass
 3	pronouns	pronoun	pronoun	NNS	NNS	7820	_	6	6	NSUBJ	NSUBJ	pronoun.n	pronominal	O
 4	are	be	be	VBP	VBP	7820	_	6	6	COP	COP	_	_	O
 5	as	as	as	IN	IN	7820	_	6	6	CASE	CASE	_	_	O
@@ -7542,7 +7542,7 @@
 8	.	.	.	.	.	7820	_	6	6	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	7827	_	3	3	DET	DET	_	_	O
-2	Demonstrative	demonstrative	demonstrative	JJ	JJ	7827	_	3	3	AMOD	AMOD	_	_	S-sublass
+2	Demonstrative	demonstrative	demonstrative	JJ	JJ	7827	_	3	3	AMOD	AMOD	_	_	S-subclass
 3	pronouns	pronoun	pronoun	NNS	NNS	7827	_	17	17	NSUBJ	NSUBJ	pronoun.n	pronominal	O
 4	,	,	,	,	,	7827	_	3	3	PUNCT	PUNCT	_	_	O
 5	both	both	both	DT	DT	7827	_	7	7	DEP	DEP	_	_	O
@@ -7589,7 +7589,7 @@
 46	.	.	.	.	.	7827	_	17	17	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	7829	_	3	3	DET	DET	_	_	O
-2	Interrogative	interrogative	interrogative	JJ	JJ	7829	_	3	3	AMOD	AMOD	_	_	S-sublass
+2	Interrogative	interrogative	interrogative	JJ	JJ	7829	_	3	3	AMOD	AMOD	_	_	S-subclass
 3	pronouns	pronoun	pronoun	NNS	NNS	7829	_	7	7	NSUBJ	NSUBJ	pronoun.n	pronominal	O
 4	are	be	be	VBP	VBP	7829	_	7	7	COP	COP	_	_	O
 5	ō-chī	ō-chī	ō-chī	NN	NN	7829	_	7	7	COMPOUND	COMPOUND	_	_	B-data
@@ -7603,7 +7603,7 @@
 2	force	force	force	NN	NN	7833	_	9	9	NSUBJPASS	NSUBJPASS	_	_	O
 3	of	of	of	IN	IN	7833	_	6	6	CASE	CASE	_	_	O
 4	the	the	the	DT	DT	7833	_	6	6	DET	DET	_	_	O
-5	Relative	relative	relative	JJ	JJ	7833	_	6	6	AMOD	AMOD	_	_	S-sublass
+5	Relative	relative	relative	JJ	JJ	7833	_	6	6	AMOD	AMOD	_	_	S-subclass
 6	pronoun	pronoun	pronoun	NN	NN	7833	_	2	2	NMOD	NMOD	pronoun.n	pronominal	O
 7	is	be	be	VBZ	VBZ	7833	_	9	9	AUXPASS	AUXPASS	_	_	O
 8	usually	usually	usually	RB	RB	7833	_	9	9	ADVMOD	ADVMOD	_	_	O
@@ -7622,13 +7622,13 @@
 
 1	Sometimes	sometimes	sometimes	RB	RB	7835	_	6	6	ADVMOD	ADVMOD	_	_	O
 2	the	the	the	DT	DT	7835	_	4	4	DET	DET	_	_	O
-3	interrogative	interrogative	interrogative	JJ	JJ	7835	_	4	4	AMOD	AMOD	_	_	S-sublass
+3	interrogative	interrogative	interrogative	JJ	JJ	7835	_	4	4	AMOD	AMOD	_	_	S-subclass
 4	pronoun	pronoun	pronoun	NN	NN	7835	_	6	6	NSUBJPASS	NSUBJPASS	pronoun.n	pronominal	O
 5	is	be	be	VBZ	VBZ	7835	_	6	6	AUXPASS	AUXPASS	_	_	O
 6	used	use	use	VBN	VBN	7835	_	0	0	ROOT	ROOT	_	_	O
 7	as	as	as	IN	IN	7835	_	9	9	CASE	CASE	_	_	O
 8	a	a	a	DT	DT	7835	_	9	9	DET	DET	_	_	O
-9	relative	relative	relative	JJ	JJ	7835	_	6	6	NMOD	NMOD	_	_	S-sublass
+9	relative	relative	relative	JJ	JJ	7835	_	6	6	NMOD	NMOD	_	_	S-subclass
 10	,	,	,	,	,	7835	_	6	6	PUNCT	PUNCT	_	_	O
 11	and	and	and	CC	CC	7835	_	6	6	CC	CC	_	_	O
 12	is	be	be	VBZ	VBZ	7835	_	14	14	AUXPASS	AUXPASS	_	_	O
@@ -7640,7 +7640,7 @@
 18	.	.	.	.	.	7835	_	6	6	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	7839	_	3	3	DET	DET	_	_	O
-2	Reflexive	reflexive	reflexive	JJ	JJ	7839	_	3	3	AMOD	AMOD	_	_	S-sublass
+2	Reflexive	reflexive	reflexive	JJ	JJ	7839	_	3	3	AMOD	AMOD	_	_	S-subclass
 3	pronoun	pronoun	pronoun	NN	NN	7839	_	5	5	NSUBJ	NSUBJ	pronoun.n	pronominal	O
 4	is	be	be	VBZ	VBZ	7839	_	5	5	COP	COP	_	_	O
 5	mōchī	mōchī	mōchī	NN	NN	7839	_	0	0	ROOT	ROOT	_	_	B-data
