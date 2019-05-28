@@ -2174,31 +2174,31 @@
 7	or	or	or	CC	CC	8257	_	6	6	CC	CC	_	_	I-data
 8	ki	ki	ki	NN	NN	8257	_	6	6	CONJ	CONJ	_	_	I-data
 9	,	,	,	,	,	8257	_	6	6	PUNCT	PUNCT	_	_	O
-10	to	to	to	TO	TO	8257	_	24	24	CASE	CASE	_	_	S-fe_Data_Translation
+10	to	to	to	TO	TO	8257	_	24	24	CASE	CASE	_	_	S-data_translation
 11	;	;	;	:	:	8257	_	12	12	PUNCT	PUNCT	_	_	O
 12	hu	hu	hu	NN	NN	8257	_	24	24	DEP	DEP	_	_	S-data
 13	,	,	,	,	,	8257	_	12	12	PUNCT	PUNCT	_	_	O
-14	to	to	to	TO	TO	8257	_	20	20	CASE	CASE	_	_	S-fe_Data_Translation
+14	to	to	to	TO	TO	8257	_	20	20	CASE	CASE	_	_	S-data_translation
 15	;	;	;	:	:	8257	_	16	16	PUNCT	PUNCT	_	_	O
 16	ki	ki	ki	NN	NN	8257	_	20	20	DEP	DEP	_	_	S-data
 17	,	,	,	,	,	8257	_	16	16	PUNCT	PUNCT	_	_	O
-18	from	from	from	IN	IN	8257	_	16	16	DEP	DEP	_	_	S-fe_Data_Translation
+18	from	from	from	IN	IN	8257	_	16	16	DEP	DEP	_	_	S-data_translation
 19	;	;	;	:	:	8257	_	16	16	PUNCT	PUNCT	_	_	O
 20	kā	kā	kā	NN	NN	8257	_	12	12	NMOD	NMOD	_	_	S-data
 21	,	,	,	,	,	8257	_	12	12	PUNCT	PUNCT	_	_	O
-22	in	in	in	IN	IN	8257	_	12	12	ACL	ACL	_	_	S-fe_Data_Translation
+22	in	in	in	IN	IN	8257	_	12	12	ACL	ACL	_	_	S-data_translation
 23	;	;	;	:	:	8257	_	12	12	PUNCT	PUNCT	_	_	O
 24	nyü	nyü	nyü	NN	NN	8257	_	6	6	NMOD	NMOD	_	_	S-data
 25	,	,	,	,	,	8257	_	6	6	PUNCT	PUNCT	_	_	O
-26	in	in	in	IN	IN	8257	_	32	32	CASE	CASE	_	_	S-fe_Data_Translation
+26	in	in	in	IN	IN	8257	_	32	32	CASE	CASE	_	_	S-data_translation
 27	;	;	;	:	:	8257	_	28	28	PUNCT	PUNCT	_	_	O
 28	ghenyü	ghenyü	ghenyü	NN	NN	8257	_	32	32	DEP	DEP	_	_	S-data
 29	,	,	,	,	,	8257	_	28	28	PUNCT	PUNCT	_	_	O
-30	from	from	from	IN	IN	8257	_	28	28	DEP	DEP	_	_	S-fe_Data_Translation
+30	from	from	from	IN	IN	8257	_	28	28	DEP	DEP	_	_	S-data_translation
 31	;	;	;	:	:	8257	_	28	28	PUNCT	PUNCT	_	_	O
 32	zanho	zanho	zanho	NN	NN	8257	_	6	6	NMOD	NMOD	_	_	S-data
 33	,	,	,	,	,	8257	_	6	6	PUNCT	PUNCT	_	_	O
-34	with	with	with	IN	IN	8257	_	32	32	CASE	CASE	_	_	S-fe_Data_Translation
+34	with	with	with	IN	IN	8257	_	32	32	CASE	CASE	_	_	S-data_translation
 35	.	.	.	.	.	8257	_	6	6	PUNCT	PUNCT	_	_	O
 
 1	They	they	they	PRP	PRP	8260	_	2	2	NSUBJ	NSUBJ	prefix.n	affix	O
@@ -2214,7 +2214,7 @@
 11	,	,	,	,	,	8260	_	10	10	PUNCT	PUNCT	_	_	O
 12	ke-gwā	ke-gwā	ke-gwā	NN	NN	8260	_	2	2	NMOD	NMOD	_	_	S-data
 13	,	,	,	,	,	8260	_	2	2	PUNCT	PUNCT	_	_	O
-14	good	good	good	JJ	JJ	8260	_	2	2	XCOMP	XCOMP	_	_	S-fe_Data_Translation
+14	good	good	good	JJ	JJ	8260	_	2	2	XCOMP	XCOMP	_	_	S-data_translation
 15	.	.	.	.	.	8260	_	2	2	PUNCT	PUNCT	_	_	O
 
 1	This	this	this	DT	DT	8263	_	5	5	NSUBJ	NSUBJ	_	_	O
@@ -2668,8 +2668,8 @@
 9	second	second	second	JJ	JJ	8359	_	10	10	AMOD	AMOD	_	_	O
 10	component	component	component	NN	NN	8359	_	4	4	NMOD	NMOD	_	_	O
 11	in	in	in	IN	IN	8359	_	13	13	CASE	CASE	_	_	O
-12	classical	classical	classical	JJ	JJ	8359	_	13	13	AMOD	AMOD	_	_	B-fe_Reference_language
-13	Tibetan	Tibetan	Tibetan	NNP	NNP	8359	_	10	10	NMOD	NMOD	_	_	I-fe_Reference_language
+12	classical	classical	classical	JJ	JJ	8359	_	13	13	AMOD	AMOD	_	_	B-Reference_language
+13	Tibetan	Tibetan	Tibetan	NNP	NNP	8359	_	10	10	NMOD	NMOD	_	_	I-Reference_language
 14	,	,	,	,	,	8359	_	18	18	PUNCT	PUNCT	_	_	O
 15	this	this	this	DT	DT	8359	_	16	16	DET	DET	_	_	O
 16	y	y	y	NN	NN	8359	_	18	18	NSUBJPASS	NSUBJPASS	_	_	O
@@ -4346,8 +4346,8 @@
 8	,	,	,	,	,	8606	_	5	5	PUNCT	PUNCT	_	_	O
 9	ā-ba-mae-la	ā-ba-mae-la	ā-ba-mae-la	NN	NN	8606	_	5	5	DOBJ	DOBJ	_	_	S-data
 10	,	,	,	,	,	8606	_	9	9	PUNCT	PUNCT	_	_	O
-11	of	of	of	IN	IN	8606	_	12	12	CASE	CASE	_	_	B-fe_Data_Translation
-12	fathers	father	father	NNS	NNS	8606	_	9	9	NMOD	NMOD	_	_	I-fe_Data_Translation
+11	of	of	of	IN	IN	8606	_	12	12	CASE	CASE	_	_	B-data_translation
+12	fathers	father	father	NNS	NNS	8606	_	9	9	NMOD	NMOD	_	_	I-data_translation
 13	.	.	.	.	.	8606	_	5	5	PUNCT	PUNCT	_	_	O
 
 1	It	it	it	PRP	PRP	8607	_	7	7	NSUBJ	NSUBJ	_	_	O
@@ -4365,14 +4365,14 @@
 13	senses	sens	sens	NNS	NNS	8607	_	9	9	NMOD	NMOD	_	_	O
 14	.	.	.	.	.	8607	_	7	7	PUNCT	PUNCT	_	_	O
 
-1	Other	other	other	JJ	JJ	8612	_	2	2	AMOD	AMOD	_	_	B-fe_Indicated
-2	relations	relation	relation	NNS	NNS	8612	_	4	4	NSUBJPASS	NSUBJPASS	indicate.v	Sign	I-fe_Indicated
+1	Other	other	other	JJ	JJ	8612	_	2	2	AMOD	AMOD	_	_	B-Indicated
+2	relations	relation	relation	NNS	NNS	8612	_	4	4	NSUBJPASS	NSUBJPASS	indicate.v	Sign	I-Indicated
 3	are	be	be	VBP	VBP	8612	_	4	4	AUXPASS	AUXPASS	_	_	O
 4	indicated	indicate	indicate	VBN	VBN	8612	_	0	0	ROOT	ROOT	_	_	O
-5	by	by	by	IN	IN	8612	_	6	6	CASE	CASE	_	_	B-fe_Indicator
-6	means	means	means	NNS	NNS	8612	_	4	4	NMOD	NMOD	_	_	I-fe_Indicator
-7	of	of	of	IN	IN	8612	_	8	8	CASE	CASE	_	_	I-fe_Indicator
-8	postpositions	postposition	postposition	NNS	NNS	8612	_	6	6	NMOD	NMOD	_	_	I-fe_Indicator
+5	by	by	by	IN	IN	8612	_	6	6	CASE	CASE	_	_	B-Indicator
+6	means	means	means	NNS	NNS	8612	_	4	4	NMOD	NMOD	_	_	I-Indicator
+7	of	of	of	IN	IN	8612	_	8	8	CASE	CASE	_	_	I-Indicator
+8	postpositions	postposition	postposition	NNS	NNS	8612	_	6	6	NMOD	NMOD	_	_	I-Indicator
 9	.	.	.	.	.	8612	_	4	4	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	8618	_	2	2	DET	DET	particle.n	particle	O
@@ -4409,12 +4409,12 @@
 32	sister	sister	sister	NN	NN	8618	_	29	29	NMOD	NMOD	_	_	I-data_translation
 33	.	.	.	.	.	8618	_	6	6	PUNCT	PUNCT	_	_	O
 
-1	They	they	they	PRP	PRP	8622	_	2	2	NSUBJ	NSUBJ	_	_	S-fe_Entity_1
-2	follow	follow	follow	VBP	VBP	8622	_	0	0	ROOT	ROOT	_	_	S-fe_Order
-3	the	the	the	DT	DT	8622	_	4	4	DET	DET	follow.v	frm_sequence	B-fe_Entity_2
-4	word	word	word	NN	NN	8622	_	2	2	DOBJ	DOBJ	_	_	I-fe_Entity_2
-5	they	they	they	PRP	PRP	8622	_	6	6	NSUBJ	NSUBJ	_	_	I-fe_Entity_2
-6	qualify	qualify	qualify	VBP	VBP	8622	_	4	4	ACL:RELCL	ACL:RELCL	_	_	I-fe_Entity_2
+1	They	they	they	PRP	PRP	8622	_	2	2	NSUBJ	NSUBJ	_	_	S-entity_1
+2	follow	follow	follow	VBP	VBP	8622	_	0	0	ROOT	ROOT	_	_	S-order
+3	the	the	the	DT	DT	8622	_	4	4	DET	DET	follow.v	frm_sequence	B-entity_2
+4	word	word	word	NN	NN	8622	_	2	2	DOBJ	DOBJ	_	_	I-entity_2
+5	they	they	they	PRP	PRP	8622	_	6	6	NSUBJ	NSUBJ	_	_	I-entity_2
+6	qualify	qualify	qualify	VBP	VBP	8622	_	4	4	ACL:RELCL	ACL:RELCL	_	_	I-entity_2
 7	.	.	.	.	.	8622	_	2	2	PUNCT	PUNCT	_	_	O
 
 1	Higher	higher	higher	JJR	JJR	8623	_	2	2	AMOD	AMOD	_	_	S-subclass
@@ -4736,22 +4736,22 @@
 32	mine	mine	mine	NN	NN	8682	_	29	29	ACL:RELCL	ACL:RELCL	_	_	O
 33	.	.	.	.	.	8682	_	6	6	PUNCT	PUNCT	_	_	O
 
-1	The	the	the	DT	DT	8683	_	2	2	DET	DET	_	_	B-fe_Entity
-2	form	form	form	NN	NN	8683	_	9	9	NSUBJPASS	NSUBJPASS	_	_	I-fe_Entity
-3	ending	end	end	VBG	VBG	8683	_	2	2	ACL	ACL	_	_	I-fe_Entity
-4	in	in	in	IN	IN	8683	_	5	5	CASE	CASE	_	_	I-fe_Entity
-5	ba	ba	ba	NN	NN	8683	_	3	3	NMOD	NMOD	_	_	I-fe_Entity
+1	The	the	the	DT	DT	8683	_	2	2	DET	DET	_	_	B-entity
+2	form	form	form	NN	NN	8683	_	9	9	NSUBJPASS	NSUBJPASS	_	_	I-entity
+3	ending	end	end	VBG	VBG	8683	_	2	2	ACL	ACL	_	_	I-entity
+4	in	in	in	IN	IN	8683	_	5	5	CASE	CASE	_	_	I-entity
+5	ba	ba	ba	NN	NN	8683	_	3	3	NMOD	NMOD	_	_	I-entity
 6	is	be	be	VBZ	VBZ	8683	_	9	9	AUXPASS	AUXPASS	_	_	O
 7	sometimes	sometimes	sometimes	RB	RB	8683	_	9	9	ADVMOD	ADVMOD	_	_	O
 8	also	also	also	RB	RB	8683	_	9	9	ADVMOD	ADVMOD	_	_	O
 9	used	use	use	VBN	VBN	8683	_	0	0	ROOT	ROOT	_	_	O
-10	with	with	with	IN	IN	8683	_	12	12	CASE	CASE	use.v	frm_using	B-fe_Role
-11	the	the	the	DT	DT	8683	_	12	12	DET	DET	_	_	I-fe_Role
-12	meaning	meaning	meaning	NN	NN	8683	_	9	9	NMOD	NMOD	_	_	I-fe_Role
-13	of	of	of	IN	IN	8683	_	16	16	CASE	CASE	_	_	I-fe_Role
-14	a	a	a	DT	DT	8683	_	16	16	DET	DET	_	_	I-fe_Role
-15	conjunctive	conjunctive	conjunctive	JJ	JJ	8683	_	16	16	AMOD	AMOD	_	_	I-fe_Role
-16	participle	participle	participle	NN	NN	8683	_	12	12	NMOD	NMOD	_	_	I-fe_Role
+10	with	with	with	IN	IN	8683	_	12	12	CASE	CASE	use.v	frm_using	B-Role
+11	the	the	the	DT	DT	8683	_	12	12	DET	DET	_	_	I-Role
+12	meaning	meaning	meaning	NN	NN	8683	_	9	9	NMOD	NMOD	_	_	I-Role
+13	of	of	of	IN	IN	8683	_	16	16	CASE	CASE	_	_	I-Role
+14	a	a	a	DT	DT	8683	_	16	16	DET	DET	_	_	I-Role
+15	conjunctive	conjunctive	conjunctive	JJ	JJ	8683	_	16	16	AMOD	AMOD	_	_	I-Role
+16	participle	participle	participle	NN	NN	8683	_	12	12	NMOD	NMOD	_	_	I-Role
 17	;	;	;	:	:	8683	_	16	16	PUNCT	PUNCT	_	_	O
 18	thus	thus	thus	RB	RB	8683	_	16	16	ADVMOD	ADVMOD	_	_	O
 19	,	,	,	,	,	8683	_	16	16	PUNCT	PUNCT	_	_	O
@@ -5253,15 +5253,15 @@
 43	object	object	object	NN	NN	8757	_	40	40	NMOD	NMOD	_	_	O
 44	.	.	.	.	.	8757	_	23	23	PUNCT	PUNCT	_	_	O
 
-1	The	the	the	DT	DT	8760	_	3	3	DET	DET	_	_	B-fe_Entity
-2	same	same	same	JJ	JJ	8760	_	3	3	AMOD	AMOD	_	_	I-fe_Entity
-3	form	form	form	NN	NN	8760	_	6	6	NSUBJPASS	NSUBJPASS	_	_	I-fe_Entity
+1	The	the	the	DT	DT	8760	_	3	3	DET	DET	_	_	B-entity
+2	same	same	same	JJ	JJ	8760	_	3	3	AMOD	AMOD	_	_	I-entity
+3	form	form	form	NN	NN	8760	_	6	6	NSUBJPASS	NSUBJPASS	_	_	I-entity
 4	is	be	be	VBZ	VBZ	8760	_	6	6	AUXPASS	AUXPASS	_	_	O
 5	also	also	also	RB	RB	8760	_	6	6	ADVMOD	ADVMOD	use.v	frm_using	O
 6	used	use	use	VBN	VBN	8760	_	0	0	ROOT	ROOT	_	_	O
-7	as	as	as	IN	IN	8760	_	9	9	CASE	CASE	_	_	B-fe_Role
-8	an	a	a	DT	DT	8760	_	9	9	DET	DET	_	_	I-fe_Role
-9	instrumental	instrumental	instrumental	JJ	JJ	8760	_	6	6	NMOD	NMOD	_	_	I-fe_Role
+7	as	as	as	IN	IN	8760	_	9	9	CASE	CASE	_	_	B-Role
+8	an	a	a	DT	DT	8760	_	9	9	DET	DET	_	_	I-Role
+9	instrumental	instrumental	instrumental	JJ	JJ	8760	_	6	6	NMOD	NMOD	_	_	I-Role
 10	;	;	;	:	:	8760	_	9	9	PUNCT	PUNCT	_	_	O
 11	thus	thus	thus	RB	RB	8760	_	9	9	ADVMOD	ADVMOD	_	_	O
 12	,	,	,	,	,	8760	_	9	9	PUNCT	PUNCT	_	_	O
@@ -6285,17 +6285,17 @@
 20	chas	cha	cha	NNS	NNS	8928	_	15	15	CONJ	CONJ	_	_	S-data
 21	.	.	.	.	.	8928	_	14	14	PUNCT	PUNCT	_	_	O
 
-1	Chan	Chan	Chan	NNP	NNP	8929	_	3	3	NSUBJPASS	NSUBJPASS	_	_	S-fe_Entity
+1	Chan	Chan	Chan	NNP	NNP	8929	_	3	3	NSUBJPASS	NSUBJPASS	_	_	S-entity
 2	is	be	be	VBZ	VBZ	8929	_	3	3	AUXPASS	AUXPASS	_	_	O
 3	used	use	use	VBN	VBN	8929	_	0	0	ROOT	ROOT	_	_	O
 4	as	as	as	IN	IN	8929	_	7	7	CASE	CASE	_	_	O
 5	in	in	in	IN	IN	8929	_	7	7	CASE	CASE	use.v	frm_using	O
 6	classical	classical	classical	JJ	JJ	8929	_	7	7	AMOD	AMOD	_	_	O
 7	Tibetan	tibetan	tibetan	NN	NN	8929	_	3	3	NMOD	NMOD	_	_	O
-8	to	to	to	TO	TO	8929	_	9	9	MARK	MARK	_	_	B-fe_Purpose
-9	form	form	form	VB	VB	8929	_	7	7	ACL	ACL	_	_	I-fe_Purpose
-10	possessive	possessive	possessive	JJ	JJ	8929	_	11	11	AMOD	AMOD	_	_	I-fe_Purpose
-11	compounds	compound	compound	NNS	NNS	8929	_	9	9	DOBJ	DOBJ	_	_	I-fe_Purpose
+8	to	to	to	TO	TO	8929	_	9	9	MARK	MARK	_	_	B-Purpose
+9	form	form	form	VB	VB	8929	_	7	7	ACL	ACL	_	_	I-Purpose
+10	possessive	possessive	possessive	JJ	JJ	8929	_	11	11	AMOD	AMOD	_	_	I-Purpose
+11	compounds	compound	compound	NNS	NNS	8929	_	9	9	DOBJ	DOBJ	_	_	I-Purpose
 12	;	;	;	:	:	8929	_	9	9	PUNCT	PUNCT	_	_	O
 13	thus	thus	thus	RB	RB	8929	_	9	9	ADVMOD	ADVMOD	_	_	O
 14	,	,	,	,	,	8929	_	7	7	PUNCT	PUNCT	_	_	O
@@ -6547,9 +6547,9 @@
 10	,	,	,	,	,	8953	_	7	7	PUNCT	PUNCT	_	_	O
 11	attā-s	attā-s	attā-s	NN	NN	8953	_	7	7	DOBJ	DOBJ	_	_	S-data
 12	,	,	,	,	,	8953	_	11	11	PUNCT	PUNCT	_	_	O
-13	by	by	by	IN	IN	8953	_	15	15	CASE	CASE	_	_	B-fe_Data_Translation
-14	the	the	the	DT	DT	8953	_	15	15	DET	DET	_	_	I-fe_Data_Translation
-15	father	father	father	NN	NN	8953	_	11	11	NMOD	NMOD	_	_	I-fe_Data_Translation
+13	by	by	by	IN	IN	8953	_	15	15	CASE	CASE	_	_	B-data_translation
+14	the	the	the	DT	DT	8953	_	15	15	DET	DET	_	_	I-data_translation
+15	father	father	father	NN	NN	8953	_	11	11	NMOD	NMOD	_	_	I-data_translation
 16	.	.	.	.	.	8953	_	7	7	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	8954	_	2	2	DET	DET	_	_	O
@@ -6564,14 +6564,14 @@
 10	,	,	,	,	,	8954	_	11	11	PUNCT	PUNCT	_	_	O
 11	atā-la	atā-la	atā-la	NN	NN	8954	_	17	17	DEP	DEP	_	_	S-data
 12	,	,	,	,	,	8954	_	11	11	PUNCT	PUNCT	_	_	O
-13	to	to	to	TO	TO	8954	_	15	15	CASE	CASE	_	_	B-fe_Data_Translation
-14	a	a	a	DT	DT	8954	_	15	15	DET	DET	_	_	I-fe_Data_Translation
-15	father	father	father	NN	NN	8954	_	11	11	NMOD	NMOD	_	_	I-fe_Data_Translation
+13	to	to	to	TO	TO	8954	_	15	15	CASE	CASE	_	_	B-data_translation
+14	a	a	a	DT	DT	8954	_	15	15	DET	DET	_	_	I-data_translation
+15	father	father	father	NN	NN	8954	_	11	11	NMOD	NMOD	_	_	I-data_translation
 16	;	;	;	:	:	8954	_	11	11	PUNCT	PUNCT	_	_	O
 17	atā-un-la	atā-un-la	atā-un-la	NN	NN	8954	_	0	0	ROOT	ROOT	_	_	S-data
 18	,	,	,	,	,	8954	_	17	17	PUNCT	PUNCT	_	_	O
-19	to	to	to	TO	TO	8954	_	20	20	CASE	CASE	_	_	B-fe_Data_Translation
-20	fathers	father	father	NNS	NNS	8954	_	17	17	NMOD	NMOD	_	_	I-fe_Data_Translation
+19	to	to	to	TO	TO	8954	_	20	20	CASE	CASE	_	_	B-data_translation
+20	fathers	father	father	NNS	NNS	8954	_	17	17	NMOD	NMOD	_	_	I-data_translation
 21	.	.	.	.	.	8954	_	17	17	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	8957	_	2	2	DET	DET	_	_	O
@@ -6620,11 +6620,11 @@
 20	phrū	phrū	phrū	NN	NN	8958	_	21	21	COMPOUND	COMPOUND	_	_	I-data
 21	thong	thong	thong	NN	NN	8958	_	25	25	NSUBJ	NSUBJ	_	_	I-data
 22	,	,	,	,	,	8958	_	21	21	PUNCT	PUNCT	_	_	O
-23	the	the	the	DT	DT	8958	_	24	24	DET	DET	_	_	B-fe_Data_Translation
-24	father	father	father	NN	NN	8958	_	21	21	APPOS	APPOS	_	_	I-fe_Data_Translation
-25	saw	see	see	VBD	VBD	8958	_	10	10	PARATAXIS	PARATAXIS	_	_	I-fe_Data_Translation
-26	his	he	he	PRP$	PRP$	8958	_	27	27	NMOD:POSS	NMOD:POSS	_	_	I-fe_Data_Translation
-27	son	son	son	NN	NN	8958	_	25	25	DOBJ	DOBJ	_	_	I-fe_Data_Translation
+23	the	the	the	DT	DT	8958	_	24	24	DET	DET	_	_	B-data_translation
+24	father	father	father	NN	NN	8958	_	21	21	APPOS	APPOS	_	_	I-data_translation
+25	saw	see	see	VBD	VBD	8958	_	10	10	PARATAXIS	PARATAXIS	_	_	I-data_translation
+26	his	he	he	PRP$	PRP$	8958	_	27	27	NMOD:POSS	NMOD:POSS	_	_	I-data_translation
+27	son	son	son	NN	NN	8958	_	25	25	DOBJ	DOBJ	_	_	I-data_translation
 28	.	.	.	.	.	8958	_	10	10	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	8959	_	2	2	DET	DET	_	_	O
@@ -6776,12 +6776,12 @@
 10	words	word	word	NNS	NNS	8975	_	8	8	NMOD	NMOD	_	_	O
 11	.	.	.	.	.	8975	_	5	5	PUNCT	PUNCT	_	_	O
 
-1	They	they	they	PRP	PRP	8976	_	2	2	NSUBJ	NSUBJ	_	_	S-fe_Entity_1
+1	They	they	they	PRP	PRP	8976	_	2	2	NSUBJ	NSUBJ	_	_	S-entity_1
 2	follow	follow	follow	VBP	VBP	8976	_	0	0	ROOT	ROOT	_	_	O
-3	the	the	the	DT	DT	8976	_	4	4	DET	DET	follow.v	frm_sequence	B-fe_Entity_2
-4	word	word	word	NN	NN	8976	_	2	2	DOBJ	DOBJ	_	_	I-fe_Entity_2
-5	they	they	they	PRP	PRP	8976	_	6	6	NSUBJ	NSUBJ	_	_	I-fe_Entity_2
-6	qualify	qualify	qualify	VBP	VBP	8976	_	4	4	ACL:RELCL	ACL:RELCL	_	_	I-fe_Entity_2
+3	the	the	the	DT	DT	8976	_	4	4	DET	DET	follow.v	frm_sequence	B-entity_2
+4	word	word	word	NN	NN	8976	_	2	2	DOBJ	DOBJ	_	_	I-entity_2
+5	they	they	they	PRP	PRP	8976	_	6	6	NSUBJ	NSUBJ	_	_	I-entity_2
+6	qualify	qualify	qualify	VBP	VBP	8976	_	4	4	ACL:RELCL	ACL:RELCL	_	_	I-entity_2
 7	,	,	,	,	,	8976	_	2	2	PUNCT	PUNCT	_	_	O
 8	and	and	and	CC	CC	8976	_	2	2	CC	CC	_	_	O
 9	postpositions	postposition	postposition	NNS	NNS	8976	_	12	12	NSUBJPASS	NSUBJPASS	_	_	O
@@ -7309,20 +7309,20 @@
 20	negative	negative	negative	JJ	JJ	9058	_	17	17	XCOMP	XCOMP	_	_	O
 21	.	.	.	.	.	9058	_	3	3	PUNCT	PUNCT	_	_	O
 
-1	The	the	the	DT	DT	9065	_	2	2	DET	DET	_	_	B-fe_Entity_1
-2	object	object	object	NN	NN	9065	_	4	4	NSUBJ	NSUBJ	_	_	I-fe_Entity_1
-3	may	may	may	MD	MD	9065	_	4	4	AUX	AUX	precede.v	frm_sequence	S-fe_Certainty
+1	The	the	the	DT	DT	9065	_	2	2	DET	DET	_	_	B-entity_1
+2	object	object	object	NN	NN	9065	_	4	4	NSUBJ	NSUBJ	_	_	I-entity_1
+3	may	may	may	MD	MD	9065	_	4	4	AUX	AUX	precede.v	frm_sequence	S-Certainty
 4	precede	precede	precede	VB	VB	9065	_	0	0	ROOT	ROOT	_	_	O
-5	the	the	the	DT	DT	9065	_	6	6	DET	DET	_	_	B-fe_Entity_2
-6	subject	subject	subject	NN	NN	9065	_	4	4	DOBJ	DOBJ	_	_	I-fe_Entity_2
-7	when	when	when	WRB	WRB	9065	_	10	10	ADVMOD	ADVMOD	_	_	B-fe_Condition
-8	it	it	it	PRP	PRP	9065	_	10	10	NSUBJPASS	NSUBJPASS	_	_	I-fe_Condition
-9	is	be	be	VBZ	VBZ	9065	_	10	10	AUXPASS	AUXPASS	_	_	I-fe_Condition
-10	followed	follow	follow	VBN	VBN	9065	_	4	4	ADVCL	ADVCL	_	_	I-fe_Condition
-11	by	by	by	IN	IN	9065	_	14	14	CASE	CASE	_	_	I-fe_Condition
-12	the	the	the	DT	DT	9065	_	14	14	DET	DET	_	_	I-fe_Condition
-13	suffix	suffix	suffix	FW	FW	9065	_	14	14	COMPOUND	COMPOUND	_	_	I-fe_Condition
-14	la	la	la	FW	FW	9065	_	10	10	NMOD	NMOD	_	_	I-fe_Condition
+5	the	the	the	DT	DT	9065	_	6	6	DET	DET	_	_	B-entity_2
+6	subject	subject	subject	NN	NN	9065	_	4	4	DOBJ	DOBJ	_	_	I-entity_2
+7	when	when	when	WRB	WRB	9065	_	10	10	ADVMOD	ADVMOD	_	_	B-Condition
+8	it	it	it	PRP	PRP	9065	_	10	10	NSUBJPASS	NSUBJPASS	_	_	I-Condition
+9	is	be	be	VBZ	VBZ	9065	_	10	10	AUXPASS	AUXPASS	_	_	I-Condition
+10	followed	follow	follow	VBN	VBN	9065	_	4	4	ADVCL	ADVCL	_	_	I-Condition
+11	by	by	by	IN	IN	9065	_	14	14	CASE	CASE	_	_	I-Condition
+12	the	the	the	DT	DT	9065	_	14	14	DET	DET	_	_	I-Condition
+13	suffix	suffix	suffix	FW	FW	9065	_	14	14	COMPOUND	COMPOUND	_	_	I-Condition
+14	la	la	la	FW	FW	9065	_	10	10	NMOD	NMOD	_	_	I-Condition
 15	.	.	.	.	.	9065	_	4	4	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	9066	_	2	2	DET	DET	_	_	O
@@ -7333,15 +7333,15 @@
 6	word	word	word	NN	NN	9066	_	3	3	DOBJ	DOBJ	_	_	I-data
 7	.	.	.	.	.	9066	_	3	3	PUNCT	PUNCT	_	_	O
 
-1	Adjectives	adjective	adjective	NNS	NNS	9067	_	5	5	NSUBJ	NSUBJ	_	_	B-fe_Entity_1
-2	and	and	and	CC	CC	9067	_	1	1	CC	CC	precede.v	frm_sequence	I-fe_Entity_1
-3	pronouns	pronoun	pronoun	NNS	NNS	9067	_	1	1	CONJ	CONJ	_	_	I-fe_Entity_1
-4	usually	usually	usually	RB	RB	9067	_	5	5	ADVMOD	ADVMOD	_	_	S-fe_Frequency
+1	Adjectives	adjective	adjective	NNS	NNS	9067	_	5	5	NSUBJ	NSUBJ	_	_	B-entity_1
+2	and	and	and	CC	CC	9067	_	1	1	CC	CC	precede.v	frm_sequence	I-entity_1
+3	pronouns	pronoun	pronoun	NNS	NNS	9067	_	1	1	CONJ	CONJ	_	_	I-entity_1
+4	usually	usually	usually	RB	RB	9067	_	5	5	ADVMOD	ADVMOD	_	_	S-frequency
 5	precede	precede	precede	VBP	VBP	9067	_	0	0	ROOT	ROOT	_	_	O
-6	the	the	the	DT	DT	9067	_	7	7	DET	DET	_	_	B-fe_Entity_2
-7	noun	noun	noun	NN	NN	9067	_	5	5	DOBJ	DOBJ	_	_	I-fe_Entity_2
-8	they	they	they	PRP	PRP	9067	_	9	9	NSUBJ	NSUBJ	_	_	I-fe_Entity_2
-9	qualify	qualify	qualify	VBP	VBP	9067	_	7	7	ACL:RELCL	ACL:RELCL	_	_	I-fe_Entity_2
+6	the	the	the	DT	DT	9067	_	7	7	DET	DET	_	_	B-entity_2
+7	noun	noun	noun	NN	NN	9067	_	5	5	DOBJ	DOBJ	_	_	I-entity_2
+8	they	they	they	PRP	PRP	9067	_	9	9	NSUBJ	NSUBJ	_	_	I-entity_2
+9	qualify	qualify	qualify	VBP	VBP	9067	_	7	7	ACL:RELCL	ACL:RELCL	_	_	I-entity_2
 10	,	,	,	,	,	9067	_	5	5	PUNCT	PUNCT	_	_	O
 11	while	while	while	IN	IN	9067	_	13	13	MARK	MARK	_	_	O
 12	numerals	numeral	numeral	NNS	NNS	9067	_	13	13	NSUBJ	NSUBJ	_	_	O
@@ -8290,8 +8290,8 @@
 13	a	a	a	DT	DT	9223	_	14	14	DET	DET	_	_	B-data
 14	ti-a	ti-a	ti-a	NN	NN	9223	_	9	9	APPOS	APPOS	_	_	I-data
 15	,	,	,	,	,	9223	_	17	17	PUNCT	PUNCT	_	_	O
-16	he	he	he	PRP	PRP	9223	_	17	17	NSUBJ	NSUBJ	_	_	B-fe_Data_Translation
-17	said	say	say	VBD	VBD	9223	_	0	0	ROOT	ROOT	_	_	I-fe_Data_Translation
+16	he	he	he	PRP	PRP	9223	_	17	17	NSUBJ	NSUBJ	_	_	B-data_translation
+17	said	say	say	VBD	VBD	9223	_	0	0	ROOT	ROOT	_	_	I-data_translation
 18	.	.	.	.	.	9223	_	17	17	PUNCT	PUNCT	_	_	O
 
 1	When	when	when	WRB	WRB	9224	_	5	5	ADVMOD	ADVMOD	_	_	O
@@ -8351,9 +8351,9 @@
 5	i-ha	i-ha	i-ha	JJ	JJ	9227	_	6	6	AMOD	AMOD	_	_	B-data
 6	hi-tah	hi-tah	hi-tah	NN	NN	9227	_	3	3	NMOD	NMOD	_	_	I-data
 7	,	,	,	,	,	9227	_	10	10	PUNCT	PUNCT	_	_	O
-8	what	what	what	WP	WP	9227	_	10	10	NSUBJ	NSUBJ	_	_	B-fe_Data_Translation
-9	is	be	be	VBZ	VBZ	9227	_	10	10	COP	COP	_	_	I-fe_Data_Translation
-10	that	that	that	IN	IN	9227	_	0	0	ROOT	ROOT	_	_	I-fe_Data_Translation
+8	what	what	what	WP	WP	9227	_	10	10	NSUBJ	NSUBJ	_	_	B-data_translation
+9	is	be	be	VBZ	VBZ	9227	_	10	10	COP	COP	_	_	I-data_translation
+10	that	that	that	IN	IN	9227	_	0	0	ROOT	ROOT	_	_	I-data_translation
 11	?	?	?	.	.	9227	_	10	10	PUNCT	PUNCT	_	_	O
 
 1	is	be	be	VBZ	VBZ	9228	_	4	4	COP	COP	_	_	O

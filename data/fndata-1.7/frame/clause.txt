@@ -1,3 +1,3 @@
 Frame	clause
 LUs	clause.n	
-FEs	fe_subclass	fe_data	fe_data_translation	
+FEs	subclass	data	data_translation	

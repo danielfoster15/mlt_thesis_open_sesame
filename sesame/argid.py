@@ -671,6 +671,11 @@ def get_loss(factorexprs, gold_fes, valid_fes, sentlen):
         return get_hinge_loss(factorexprs, gold_fes, valid_fes, sentlen)
 
     goldfactors = [Factor(span[0], span[1], feid) for feid in gold_fes for span in gold_fes[feid]]
+    print([key.to_str(FEDICT) for key in factorexprs.keys()])
+    print([gf.to_str(FEDICT) for gf in goldfactors])
+    for gf in goldfactors:
+        print(gf.to_str(FEDICT))
+        print('factorexprs: ', factorexprs[gf])
     numeratorexprs = [factorexprs[gf] for gf in goldfactors]
     numerator = esum(numeratorexprs)
 

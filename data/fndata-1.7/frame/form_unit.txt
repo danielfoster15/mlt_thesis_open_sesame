@@ -1,3 +1,3 @@
 Frame	form_unit
 LUs	consonant.n	vowel.n	letter.n	syllable.n	semi-consonant.n	semiconsonant.n	semivowel.n	tenuis.n	
-FEs	fe_subclass	fe_position	fe_data	fe_data_translation	
+FEs	subclass	position	data	data_translation	

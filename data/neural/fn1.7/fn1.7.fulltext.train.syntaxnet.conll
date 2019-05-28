@@ -783,9 +783,9 @@
 14	,	,	,	,	,	145	_	6	6	PUNCT	PUNCT	_	_	O
 15	buk-tū-bē	buk-tū-bē	buk-tū-bē	NN	NN	145	_	6	6	APPOS	APPOS	_	_	S-data
 16	,	,	,	,	,	145	_	19	19	PUNCT	PUNCT	_	_	O
-17	I	I	I	PRP	PRP	145	_	19	19	NSUBJ	NSUBJ	_	_	B-fe_Data_Translation
-18	shall	shall	shall	MD	MD	145	_	19	19	AUX	AUX	_	_	I-fe_Data_Translation
-19	strike	strike	strike	VB	VB	145	_	0	0	ROOT	ROOT	_	_	I-fe_Data_Translation
+17	I	I	I	PRP	PRP	145	_	19	19	NSUBJ	NSUBJ	_	_	B-data_translation
+18	shall	shall	shall	MD	MD	145	_	19	19	AUX	AUX	_	_	I-data_translation
+19	strike	strike	strike	VB	VB	145	_	0	0	ROOT	ROOT	_	_	I-data_translation
 20	.	.	.	.	.	145	_	19	19	PUNCT	PUNCT	_	_	O
 
 1	Other	other	other	JJ	JJ	146	_	3	3	AMOD	AMOD	_	_	O
@@ -932,13 +932,13 @@
 6	in	in	in	IN	IN	151	_	9	9	CASE	CASE	_	_	O
 7	sōbōnō	sōbōnō	sōbōnō	NN	NN	151	_	9	9	COMPOUND	COMPOUND	_	_	S-data
 8	,	,	,	,	,	151	_	9	9	PUNCT	PUNCT	_	_	O
-9	boughtest	boughtest	boughtest	NN	NN	151	_	3	3	NMOD	NMOD	_	_	S-fe_Data_Translation
+9	boughtest	boughtest	boughtest	NN	NN	151	_	3	3	NMOD	NMOD	_	_	S-data_translation
 10	,	,	,	,	,	151	_	9	9	PUNCT	PUNCT	_	_	O
 11	and	and	and	CC	CC	151	_	9	9	CC	CC	_	_	O
 12	sōbōnam	sōbōnam	sōbōnam	NN	NN	151	_	9	9	CONJ	CONJ	_	_	S-data
 13	,	,	,	,	,	151	_	9	9	PUNCT	PUNCT	_	_	O
-14	I	I	I	PRP	PRP	151	_	15	15	NSUBJ	NSUBJ	_	_	B-fe_Data_Translation
-15	bought	buy	buy	VBD	VBD	151	_	9	9	ACL:RELCL	ACL:RELCL	_	_	I-fe_Data_Translation
+14	I	I	I	PRP	PRP	151	_	15	15	NSUBJ	NSUBJ	_	_	B-data_translation
+15	bought	buy	buy	VBD	VBD	151	_	9	9	ACL:RELCL	ACL:RELCL	_	_	I-data_translation
 16	.	.	.	.	.	151	_	2	2	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	152	_	3	3	DET	DET	_	_	O
@@ -1609,8 +1609,8 @@
 10	shūbāng	shūbāng	shūbāng	NN	NN	227	_	11	11	COMPOUND	COMPOUND	_	_	B-data
 11	shao-shī	shao-shī	shao-shī	NN	NN	227	_	7	7	NMOD	NMOD	_	_	I-data
 12	,	,	,	,	,	227	_	11	11	PUNCT	PUNCT	_	_	O
-13	one	one	one	CD	CD	227	_	14	14	NUMMOD	NUMMOD	_	_	B-fe_Data_Translation
-14	man	man	man	NN	NN	227	_	11	11	APPOS	APPOS	_	_	I-fe_Data_Translation
+13	one	one	one	CD	CD	227	_	14	14	NUMMOD	NUMMOD	_	_	B-data_translation
+14	man	man	man	NN	NN	227	_	11	11	APPOS	APPOS	_	_	I-data_translation
 15	.	.	.	.	.	227	_	7	7	PUNCT	PUNCT	_	_	O
 
 1	For	for	for	IN	IN	228	_	3	3	CASE	CASE	_	_	O
@@ -1627,8 +1627,8 @@
 12	nō	nō	nō	NN	NN	228	_	13	13	COMPOUND	COMPOUND	_	_	B-data
 13	gārāng-ginnī	gārāng-ginnī	gārāng-ginnī	NN	NN	228	_	9	9	NMOD	NMOD	_	_	I-data
 14	,	,	,	,	,	228	_	13	13	PUNCT	PUNCT	_	_	O
-15	two	two	two	CD	CD	228	_	16	16	NUMMOD	NUMMOD	_	_	B-fe_Data_Translation
-16	houses	house	house	NNS	NNS	228	_	13	13	APPOS	APPOS	_	_	I-fe_Data_Translation
+15	two	two	two	CD	CD	228	_	16	16	NUMMOD	NUMMOD	_	_	B-data_translation
+16	houses	house	house	NNS	NNS	228	_	13	13	APPOS	APPOS	_	_	I-data_translation
 17	,	,	,	,	,	228	_	9	9	PUNCT	PUNCT	_	_	O
 18	but	but	but	CC	CC	228	_	9	9	CC	CC	_	_	O
 19	for	for	for	IN	IN	228	_	20	20	CASE	CASE	_	_	O
@@ -1647,8 +1647,8 @@
 32	bongfang	bongfang	bongfang	FW	FW	228	_	33	33	COMPOUND	COMPOUND	_	_	B-data
 33	fāng-ji	fāng-ji	fāng-ji	FW	FW	228	_	28	28	NMOD	NMOD	_	_	I-data
 34	,	,	,	,	,	228	_	33	33	PUNCT	PUNCT	_	_	O
-35	ten	ten	ten	CD	CD	228	_	36	36	NUMMOD	NUMMOD	_	_	B-fe_Data_Translation
-36	trees	tree	tree	NNS	NNS	228	_	33	33	APPOS	APPOS	_	_	I-fe_Data_Translation
+35	ten	ten	ten	CD	CD	228	_	36	36	NUMMOD	NUMMOD	_	_	B-data_translation
+36	trees	tree	tree	NNS	NNS	228	_	33	33	APPOS	APPOS	_	_	I-data_translation
 37	.	.	.	.	.	228	_	9	9	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	229	_	2	2	DET	DET	_	_	O
@@ -2574,7 +2574,7 @@
 3	prefix	prefix	prefix	NN	NN	396	_	4	4	COMPOUND	COMPOUND	prefix.n	affix	O
 4	mukagu	mukagu	mukagu	NN	NN	396	_	1	1	CCOMP	CCOMP	_	_	S-data
 5	(	(	(	CD	CD	396	_	7	7	NUMMOD	NUMMOD	_	_	O
-6	male	male	male	JJ	JJ	396	_	7	7	AMOD	AMOD	_	_	S-fe_Data_Translation
+6	male	male	male	JJ	JJ	396	_	7	7	AMOD	AMOD	_	_	S-data_translation
 7	)	)	)	NN	NN	396	_	4	4	DOBJ	DOBJ	_	_	O
 8	for	for	for	IN	IN	396	_	15	15	CASE	CASE	_	_	O
 9	the	the	the	DT	DT	396	_	15	15	DET	DET	_	_	O
@@ -2582,7 +2582,7 @@
 11	and	and	and	CC	CC	396	_	10	10	CC	CC	_	_	O
 12	mishigu	mishigu	mishigu	NN	NN	396	_	10	10	CONJ	CONJ	_	_	S-data
 13	(	(	(	CD	CD	396	_	12	12	NUMMOD	NUMMOD	_	_	O
-14	female	female	female	JJ	JJ	396	_	15	15	AMOD	AMOD	_	_	S-fe_Data_Translation
+14	female	female	female	JJ	JJ	396	_	15	15	AMOD	AMOD	_	_	S-data_translation
 15	)	)	)	NN	NN	396	_	7	7	NMOD	NMOD	_	_	O
 16	for	for	for	IN	IN	396	_	18	18	CASE	CASE	_	_	O
 17	the	the	the	DT	DT	396	_	18	18	DET	DET	_	_	O
@@ -6196,9 +6196,9 @@
 18	an	a	a	DT	DT	872	_	19	19	DET	DET	_	_	I-data
 19	ei	ei	ei	NN	NN	872	_	17	17	DOBJ	DOBJ	_	_	I-data
 20	,	,	,	,	,	872	_	17	17	PUNCT	PUNCT	_	_	O
-21	the-pigs	the-pigs	the-pigs	RB	RB	872	_	17	17	ADVMOD	ADVMOD	_	_	B-fe_Data_Translation
-22	they	they	they	PRP	PRP	872	_	23	23	NSUBJ	NSUBJ	_	_	I-fe_Data_Translation
-23	ate	eat	eat	VBD	VBD	872	_	8	8	PARATAXIS	PARATAXIS	_	_	I-fe_Data_Translation
+21	the-pigs	the-pigs	the-pigs	RB	RB	872	_	17	17	ADVMOD	ADVMOD	_	_	B-data_translation
+22	they	they	they	PRP	PRP	872	_	23	23	NSUBJ	NSUBJ	_	_	I-data_translation
+23	ate	eat	eat	VBD	VBD	872	_	8	8	PARATAXIS	PARATAXIS	_	_	I-data_translation
 24	.	.	.	.	.	872	_	8	8	PUNCT	PUNCT	_	_	O
 
 1	Number	number	number	NN	NN	873	_	0	0	ROOT	ROOT	number.n	number_property	O
@@ -6234,9 +6234,9 @@
 16	;	;	;	:	:	876	_	13	13	PUNCT	PUNCT	_	_	O
 17	ka-hoi-le-i-nhena	ka-hoi-le-i-nhena	ka-hoi-le-i-nhena	NN	NN	876	_	6	6	XCOMP	XCOMP	_	_	O
 18	,	,	,	,	,	876	_	6	6	PUNCT	PUNCT	_	_	O
-19	my	my	my	PRP$	PRP$	876	_	20	20	NMOD:POSS	NMOD:POSS	_	_	B-fe_Data_Translation
-20	friends	friend	friend	NNS	NNS	876	_	6	6	DEP	DEP	_	_	I-fe_Data_Translation
-21	with	with	with	IN	IN	876	_	20	20	NMOD	NMOD	_	_	I-fe_Data_Translation
+19	my	my	my	PRP$	PRP$	876	_	20	20	NMOD:POSS	NMOD:POSS	_	_	B-data_translation
+20	friends	friend	friend	NNS	NNS	876	_	6	6	DEP	DEP	_	_	I-data_translation
+21	with	with	with	IN	IN	876	_	20	20	NMOD	NMOD	_	_	I-data_translation
 22	.	.	.	.	.	876	_	6	6	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	879	_	2	2	DET	DET	_	_	O
@@ -6297,17 +6297,17 @@
 11	van-i	van-i	van-i	JJ	JJ	881	_	12	12	AMOD	AMOD	_	_	B-data
 12	mi	mi	mi	NNS	NNS	881	_	18	18	NSUBJ	NSUBJ	_	_	I-data
 13	,	,	,	,	,	881	_	12	12	PUNCT	PUNCT	_	_	O
-14	the	the	the	DT	DT	881	_	16	16	DET	DET	_	_	B-fe_Data_Translation
-15	sky	sky	sky	NN	NN	881	_	16	16	COMPOUND	COMPOUND	_	_	I-fe_Data_Translation
+14	the	the	the	DT	DT	881	_	16	16	DET	DET	_	_	B-data_translation
+15	sky	sky	sky	NN	NN	881	_	16	16	COMPOUND	COMPOUND	_	_	I-data_translation
 16	’	’	’	NN	NN	881	_	12	12	APPOS	APPOS	_	_	O
 17	s	be	be	VBZ	VBZ	881	_	18	18	COP	COP	_	_	B-data
 18	man	man	man	NN	NN	881	_	7	7	PARATAXIS	PARATAXIS	_	_	I-data
 19	,	,	,	,	,	881	_	18	18	PUNCT	PUNCT	_	_	O
-20	the	the	the	DT	DT	881	_	21	21	DET	DET	_	_	B-fe_Data_Translation
-21	man	man	man	NN	NN	881	_	18	18	APPOS	APPOS	_	_	I-fe_Data_Translation
-22	of	of	of	IN	IN	881	_	24	24	CASE	CASE	_	_	I-fe_Data_Translation
-23	the	the	the	DT	DT	881	_	24	24	DET	DET	_	_	I-fe_Data_Translation
-24	sky	sky	sky	NN	NN	881	_	21	21	NMOD	NMOD	_	_	I-fe_Data_Translation
+20	the	the	the	DT	DT	881	_	21	21	DET	DET	_	_	B-data_translation
+21	man	man	man	NN	NN	881	_	18	18	APPOS	APPOS	_	_	I-data_translation
+22	of	of	of	IN	IN	881	_	24	24	CASE	CASE	_	_	I-data_translation
+23	the	the	the	DT	DT	881	_	24	24	DET	DET	_	_	I-data_translation
+24	sky	sky	sky	NN	NN	881	_	21	21	NMOD	NMOD	_	_	I-data_translation
 25	.	.	.	.	.	881	_	7	7	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	882	_	3	3	DET	DET	_	_	O
@@ -6792,10 +6792,10 @@
 15	an	a	a	DT	DT	919	_	16	16	DET	DET	_	_	I-data
 16	pek-shi-lo-v-i	pek-shi-lo-v-i	pek-shi-lo-v-i	NN	NN	919	_	14	14	DOBJ	DOBJ	_	_	I-data
 17	,	,	,	,	,	919	_	16	16	PUNCT	PUNCT	_	_	O
-18	anyone	anyone	anyone	NN	NN	919	_	16	16	APPOS	APPOS	_	_	B-fe_Data_Translation
-19	they	they	they	PRP	PRP	919	_	20	20	NSUBJ	NSUBJ	_	_	I-fe_Data_Translation
-20	gave	give	give	VBD	VBD	919	_	10	10	PARATAXIS	PARATAXIS	_	_	I-fe_Data_Translation
-21	not	not	not	RB	RB	919	_	20	20	NEG	NEG	_	_	I-fe_Data_Translation
+18	anyone	anyone	anyone	NN	NN	919	_	16	16	APPOS	APPOS	_	_	B-data_translation
+19	they	they	they	PRP	PRP	919	_	20	20	NSUBJ	NSUBJ	_	_	I-data_translation
+20	gave	give	give	VBD	VBD	919	_	10	10	PARATAXIS	PARATAXIS	_	_	I-data_translation
+21	not	not	not	RB	RB	919	_	20	20	NEG	NEG	_	_	I-data_translation
 22	.	.	.	.	.	919	_	10	10	PUNCT	PUNCT	_	_	O
 
 1	Pronominal	pronominal	pronominal	JJ	JJ	920	_	2	2	AMOD	AMOD	_	_	S-subclass
@@ -7549,24 +7549,24 @@
 5	:	:	:	:	:	974	_	4	4	PUNCT	PUNCT	_	_	O
 6	Hon	Hon	Hon	NNP	NNP	974	_	4	4	DOBJ	DOBJ	_	_	S-data
 7	,	,	,	,	,	974	_	6	6	PUNCT	PUNCT	_	_	O
-8	signifying	signify	signify	VBG	VBG	974	_	6	6	DEP	DEP	_	_	B-fe_Data_Translation
-9	motion	motion	motion	NN	NN	974	_	10	10	COMPOUND	COMPOUND	_	_	I-fe_Data_Translation
-10	upwards	upward	upward	NNS	NNS	974	_	8	8	DOBJ	DOBJ	_	_	I-fe_Data_Translation
-11	or	or	or	CC	CC	974	_	8	8	CC	CC	_	_	I-fe_Data_Translation
-12	towards	towards	towards	IN	IN	974	_	8	8	CONJ	CONJ	_	_	I-fe_Data_Translation
+8	signifying	signify	signify	VBG	VBG	974	_	6	6	DEP	DEP	_	_	B-data_translation
+9	motion	motion	motion	NN	NN	974	_	10	10	COMPOUND	COMPOUND	_	_	I-data_translation
+10	upwards	upward	upward	NNS	NNS	974	_	8	8	DOBJ	DOBJ	_	_	I-data_translation
+11	or	or	or	CC	CC	974	_	8	8	CC	CC	_	_	I-data_translation
+12	towards	towards	towards	IN	IN	974	_	8	8	CONJ	CONJ	_	_	I-data_translation
 13	;	;	;	:	:	974	_	6	6	PUNCT	PUNCT	_	_	O
 14	rak	rak	rak	NN	NN	974	_	6	6	DEP	DEP	_	_	S-data
 15	,	,	,	,	,	974	_	14	14	PUNCT	PUNCT	_	_	O
-16	signifying	signify	signify	VBG	VBG	974	_	14	14	DEP	DEP	_	_	B-fe_Data_Translation
-17	motion	motion	motion	NN	NN	974	_	16	16	DOBJ	DOBJ	_	_	I-fe_Data_Translation
-18	away	away	away	RB	RB	974	_	16	16	ADVMOD	ADVMOD	_	_	I-fe_Data_Translation
-19	and	and	and	CC	CC	974	_	16	16	CC	CC	_	_	I-fe_Data_Translation
-20	towards	towards	towards	IN	IN	974	_	16	16	CONJ	CONJ	_	_	I-fe_Data_Translation
+16	signifying	signify	signify	VBG	VBG	974	_	14	14	DEP	DEP	_	_	B-data_translation
+17	motion	motion	motion	NN	NN	974	_	16	16	DOBJ	DOBJ	_	_	I-data_translation
+18	away	away	away	RB	RB	974	_	16	16	ADVMOD	ADVMOD	_	_	I-data_translation
+19	and	and	and	CC	CC	974	_	16	16	CC	CC	_	_	I-data_translation
+20	towards	towards	towards	IN	IN	974	_	16	16	CONJ	CONJ	_	_	I-data_translation
 21	;	;	;	:	:	974	_	4	4	PUNCT	PUNCT	_	_	O
 22	va	va	va	NN	NN	974	_	4	4	PARATAXIS	PARATAXIS	_	_	S-data
 23	,	,	,	,	,	974	_	22	22	PUNCT	PUNCT	_	_	O
-24	signifying	signify	signify	VBG	VBG	974	_	22	22	ACL	ACL	_	_	B-fe_Data_Translation
-25	motion	motion	motion	NN	NN	974	_	24	24	DOBJ	DOBJ	_	_	I-fe_Data_Translation
+24	signifying	signify	signify	VBG	VBG	974	_	22	22	ACL	ACL	_	_	B-data_translation
+25	motion	motion	motion	NN	NN	974	_	24	24	DOBJ	DOBJ	_	_	I-data_translation
 26	from	from	from	IN	IN	974	_	24	24	NMOD	NMOD	_	_	O
 27	.	.	.	.	.	974	_	4	4	PUNCT	PUNCT	_	_	O
 
@@ -9633,29 +9633,29 @@
 22	,	,	,	,	,	1113	_	21	21	PUNCT	PUNCT	_	_	O
 23	etc.	etc.	etc.	FW	FW	1113	_	21	21	DEP	DEP	_	_	O
 
-1	They	they	they	PRP	PRP	1115	_	4	4	NSUBJPASS	NSUBJPASS	_	_	S-fe_Entity
+1	They	they	they	PRP	PRP	1115	_	4	4	NSUBJPASS	NSUBJPASS	_	_	S-entity
 2	are	be	be	VBP	VBP	1115	_	4	4	AUXPASS	AUXPASS	_	_	O
 3	moreover	moreover	moreover	RB	RB	1115	_	4	4	ADVMOD	ADVMOD	_	_	O
 4	used	use	use	VBN	VBN	1115	_	0	0	ROOT	ROOT	use.v	frm_using	O
-5	as	as	as	IN	IN	1115	_	9	9	CASE	CASE	_	_	B-fe_Role
-6	verbal	verbal	verbal	JJ	JJ	1115	_	9	9	AMOD	AMOD	_	_	I-fe_Role
-7	and	and	and	CC	CC	1115	_	6	6	CC	CC	_	_	I-fe_Role
-8	relative	relative	relative	JJ	JJ	1115	_	6	6	CONJ	CONJ	_	_	I-fe_Role
-9	participles	participle	participle	NNS	NNS	1115	_	4	4	NMOD	NMOD	_	_	I-fe_Role
+5	as	as	as	IN	IN	1115	_	9	9	CASE	CASE	_	_	B-Role
+6	verbal	verbal	verbal	JJ	JJ	1115	_	9	9	AMOD	AMOD	_	_	I-Role
+7	and	and	and	CC	CC	1115	_	6	6	CC	CC	_	_	I-Role
+8	relative	relative	relative	JJ	JJ	1115	_	6	6	CONJ	CONJ	_	_	I-Role
+9	participles	participle	participle	NNS	NNS	1115	_	4	4	NMOD	NMOD	_	_	I-Role
 10	.	.	.	.	.	1115	_	4	4	PUNCT	PUNCT	_	_	O
 
 1	When	when	when	WRB	WRB	1117	_	9	9	ADVMOD	ADVMOD	_	_	O
-2	the	the	the	DT	DT	1117	_	3	3	DET	DET	_	_	B-fe_Entity_1
-3	participle	participle	participle	NN	NN	1117	_	9	9	NSUBJ	NSUBJ	_	_	I-fe_Entity_1
-4	ending	end	end	VBG	VBG	1117	_	3	3	ACL	ACL	_	_	I-fe_Entity_1
-5	in	in	in	IN	IN	1117	_	6	6	CASE	CASE	_	_	I-fe_Entity_1
-6	pa	pa	pa	NN	NN	1117	_	4	4	NMOD	NMOD	_	_	I-fe_Entity_1
-7	or	or	or	CC	CC	1117	_	6	6	CC	CC	_	_	I-fe_Entity_1
-8	wa	wa	wa	NN	NN	1117	_	6	6	CONJ	CONJ	_	_	I-fe_Entity_1
+2	the	the	the	DT	DT	1117	_	3	3	DET	DET	_	_	B-entity_1
+3	participle	participle	participle	NN	NN	1117	_	9	9	NSUBJ	NSUBJ	_	_	I-entity_1
+4	ending	end	end	VBG	VBG	1117	_	3	3	ACL	ACL	_	_	I-entity_1
+5	in	in	in	IN	IN	1117	_	6	6	CASE	CASE	_	_	I-entity_1
+6	pa	pa	pa	NN	NN	1117	_	4	4	NMOD	NMOD	_	_	I-entity_1
+7	or	or	or	CC	CC	1117	_	6	6	CC	CC	_	_	I-entity_1
+8	wa	wa	wa	NN	NN	1117	_	6	6	CONJ	CONJ	_	_	I-entity_1
 9	precedes	precede	precede	VBZ	VBZ	1117	_	15	15	ADVCL	ADVCL	precede.v	frm_sequence	O
-10	a	a	a	DT	DT	1117	_	12	12	DET	DET	_	_	B-fe_Entity_2
-11	qualified	qualified	qualified	JJ	JJ	1117	_	12	12	AMOD	AMOD	_	_	I-fe_Entity_2
-12	noun	noun	noun	NN	NN	1117	_	9	9	DOBJ	DOBJ	_	_	I-fe_Entity_2
+10	a	a	a	DT	DT	1117	_	12	12	DET	DET	_	_	B-entity_2
+11	qualified	qualified	qualified	JJ	JJ	1117	_	12	12	AMOD	AMOD	_	_	I-entity_2
+12	noun	noun	noun	NN	NN	1117	_	9	9	DOBJ	DOBJ	_	_	I-entity_2
 13	it	it	it	PRP	PRP	1117	_	15	15	NSUBJ	NSUBJ	_	_	O
 14	is	be	be	VBZ	VBZ	1117	_	15	15	AUX	AUX	_	_	O
 15	put	put	put	VBN	VBN	1117	_	0	0	ROOT	ROOT	_	_	O
@@ -9849,17 +9849,17 @@
 9	ma	ma	ma	NN	NN	1122	_	7	7	CONJ	CONJ	_	_	S-data
 10	.	.	.	.	.	1122	_	7	7	PUNCT	PUNCT	_	_	O
 
-1	In	in	in	IN	IN	1123	_	3	3	CASE	CASE	_	_	B-fe_Condition
-2	compound	compound	compound	JJ	JJ	1123	_	3	3	AMOD	AMOD	_	_	I-fe_Condition
-3	forms	form	form	NNS	NNS	1123	_	5	5	NMOD	NMOD	_	_	I-fe_Condition
-4	it	it	it	PRP	PRP	1123	_	5	5	NSUBJ	NSUBJ	_	_	S-fe_Entity_1
-5	precedes	precede	precede	VBZ	VBZ	1123	_	0	0	ROOT	ROOT	precede.v	frm_sequence	S-fe_Order
-6	the	the	the	DT	DT	1123	_	8	8	DET	DET	_	_	B-fe_Entity_2
-7	last	last	last	JJ	JJ	1123	_	8	8	AMOD	AMOD	_	_	I-fe_Entity_2
-8	part	part	part	NN	NN	1123	_	5	5	DOBJ	DOBJ	_	_	I-fe_Entity_2
-9	of	of	of	IN	IN	1123	_	11	11	CASE	CASE	_	_	I-fe_Entity_2
-10	the	the	the	DT	DT	1123	_	11	11	DET	DET	_	_	I-fe_Entity_2
-11	compound	compound	compound	NN	NN	1123	_	8	8	NMOD	NMOD	_	_	I-fe_Entity_2
+1	In	in	in	IN	IN	1123	_	3	3	CASE	CASE	_	_	B-Condition
+2	compound	compound	compound	JJ	JJ	1123	_	3	3	AMOD	AMOD	_	_	I-Condition
+3	forms	form	form	NNS	NNS	1123	_	5	5	NMOD	NMOD	_	_	I-Condition
+4	it	it	it	PRP	PRP	1123	_	5	5	NSUBJ	NSUBJ	_	_	S-entity_1
+5	precedes	precede	precede	VBZ	VBZ	1123	_	0	0	ROOT	ROOT	precede.v	frm_sequence	S-order
+6	the	the	the	DT	DT	1123	_	8	8	DET	DET	_	_	B-entity_2
+7	last	last	last	JJ	JJ	1123	_	8	8	AMOD	AMOD	_	_	I-entity_2
+8	part	part	part	NN	NN	1123	_	5	5	DOBJ	DOBJ	_	_	I-entity_2
+9	of	of	of	IN	IN	1123	_	11	11	CASE	CASE	_	_	I-entity_2
+10	the	the	the	DT	DT	1123	_	11	11	DET	DET	_	_	I-entity_2
+11	compound	compound	compound	NN	NN	1123	_	8	8	NMOD	NMOD	_	_	I-entity_2
 12	.	.	.	.	.	1123	_	5	5	PUNCT	PUNCT	_	_	O
 
 1	Mi	Mi	Mi	NNP	NNP	1124	_	3	3	NSUBJPASS	NSUBJPASS	_	_	O
@@ -12944,16 +12944,16 @@
 11	-	-	-	:	:	1389	_	12	12	PUNCT	PUNCT	_	_	O
 12	ken-īñ	ken-īñ	ken-īñ	NN	NN	1389	_	16	16	DEP	DEP	_	_	S-data
 13	,	,	,	,	,	1389	_	16	16	PUNCT	PUNCT	_	_	O
-14	I	I	I	PRP	PRP	1389	_	16	16	NSUBJPASS	NSUBJPASS	_	_	B-fe_Data_Translation
-15	am	be	be	VBP	VBP	1389	_	16	16	AUXPASS	AUXPASS	_	_	I-fe_Data_Translation
-16	caused	cause	cause	VBN	VBN	1389	_	9	9	CCOMP	CCOMP	_	_	I-fe_Data_Translation
-17	to	to	to	TO	TO	1389	_	19	19	MARK	MARK	_	_	I-fe_Data_Translation
-18	be	be	be	VB	VB	1389	_	19	19	AUXPASS	AUXPASS	_	_	I-fe_Data_Translation
-19	struck	strike	strike	VBN	VBN	1389	_	16	16	XCOMP	XCOMP	_	_	I-fe_Data_Translation
+14	I	I	I	PRP	PRP	1389	_	16	16	NSUBJPASS	NSUBJPASS	_	_	B-data_translation
+15	am	be	be	VBP	VBP	1389	_	16	16	AUXPASS	AUXPASS	_	_	I-data_translation
+16	caused	cause	cause	VBN	VBN	1389	_	9	9	CCOMP	CCOMP	_	_	I-data_translation
+17	to	to	to	TO	TO	1389	_	19	19	MARK	MARK	_	_	I-data_translation
+18	be	be	be	VB	VB	1389	_	19	19	AUXPASS	AUXPASS	_	_	I-data_translation
+19	struck	strike	strike	VBN	VBN	1389	_	16	16	XCOMP	XCOMP	_	_	I-data_translation
 20	,	,	,	,	,	1389	_	23	23	PUNCT	PUNCT	_	_	O
-21	I	I	I	PRP	PRP	1389	_	23	23	NSUBJPASS	NSUBJPASS	_	_	B-fe_Data_Translation
-22	am	be	be	VBP	VBP	1389	_	23	23	AUXPASS	AUXPASS	_	_	I-fe_Data_Translation
-23	struck	strike	strike	VBN	VBN	1389	_	5	5	PARATAXIS	PARATAXIS	_	_	I-fe_Data_Translation
+21	I	I	I	PRP	PRP	1389	_	23	23	NSUBJPASS	NSUBJPASS	_	_	B-data_translation
+22	am	be	be	VBP	VBP	1389	_	23	23	AUXPASS	AUXPASS	_	_	I-data_translation
+23	struck	strike	strike	VBN	VBN	1389	_	5	5	PARATAXIS	PARATAXIS	_	_	I-data_translation
 24	.	.	.	.	.	1389	_	5	5	PUNCT	PUNCT	_	_	O
 
 1	’	’	’	NN	NN	1394	_	13	13	NSUBJ	NSUBJ	_	_	O
@@ -13551,11 +13551,11 @@
 4	of	of	of	IN	IN	1454	_	5	5	CASE	CASE	_	_	O
 5	words	word	word	NNS	NNS	1454	_	3	3	NMOD	NMOD	_	_	O
 6	is	be	be	VBZ	VBZ	1454	_	7	7	COP	COP	_	_	O
-7	subject	subject	subject	JJ	JJ	1454	_	0	0	ROOT	ROOT	_	_	B-fe_Order
-8	,	,	,	,	,	1454	_	7	7	PUNCT	PUNCT	_	_	I-fe_Order
-9	object	object	object	NN	NN	1454	_	7	7	DEP	DEP	_	_	I-fe_Order
-10	,	,	,	,	,	1454	_	9	9	PUNCT	PUNCT	_	_	I-fe_Order
-11	verb	verb	verb	VB	VB	1454	_	9	9	APPOS	APPOS	_	_	I-fe_Order
+7	subject	subject	subject	JJ	JJ	1454	_	0	0	ROOT	ROOT	_	_	B-order
+8	,	,	,	,	,	1454	_	7	7	PUNCT	PUNCT	_	_	I-order
+9	object	object	object	NN	NN	1454	_	7	7	DEP	DEP	_	_	I-order
+10	,	,	,	,	,	1454	_	9	9	PUNCT	PUNCT	_	_	I-order
+11	verb	verb	verb	VB	VB	1454	_	9	9	APPOS	APPOS	_	_	I-order
 12	.	.	.	.	.	1454	_	7	7	PUNCT	PUNCT	_	_	O
 
 1	Prefixes	prefix	prefix	NNS	NNS	1458	_	0	0	ROOT	ROOT	prefix.n	affix	O
@@ -13844,12 +13844,12 @@
 20	and	and	and	CC	CC	1480	_	14	14	CC	CC	_	_	O
 21	ngālõ	ngālõ	ngālõ	NN	NN	1480	_	14	14	CONJ	CONJ	_	_	S-data
 22	,	,	,	,	,	1480	_	12	12	PUNCT	PUNCT	_	_	O
-23	male	male	male	NN	NN	1480	_	12	12	CONJ	CONJ	_	_	S-fe_Data_Translation
+23	male	male	male	NN	NN	1480	_	12	12	CONJ	CONJ	_	_	S-data_translation
 24	,	,	,	,	,	1480	_	12	12	PUNCT	PUNCT	_	_	O
 25	and	and	and	CC	CC	1480	_	12	12	CC	CC	_	_	O
 26	naũ	naũ	naũ	NN	NN	1480	_	12	12	CONJ	CONJ	_	_	S-data
 27	,	,	,	,	,	1480	_	26	26	PUNCT	PUNCT	_	_	O
-28	female	female	female	NN	NN	1480	_	26	26	APPOS	APPOS	_	_	S-fe_Data_Translation
+28	female	female	female	NN	NN	1480	_	26	26	APPOS	APPOS	_	_	S-data_translation
 29	.	.	.	.	.	1480	_	12	12	PUNCT	PUNCT	_	_	O
 
 1	Number	number	number	NN	NN	1483	_	0	0	ROOT	ROOT	number.n	numeral	O
@@ -14381,18 +14381,18 @@
 9	noun	noun	noun	NN	NN	1531	_	5	5	NMOD	NMOD	_	_	O
 10	.	.	.	.	.	1531	_	5	5	PUNCT	PUNCT	_	_	O
 
-1	The	the	the	DT	DT	1533	_	3	3	DET	DET	_	_	B-fe_Entity
-2	same	same	same	JJ	JJ	1533	_	3	3	AMOD	AMOD	_	_	I-fe_Entity
-3	form	form	form	NN	NN	1533	_	7	7	NSUBJPASS	NSUBJPASS	_	_	I-fe_Entity
+1	The	the	the	DT	DT	1533	_	3	3	DET	DET	_	_	B-entity
+2	same	same	same	JJ	JJ	1533	_	3	3	AMOD	AMOD	_	_	I-entity
+3	form	form	form	NN	NN	1533	_	7	7	NSUBJPASS	NSUBJPASS	_	_	I-entity
 4	is	be	be	VBZ	VBZ	1533	_	7	7	AUXPASS	AUXPASS	_	_	O
 5	apparently	apparently	apparently	RB	RB	1533	_	7	7	ADVMOD	ADVMOD	_	_	O
 6	also	also	also	RB	RB	1533	_	7	7	ADVMOD	ADVMOD	_	_	O
 7	used	use	use	VBN	VBN	1533	_	0	0	ROOT	ROOT	use.v	frm_using	O
-8	as	as	as	IN	IN	1533	_	10	10	CASE	CASE	_	_	B-fe_Role
-9	an	a	a	DT	DT	1533	_	10	10	DET	DET	_	_	I-fe_Role
-10	infinitive	infinitive	infinitive	JJ	JJ	1533	_	7	7	NMOD	NMOD	_	_	I-fe_Role
-11	of	of	of	IN	IN	1533	_	12	12	CASE	CASE	_	_	I-fe_Role
-12	purpose	purpose	purpose	NN	NN	1533	_	10	10	NMOD	NMOD	_	_	I-fe_Role
+8	as	as	as	IN	IN	1533	_	10	10	CASE	CASE	_	_	B-Role
+9	an	a	a	DT	DT	1533	_	10	10	DET	DET	_	_	I-Role
+10	infinitive	infinitive	infinitive	JJ	JJ	1533	_	7	7	NMOD	NMOD	_	_	I-Role
+11	of	of	of	IN	IN	1533	_	12	12	CASE	CASE	_	_	I-Role
+12	purpose	purpose	purpose	NN	NN	1533	_	10	10	NMOD	NMOD	_	_	I-Role
 13	.	.	.	.	.	1533	_	7	7	PUNCT	PUNCT	_	_	O
 
 1	Compound	compound	compound	NN	NN	1536	_	2	2	COMPOUND	COMPOUND	_	_	S-subclass
@@ -14574,13 +14574,13 @@
 6	also	also	also	RB	RB	1562	_	7	7	ADVMOD	ADVMOD	_	_	O
 7	have	have	have	VBP	VBP	1562	_	0	0	ROOT	ROOT	_	_	O
 8	the	the	the	DT	DT	1562	_	9	9	DET	DET	_	_	O
-9	forms	form	form	NNS	NNS	1562	_	7	7	DOBJ	DOBJ	_	_	B-fe_Data_Translation
-10	kau	kau	kau	FW	FW	1562	_	9	9	COMPOUND	COMPOUND	_	_	I-fe_Data_Translation
-11	,	,	,	,	,	1562	_	9	9	PUNCT	PUNCT	_	_	I-fe_Data_Translation
-12	kab	kab	kab	FW	FW	1562	_	9	9	DEP	DEP	_	_	I-fe_Data_Translation
-13	,	,	,	,	,	1562	_	9	9	PUNCT	PUNCT	_	_	I-fe_Data_Translation
-14	and	and	and	CC	CC	1562	_	9	9	CC	CC	_	_	I-fe_Data_Translation
-15	pab	pab	pab	NN	NN	1562	_	9	9	CONJ	CONJ	_	_	I-fe_Data_Translation
+9	forms	form	form	NNS	NNS	1562	_	7	7	DOBJ	DOBJ	_	_	B-data_translation
+10	kau	kau	kau	FW	FW	1562	_	9	9	COMPOUND	COMPOUND	_	_	I-data_translation
+11	,	,	,	,	,	1562	_	9	9	PUNCT	PUNCT	_	_	I-data_translation
+12	kab	kab	kab	FW	FW	1562	_	9	9	DEP	DEP	_	_	I-data_translation
+13	,	,	,	,	,	1562	_	9	9	PUNCT	PUNCT	_	_	I-data_translation
+14	and	and	and	CC	CC	1562	_	9	9	CC	CC	_	_	I-data_translation
+15	pab	pab	pab	NN	NN	1562	_	9	9	CONJ	CONJ	_	_	I-data_translation
 16	,	,	,	,	,	1562	_	15	15	PUNCT	PUNCT	_	_	O
 17	respectively	respectively	respectively	RB	RB	1562	_	15	15	ADVMOD	ADVMOD	_	_	O
 18	.	.	.	.	.	1562	_	7	7	PUNCT	PUNCT	_	_	O
@@ -14968,15 +14968,15 @@
 12	,	,	,	,	,	1597	_	7	7	PUNCT	PUNCT	_	_	O
 13	va-th	va-th	va-th	NN	NN	1597	_	7	7	PARATAXIS	PARATAXIS	_	_	S-data
 14	,	,	,	,	,	1597	_	13	13	PUNCT	PUNCT	_	_	O
-15	far	far	far	RB	RB	1597	_	13	13	DEP	DEP	_	_	S-fe_Data_Translation
+15	far	far	far	RB	RB	1597	_	13	13	DEP	DEP	_	_	S-data_translation
 16	;	;	;	:	:	1597	_	13	13	PUNCT	PUNCT	_	_	O
 17	chin-th	chin-th	chin-th	JJ	JJ	1597	_	13	13	DEP	DEP	_	_	S-data
 18	,	,	,	,	,	1597	_	17	17	PUNCT	PUNCT	_	_	O
-19	proper	proper	proper	JJ	JJ	1597	_	17	17	APPOS	APPOS	_	_	S-fe_Data_Translation
+19	proper	proper	proper	JJ	JJ	1597	_	17	17	APPOS	APPOS	_	_	S-data_translation
 20	;	;	;	:	:	1597	_	17	17	PUNCT	PUNCT	_	_	O
 21	syāng-tha	syāng-tha	syāng-tha	NN	NN	1597	_	17	17	DEP	DEP	_	_	S-data
 22	,	,	,	,	,	1597	_	21	21	PUNCT	PUNCT	_	_	O
-23	old	old	old	JJ	JJ	1597	_	21	21	AMOD	AMOD	_	_	S-fe_Data_Translation
+23	old	old	old	JJ	JJ	1597	_	21	21	AMOD	AMOD	_	_	S-data_translation
 24	.	.	.	.	.	1597	_	7	7	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	1599	_	2	2	DET	DET	_	_	O
@@ -15043,20 +15043,20 @@
 10	words	word	word	NNS	NNS	1601	_	8	8	NMOD	NMOD	_	_	O
 11	.	.	.	.	.	1601	_	5	5	PUNCT	PUNCT	_	_	O
 
-1	They	they	they	PRP	PRP	1603	_	2	2	NSUBJ	NSUBJ	_	_	S-fe_Entity_1
+1	They	they	they	PRP	PRP	1603	_	2	2	NSUBJ	NSUBJ	_	_	S-entity_1
 2	precede	precede	precede	VBP	VBP	1603	_	0	0	ROOT	ROOT	precede.v	frm_sequence	O
-3	the	the	the	DT	DT	1603	_	4	4	DET	DET	_	_	B-fe_Entity_2
-4	word	word	word	NN	NN	1603	_	2	2	DOBJ	DOBJ	_	_	I-fe_Entity_2
-5	they	they	they	PRP	PRP	1603	_	6	6	NSUBJ	NSUBJ	_	_	I-fe_Entity_2
-6	qualify	qualify	qualify	VBP	VBP	1603	_	4	4	ACL:RELCL	ACL:RELCL	_	_	I-fe_Entity_2
+3	the	the	the	DT	DT	1603	_	4	4	DET	DET	_	_	B-entity_2
+4	word	word	word	NN	NN	1603	_	2	2	DOBJ	DOBJ	_	_	I-entity_2
+5	they	they	they	PRP	PRP	1603	_	6	6	NSUBJ	NSUBJ	_	_	I-entity_2
+6	qualify	qualify	qualify	VBP	VBP	1603	_	4	4	ACL:RELCL	ACL:RELCL	_	_	I-entity_2
 7	;	;	;	:	:	1603	_	6	6	PUNCT	PUNCT	_	_	O
-8	thus	thus	thus	RB	RB	1603	_	6	6	ADVMOD	ADVMOD	_	_	B-fe_Data
-9	,	,	,	,	,	1603	_	6	6	PUNCT	PUNCT	_	_	I-fe_Data
-10	nīsī	nīsī	nīsī	NN	NN	1603	_	11	11	COMPOUND	COMPOUND	_	_	I-fe_Data
-11	sirī	sirī	sirī	NN	NN	1603	_	6	6	DOBJ	DOBJ	_	_	I-fe_Data
+8	thus	thus	thus	RB	RB	1603	_	6	6	ADVMOD	ADVMOD	_	_	B-Data
+9	,	,	,	,	,	1603	_	6	6	PUNCT	PUNCT	_	_	I-Data
+10	nīsī	nīsī	nīsī	NN	NN	1603	_	11	11	COMPOUND	COMPOUND	_	_	I-Data
+11	sirī	sirī	sirī	NN	NN	1603	_	6	6	DOBJ	DOBJ	_	_	I-Data
 12	,	,	,	,	,	1603	_	4	4	PUNCT	PUNCT	_	_	O
-13	two	two	two	CD	CD	1603	_	14	14	NUMMOD	NUMMOD	_	_	B-fe_Data_Translation
-14	sons	son	son	NNS	NNS	1603	_	4	4	APPOS	APPOS	_	_	I-fe_Data_Translation
+13	two	two	two	CD	CD	1603	_	14	14	NUMMOD	NUMMOD	_	_	B-data_translation
+14	sons	son	son	NNS	NNS	1603	_	4	4	APPOS	APPOS	_	_	I-data_translation
 15	.	.	.	.	.	1603	_	2	2	PUNCT	PUNCT	_	_	O
 
 1	Pronouns	pronoun	pronoun	NNS	NNS	1604	_	0	0	ROOT	ROOT	pronoun.n	pronominal	O
@@ -15214,17 +15214,17 @@
 10	speech	speech	speech	NN	NN	1618	_	8	8	NMOD	NMOD	_	_	O
 11	.	.	.	.	.	1618	_	5	5	PUNCT	PUNCT	_	_	O
 
-1	sometimes	sometimes	sometimes	RB	RB	1621	_	2	2	ADVMOD	ADVMOD	_	_	S-fe_Frequency
+1	sometimes	sometimes	sometimes	RB	RB	1621	_	2	2	ADVMOD	ADVMOD	_	_	S-frequency
 2	precedes	precede	precede	VBZ	VBZ	1621	_	0	0	ROOT	ROOT	precede.v	frm_sequence	O
 3	and	and	and	CC	CC	1621	_	2	2	CC	CC	_	_	O
 4	sometimes	sometimes	sometimes	RB	RB	1621	_	5	5	ADVMOD	ADVMOD	_	_	O
 5	follows	follow	follow	VBZ	VBZ	1621	_	2	2	CONJ	CONJ	_	_	O
-6	the	the	the	DT	DT	1621	_	7	7	DET	DET	_	_	B-fe_Entity_2
-7	word	word	word	NN	NN	1621	_	2	2	DEP	DEP	_	_	I-fe_Entity_2
-8	or	or	or	CC	CC	1621	_	7	7	CC	CC	_	_	I-fe_Entity_2
-9	sentence	sentence	sentence	NN	NN	1621	_	7	7	CONJ	CONJ	_	_	I-fe_Entity_2
-10	it	it	it	PRP	PRP	1621	_	11	11	NSUBJ	NSUBJ	_	_	I-fe_Entity_2
-11	qualifies	qualify	qualify	VBZ	VBZ	1621	_	7	7	ACL:RELCL	ACL:RELCL	_	_	I-fe_Entity_2
+6	the	the	the	DT	DT	1621	_	7	7	DET	DET	_	_	B-entity_2
+7	word	word	word	NN	NN	1621	_	2	2	DEP	DEP	_	_	I-entity_2
+8	or	or	or	CC	CC	1621	_	7	7	CC	CC	_	_	I-entity_2
+9	sentence	sentence	sentence	NN	NN	1621	_	7	7	CONJ	CONJ	_	_	I-entity_2
+10	it	it	it	PRP	PRP	1621	_	11	11	NSUBJ	NSUBJ	_	_	I-entity_2
+11	qualifies	qualify	qualify	VBZ	VBZ	1621	_	7	7	ACL:RELCL	ACL:RELCL	_	_	I-entity_2
 12	.	.	.	.	.	1621	_	2	2	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	1622	_	3	3	DET	DET	_	_	O
@@ -15606,15 +15606,15 @@
 7	used	use	use	VBN	VBN	1652	_	20	20	CCOMP	CCOMP	_	_	O
 8	in	in	in	IN	IN	1652	_	11	11	CASE	CASE	_	_	O
 9	the	the	the	DT	DT	1652	_	11	11	DET	DET	_	_	O
-10	first	first	first	JJ	JJ	1652	_	11	11	AMOD	AMOD	_	_	B-fe_Data_Translation
-11	person	person	person	NN	NN	1652	_	7	7	NMOD	NMOD	_	_	I-fe_Data_Translation
+10	first	first	first	JJ	JJ	1652	_	11	11	AMOD	AMOD	_	_	B-data_translation
+11	person	person	person	NN	NN	1652	_	7	7	NMOD	NMOD	_	_	I-data_translation
 12	;	;	;	:	:	1652	_	11	11	PUNCT	PUNCT	_	_	O
 13	thus	thus	thus	RB	RB	1652	_	11	11	ADVMOD	ADVMOD	_	_	O
 14	,	,	,	,	,	1652	_	11	11	PUNCT	PUNCT	_	_	O
 15	lhī-yē	lhī-yē	lhī-yē	NN	NN	1652	_	11	11	APPOS	APPOS	_	_	S-data
 16	,	,	,	,	,	1652	_	20	20	PUNCT	PUNCT	_	_	O
-17	I	I	I	PRP	PRP	1652	_	20	20	NSUBJ	NSUBJ	_	_	B-fe_Data_Translation
-18	am	be	be	VBP	VBP	1652	_	20	20	COP	COP	_	_	I-fe_Data_Translation
+17	I	I	I	PRP	PRP	1652	_	20	20	NSUBJ	NSUBJ	_	_	B-data_translation
+18	am	be	be	VBP	VBP	1652	_	20	20	COP	COP	_	_	I-data_translation
 19	;	;	;	:	:	1652	_	20	20	PUNCT	PUNCT	_	_	O
 20	hi-chi-yē	hi-chi-yē	hi-chi-yē	NN	NN	1652	_	0	0	ROOT	ROOT	_	_	O
 21	,	,	,	,	,	1652	_	20	20	PUNCT	PUNCT	_	_	O
@@ -16050,19 +16050,19 @@
 16	,	,	,	,	,	1684	_	8	8	PUNCT	PUNCT	_	_	O
 17	jā-mō	jā-mō	jā-mō	NN	NN	1684	_	8	8	APPOS	APPOS	_	_	S-data
 18	,	,	,	,	,	1684	_	8	8	PUNCT	PUNCT	_	_	O
-19	to	to	to	TO	TO	1684	_	20	20	MARK	MARK	_	_	B-fe_Data_Translation
-20	eat	eat	eat	VB	VB	1684	_	8	8	ACL	ACL	_	_	I-fe_Data_Translation
+19	to	to	to	TO	TO	1684	_	20	20	MARK	MARK	_	_	B-data_translation
+20	eat	eat	eat	VB	VB	1684	_	8	8	ACL	ACL	_	_	I-data_translation
 21	;	;	;	:	:	1684	_	4	4	PUNCT	PUNCT	_	_	O
 22	pā-mȭ-gai	pā-mȭ-gai	pā-mȭ-gai	NN	NN	1684	_	31	31	NSUBJ	NSUBJ	_	_	S-data
 23	,	,	,	,	,	1684	_	22	22	PUNCT	PUNCT	_	_	O
-24	of	of	of	IN	IN	1684	_	28	28	CASE	CASE	_	_	B-fe_Data_Translation
-25	the	the	the	DT	DT	1684	_	28	28	DET	DET	_	_	I-fe_Data_Translation
-26	measuring	measuring	measuring	NN	NN	1684	_	28	28	COMPOUND	COMPOUND	_	_	I-fe_Data_Translation
+24	of	of	of	IN	IN	1684	_	28	28	CASE	CASE	_	_	B-data_translation
+25	the	the	the	DT	DT	1684	_	28	28	DET	DET	_	_	I-data_translation
+26	measuring	measuring	measuring	NN	NN	1684	_	28	28	COMPOUND	COMPOUND	_	_	I-data_translation
 27	;	;	;	:	:	1684	_	28	28	PUNCT	PUNCT	_	_	O
 28	lō-m	lō-m	lō-m	NN	NN	1684	_	22	22	NMOD	NMOD	_	_	S-data
 29	,	,	,	,	,	1684	_	22	22	PUNCT	PUNCT	_	_	O
-30	to	to	to	TO	TO	1684	_	31	31	MARK	MARK	_	_	B-fe_Data_Translation
-31	say	say	say	VB	VB	1684	_	4	4	PARATAXIS	PARATAXIS	_	_	I-fe_Data_Translation
+30	to	to	to	TO	TO	1684	_	31	31	MARK	MARK	_	_	B-data_translation
+31	say	say	say	VB	VB	1684	_	4	4	PARATAXIS	PARATAXIS	_	_	I-data_translation
 32	.	.	.	.	.	1684	_	4	4	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	1685	_	2	2	DET	DET	_	_	O
@@ -16122,16 +16122,16 @@
 55	knowing	know	know	VBG	VBG	1685	_	52	52	ACL	ACL	_	_	O
 56	.	.	.	.	.	1685	_	6	6	PUNCT	PUNCT	_	_	O
 
-1	Such	such	such	JJ	JJ	1686	_	2	2	AMOD	AMOD	_	_	B-fe_Entity
-2	forms	form	form	NNS	NNS	1686	_	5	5	NSUBJPASS	NSUBJPASS	_	_	I-fe_Entity
+1	Such	such	such	JJ	JJ	1686	_	2	2	AMOD	AMOD	_	_	B-entity
+2	forms	form	form	NNS	NNS	1686	_	5	5	NSUBJPASS	NSUBJPASS	_	_	I-entity
 3	are	be	be	VBP	VBP	1686	_	5	5	AUXPASS	AUXPASS	_	_	O
 4	commonly	commonly	commonly	RB	RB	1686	_	5	5	ADVMOD	ADVMOD	_	_	O
 5	used	use	use	VBN	VBN	1686	_	0	0	ROOT	ROOT	use.v	frm_using	O
-6	as	as	as	IN	IN	1686	_	10	10	CASE	CASE	_	_	B-fe_Role
-7	conjunctive	conjunctive	conjunctive	JJ	JJ	1686	_	10	10	AMOD	AMOD	_	_	I-fe_Role
-8	or	or	or	CC	CC	1686	_	7	7	CC	CC	_	_	I-fe_Role
-9	adverbial	adverbial	adverbial	JJ	JJ	1686	_	7	7	CONJ	CONJ	_	_	I-fe_Role
-10	participles	participle	participle	NNS	NNS	1686	_	5	5	NMOD	NMOD	_	_	I-fe_Role
+6	as	as	as	IN	IN	1686	_	10	10	CASE	CASE	_	_	B-Role
+7	conjunctive	conjunctive	conjunctive	JJ	JJ	1686	_	10	10	AMOD	AMOD	_	_	I-Role
+8	or	or	or	CC	CC	1686	_	7	7	CC	CC	_	_	I-Role
+9	adverbial	adverbial	adverbial	JJ	JJ	1686	_	7	7	CONJ	CONJ	_	_	I-Role
+10	participles	participle	participle	NNS	NNS	1686	_	5	5	NMOD	NMOD	_	_	I-Role
 11	.	.	.	.	.	1686	_	5	5	PUNCT	PUNCT	_	_	O
 
 1	An	a	a	DT	DT	1687	_	2	2	DET	DET	_	_	B-formed_entity
@@ -16448,13 +16448,13 @@
 
 1	Order	order	order	NN	NN	1707	_	0	0	ROOT	ROOT	order.n	frm_sequence	O
 2	of	of	of	IN	IN	1707	_	3	3	CASE	CASE	_	_	O
-3	words	word	word	NNS	NNS	1707	_	1	1	NMOD	NMOD	_	_	S-fe_Entities
+3	words	word	word	NNS	NNS	1707	_	1	1	NMOD	NMOD	_	_	S-entities
 4	.	.	.	.	.	1707	_	1	1	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	1708	_	2	2	DET	DET	_	_	O
 2	order	order	order	NN	NN	1708	_	7	7	NSUBJ	NSUBJ	order.n	frm_sequence	O
 3	of	of	of	IN	IN	1708	_	4	4	CASE	CASE	_	_	O
-4	words	word	word	NNS	NNS	1708	_	2	2	NMOD	NMOD	_	_	S-fe_Entities
+4	words	word	word	NNS	NNS	1708	_	2	2	NMOD	NMOD	_	_	S-entities
 5	is	be	be	VBZ	VBZ	1708	_	7	7	COP	COP	_	_	O
 6	the	the	the	DT	DT	1708	_	7	7	DET	DET	_	_	O
 7	same	same	same	JJ	JJ	1708	_	0	0	ROOT	ROOT	_	_	O
@@ -17619,15 +17619,15 @@
 10	prefix	prefix	prefix	NN	NN	1840	_	11	11	COMPOUND	COMPOUND	prefix.n	affix	O
 11	meaning	meaning	meaning	NN	NN	1840	_	7	7	NMOD	NMOD	_	_	O
 12	‘	‘	‘	CD	CD	1840	_	11	11	DEP	DEP	_	_	O
-13	my	my	my	PRP$	PRP$	1840	_	12	12	DEP	DEP	_	_	S-fe_Data_Translation
+13	my	my	my	PRP$	PRP$	1840	_	12	12	DEP	DEP	_	_	S-data_translation
 14	,	,	,	,	,	1840	_	12	12	PUNCT	PUNCT	_	_	O
 15	’	’	’	RB	RB	1840	_	12	12	ADVMOD	ADVMOD	_	_	O
 16	as	as	as	IN	IN	1840	_	18	18	CASE	CASE	_	_	O
 17	in	in	in	IN	IN	1840	_	18	18	CASE	CASE	_	_	O
 18	ā-pfü	ā-pfü	ā-pfü	NN	NN	1840	_	7	7	NMOD	NMOD	_	_	S-data
 19	,	,	,	,	,	1840	_	18	18	PUNCT	PUNCT	_	_	O
-20	my	my	my	PRP$	PRP$	1840	_	21	21	NMOD:POSS	NMOD:POSS	_	_	B-fe_Data_Translation
-21	father	father	father	NN	NN	1840	_	18	18	APPOS	APPOS	_	_	I-fe_Data_Translation
+20	my	my	my	PRP$	PRP$	1840	_	21	21	NMOD:POSS	NMOD:POSS	_	_	B-data_translation
+21	father	father	father	NN	NN	1840	_	18	18	APPOS	APPOS	_	_	I-data_translation
 22	.	.	.	.	.	1840	_	7	7	PUNCT	PUNCT	_	_	O
 
 1	No	no	no	DT	DT	1841	_	39	39	NSUBJ	NSUBJ	_	_	O
@@ -17647,31 +17647,31 @@
 15	i	i	i	FW	FW	1841	_	16	16	NSUBJ	NSUBJ	_	_	O
 16	means	mean	mean	VBZ	VBZ	1841	_	14	14	ACL:RELCL	ACL:RELCL	_	_	O
 17	‘	‘	‘	CD	CD	1841	_	16	16	DOBJ	DOBJ	_	_	O
-18	thy	thy	thy	PRP$	PRP$	1841	_	9	9	DOBJ	DOBJ	_	_	S-fe_Data_Translation
+18	thy	thy	thy	PRP$	PRP$	1841	_	9	9	DOBJ	DOBJ	_	_	S-data_translation
 19	,	,	,	,	,	1841	_	9	9	PUNCT	PUNCT	_	_	O
 20	’	’	’	RB	RB	1841	_	23	23	ADVMOD	ADVMOD	_	_	O
 21	as	as	as	IN	IN	1841	_	23	23	CASE	CASE	_	_	O
 22	in	in	in	IN	IN	1841	_	23	23	CASE	CASE	_	_	O
 23	i-pfü	i-pfü	i-pfü	NN	NN	1841	_	9	9	NMOD	NMOD	_	_	S-data
 24	,	,	,	,	,	1841	_	23	23	PUNCT	PUNCT	_	_	O
-25	thy	thy	thy	PRP$	PRP$	1841	_	26	26	NMOD:POSS	NMOD:POSS	_	_	B-fe_Data_Translation
-26	father	father	father	NN	NN	1841	_	23	23	APPOS	APPOS	_	_	I-fe_Data_Translation
+25	thy	thy	thy	PRP$	PRP$	1841	_	26	26	NMOD:POSS	NMOD:POSS	_	_	B-data_translation
+26	father	father	father	NN	NN	1841	_	23	23	APPOS	APPOS	_	_	I-data_translation
 27	;	;	;	:	:	1841	_	3	3	PUNCT	PUNCT	_	_	O
 28	i-vē	i-vē	i-vē	NN	NN	1841	_	3	3	DEP	DEP	_	_	S-data
 29	,	,	,	,	,	1841	_	28	28	PUNCT	PUNCT	_	_	O
-30	thy	thy	thy	PRP$	PRP$	1841	_	31	31	NMOD:POSS	NMOD:POSS	_	_	B-fe_Data_Translation
-31	property	property	property	NN	NN	1841	_	28	28	APPOS	APPOS	_	_	I-fe_Data_Translation
-32	,	,	,	,	,	1841	_	28	28	PUNCT	PUNCT	_	_	I-fe_Data_Translation
-33	with	with	with	IN	IN	1841	_	34	34	CASE	CASE	_	_	I-fe_Data_Translation
-34	thee	thee	thee	PRP	PRP	1841	_	28	28	NMOD	NMOD	_	_	I-fe_Data_Translation
+30	thy	thy	thy	PRP$	PRP$	1841	_	31	31	NMOD:POSS	NMOD:POSS	_	_	B-data_translation
+31	property	property	property	NN	NN	1841	_	28	28	APPOS	APPOS	_	_	I-data_translation
+32	,	,	,	,	,	1841	_	28	28	PUNCT	PUNCT	_	_	I-data_translation
+33	with	with	with	IN	IN	1841	_	34	34	CASE	CASE	_	_	I-data_translation
+34	thee	thee	thee	PRP	PRP	1841	_	28	28	NMOD	NMOD	_	_	I-data_translation
 35	;	;	;	:	:	1841	_	28	28	PUNCT	PUNCT	_	_	O
 36	no	no	no	DT	DT	1841	_	37	37	NEG	NEG	_	_	B-data
 37	i-rē	i-rē	i-rē	NN	NN	1841	_	28	28	DEP	DEP	_	_	I-data
 38	,	,	,	,	,	1841	_	1	1	PUNCT	PUNCT	_	_	O
 39	means	mean	mean	VBZ	VBZ	1841	_	0	0	ROOT	ROOT	_	_	O
 40	‘	‘	‘	CD	CD	1841	_	39	39	DOBJ	DOBJ	_	_	O
-41	thy	thy	thy	PRP$	PRP$	1841	_	43	43	NMOD:POSS	NMOD:POSS	_	_	B-fe_Data_Translation
-42	son	son	son	NN	NN	1841	_	43	43	COMPOUND	COMPOUND	_	_	I-fe_Data_Translation
+41	thy	thy	thy	PRP$	PRP$	1841	_	43	43	NMOD:POSS	NMOD:POSS	_	_	B-data_translation
+42	son	son	son	NN	NN	1841	_	43	43	COMPOUND	COMPOUND	_	_	I-data_translation
 43	’	’	’	NN	NN	1841	_	40	40	DEP	DEP	_	_	O
 44	.	.	.	.	.	1841	_	39	39	PUNCT	PUNCT	_	_	O
 
@@ -17686,13 +17686,13 @@
 9	in	in	in	IN	IN	1843	_	10	10	CASE	CASE	_	_	O
 10	e-pfü	e-pfü	e-pfü	NN	NN	1843	_	0	0	ROOT	ROOT	_	_	S-data
 11	,	,	,	,	,	1843	_	10	10	PUNCT	PUNCT	_	_	O
-12	his	he	he	PRP$	PRP$	1843	_	13	13	NMOD:POSS	NMOD:POSS	_	_	B-fe_Data_Translation
-13	father	father	father	NN	NN	1843	_	10	10	APPOS	APPOS	_	_	I-fe_Data_Translation
+12	his	he	he	PRP$	PRP$	1843	_	13	13	NMOD:POSS	NMOD:POSS	_	_	B-data_translation
+13	father	father	father	NN	NN	1843	_	10	10	APPOS	APPOS	_	_	I-data_translation
 14	;	;	;	:	:	1843	_	13	13	PUNCT	PUNCT	_	_	O
 15	pu-vē	pu-vē	pu-vē	NN	NN	1843	_	13	13	DEP	DEP	_	_	S-data
 16	,	,	,	,	,	1843	_	15	15	PUNCT	PUNCT	_	_	O
-17	his	he	he	PRP$	PRP$	1843	_	18	18	NMOD:POSS	NMOD:POSS	_	_	B-fe_Data_Translation
-18	property	property	property	NN	NN	1843	_	15	15	APPOS	APPOS	_	_	I-fe_Data_Translation
+17	his	he	he	PRP$	PRP$	1843	_	18	18	NMOD:POSS	NMOD:POSS	_	_	B-data_translation
+18	property	property	property	NN	NN	1843	_	15	15	APPOS	APPOS	_	_	I-data_translation
 19	.	.	.	.	.	1843	_	10	10	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	1845	_	5	5	DET	DET	_	_	O
@@ -17774,7 +17774,7 @@
 12	in	in	in	IN	IN	1851	_	13	13	CASE	CASE	_	_	O
 13	psü-nā	psü-nā	psü-nā	NN	NN	1851	_	15	15	NMOD	NMOD	_	_	S-data
 14	,	,	,	,	,	1851	_	15	15	PUNCT	PUNCT	_	_	O
-15	gave	give	give	VBD	VBD	1851	_	9	9	DEP	DEP	_	_	S-fe_Data_Translation
+15	gave	give	give	VBD	VBD	1851	_	9	9	DEP	DEP	_	_	S-data_translation
 16	;	;	;	:	:	1851	_	9	9	PUNCT	PUNCT	_	_	O
 17	chü-nā	chü-nā	chü-nā	NN	NN	1851	_	24	24	NSUBJ	NSUBJ	_	_	S-data
 18	,	,	,	,	,	1851	_	17	17	PUNCT	PUNCT	_	_	O
@@ -17783,7 +17783,7 @@
 21	as	as	as	IN	IN	1851	_	19	19	MWE	MWE	_	_	O
 22	chü	chü	chü	NN	NN	1851	_	17	17	CONJ	CONJ	_	_	S-data
 23	,	,	,	,	,	1851	_	17	17	PUNCT	PUNCT	_	_	O
-24	did	do	do	VBD	VBD	1851	_	9	9	PARATAXIS	PARATAXIS	_	_	S-fe_Data_Translation
+24	did	do	do	VBD	VBD	1851	_	9	9	PARATAXIS	PARATAXIS	_	_	S-data_translation
 25	.	.	.	.	.	1851	_	9	9	PUNCT	PUNCT	_	_	O
 
 1	Another	another	another	DT	DT	1853	_	2	2	DET	DET	_	_	O
@@ -17797,18 +17797,18 @@
 9	in	in	in	IN	IN	1853	_	10	10	CASE	CASE	_	_	O
 10	pu-ā	pu-ā	pu-ā	NN	NN	1853	_	12	12	NMOD	NMOD	_	_	S-data
 11	,	,	,	,	,	1853	_	12	12	PUNCT	PUNCT	_	_	O
-12	said	say	say	VBD	VBD	1853	_	4	4	DEP	DEP	_	_	S-fe_Data_Translation
+12	said	say	say	VBD	VBD	1853	_	4	4	DEP	DEP	_	_	S-data_translation
 13	;	;	;	:	:	1853	_	12	12	PUNCT	PUNCT	_	_	O
 14	gwo-ā	gwo-ā	gwo-ā	NN	NN	1853	_	19	19	NSUBJ	NSUBJ	_	_	S-data
 15	,	,	,	,	,	1853	_	14	14	PUNCT	PUNCT	_	_	O
-16	has	have	have	VBZ	VBZ	1853	_	17	17	AUX	AUX	_	_	B-fe_Data_Translation
-17	come	come	come	VBN	VBN	1853	_	14	14	DEP	DEP	_	_	I-fe_Data_Translation
+16	has	have	have	VBZ	VBZ	1853	_	17	17	AUX	AUX	_	_	B-data_translation
+17	come	come	come	VBN	VBN	1853	_	14	14	DEP	DEP	_	_	I-data_translation
 18	;	;	;	:	:	1853	_	14	14	PUNCT	PUNCT	_	_	O
 19	me-lho-wā	me-lho-wā	me-lho-wā	NN	NN	1853	_	12	12	PARATAXIS	PARATAXIS	_	_	S-data
 20	,	,	,	,	,	1853	_	4	4	PUNCT	PUNCT	_	_	O
-21	has	have	have	VBZ	VBZ	1853	_	22	22	AUX	AUX	_	_	B-fe_Data_Translation
-22	given	give	give	VBN	VBN	1853	_	3	3	CCOMP	CCOMP	_	_	I-fe_Data_Translation
-23	food	food	food	NN	NN	1853	_	22	22	DOBJ	DOBJ	_	_	I-fe_Data_Translation
+21	has	have	have	VBZ	VBZ	1853	_	22	22	AUX	AUX	_	_	B-data_translation
+22	given	give	give	VBN	VBN	1853	_	3	3	CCOMP	CCOMP	_	_	I-data_translation
+23	food	food	food	NN	NN	1853	_	22	22	DOBJ	DOBJ	_	_	I-data_translation
 24	.	.	.	.	.	1853	_	3	3	PUNCT	PUNCT	_	_	O
 
 1	Finally	finally	finally	RB	RB	1854	_	4	4	ADVMOD	ADVMOD	_	_	O
@@ -17842,15 +17842,15 @@
 10	in	in	in	IN	IN	1856	_	11	11	CASE	CASE	_	_	O
 11	pu-dà	pu-dà	pu-dà	NN	NN	1856	_	14	14	NMOD	NMOD	_	_	S-data
 12	,	,	,	,	,	1856	_	14	14	PUNCT	PUNCT	_	_	O
-13	will	will	will	MD	MD	1856	_	14	14	AUX	AUX	_	_	B-fe_Data_Translation
-14	say	say	say	VB	VB	1856	_	7	7	DEP	DEP	_	_	I-fe_Data_Translation
+13	will	will	will	MD	MD	1856	_	14	14	AUX	AUX	_	_	B-data_translation
+14	say	say	say	VB	VB	1856	_	7	7	DEP	DEP	_	_	I-data_translation
 15	;	;	;	:	:	1856	_	14	14	PUNCT	PUNCT	_	_	O
 16	e-nyi-d	e-nyi-d	e-nyi-d	JJ	JJ	1856	_	17	17	AMOD	AMOD	_	_	B-data
 17	à	à	à	NN	NN	1856	_	14	14	DOBJ	DOBJ	_	_	I-data
 18	,	,	,	,	,	1856	_	7	7	PUNCT	PUNCT	_	_	O
-19	will	will	will	MD	MD	1856	_	21	21	AUX	AUX	_	_	B-fe_Data_Translation
-20	be	be	be	VB	VB	1856	_	21	21	COP	COP	_	_	I-fe_Data_Translation
-21	happy	happy	happy	JJ	JJ	1856	_	6	6	CCOMP	CCOMP	_	_	I-fe_Data_Translation
+19	will	will	will	MD	MD	1856	_	21	21	AUX	AUX	_	_	B-data_translation
+20	be	be	be	VB	VB	1856	_	21	21	COP	COP	_	_	I-data_translation
+21	happy	happy	happy	JJ	JJ	1856	_	6	6	CCOMP	CCOMP	_	_	I-data_translation
 22	.	.	.	.	.	1856	_	6	6	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	1857	_	2	2	DET	DET	_	_	O
@@ -17867,7 +17867,7 @@
 12	in	in	in	IN	IN	1857	_	13	13	CASE	CASE	_	_	O
 13	psü-nē	psü-nē	psü-nē	NN	NN	1857	_	15	15	PARATAXIS	PARATAXIS	_	_	S-data
 14	,	,	,	,	,	1857	_	13	13	PUNCT	PUNCT	_	_	O
-15	give	give	give	VB	VB	1857	_	8	8	CCOMP	CCOMP	_	_	S-fe_Data_Translation
+15	give	give	give	VB	VB	1857	_	8	8	CCOMP	CCOMP	_	_	S-data_translation
 16	.	.	.	.	.	1857	_	6	6	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	1858	_	3	3	DET	DET	_	_	O
@@ -17884,7 +17884,7 @@
 12	in	in	in	IN	IN	1858	_	13	13	CASE	CASE	_	_	O
 13	ngu-ngi	ngu-ngi	ngu-ngi	NN	NN	1858	_	11	11	NMOD	NMOD	_	_	S-data
 14	,	,	,	,	,	1858	_	9	9	PUNCT	PUNCT	_	_	O
-15	seeing	see	see	VBG	VBG	1858	_	9	9	ACL	ACL	_	_	S-fe_Data_Translation
+15	seeing	see	see	VBG	VBG	1858	_	9	9	ACL	ACL	_	_	S-data_translation
 16	.	.	.	.	.	1858	_	9	9	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	1861	_	3	3	DET	DET	_	_	O
@@ -17906,10 +17906,10 @@
 17	pu-ē-lă	pu-ē-lă	pu-ē-lă	JJ	JJ	1861	_	18	18	AMOD	AMOD	_	_	B-data
 18	mā-pfu-lo	mā-pfu-lo	mā-pfu-lo	NN	NN	1861	_	13	13	NMOD	NMOD	_	_	I-data
 19	,	,	,	,	,	1861	_	13	13	PUNCT	PUNCT	_	_	O
-20	cause	cause	cause	VB	VB	1861	_	13	13	DEP	DEP	_	_	B-fe_Data_Translation
-21	him	he	he	PRP	PRP	1861	_	20	20	DOBJ	DOBJ	_	_	I-fe_Data_Translation
-22	to	to	to	TO	TO	1861	_	23	23	MARK	MARK	_	_	I-fe_Data_Translation
-23	wear	wear	wear	VB	VB	1861	_	20	20	XCOMP	XCOMP	_	_	I-fe_Data_Translation
+20	cause	cause	cause	VB	VB	1861	_	13	13	DEP	DEP	_	_	B-data_translation
+21	him	he	he	PRP	PRP	1861	_	20	20	DOBJ	DOBJ	_	_	I-data_translation
+22	to	to	to	TO	TO	1861	_	23	23	MARK	MARK	_	_	I-data_translation
+23	wear	wear	wear	VB	VB	1861	_	20	20	XCOMP	XCOMP	_	_	I-data_translation
 24	.	.	.	.	.	1861	_	13	13	PUNCT	PUNCT	_	_	O
 
 1	Their	they	they	PRP$	PRP$	1907	_	2	2	NMOD:POSS	NMOD:POSS	_	_	O
@@ -18807,15 +18807,15 @@
 8	,	,	,	,	,	2014	_	9	9	PUNCT	PUNCT	_	_	O
 9	kāl-nā	kāl-nā	kāl-nā	NN	NN	2014	_	7	7	DEP	DEP	_	_	S-data
 10	,	,	,	,	,	2014	_	9	9	PUNCT	PUNCT	_	_	O
-11	to	to	to	TO	TO	2014	_	12	12	MARK	MARK	_	_	B-fe_Data_Translation
-12	go	go	go	VB	VB	2014	_	7	7	DEP	DEP	_	_	I-fe_Data_Translation
+11	to	to	to	TO	TO	2014	_	12	12	MARK	MARK	_	_	B-data_translation
+12	go	go	go	VB	VB	2014	_	7	7	DEP	DEP	_	_	I-data_translation
 13	;	;	;	:	:	2014	_	12	12	PUNCT	PUNCT	_	_	O
 14	phāk-nā	phāk-nā	phāk-nā	NN	NN	2014	_	12	12	DOBJ	DOBJ	_	_	S-data
 15	,	,	,	,	,	2014	_	17	17	PUNCT	PUNCT	_	_	O
-16	to	to	to	TO	TO	2014	_	17	17	MARK	MARK	_	_	B-fe_Data_Translation
-17	eat	eat	eat	VB	VB	2014	_	12	12	PARATAXIS	PARATAXIS	_	_	I-fe_Data_Translation
-18	,	,	,	,	,	2014	_	17	17	PUNCT	PUNCT	_	_	I-fe_Data_Translation
-19	food	food	food	NN	NN	2014	_	12	12	DOBJ	DOBJ	_	_	I-fe_Data_Translation
+16	to	to	to	TO	TO	2014	_	17	17	MARK	MARK	_	_	B-data_translation
+17	eat	eat	eat	VB	VB	2014	_	12	12	PARATAXIS	PARATAXIS	_	_	I-data_translation
+18	,	,	,	,	,	2014	_	17	17	PUNCT	PUNCT	_	_	I-data_translation
+19	food	food	food	NN	NN	2014	_	12	12	DOBJ	DOBJ	_	_	I-data_translation
 20	.	.	.	.	.	2014	_	5	5	PUNCT	PUNCT	_	_	O
 
 1	It	it	it	PRP	PRP	2015	_	4	4	NSUBJPASS	NSUBJPASS	_	_	O
@@ -21437,7 +21437,7 @@
 11	,	,	,	,	,	2250	_	12	12	PUNCT	PUNCT	_	_	O
 12	aba-kya	aba-kya	aba-kya	NN	NN	2250	_	8	8	DEP	DEP	_	_	S-data
 13	,	,	,	,	,	2250	_	12	12	PUNCT	PUNCT	_	_	O
-14	fathers	father	father	NNS	NNS	2250	_	12	12	APPOS	APPOS	_	_	S-fe_Data_Translation
+14	fathers	father	father	NNS	NNS	2250	_	12	12	APPOS	APPOS	_	_	S-data_translation
 15	;	;	;	:	:	2250	_	12	12	PUNCT	PUNCT	_	_	O
 16	compare	compare	compare	VB	VB	2250	_	7	7	CCOMP	CCOMP	_	_	O
 17	cha	cha	cha	NN	NN	2250	_	16	16	DOBJ	DOBJ	_	_	O
@@ -21513,8 +21513,8 @@
 9	in	in	in	IN	IN	2257	_	10	10	CASE	CASE	_	_	O
 10	po-mu-di	po-mu-di	po-mu-di	NN	NN	2257	_	8	8	NMOD	NMOD	_	_	S-data
 11	,	,	,	,	,	2257	_	8	8	PUNCT	PUNCT	_	_	O
-12	of	of	of	IN	IN	2257	_	13	13	CASE	CASE	_	_	B-fe_Data_Translation
-13	daughters	daughter	daughter	NNS	NNS	2257	_	8	8	NMOD	NMOD	_	_	I-fe_Data_Translation
+12	of	of	of	IN	IN	2257	_	13	13	CASE	CASE	_	_	B-data_translation
+13	daughters	daughter	daughter	NNS	NNS	2257	_	8	8	NMOD	NMOD	_	_	I-data_translation
 14	.	.	.	.	.	2257	_	3	3	PUNCT	PUNCT	_	_	O
 
 1	Other	other	other	JJ	JJ	2258	_	2	2	AMOD	AMOD	_	_	O
@@ -22052,10 +22052,10 @@
 5	in	in	in	IN	IN	2306	_	6	6	CASE	CASE	_	_	O
 6	charai-te-ya-la	charai-te-ya-la	charai-te-ya-la	NN	NN	2306	_	4	4	NMOD	NMOD	_	_	S-data
 7	,	,	,	,	,	2306	_	4	4	PUNCT	PUNCT	_	_	O
-8	in	in	in	IN	IN	2306	_	11	11	MARK	MARK	_	_	B-fe_Data_Translation
-9	order	order	order	NN	NN	2306	_	8	8	MWE	MWE	_	_	I-fe_Data_Translation
-10	to	to	to	TO	TO	2306	_	11	11	MARK	MARK	_	_	I-fe_Data_Translation
-11	feed	feed	feed	VB	VB	2306	_	4	4	ADVCL	ADVCL	_	_	I-fe_Data_Translation
+8	in	in	in	IN	IN	2306	_	11	11	MARK	MARK	_	_	B-data_translation
+9	order	order	order	NN	NN	2306	_	8	8	MWE	MWE	_	_	I-data_translation
+10	to	to	to	TO	TO	2306	_	11	11	MARK	MARK	_	_	I-data_translation
+11	feed	feed	feed	VB	VB	2306	_	4	4	ADVCL	ADVCL	_	_	I-data_translation
 12	.	.	.	.	.	2306	_	4	4	PUNCT	PUNCT	_	_	O
 
 1	Relative	relative	relative	JJ	JJ	2307	_	2	2	AMOD	AMOD	_	_	B-formed_entity
@@ -22566,7 +22566,7 @@
 16	,	,	,	,	,	2353	_	13	13	PUNCT	PUNCT	_	_	O
 17	suak-hai	suak-hai	suak-hai	NN	NN	2353	_	19	19	DEP	DEP	_	_	S-data
 18	,	,	,	,	,	2353	_	19	19	PUNCT	PUNCT	_	_	O
-19	slaves	slave	slave	NNS	NNS	2353	_	13	13	PARATAXIS	PARATAXIS	_	_	S-fe_Data_Translation
+19	slaves	slave	slave	NNS	NNS	2353	_	13	13	PARATAXIS	PARATAXIS	_	_	S-data_translation
 20	.	.	.	.	.	2353	_	13	13	PUNCT	PUNCT	_	_	O
 
 1	Hai	Hai	Hai	NNP	NNP	2354	_	3	3	NSUBJ	NSUBJ	_	_	O
@@ -23515,27 +23515,27 @@
 5	:	:	:	:	:	2438	_	4	4	PUNCT	PUNCT	_	_	O
 6	hang	hang	hang	VB	VB	2438	_	4	4	PARATAXIS	PARATAXIS	_	_	S-data
 7	,	,	,	,	,	2438	_	8	8	PUNCT	PUNCT	_	_	O
-8	signifying	signify	signify	VBG	VBG	2438	_	6	6	PARATAXIS	PARATAXIS	_	_	B-fe_Data_Translation
-9	motion	motion	motion	NN	NN	2438	_	10	10	COMPOUND	COMPOUND	_	_	I-fe_Data_Translation
-10	upwards	upward	upward	NNS	NNS	2438	_	8	8	DOBJ	DOBJ	_	_	I-fe_Data_Translation
+8	signifying	signify	signify	VBG	VBG	2438	_	6	6	PARATAXIS	PARATAXIS	_	_	B-data_translation
+9	motion	motion	motion	NN	NN	2438	_	10	10	COMPOUND	COMPOUND	_	_	I-data_translation
+10	upwards	upward	upward	NNS	NNS	2438	_	8	8	DOBJ	DOBJ	_	_	I-data_translation
 11	,	,	,	,	,	2438	_	8	8	PUNCT	PUNCT	_	_	O
 12	or	or	or	CC	CC	2438	_	6	6	CC	CC	_	_	O
-13	towards	towards	towards	IN	IN	2438	_	6	6	CONJ	CONJ	_	_	S-fe_Data_Translation
+13	towards	towards	towards	IN	IN	2438	_	6	6	CONJ	CONJ	_	_	S-data_translation
 14	;	;	;	:	:	2438	_	6	6	PUNCT	PUNCT	_	_	O
 15	lo	lo	lo	FW	FW	2438	_	6	6	DOBJ	DOBJ	_	_	S-data
 16	,	,	,	,	,	2438	_	15	15	PUNCT	PUNCT	_	_	O
-17	signifying	signify	signify	VBG	VBG	2438	_	15	15	DEP	DEP	_	_	B-fe_Data_Translation
-18	motion	motion	motion	NN	NN	2438	_	17	17	DOBJ	DOBJ	_	_	I-fe_Data_Translation
-19	towards	towards	towards	IN	IN	2438	_	17	17	NMOD	NMOD	_	_	I-fe_Data_Translation
+17	signifying	signify	signify	VBG	VBG	2438	_	15	15	DEP	DEP	_	_	B-data_translation
+18	motion	motion	motion	NN	NN	2438	_	17	17	DOBJ	DOBJ	_	_	I-data_translation
+19	towards	towards	towards	IN	IN	2438	_	17	17	NMOD	NMOD	_	_	I-data_translation
 20	;	;	;	:	:	2438	_	15	15	PUNCT	PUNCT	_	_	O
 21	and	and	and	CC	CC	2438	_	15	15	CC	CC	_	_	O
 22	va	va	va	NN	NN	2438	_	15	15	CONJ	CONJ	_	_	S-data
 23	,	,	,	,	,	2438	_	6	6	PUNCT	PUNCT	_	_	O
-24	signifying	signify	signify	VBG	VBG	2438	_	6	6	PARATAXIS	PARATAXIS	_	_	B-fe_Data_Translation
-25	motion	motion	motion	NN	NN	2438	_	24	24	DOBJ	DOBJ	_	_	I-fe_Data_Translation
-26	on	on	on	IN	IN	2438	_	28	28	CASE	CASE	_	_	I-fe_Data_Translation
-27	level	level	level	NN	NN	2438	_	28	28	COMPOUND	COMPOUND	_	_	I-fe_Data_Translation
-28	ground	ground	ground	NN	NN	2438	_	24	24	NMOD	NMOD	_	_	I-fe_Data_Translation
+24	signifying	signify	signify	VBG	VBG	2438	_	6	6	PARATAXIS	PARATAXIS	_	_	B-data_translation
+25	motion	motion	motion	NN	NN	2438	_	24	24	DOBJ	DOBJ	_	_	I-data_translation
+26	on	on	on	IN	IN	2438	_	28	28	CASE	CASE	_	_	I-data_translation
+27	level	level	level	NN	NN	2438	_	28	28	COMPOUND	COMPOUND	_	_	I-data_translation
+28	ground	ground	ground	NN	NN	2438	_	24	24	NMOD	NMOD	_	_	I-data_translation
 29	.	.	.	.	.	2438	_	4	4	PUNCT	PUNCT	_	_	O
 
 1	Causatives	causative	causative	NNS	NNS	2440	_	3	3	NSUBJPASS	NSUBJPASS	_	_	S-formed_entity
@@ -26201,7 +26201,7 @@
 9	Kherwārī	Kherwārī	Kherwārī	NNP	NNP	2720	_	10	10	COMPOUND	COMPOUND	_	_	S-language_variety
 10	bū	bū	bū	NN	NN	2720	_	8	8	DOBJ	DOBJ	_	_	S-data
 11	,	,	,	,	,	2720	_	8	8	PUNCT	PUNCT	_	_	O
-12	we	we	we	PRP	PRP	2720	_	8	8	DOBJ	DOBJ	_	_	S-fe_Data_Translation
+12	we	we	we	PRP	PRP	2720	_	8	8	DOBJ	DOBJ	_	_	S-data_translation
 13	.	.	.	.	.	2720	_	6	6	PUNCT	PUNCT	_	_	O
 
 1	In	in	in	IN	IN	2721	_	4	4	CASE	CASE	_	_	O
@@ -28425,7 +28425,7 @@
 9	suffix	suffix	suffix	NN	NN	2957	_	10	10	COMPOUND	COMPOUND	suffix.n	affix	O
 10	ki	ki	ki	NN	NN	2957	_	15	15	NSUBJPASS	NSUBJPASS	_	_	S-data
 11	,	,	,	,	,	2957	_	10	10	PUNCT	PUNCT	_	_	O
-12	they	they	they	PRP	PRP	2957	_	10	10	APPOS	APPOS	_	_	S-fe_Data_Translation
+12	they	they	they	PRP	PRP	2957	_	10	10	APPOS	APPOS	_	_	S-data_translation
 13	,	,	,	,	,	2957	_	10	10	PUNCT	PUNCT	_	_	O
 14	is	be	be	VBZ	VBZ	2957	_	15	15	AUXPASS	AUXPASS	_	_	O
 15	added	add	add	VBN	VBN	2957	_	0	0	ROOT	ROOT	_	_	O
@@ -32013,7 +32013,7 @@
 7	probably	probably	probably	RB	RB	3299	_	8	8	ADVMOD	ADVMOD	_	_	O
 8	means	mean	mean	VBZ	VBZ	3299	_	4	4	ACL:RELCL	ACL:RELCL	_	_	O
 9	‘	‘	‘	CD	CD	3299	_	8	8	DOBJ	DOBJ	_	_	O
-10	from	from	from	IN	IN	3299	_	11	11	CASE	CASE	_	_	S-fe_Data_Translation
+10	from	from	from	IN	IN	3299	_	11	11	CASE	CASE	_	_	S-data_translation
 11	’	’	’	CD	CD	3299	_	8	8	NMOD	NMOD	_	_	O
 12	.	.	.	.	.	3299	_	4	4	PUNCT	PUNCT	_	_	O
 
@@ -34089,13 +34089,13 @@
 57	calf	calf	calf	NN	NN	3507	_	51	51	APPOS	APPOS	_	_	O
 58	.	.	.	.	.	3507	_	4	4	PUNCT	PUNCT	_	_	O
 
-1	Other	other	other	JJ	JJ	3508	_	2	2	AMOD	AMOD	_	_	B-fe_Indicated
-2	relations	relation	relation	NNS	NNS	3508	_	4	4	NSUBJPASS	NSUBJPASS	_	_	I-fe_Indicated
+1	Other	other	other	JJ	JJ	3508	_	2	2	AMOD	AMOD	_	_	B-Indicated
+2	relations	relation	relation	NNS	NNS	3508	_	4	4	NSUBJPASS	NSUBJPASS	_	_	I-Indicated
 3	are	be	be	VBP	VBP	3508	_	4	4	AUXPASS	AUXPASS	_	_	O
 4	indicated	indicate	indicate	VBN	VBN	3508	_	0	0	ROOT	ROOT	indicate.v	Sign	O
-5	by	by	by	IN	IN	3508	_	6	6	MARK	MARK	_	_	B-fe_Indicator
-6	adding	add	add	VBG	VBG	3508	_	4	4	ADVCL	ADVCL	_	_	I-fe_Indicator
-7	postpositions	postposition	postposition	NNS	NNS	3508	_	6	6	DOBJ	DOBJ	_	_	I-fe_Indicator
+5	by	by	by	IN	IN	3508	_	6	6	MARK	MARK	_	_	B-Indicator
+6	adding	add	add	VBG	VBG	3508	_	4	4	ADVCL	ADVCL	_	_	I-Indicator
+7	postpositions	postposition	postposition	NNS	NNS	3508	_	6	6	DOBJ	DOBJ	_	_	I-Indicator
 8	,	,	,	,	,	3508	_	6	6	PUNCT	PUNCT	_	_	O
 9	such	such	such	JJ	JJ	3508	_	11	11	CASE	CASE	_	_	O
 10	as	as	as	IN	IN	3508	_	11	11	CASE	CASE	_	_	O
@@ -40128,7 +40128,7 @@
 2	suffix	suffix	suffix	NN	NN	4126	_	3	3	COMPOUND	COMPOUND	suffix.n	affix	O
 3	khā	khā	khā	NN	NN	4126	_	9	9	NSUBJ	NSUBJ	_	_	S-data
 4	,	,	,	,	,	4126	_	3	3	PUNCT	PUNCT	_	_	O
-5	of	of	of	IN	IN	4126	_	3	3	ACL	ACL	_	_	S-fe_Data_Translation
+5	of	of	of	IN	IN	4126	_	3	3	ACL	ACL	_	_	S-data_translation
 6	,	,	,	,	,	4126	_	3	3	PUNCT	PUNCT	_	_	O
 7	is	be	be	VBZ	VBZ	4126	_	9	9	COP	COP	_	_	O
 8	probably	probably	probably	RB	RB	4126	_	9	9	ADVMOD	ADVMOD	_	_	O
@@ -40169,7 +40169,7 @@
 14	suffix	suffix	suffix	NN	NN	4128	_	15	15	COMPOUND	COMPOUND	suffix.n	affix	O
 15	ngā	ngā	ngā	NN	NN	4128	_	12	12	DOBJ	DOBJ	_	_	S-data
 16	,	,	,	,	,	4128	_	7	7	PUNCT	PUNCT	_	_	O
-17	by	by	by	IN	IN	4128	_	7	7	CONJ	CONJ	_	_	S-fe_Data_Translation
+17	by	by	by	IN	IN	4128	_	7	7	CONJ	CONJ	_	_	S-data_translation
 18	.	.	.	.	.	4128	_	7	7	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	4133	_	2	2	DET	DET	_	_	O
@@ -43232,15 +43232,15 @@
 24	servant	servant	servant	NN	NN	4587	_	14	14	NMOD	NMOD	_	_	O
 25	.	.	.	.	.	4587	_	7	7	PUNCT	PUNCT	_	_	O
 
-1	This	this	this	DT	DT	4588	_	2	2	DET	DET	_	_	B-fe_Entity
-2	form	form	form	NN	NN	4588	_	6	6	NSUBJPASS	NSUBJPASS	_	_	I-fe_Entity
+1	This	this	this	DT	DT	4588	_	2	2	DET	DET	_	_	B-entity
+2	form	form	form	NN	NN	4588	_	6	6	NSUBJPASS	NSUBJPASS	_	_	I-entity
 3	is	be	be	VBZ	VBZ	4588	_	6	6	AUXPASS	AUXPASS	_	_	O
 4	sometimes	sometimes	sometimes	RB	RB	4588	_	6	6	ADVMOD	ADVMOD	_	_	O
 5	also	also	also	RB	RB	4588	_	6	6	ADVMOD	ADVMOD	_	_	O
 6	used	use	use	VBN	VBN	4588	_	0	0	ROOT	ROOT	use.v	frm_using	O
-7	as	as	as	IN	IN	4588	_	9	9	CASE	CASE	_	_	B-fe_Role
-8	an	a	a	DT	DT	4588	_	9	9	DET	DET	_	_	I-fe_Role
-9	accusative	accusative	accusative	JJ	JJ	4588	_	6	6	NMOD	NMOD	_	_	I-fe_Role
+7	as	as	as	IN	IN	4588	_	9	9	CASE	CASE	_	_	B-Role
+8	an	a	a	DT	DT	4588	_	9	9	DET	DET	_	_	I-Role
+9	accusative	accusative	accusative	JJ	JJ	4588	_	6	6	NMOD	NMOD	_	_	I-Role
 10	;	;	;	:	:	4588	_	6	6	PUNCT	PUNCT	_	_	O
 11	thus	thus	thus	RB	RB	4588	_	23	23	ADVMOD	ADVMOD	_	_	O
 12	,	,	,	,	,	4588	_	19	19	PUNCT	PUNCT	_	_	O
@@ -43305,13 +43305,13 @@
 32	neck	neck	neck	NN	NN	4591	_	8	8	NMOD	NMOD	_	_	O
 33	.	.	.	.	.	4591	_	6	6	PUNCT	PUNCT	_	_	O
 
-1	Other	other	other	JJ	JJ	4592	_	2	2	AMOD	AMOD	_	_	B-fe_Indicated
-2	relations	relation	relation	NNS	NNS	4592	_	4	4	NSUBJPASS	NSUBJPASS	_	_	I-fe_Indicated
+1	Other	other	other	JJ	JJ	4592	_	2	2	AMOD	AMOD	_	_	B-Indicated
+2	relations	relation	relation	NNS	NNS	4592	_	4	4	NSUBJPASS	NSUBJPASS	_	_	I-Indicated
 3	are	be	be	VBP	VBP	4592	_	4	4	AUXPASS	AUXPASS	_	_	O
 4	indicated	indicate	indicate	VBN	VBN	4592	_	0	0	ROOT	ROOT	indicate.v	Sign	O
-5	by	by	by	IN	IN	4592	_	6	6	MARK	MARK	_	_	B-fe_Indicator
-6	adding	add	add	VBG	VBG	4592	_	4	4	ADVCL	ADVCL	_	_	I-fe_Indicator
-7	postpositions	postposition	postposition	NNS	NNS	4592	_	6	6	DOBJ	DOBJ	_	_	I-fe_Indicator
+5	by	by	by	IN	IN	4592	_	6	6	MARK	MARK	_	_	B-Indicator
+6	adding	add	add	VBG	VBG	4592	_	4	4	ADVCL	ADVCL	_	_	I-Indicator
+7	postpositions	postposition	postposition	NNS	NNS	4592	_	6	6	DOBJ	DOBJ	_	_	I-Indicator
 8	.	.	.	.	.	4592	_	4	4	PUNCT	PUNCT	_	_	O
 
 1	Some	some	some	DT	DT	4594	_	2	2	DET	DET	_	_	O
@@ -44130,7 +44130,7 @@
 9	or	or	or	CC	CC	4661	_	8	8	CC	CC	_	_	O
 10	o	o	o	NN	NN	4661	_	8	8	CONJ	CONJ	_	_	O
 11	and	and	and	CC	CC	4661	_	8	8	CC	CC	_	_	O
-12	go	go	go	VB	VB	4661	_	8	8	CONJ	CONJ	_	_	S-fe_Data_Translation
+12	go	go	go	VB	VB	4661	_	8	8	CONJ	CONJ	_	_	S-data_translation
 13	;	;	;	:	:	4661	_	12	12	PUNCT	PUNCT	_	_	O
 14	thus	thus	thus	RB	RB	4661	_	12	12	ADVMOD	ADVMOD	_	_	O
 15	,	,	,	,	,	4661	_	8	8	PUNCT	PUNCT	_	_	O
@@ -44337,18 +44337,18 @@
 12	future	future	future	JJ	JJ	4672	_	10	10	CONJ	CONJ	_	_	O
 13	.	.	.	.	.	4672	_	1	1	PUNCT	PUNCT	_	_	O
 
-1	The	the	the	DT	DT	4673	_	2	2	DET	DET	_	_	B-fe_Entity
-2	form	form	form	NN	NN	4673	_	8	8	NSUBJPASS	NSUBJPASS	_	_	I-fe_Entity
-3	ending	end	end	VBG	VBG	4673	_	2	2	ACL	ACL	_	_	I-fe_Entity
-4	in	in	in	IN	IN	4673	_	5	5	CASE	CASE	_	_	I-fe_Entity
-5	bā	bā	bā	NN	NN	4673	_	3	3	NMOD	NMOD	_	_	I-fe_Entity
+1	The	the	the	DT	DT	4673	_	2	2	DET	DET	_	_	B-entity
+2	form	form	form	NN	NN	4673	_	8	8	NSUBJPASS	NSUBJPASS	_	_	I-entity
+3	ending	end	end	VBG	VBG	4673	_	2	2	ACL	ACL	_	_	I-entity
+4	in	in	in	IN	IN	4673	_	5	5	CASE	CASE	_	_	I-entity
+5	bā	bā	bā	NN	NN	4673	_	3	3	NMOD	NMOD	_	_	I-entity
 6	is	be	be	VBZ	VBZ	4673	_	8	8	AUXPASS	AUXPASS	_	_	O
 7	also	also	also	RB	RB	4673	_	8	8	ADVMOD	ADVMOD	_	_	O
 8	used	use	use	VBN	VBN	4673	_	0	0	ROOT	ROOT	use.v	frm_using	O
-9	as	as	as	IN	IN	4673	_	12	12	CASE	CASE	_	_	B-fe_Role
-10	a	a	a	DT	DT	4673	_	12	12	DET	DET	_	_	I-fe_Role
-11	relative	relative	relative	JJ	JJ	4673	_	12	12	AMOD	AMOD	_	_	I-fe_Role
-12	participle	participle	participle	NN	NN	4673	_	8	8	NMOD	NMOD	_	_	I-fe_Role
+9	as	as	as	IN	IN	4673	_	12	12	CASE	CASE	_	_	B-Role
+10	a	a	a	DT	DT	4673	_	12	12	DET	DET	_	_	I-Role
+11	relative	relative	relative	JJ	JJ	4673	_	12	12	AMOD	AMOD	_	_	I-Role
+12	participle	participle	participle	NN	NN	4673	_	8	8	NMOD	NMOD	_	_	I-Role
 13	;	;	;	:	:	4673	_	8	8	PUNCT	PUNCT	_	_	O
 14	thus	thus	thus	RB	RB	4673	_	24	24	ADVMOD	ADVMOD	_	_	O
 15	,	,	,	,	,	4673	_	24	24	PUNCT	PUNCT	_	_	O
@@ -46111,8 +46111,8 @@
 12	and	and	and	CC	CC	4866	_	11	11	CC	CC	_	_	O
 13	ngē	ngē	ngē	NN	NN	4866	_	11	11	CONJ	CONJ	_	_	S-data
 14	,	,	,	,	,	4866	_	9	9	PUNCT	PUNCT	_	_	O
-15	to	to	to	TO	TO	4866	_	16	16	MARK	MARK	_	_	B-fe_Data_Translation
-16	wish	wish	wish	VB	VB	4866	_	18	18	DEP	DEP	_	_	I-fe_Data_Translation
+15	to	to	to	TO	TO	4866	_	16	16	MARK	MARK	_	_	B-data_translation
+16	wish	wish	wish	VB	VB	4866	_	18	18	DEP	DEP	_	_	I-data_translation
 17	;	;	;	:	:	4866	_	18	18	PUNCT	PUNCT	_	_	O
 18	yaū	yaū	yaū	NN	NN	4866	_	9	9	APPOS	APPOS	_	_	S-data
 19	,	,	,	,	,	4866	_	18	18	PUNCT	PUNCT	_	_	O
@@ -46153,15 +46153,15 @@
 4	and	and	and	CC	CC	4871	_	3	3	CC	CC	_	_	O
 5	sa-nāū-bā	sa-nāū-bā	sa-nāū-bā	NN	NN	4871	_	3	3	CONJ	CONJ	_	_	S-data
 6	,	,	,	,	,	4871	_	7	7	PUNCT	PUNCT	_	_	O
-7	son	son	son	NN	NN	4871	_	1	1	APPOS	APPOS	_	_	S-fe_Data_Translation
+7	son	son	son	NN	NN	4871	_	1	1	APPOS	APPOS	_	_	S-data_translation
 8	;	;	;	:	:	4871	_	1	1	PUNCT	PUNCT	_	_	O
 9	pi-nū	pi-nū	pi-nū	NN	NN	4871	_	1	1	DEP	DEP	_	_	S-data
 10	and	and	and	CC	CC	4871	_	9	9	CC	CC	_	_	O
 11	bi-nū	bi-nū	bi-nū	NN	NN	4871	_	9	9	CONJ	CONJ	_	_	S-data
 12	,	,	,	,	,	4871	_	9	9	PUNCT	PUNCT	_	_	O
-13	a	a	a	DT	DT	4871	_	15	15	DET	DET	_	_	S-fe_Data_Translation
-14	female	female	female	JJ	JJ	4871	_	15	15	AMOD	AMOD	_	_	S-fe_Data_Translation
-15	suffix	suffix	suffix	NN	NN	4871	_	9	9	APPOS	APPOS	suffix.n	affix	S-fe_Data_Translation
+13	a	a	a	DT	DT	4871	_	15	15	DET	DET	_	_	S-data_translation
+14	female	female	female	JJ	JJ	4871	_	15	15	AMOD	AMOD	_	_	S-data_translation
+15	suffix	suffix	suffix	NN	NN	4871	_	9	9	APPOS	APPOS	suffix.n	affix	S-data_translation
 16	;	;	;	:	:	4871	_	9	9	PUNCT	PUNCT	_	_	O
 17	kai-chū	kai-chū	kai-chū	NN	NN	4871	_	9	9	DEP	DEP	_	_	S-data
 18	,	,	,	,	,	4871	_	17	17	PUNCT	PUNCT	_	_	O
@@ -46169,7 +46169,7 @@
 20	;	;	;	:	:	4871	_	9	9	PUNCT	PUNCT	_	_	O
 21	mo-jū	mo-jū	mo-jū	NN	NN	4871	_	9	9	DEP	DEP	_	_	S-data
 22	,	,	,	,	,	4871	_	21	21	PUNCT	PUNCT	_	_	O
-23	he	he	he	PRP	PRP	4871	_	21	21	APPOS	APPOS	_	_	S-fe_Data_Translation
+23	he	he	he	PRP	PRP	4871	_	21	21	APPOS	APPOS	_	_	S-data_translation
 24	,	,	,	,	,	4871	_	21	21	PUNCT	PUNCT	_	_	O
 25	etc.	etc.	etc.	FW	FW	4871	_	21	21	APPOS	APPOS	_	_	O
 
@@ -47606,9 +47606,9 @@
 6	in	in	in	IN	IN	5025	_	7	7	CASE	CASE	_	_	O
 7	ril-thing-tik-ē	ril-thing-tik-ē	ril-thing-tik-ē	NN	NN	5025	_	11	11	NMOD	NMOD	_	_	S-data
 8	,	,	,	,	,	5025	_	11	11	PUNCT	PUNCT	_	_	O
-9	I	I	I	PRP	PRP	5025	_	11	11	NSUBJ	NSUBJ	_	_	B-fe_Data_Translation
-10	will	will	will	MD	MD	5025	_	11	11	AUX	AUX	_	_	I-fe_Data_Translation
-11	say	say	say	VB	VB	5025	_	4	4	PARATAXIS	PARATAXIS	_	_	I-fe_Data_Translation
+9	I	I	I	PRP	PRP	5025	_	11	11	NSUBJ	NSUBJ	_	_	B-data_translation
+10	will	will	will	MD	MD	5025	_	11	11	AUX	AUX	_	_	I-data_translation
+11	say	say	say	VB	VB	5025	_	4	4	PARATAXIS	PARATAXIS	_	_	I-data_translation
 12	;	;	;	:	:	5025	_	11	11	PUNCT	PUNCT	_	_	O
 13	sa-wāi	sa-wāi	sa-wāi	JJ	JJ	5025	_	15	15	AMOD	AMOD	_	_	B-data
 14	lūko	lūko	lūko	NN	NN	5025	_	15	15	COMPOUND	COMPOUND	_	_	I-data
@@ -47619,14 +47619,14 @@
 19	ning-ting-a-chaū	ning-ting-a-chaū	ning-ting-a-chaū	NN	NN	5025	_	16	16	DOBJ	DOBJ	_	_	I-data
 20	,	,	,	,	,	5025	_	11	11	PUNCT	PUNCT	_	_	O
 21	‘	‘	‘	CD	CD	5025	_	22	22	NUMMOD	NUMMOD	_	_	O
-22	husks	husk	husk	NNS	NNS	5025	_	23	23	NMOD:NPMOD	NMOD:NPMOD	_	_	B-fe_Data_Translation
-23	even	even	even	RB	RB	5025	_	11	11	ADVMOD	ADVMOD	_	_	I-fe_Data_Translation
-24	eating	eat	eat	VBG	VBG	5025	_	11	11	PARATAXIS	PARATAXIS	_	_	I-fe_Data_Translation
-25	belly	belly	belly	NN	NN	5025	_	26	26	COMPOUND	COMPOUND	_	_	I-fe_Data_Translation
-26	fill-will	fill-will	fill-will	NN	NN	5025	_	24	24	DOBJ	DOBJ	_	_	I-fe_Data_Translation
-27	’	’	’	CD	CD	5025	_	26	26	NUMMOD	NUMMOD	_	_	I-fe_Data_Translation
-28	saying	say	say	VBG	VBG	5025	_	24	24	ADVCL	ADVCL	_	_	I-fe_Data_Translation
-29	wishing-after-even	wishing-after-even	wishing-after-even	NNS	NNS	5025	_	28	28	DOBJ	DOBJ	_	_	I-fe_Data_Translation
+22	husks	husk	husk	NNS	NNS	5025	_	23	23	NMOD:NPMOD	NMOD:NPMOD	_	_	B-data_translation
+23	even	even	even	RB	RB	5025	_	11	11	ADVMOD	ADVMOD	_	_	I-data_translation
+24	eating	eat	eat	VBG	VBG	5025	_	11	11	PARATAXIS	PARATAXIS	_	_	I-data_translation
+25	belly	belly	belly	NN	NN	5025	_	26	26	COMPOUND	COMPOUND	_	_	I-data_translation
+26	fill-will	fill-will	fill-will	NN	NN	5025	_	24	24	DOBJ	DOBJ	_	_	I-data_translation
+27	’	’	’	CD	CD	5025	_	26	26	NUMMOD	NUMMOD	_	_	I-data_translation
+28	saying	say	say	VBG	VBG	5025	_	24	24	ADVCL	ADVCL	_	_	I-data_translation
+29	wishing-after-even	wishing-after-even	wishing-after-even	NNS	NNS	5025	_	28	28	DOBJ	DOBJ	_	_	I-data_translation
 30	,	,	,	,	,	5025	_	11	11	PUNCT	PUNCT	_	_	O
 31	though	though	though	IN	IN	5025	_	33	33	MARK	MARK	_	_	O
 32	he	he	he	PRP	PRP	5025	_	33	33	NSUBJ	NSUBJ	_	_	O
@@ -49731,13 +49731,13 @@
 29	passes	pass	pass	NNS	NNS	5224	_	25	25	NMOD	NMOD	_	_	O
 30	.	.	.	.	.	5224	_	25	25	PUNCT	PUNCT	_	_	O
 
-1	Other	other	other	JJ	JJ	5225	_	2	2	AMOD	AMOD	_	_	B-fe_Indicated
-2	relations	relation	relation	NNS	NNS	5225	_	4	4	NSUBJPASS	NSUBJPASS	_	_	I-fe_Indicated
+1	Other	other	other	JJ	JJ	5225	_	2	2	AMOD	AMOD	_	_	B-Indicated
+2	relations	relation	relation	NNS	NNS	5225	_	4	4	NSUBJPASS	NSUBJPASS	_	_	I-Indicated
 3	are	be	be	VBP	VBP	5225	_	4	4	AUXPASS	AUXPASS	_	_	O
 4	expressed	express	express	VBN	VBN	5225	_	0	0	ROOT	ROOT	express.v	Sign	O
-5	by	by	by	IN	IN	5225	_	6	6	MARK	MARK	_	_	B-fe_Indicator
-6	adding	add	add	VBG	VBG	5225	_	4	4	ADVCL	ADVCL	_	_	I-fe_Indicator
-7	postpositions	postposition	postposition	NNS	NNS	5225	_	6	6	DOBJ	DOBJ	_	_	I-fe_Indicator
+5	by	by	by	IN	IN	5225	_	6	6	MARK	MARK	_	_	B-Indicator
+6	adding	add	add	VBG	VBG	5225	_	4	4	ADVCL	ADVCL	_	_	I-Indicator
+7	postpositions	postposition	postposition	NNS	NNS	5225	_	6	6	DOBJ	DOBJ	_	_	I-Indicator
 8	.	.	.	.	.	5225	_	4	4	PUNCT	PUNCT	_	_	O
 
 1	Adjectives	adjective	adjective	NNS	NNS	5227	_	0	0	ROOT	ROOT	adjective.n	adjectival	O
@@ -51296,8 +51296,8 @@
 6	said	say	say	VBN	VBN	5320	_	0	0	ROOT	ROOT	_	_	O
 7	to	to	to	TO	TO	5320	_	10	10	MARK	MARK	_	_	O
 8	be	be	be	VB	VB	5320	_	10	10	COP	COP	_	_	O
-9	comparatively	comparatively	comparatively	RB	RB	5320	_	10	10	ADVMOD	ADVMOD	_	_	B-fe_Order
-10	free	free	free	JJ	JJ	5320	_	6	6	XCOMP	XCOMP	_	_	I-fe_Order
+9	comparatively	comparatively	comparatively	RB	RB	5320	_	10	10	ADVMOD	ADVMOD	_	_	B-order
+10	free	free	free	JJ	JJ	5320	_	6	6	XCOMP	XCOMP	_	_	I-order
 11	.	.	.	.	.	5320	_	6	6	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	5321	_	3	3	DET	DET	_	_	O
@@ -53142,11 +53142,11 @@
 4	of	of	of	IN	IN	5509	_	5	5	CASE	CASE	_	_	O
 5	words	word	word	NNS	NNS	5509	_	3	3	NMOD	NMOD	_	_	O
 6	is	be	be	VBZ	VBZ	5509	_	7	7	COP	COP	_	_	O
-7	subject	subject	subject	JJ	JJ	5509	_	0	0	ROOT	ROOT	_	_	B-fe_Entities
-8	,	,	,	,	,	5509	_	7	7	PUNCT	PUNCT	_	_	I-fe_Entities
-9	object	object	object	NN	NN	5509	_	7	7	DEP	DEP	_	_	I-fe_Entities
-10	,	,	,	,	,	5509	_	9	9	PUNCT	PUNCT	_	_	I-fe_Entities
-11	verb	verb	verb	VB	VB	5509	_	9	9	APPOS	APPOS	_	_	I-fe_Entities
+7	subject	subject	subject	JJ	JJ	5509	_	0	0	ROOT	ROOT	_	_	B-entities
+8	,	,	,	,	,	5509	_	7	7	PUNCT	PUNCT	_	_	I-entities
+9	object	object	object	NN	NN	5509	_	7	7	DEP	DEP	_	_	I-entities
+10	,	,	,	,	,	5509	_	9	9	PUNCT	PUNCT	_	_	I-entities
+11	verb	verb	verb	VB	VB	5509	_	9	9	APPOS	APPOS	_	_	I-entities
 12	.	.	.	.	.	5509	_	7	7	PUNCT	PUNCT	_	_	O
 
 1	A	a	a	DT	DT	5511	_	2	2	DET	DET	_	_	O
@@ -55476,15 +55476,15 @@
 9	,	,	,	,	,	5827	_	6	6	PUNCT	PUNCT	_	_	O
 10	marrī	marrī	marrī	NN	NN	5827	_	6	6	APPOS	APPOS	_	_	S-data
 11	,	,	,	,	,	5827	_	10	10	PUNCT	PUNCT	_	_	O
-12	son	son	son	NN	NN	5827	_	10	10	APPOS	APPOS	_	_	S-fe_Data_Translation
+12	son	son	son	NN	NN	5827	_	10	10	APPOS	APPOS	_	_	S-data_translation
 13	;	;	;	:	:	5827	_	10	10	PUNCT	PUNCT	_	_	O
 14	marku	marku	marku	FW	FW	5827	_	10	10	DEP	DEP	_	_	S-data
 15	,	,	,	,	,	5827	_	14	14	PUNCT	PUNCT	_	_	O
-16	sons	son	son	NNS	NNS	5827	_	14	14	APPOS	APPOS	_	_	S-fe_Data_Translation
+16	sons	son	son	NNS	NNS	5827	_	14	14	APPOS	APPOS	_	_	S-data_translation
 17	;	;	;	:	:	5827	_	10	10	PUNCT	PUNCT	_	_	O
 18	pal-ku	pal-ku	pal-ku	NN	NN	5827	_	10	10	DEP	DEP	_	_	S-data
 19	,	,	,	,	,	5827	_	18	18	PUNCT	PUNCT	_	_	O
-20	teeth	tooth	tooth	NNS	NNS	5827	_	18	18	APPOS	APPOS	_	_	S-fe_Data_Translation
+20	teeth	tooth	tooth	NNS	NNS	5827	_	18	18	APPOS	APPOS	_	_	S-data_translation
 21	.	.	.	.	.	5827	_	6	6	PUNCT	PUNCT	_	_	O
 
 1	I	I	I	PRP	PRP	5828	_	4	4	NSUBJ	NSUBJ	_	_	O
@@ -55828,7 +55828,7 @@
 22	and	and	and	CC	CC	5877	_	21	21	CC	CC	_	_	I-data
 23	ngai	ngai	ngai	NN	NN	5877	_	21	21	CONJ	CONJ	_	_	I-data
 24	,	,	,	,	,	5877	_	21	21	PUNCT	PUNCT	_	_	O
-25	many	many	many	JJ	JJ	5877	_	21	21	APPOS	APPOS	_	_	S-fe_Data_Translation
+25	many	many	many	JJ	JJ	5877	_	21	21	APPOS	APPOS	_	_	S-data_translation
 26	,	,	,	,	,	5877	_	21	21	PUNCT	PUNCT	_	_	O
 27	used	use	use	VBN	VBN	5877	_	21	21	ACL	ACL	_	_	O
 28	as	as	as	IN	IN	5877	_	31	31	CASE	CASE	_	_	O
@@ -56094,10 +56094,10 @@
 12	nāi	nāi	nāi	NN	NN	5922	_	13	13	COMPOUND	COMPOUND	_	_	B-data
 13	pasal	pasal	pasal	NN	NN	5922	_	8	8	APPOS	APPOS	_	_	I-data
 14	,	,	,	,	,	5922	_	8	8	PUNCT	PUNCT	_	_	O
-15	child	child	child	NN	NN	5922	_	16	16	COMPOUND	COMPOUND	_	_	B-fe_Data_Translation
-16	male	male	male	NN	NN	5922	_	8	8	APPOS	APPOS	_	_	I-fe_Data_Translation
-17	,	,	,	,	,	5922	_	8	8	PUNCT	PUNCT	_	_	I-fe_Data_Translation
-18	son	son	son	NN	NN	5922	_	8	8	APPOS	APPOS	_	_	I-fe_Data_Translation
+15	child	child	child	NN	NN	5922	_	16	16	COMPOUND	COMPOUND	_	_	B-data_translation
+16	male	male	male	NN	NN	5922	_	8	8	APPOS	APPOS	_	_	I-data_translation
+17	,	,	,	,	,	5922	_	8	8	PUNCT	PUNCT	_	_	I-data_translation
+18	son	son	son	NN	NN	5922	_	8	8	APPOS	APPOS	_	_	I-data_translation
 19	.	.	.	.	.	5922	_	4	4	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	5923	_	3	3	DET	DET	_	_	O
@@ -56128,12 +56128,12 @@
 26	and	and	and	CC	CC	5923	_	25	25	CC	CC	_	_	I-data
 27	chal	chal	chal	JJ	JJ	5923	_	25	25	CONJ	CONJ	_	_	I-data
 28	,	,	,	,	,	5923	_	8	8	PUNCT	PUNCT	_	_	O
-29	male	male	male	JJ	JJ	5923	_	0	0	ROOT	ROOT	_	_	S-fe_Data_Translation
+29	male	male	male	JJ	JJ	5923	_	0	0	ROOT	ROOT	_	_	S-data_translation
 30	,	,	,	,	,	5923	_	32	32	PUNCT	PUNCT	_	_	O
 31	and	and	and	CC	CC	5923	_	32	32	CC	CC	_	_	O
 32	a-pūi	a-pūi	a-pūi	NN	NN	5923	_	29	29	DEP	DEP	_	_	S-data
 33	,	,	,	,	,	5923	_	32	32	PUNCT	PUNCT	_	_	O
-34	female	female	female	NN	NN	5923	_	32	32	APPOS	APPOS	_	_	S-fe_Data_Translation
+34	female	female	female	NN	NN	5923	_	32	32	APPOS	APPOS	_	_	S-data_translation
 35	.	.	.	.	.	5923	_	29	29	PUNCT	PUNCT	_	_	O
 
 1	There	there	there	EX	EX	5927	_	2	2	EXPL	EXPL	_	_	O
@@ -56229,11 +56229,11 @@
 2	suffix	suffix	suffix	NN	NN	5933	_	17	17	NSUBJPASS	NSUBJPASS	suffix.n	affix	O
 3	in	in	in	IN	IN	5933	_	5	5	MARK	MARK	_	_	S-data
 4	,	,	,	,	,	5933	_	5	5	PUNCT	PUNCT	_	_	O
-5	by	by	by	IN	IN	5933	_	2	2	ACL	ACL	_	_	B-fe_Data_Translation
-6	,	,	,	,	,	5933	_	5	5	PUNCT	PUNCT	_	_	I-fe_Data_Translation
-7	by	by	by	IN	IN	5933	_	8	8	CASE	CASE	_	_	I-fe_Data_Translation
-8	means	means	means	NNS	NNS	5933	_	5	5	NMOD	NMOD	_	_	I-fe_Data_Translation
-9	of	of	of	IN	IN	5933	_	8	8	ACL	ACL	_	_	I-fe_Data_Translation
+5	by	by	by	IN	IN	5933	_	2	2	ACL	ACL	_	_	B-data_translation
+6	,	,	,	,	,	5933	_	5	5	PUNCT	PUNCT	_	_	I-data_translation
+7	by	by	by	IN	IN	5933	_	8	8	CASE	CASE	_	_	I-data_translation
+8	means	means	means	NNS	NNS	5933	_	5	5	NMOD	NMOD	_	_	I-data_translation
+9	of	of	of	IN	IN	5933	_	8	8	ACL	ACL	_	_	I-data_translation
 10	,	,	,	,	,	5933	_	17	17	PUNCT	PUNCT	_	_	O
 11	denoting	denote	denote	VBG	VBG	5933	_	17	17	ADVCL	ADVCL	_	_	O
 12	the	the	the	DT	DT	5933	_	13	13	DET	DET	_	_	O
@@ -56336,7 +56336,7 @@
 5	in	in	in	IN	IN	5944	_	6	6	CASE	CASE	_	_	O
 6	ma-tūm-pā	ma-tūm-pā	ma-tūm-pā	NN	NN	5944	_	4	4	NMOD	NMOD	_	_	S-data
 7	,	,	,	,	,	5944	_	6	6	PUNCT	PUNCT	_	_	O
-8	younger	younger	younger	JJR	JJR	5944	_	6	6	APPOS	APPOS	_	_	S-fe_Data_Translation
+8	younger	younger	younger	JJR	JJR	5944	_	6	6	APPOS	APPOS	_	_	S-data_translation
 9	.	.	.	.	.	5944	_	4	4	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	5945	_	3	3	DET	DET	_	_	O
@@ -56377,9 +56377,9 @@
 18	,	,	,	,	,	5946	_	23	23	PUNCT	PUNCT	_	_	O
 19	a-sāng-yoi	a-sāng-yoi	a-sāng-yoi	NN	NN	5946	_	23	23	NSUBJ	NSUBJ	_	_	S-data
 20	,	,	,	,	,	5946	_	23	23	PUNCT	PUNCT	_	_	O
-21	he	he	he	PRP	PRP	5946	_	23	23	NSUBJ	NSUBJ	_	_	B-fe_Data_Translation
-22	is	be	be	VBZ	VBZ	5946	_	23	23	COP	COP	_	_	I-fe_Data_Translation
-23	tall	tall	tall	JJ	JJ	5946	_	6	6	CCOMP	CCOMP	_	_	I-fe_Data_Translation
+21	he	he	he	PRP	PRP	5946	_	23	23	NSUBJ	NSUBJ	_	_	B-data_translation
+22	is	be	be	VBZ	VBZ	5946	_	23	23	COP	COP	_	_	I-data_translation
+23	tall	tall	tall	JJ	JJ	5946	_	6	6	CCOMP	CCOMP	_	_	I-data_translation
 24	.	.	.	.	.	5946	_	6	6	PUNCT	PUNCT	_	_	O
 
 1	Some	some	some	DT	DT	5947	_	2	2	DET	DET	_	_	O
@@ -57075,18 +57075,18 @@
 10	as	as	as	IN	IN	6021	_	9	9	MWE	MWE	_	_	O
 11	a-yū-pē	a-yū-pē	a-yū-pē	NN	NN	6021	_	8	8	NMOD	NMOD	_	_	S-data
 12	,	,	,	,	,	6021	_	14	14	PUNCT	PUNCT	_	_	O
-13	he	he	he	PRP	PRP	6021	_	14	14	NSUBJ	NSUBJ	_	_	B-fe_Data_Translation
-14	kissed	kiss	kiss	VBD	VBD	6021	_	0	0	ROOT	ROOT	_	_	I-fe_Data_Translation
+13	he	he	he	PRP	PRP	6021	_	14	14	NSUBJ	NSUBJ	_	_	B-data_translation
+14	kissed	kiss	kiss	VBD	VBD	6021	_	0	0	ROOT	ROOT	_	_	I-data_translation
 15	;	;	;	:	:	6021	_	14	14	PUNCT	PUNCT	_	_	O
 16	a-deng-pē	a-deng-pē	a-deng-pē	NN	NN	6021	_	19	19	NSUBJ	NSUBJ	_	_	S-data
 17	,	,	,	,	,	6021	_	19	19	PUNCT	PUNCT	_	_	O
-18	it	it	it	PRP	PRP	6021	_	19	19	NSUBJ	NSUBJ	_	_	B-fe_Data_Translation
-19	fell	fall	fall	VBD	VBD	6021	_	14	14	PARATAXIS	PARATAXIS	_	_	I-fe_Data_Translation
+18	it	it	it	PRP	PRP	6021	_	19	19	NSUBJ	NSUBJ	_	_	B-data_translation
+19	fell	fall	fall	VBD	VBD	6021	_	14	14	PARATAXIS	PARATAXIS	_	_	I-data_translation
 20	;	;	;	:	:	6021	_	19	19	PUNCT	PUNCT	_	_	O
 21	a-lūt-pē	a-lūt-pē	a-lūt-pē	NN	NN	6021	_	26	26	NSUBJ	NSUBJ	_	_	S-data
 22	,	,	,	,	,	6021	_	24	24	PUNCT	PUNCT	_	_	O
-23	he	he	he	PRP	PRP	6021	_	24	24	NSUBJ	NSUBJ	_	_	B-fe_Data_Translation
-24	entered	enter	enter	VBD	VBD	6021	_	21	21	DEP	DEP	_	_	I-fe_Data_Translation
+23	he	he	he	PRP	PRP	6021	_	24	24	NSUBJ	NSUBJ	_	_	B-data_translation
+24	entered	enter	enter	VBD	VBD	6021	_	21	21	DEP	DEP	_	_	I-data_translation
 25	,	,	,	,	,	6021	_	24	24	PUNCT	PUNCT	_	_	O
 26	etc.	etc.	etc.	FW	FW	6021	_	19	19	PARATAXIS	PARATAXIS	_	_	O
 
@@ -57118,8 +57118,8 @@
 1	Compare	compare	compare	VB	VB	6023	_	0	0	ROOT	ROOT	_	_	O
 2	a-pēr-a-pē	a-pēr-a-pē	a-pēr-a-pē	NN	NN	6023	_	1	1	DOBJ	DOBJ	_	_	S-data
 3	,	,	,	,	,	6023	_	2	2	PUNCT	PUNCT	_	_	O
-4	he	he	he	PRP	PRP	6023	_	2	2	APPOS	APPOS	_	_	B-fe_Data_Translation
-5	bit	bit	bit	RB	RB	6023	_	4	4	ADVMOD	ADVMOD	_	_	I-fe_Data_Translation
+4	he	he	he	PRP	PRP	6023	_	2	2	APPOS	APPOS	_	_	B-data_translation
+5	bit	bit	bit	RB	RB	6023	_	4	4	ADVMOD	ADVMOD	_	_	I-data_translation
 6	,	,	,	,	,	6023	_	4	4	PUNCT	PUNCT	_	_	O
 7	where	where	where	WRB	WRB	6023	_	12	12	ADVMOD	ADVMOD	_	_	O
 8	the	the	the	DT	DT	6023	_	10	10	DET	DET	_	_	O
@@ -57192,14 +57192,14 @@
 12	lai	lai	lai	NN	NN	6028	_	13	13	COMPOUND	COMPOUND	_	_	B-data
 13	choi-noning	choi-noning	choi-noning	NN	NN	6028	_	8	8	APPOS	APPOS	_	_	I-data
 14	,	,	,	,	,	6028	_	13	13	PUNCT	PUNCT	_	_	O
-15	fine	fine	fine	JJ	JJ	6028	_	16	16	AMOD	AMOD	_	_	B-fe_Data_Translation
-16	pay-not-will	pay-not-will	pay-not-will	NN	NN	6028	_	13	13	APPOS	APPOS	_	_	I-fe_Data_Translation
-17	,	,	,	,	,	6028	_	21	21	PUNCT	PUNCT	_	_	I-fe_Data_Translation
-18	I	I	I	PRP	PRP	6028	_	21	21	NSUBJ	NSUBJ	_	_	I-fe_Data_Translation
-19	will	will	will	MD	MD	6028	_	21	21	AUX	AUX	_	_	I-fe_Data_Translation
-20	not	not	not	RB	RB	6028	_	21	21	NEG	NEG	_	_	I-fe_Data_Translation
-21	pay	pay	pay	VB	VB	6028	_	0	0	ROOT	ROOT	_	_	I-fe_Data_Translation
-22	fine	fine	fine	NN	NN	6028	_	21	21	DOBJ	DOBJ	_	_	I-fe_Data_Translation
+15	fine	fine	fine	JJ	JJ	6028	_	16	16	AMOD	AMOD	_	_	B-data_translation
+16	pay-not-will	pay-not-will	pay-not-will	NN	NN	6028	_	13	13	APPOS	APPOS	_	_	I-data_translation
+17	,	,	,	,	,	6028	_	21	21	PUNCT	PUNCT	_	_	I-data_translation
+18	I	I	I	PRP	PRP	6028	_	21	21	NSUBJ	NSUBJ	_	_	I-data_translation
+19	will	will	will	MD	MD	6028	_	21	21	AUX	AUX	_	_	I-data_translation
+20	not	not	not	RB	RB	6028	_	21	21	NEG	NEG	_	_	I-data_translation
+21	pay	pay	pay	VB	VB	6028	_	0	0	ROOT	ROOT	_	_	I-data_translation
+22	fine	fine	fine	NN	NN	6028	_	21	21	DOBJ	DOBJ	_	_	I-data_translation
 23	.	.	.	.	.	6028	_	21	21	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	6029	_	2	2	NSUBJ	NSUBJ	_	_	O
@@ -57360,13 +57360,13 @@
 7	in	in	in	IN	IN	6047	_	8	8	CASE	CASE	_	_	O
 8	a-hong-na-khan-a-ko	a-hong-na-khan-a-ko	a-hong-na-khan-a-ko	NN	NN	6047	_	6	6	NMOD	NMOD	_	_	S-data
 9	,	,	,	,	,	6047	_	8	8	PUNCT	PUNCT	_	_	O
-10	his-coming-time-at-just	his-coming-time-at-just	his-coming-time-at-just	NN	NN	6047	_	8	8	APPOS	APPOS	_	_	B-fe_Data_Translation
-11	,	,	,	,	,	6047	_	6	6	PUNCT	PUNCT	_	_	I-fe_Data_Translation
-12	as	as	as	RB	RB	6047	_	13	13	ADVMOD	ADVMOD	_	_	I-fe_Data_Translation
-13	soon	soon	soon	RB	RB	6047	_	6	6	ADVMOD	ADVMOD	_	_	I-fe_Data_Translation
-14	as	as	as	IN	IN	6047	_	16	16	MARK	MARK	_	_	I-fe_Data_Translation
-15	he	he	he	PRP	PRP	6047	_	16	16	NSUBJ	NSUBJ	_	_	I-fe_Data_Translation
-16	came	come	come	VBD	VBD	6047	_	13	13	ADVCL	ADVCL	_	_	I-fe_Data_Translation
+10	his-coming-time-at-just	his-coming-time-at-just	his-coming-time-at-just	NN	NN	6047	_	8	8	APPOS	APPOS	_	_	B-data_translation
+11	,	,	,	,	,	6047	_	6	6	PUNCT	PUNCT	_	_	I-data_translation
+12	as	as	as	RB	RB	6047	_	13	13	ADVMOD	ADVMOD	_	_	I-data_translation
+13	soon	soon	soon	RB	RB	6047	_	6	6	ADVMOD	ADVMOD	_	_	I-data_translation
+14	as	as	as	IN	IN	6047	_	16	16	MARK	MARK	_	_	I-data_translation
+15	he	he	he	PRP	PRP	6047	_	16	16	NSUBJ	NSUBJ	_	_	I-data_translation
+16	came	come	come	VBD	VBD	6047	_	13	13	ADVCL	ADVCL	_	_	I-data_translation
 17	.	.	.	.	.	6047	_	4	4	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	6048	_	2	2	DET	DET	_	_	O
@@ -57629,8 +57629,8 @@
 
 1	Hong	Hong	Hong	NNP	NNP	6081	_	7	7	NSUBJPASS	NSUBJPASS	_	_	S-data
 2	,	,	,	,	,	6081	_	1	1	PUNCT	PUNCT	_	_	O
-3	to	to	to	TO	TO	6081	_	4	4	MARK	MARK	_	_	B-fe_Data_Translation
-4	come	come	come	VB	VB	6081	_	1	1	ACL	ACL	_	_	I-fe_Data_Translation
+3	to	to	to	TO	TO	6081	_	4	4	MARK	MARK	_	_	B-data_translation
+4	come	come	come	VB	VB	6081	_	1	1	ACL	ACL	_	_	I-data_translation
 5	,	,	,	,	,	6081	_	1	1	PUNCT	PUNCT	_	_	O
 6	is	be	be	VBZ	VBZ	6081	_	7	7	AUXPASS	AUXPASS	_	_	O
 7	used	use	use	VBN	VBN	6081	_	0	0	ROOT	ROOT	_	_	O
@@ -58793,10 +58793,10 @@
 10	words	word	word	NNS	NNS	6238	_	8	8	NMOD	NMOD	_	_	I-range
 11	.	.	.	.	.	6238	_	5	5	PUNCT	PUNCT	_	_	O
 
-1	They	they	they	PRP	PRP	6239	_	2	2	NSUBJ	NSUBJ	_	_	S-fe_Entity_1
-2	precede	precede	precede	VBP	VBP	6239	_	0	0	ROOT	ROOT	precede.v	frm_sequence	S-fe_Order
-3	the	the	the	DT	DT	6239	_	4	4	DET	DET	_	_	B-fe_Entity_2
-4	noun	noun	noun	NN	NN	6239	_	2	2	DOBJ	DOBJ	_	_	I-fe_Entity_2
+1	They	they	they	PRP	PRP	6239	_	2	2	NSUBJ	NSUBJ	_	_	S-entity_1
+2	precede	precede	precede	VBP	VBP	6239	_	0	0	ROOT	ROOT	precede.v	frm_sequence	S-order
+3	the	the	the	DT	DT	6239	_	4	4	DET	DET	_	_	B-entity_2
+4	noun	noun	noun	NN	NN	6239	_	2	2	DOBJ	DOBJ	_	_	I-entity_2
 5	they	they	they	PRP	PRP	6239	_	6	6	NSUBJ	NSUBJ	_	_	O
 6	qualify	qualify	qualify	VBP	VBP	6239	_	4	4	ACL:RELCL	ACL:RELCL	_	_	O
 7	.	.	.	.	.	6239	_	2	2	PUNCT	PUNCT	_	_	O
@@ -58828,8 +58828,8 @@
 25	or	or	or	CC	CC	6240	_	19	19	CC	CC	_	_	I-data
 26	e-dīāng	e-dīāng	e-dīāng	NN	NN	6240	_	19	19	CONJ	CONJ	_	_	I-data
 27	,	,	,	,	,	6240	_	26	26	PUNCT	PUNCT	_	_	O
-28	one	one	one	CD	CD	6240	_	29	29	NUMMOD	NUMMOD	_	_	B-fe_Data_Translation
-29	man	man	man	NN	NN	6240	_	26	26	APPOS	APPOS	_	_	I-fe_Data_Translation
+28	one	one	one	CD	CD	6240	_	29	29	NUMMOD	NUMMOD	_	_	B-data_translation
+29	man	man	man	NN	NN	6240	_	26	26	APPOS	APPOS	_	_	I-data_translation
 30	.	.	.	.	.	6240	_	4	4	PUNCT	PUNCT	_	_	O
 
 1	The	the	the	DT	DT	6242	_	6	6	NSUBJ	NSUBJ	_	_	O
@@ -59191,14 +59191,14 @@
 21	did	do	do	VBD	VBD	6272	_	5	5	PARATAXIS	PARATAXIS	_	_	O
 22	.	.	.	.	.	6272	_	5	5	PUNCT	PUNCT	_	_	O
 
-1	Such	such	such	JJ	JJ	6273	_	2	2	AMOD	AMOD	_	_	B-fe_Entity
-2	forms	form	form	NNS	NNS	6273	_	5	5	NSUBJPASS	NSUBJPASS	_	_	I-fe_Entity
+1	Such	such	such	JJ	JJ	6273	_	2	2	AMOD	AMOD	_	_	B-entity
+2	forms	form	form	NNS	NNS	6273	_	5	5	NSUBJPASS	NSUBJPASS	_	_	I-entity
 3	are	be	be	VBP	VBP	6273	_	5	5	AUXPASS	AUXPASS	_	_	O
 4	commonly	commonly	commonly	RB	RB	6273	_	5	5	ADVMOD	ADVMOD	_	_	O
 5	used	use	use	VBN	VBN	6273	_	0	0	ROOT	ROOT	use.v	frm_using	O
-6	as	as	as	IN	IN	6273	_	8	8	CASE	CASE	_	_	B-fe_Role
-7	relative	relative	relative	JJ	JJ	6273	_	8	8	AMOD	AMOD	_	_	I-fe_Role
-8	participles	participle	participle	NNS	NNS	6273	_	5	5	NMOD	NMOD	_	_	I-fe_Role
+6	as	as	as	IN	IN	6273	_	8	8	CASE	CASE	_	_	B-Role
+7	relative	relative	relative	JJ	JJ	6273	_	8	8	AMOD	AMOD	_	_	I-Role
+8	participles	participle	participle	NNS	NNS	6273	_	5	5	NMOD	NMOD	_	_	I-Role
 9	;	;	;	:	:	6273	_	8	8	PUNCT	PUNCT	_	_	O
 10	thus	thus	thus	RB	RB	6273	_	8	8	ADVMOD	ADVMOD	_	_	O
 11	,	,	,	,	,	6273	_	8	8	PUNCT	PUNCT	_	_	O
@@ -59256,28 +59256,28 @@
 15	gone	go	go	VBN	VBN	6275	_	7	7	ADVCL	ADVCL	_	_	I-data_translation
 16	.	.	.	.	.	6275	_	5	5	PUNCT	PUNCT	_	_	O
 
-1	A	a	a	DT	DT	6278	_	2	2	DET	DET	_	_	B-fe_Indicated
-2	kind	kind	kind	NN	NN	6278	_	8	8	NSUBJPASS	NSUBJPASS	_	_	I-fe_Indicated
-3	of	of	of	IN	IN	6278	_	4	4	CASE	CASE	_	_	I-fe_Indicated
-4	passive	passive	passive	NN	NN	6278	_	2	2	NMOD	NMOD	_	_	I-fe_Indicated
+1	A	a	a	DT	DT	6278	_	2	2	DET	DET	_	_	B-Indicated
+2	kind	kind	kind	NN	NN	6278	_	8	8	NSUBJPASS	NSUBJPASS	_	_	I-Indicated
+3	of	of	of	IN	IN	6278	_	4	4	CASE	CASE	_	_	I-Indicated
+4	passive	passive	passive	NN	NN	6278	_	2	2	NMOD	NMOD	_	_	I-Indicated
 5	can	can	can	MD	MD	6278	_	8	8	AUX	AUX	_	_	O
 6	however	however	however	RB	RB	6278	_	8	8	ADVMOD	ADVMOD	_	_	O
 7	be	be	be	VB	VB	6278	_	8	8	AUXPASS	AUXPASS	_	_	O
 8	expressed	express	express	VBN	VBN	6278	_	0	0	ROOT	ROOT	express.v	Sign	O
-9	by	by	by	IN	IN	6278	_	10	10	MARK	MARK	_	_	B-fe_Indicator
-10	adding	add	add	VBG	VBG	6278	_	8	8	ADVCL	ADVCL	_	_	I-fe_Indicator
-11	the	the	the	DT	DT	6278	_	13	13	DET	DET	_	_	I-fe_Indicator
-12	verbs	verb	verb	NNS	NNS	6278	_	13	13	COMPOUND	COMPOUND	_	_	I-fe_Indicator
-13	nēn	nēn	nēn	NN	NN	6278	_	10	10	DOBJ	DOBJ	_	_	I-fe_Indicator
-14	,	,	,	,	,	6278	_	13	13	PUNCT	PUNCT	_	_	I-fe_Indicator
-15	to	to	to	TO	TO	6278	_	16	16	MARK	MARK	_	_	I-fe_Indicator
-16	find	find	find	VB	VB	6278	_	13	13	ACL	ACL	_	_	I-fe_Indicator
-17	,	,	,	,	,	6278	_	13	13	PUNCT	PUNCT	_	_	I-fe_Indicator
-18	and	and	and	CC	CC	6278	_	13	13	CC	CC	_	_	I-fe_Indicator
-19	chā	chā	chā	NN	NN	6278	_	13	13	CONJ	CONJ	_	_	I-fe_Indicator
-20	,	,	,	,	,	6278	_	10	10	PUNCT	PUNCT	_	_	I-fe_Indicator
-21	to	to	to	TO	TO	6278	_	22	22	MARK	MARK	_	_	I-fe_Indicator
-22	eat	eat	eat	VB	VB	6278	_	10	10	ADVCL	ADVCL	_	_	I-fe_Indicator
+9	by	by	by	IN	IN	6278	_	10	10	MARK	MARK	_	_	B-Indicator
+10	adding	add	add	VBG	VBG	6278	_	8	8	ADVCL	ADVCL	_	_	I-Indicator
+11	the	the	the	DT	DT	6278	_	13	13	DET	DET	_	_	I-Indicator
+12	verbs	verb	verb	NNS	NNS	6278	_	13	13	COMPOUND	COMPOUND	_	_	I-Indicator
+13	nēn	nēn	nēn	NN	NN	6278	_	10	10	DOBJ	DOBJ	_	_	I-Indicator
+14	,	,	,	,	,	6278	_	13	13	PUNCT	PUNCT	_	_	I-Indicator
+15	to	to	to	TO	TO	6278	_	16	16	MARK	MARK	_	_	I-Indicator
+16	find	find	find	VB	VB	6278	_	13	13	ACL	ACL	_	_	I-Indicator
+17	,	,	,	,	,	6278	_	13	13	PUNCT	PUNCT	_	_	I-Indicator
+18	and	and	and	CC	CC	6278	_	13	13	CC	CC	_	_	I-Indicator
+19	chā	chā	chā	NN	NN	6278	_	13	13	CONJ	CONJ	_	_	I-Indicator
+20	,	,	,	,	,	6278	_	10	10	PUNCT	PUNCT	_	_	I-Indicator
+21	to	to	to	TO	TO	6278	_	22	22	MARK	MARK	_	_	I-Indicator
+22	eat	eat	eat	VB	VB	6278	_	10	10	ADVCL	ADVCL	_	_	I-Indicator
 23	,	,	,	,	,	6278	_	22	22	PUNCT	PUNCT	_	_	O
 24	to	to	to	TO	TO	6278	_	26	26	CASE	CASE	_	_	O
 25	the	the	the	DT	DT	6278	_	26	26	DET	DET	_	_	O
@@ -59347,11 +59347,11 @@
 4	of	of	of	IN	IN	6282	_	5	5	CASE	CASE	_	_	O
 5	words	word	word	NNS	NNS	6282	_	3	3	NMOD	NMOD	_	_	O
 6	is	be	be	VBZ	VBZ	6282	_	7	7	COP	COP	_	_	O
-7	subject	subject	subject	JJ	JJ	6282	_	0	0	ROOT	ROOT	_	_	B-fe_Entities
-8	,	,	,	,	,	6282	_	7	7	PUNCT	PUNCT	_	_	I-fe_Entities
-9	object	object	object	NN	NN	6282	_	7	7	DEP	DEP	_	_	I-fe_Entities
-10	,	,	,	,	,	6282	_	9	9	PUNCT	PUNCT	_	_	I-fe_Entities
-11	verb	verb	verb	VB	VB	6282	_	9	9	APPOS	APPOS	_	_	I-fe_Entities
+7	subject	subject	subject	JJ	JJ	6282	_	0	0	ROOT	ROOT	_	_	B-entities
+8	,	,	,	,	,	6282	_	7	7	PUNCT	PUNCT	_	_	I-entities
+9	object	object	object	NN	NN	6282	_	7	7	DEP	DEP	_	_	I-entities
+10	,	,	,	,	,	6282	_	9	9	PUNCT	PUNCT	_	_	I-entities
+11	verb	verb	verb	VB	VB	6282	_	9	9	APPOS	APPOS	_	_	I-entities
 12	.	.	.	.	.	6282	_	7	7	PUNCT	PUNCT	_	_	O
 
 1	For	for	for	IN	IN	6283	_	3	3	CASE	CASE	_	_	O
@@ -62057,10 +62057,10 @@
 2	order	order	order	NN	NN	6519	_	6	6	NSUBJPASS	NSUBJPASS	order.n	frm_sequence	O
 3	of	of	of	IN	IN	6519	_	4	4	CASE	CASE	_	_	O
 4	words	word	word	NNS	NNS	6519	_	2	2	NMOD	NMOD	_	_	O
-5	is	be	be	VBZ	VBZ	6519	_	6	6	AUXPASS	AUXPASS	_	_	B-fe_Certainty
-6	said	say	say	VBN	VBN	6519	_	0	0	ROOT	ROOT	_	_	I-fe_Certainty
-7	to	to	to	TO	TO	6519	_	10	10	MARK	MARK	_	_	I-fe_Certainty
-8	be	be	be	VB	VB	6519	_	10	10	COP	COP	_	_	I-fe_Certainty
+5	is	be	be	VBZ	VBZ	6519	_	6	6	AUXPASS	AUXPASS	_	_	B-Certainty
+6	said	say	say	VBN	VBN	6519	_	0	0	ROOT	ROOT	_	_	I-Certainty
+7	to	to	to	TO	TO	6519	_	10	10	MARK	MARK	_	_	I-Certainty
+8	be	be	be	VB	VB	6519	_	10	10	COP	COP	_	_	I-Certainty
 9	comparatively	comparatively	comparatively	RB	RB	6519	_	10	10	ADVMOD	ADVMOD	_	_	O
 10	free	free	free	JJ	JJ	6519	_	6	6	XCOMP	XCOMP	_	_	O
 11	.	.	.	.	.	6519	_	6	6	PUNCT	PUNCT	_	_	O
@@ -63755,11 +63755,11 @@
 4	of	of	of	IN	IN	6708	_	5	5	CASE	CASE	_	_	O
 5	words	word	word	NNS	NNS	6708	_	3	3	NMOD	NMOD	_	_	O
 6	is	be	be	VBZ	VBZ	6708	_	7	7	COP	COP	_	_	O
-7	subject	subject	subject	JJ	JJ	6708	_	0	0	ROOT	ROOT	_	_	B-fe_Order
-8	,	,	,	,	,	6708	_	7	7	PUNCT	PUNCT	_	_	I-fe_Order
-9	object	object	object	NN	NN	6708	_	7	7	DEP	DEP	_	_	I-fe_Order
-10	,	,	,	,	,	6708	_	9	9	PUNCT	PUNCT	_	_	I-fe_Order
-11	verb	verb	verb	VB	VB	6708	_	9	9	APPOS	APPOS	_	_	I-fe_Order
+7	subject	subject	subject	JJ	JJ	6708	_	0	0	ROOT	ROOT	_	_	B-order
+8	,	,	,	,	,	6708	_	7	7	PUNCT	PUNCT	_	_	I-order
+9	object	object	object	NN	NN	6708	_	7	7	DEP	DEP	_	_	I-order
+10	,	,	,	,	,	6708	_	9	9	PUNCT	PUNCT	_	_	I-order
+11	verb	verb	verb	VB	VB	6708	_	9	9	APPOS	APPOS	_	_	I-order
 12	.	.	.	.	.	6708	_	7	7	PUNCT	PUNCT	_	_	O
 
 1	This	this	this	DT	DT	6715	_	3	3	DET	DET	_	_	O
@@ -64462,14 +64462,14 @@
 13	in	in	in	IN	IN	6826	_	14	14	CASE	CASE	_	_	O
 14	nāo-phā	nāo-phā	nāo-phā	NN	NN	6826	_	11	11	NMOD	NMOD	_	_	S-data
 15	,	,	,	,	,	6826	_	14	14	PUNCT	PUNCT	_	_	O
-16	younger	younger	younger	JJR	JJR	6826	_	17	17	AMOD	AMOD	_	_	B-fe_Data_Translation
-17	brother	brother	brother	NN	NN	6826	_	14	14	APPOS	APPOS	_	_	I-fe_Data_Translation
+16	younger	younger	younger	JJR	JJR	6826	_	17	17	AMOD	AMOD	_	_	B-data_translation
+17	brother	brother	brother	NN	NN	6826	_	14	14	APPOS	APPOS	_	_	I-data_translation
 18	;	;	;	:	:	6826	_	17	17	PUNCT	PUNCT	_	_	O
 19	but	but	but	CC	CC	6826	_	23	23	CASE	CASE	_	_	O
 20	ū-pā	ū-pā	ū-pā	JJ	JJ	6826	_	23	23	AMOD	AMOD	_	_	S-data
 21	,	,	,	,	,	6826	_	23	23	PUNCT	PUNCT	_	_	O
-22	elder	elder	elder	JJR	JJR	6826	_	23	23	AMOD	AMOD	_	_	B-fe_Data_Translation
-23	brother	brother	brother	NN	NN	6826	_	17	17	NMOD	NMOD	_	_	I-fe_Data_Translation
+22	elder	elder	elder	JJR	JJR	6826	_	23	23	AMOD	AMOD	_	_	B-data_translation
+23	brother	brother	brother	NN	NN	6826	_	17	17	NMOD	NMOD	_	_	I-data_translation
 24	.	.	.	.	.	6826	_	6	6	PUNCT	PUNCT	_	_	O
 
 1	Concurrent	concurrent	concurrent	JJ	JJ	6830	_	2	2	AMOD	AMOD	_	_	O
@@ -64615,7 +64615,7 @@
 4	suffixes	suffix	suffix	NNS	NNS	6846	_	2	2	NMOD	NMOD	suffix.n	affix	O
 5	is	be	be	VBZ	VBZ	6846	_	13	13	COP	COP	_	_	O
 6	ch.āl,	ch.āl,	ch.āl,	JJ	JJ	6846	_	7	7	DEP	DEP	_	_	S-data
-7	male	male	male	NN	NN	6846	_	13	13	AMOD	AMOD	_	_	S-fe_Data_Translation
+7	male	male	male	NN	NN	6846	_	13	13	AMOD	AMOD	_	_	S-data_translation
 8	,	,	,	,	,	6846	_	7	7	PUNCT	PUNCT	_	_	O
 9	and	and	and	CC	CC	6846	_	7	7	CC	CC	_	_	O
 10	(	(	(	NN	NN	6846	_	7	7	CONJ	CONJ	_	_	O
@@ -64623,7 +64623,7 @@
 12	)	)	)	NN	NN	6846	_	13	13	COMPOUND	COMPOUND	_	_	O
 13	pūi	pūi	pūi	NN	NN	6846	_	0	0	ROOT	ROOT	_	_	S-data
 14	,	,	,	,	,	6846	_	13	13	PUNCT	PUNCT	_	_	O
-15	female	female	female	NN	NN	6846	_	13	13	APPOS	APPOS	_	_	S-fe_Data_Translation
+15	female	female	female	NN	NN	6846	_	13	13	APPOS	APPOS	_	_	S-data_translation
 16	.	.	.	.	.	6846	_	13	13	PUNCT	PUNCT	_	_	O
 
 1	It	it	it	PRP	PRP	6849	_	4	4	NSUBJ	NSUBJ	_	_	O
@@ -64742,11 +64742,11 @@
 15	and	and	and	CC	CC	6859	_	2	2	CC	CC	_	_	O
 16	means	mean	mean	VBZ	VBZ	6859	_	2	2	CONJ	CONJ	_	_	O
 17	‘	‘	‘	RB	RB	6859	_	16	16	ADVMOD	ADVMOD	_	_	O
-18	many	many	many	JJ	JJ	6859	_	19	19	ADVMOD	ADVMOD	_	_	S-fe_Data_Translation
+18	many	many	many	JJ	JJ	6859	_	19	19	ADVMOD	ADVMOD	_	_	S-data_translation
 19	’	’	’	CD	CD	6859	_	16	16	DOBJ	DOBJ	_	_	O
 20	,	,	,	,	,	6859	_	19	19	PUNCT	PUNCT	_	_	O
 21	‘	‘	‘	CD	CD	6859	_	22	22	NMOD:NPMOD	NMOD:NPMOD	_	_	O
-22	very	very	very	RB	RB	6859	_	19	19	ADVMOD	ADVMOD	_	_	S-fe_Data_Translation
+22	very	very	very	RB	RB	6859	_	19	19	ADVMOD	ADVMOD	_	_	S-data_translation
 23	’	’	’	RB	RB	6859	_	2	2	ADVMOD	ADVMOD	_	_	O
 24	.	.	.	.	.	6859	_	2	2	PUNCT	PUNCT	_	_	O
 
@@ -64872,9 +64872,9 @@
 16	khāk-kā	khāk-kā	khāk-kā	NN	NN	6875	_	17	17	COMPOUND	COMPOUND	_	_	I-data
 17	ṭū	ṭū	ṭū	NN	NN	6875	_	7	7	DEP	DEP	_	_	I-data
 18	,	,	,	,	,	6875	_	17	17	PUNCT	PUNCT	_	_	O
-19	of	of	of	IN	IN	6875	_	21	21	CASE	CASE	_	_	B-fe_Data_Translation
-20	a	a	a	DT	DT	6875	_	21	21	DET	DET	_	_	I-fe_Data_Translation
-21	daughter	daughter	daughter	NN	NN	6875	_	17	17	NMOD	NMOD	_	_	I-fe_Data_Translation
+19	of	of	of	IN	IN	6875	_	21	21	CASE	CASE	_	_	B-data_translation
+20	a	a	a	DT	DT	6875	_	21	21	DET	DET	_	_	I-data_translation
+21	daughter	daughter	daughter	NN	NN	6875	_	17	17	NMOD	NMOD	_	_	I-data_translation
 22	.	.	.	.	.	6875	_	5	5	PUNCT	PUNCT	_	_	O
 
 1	It	it	it	PRP	PRP	6878	_	4	4	NSUBJ	NSUBJ	_	_	O
