@@ -948,6 +948,7 @@ if options.mode in ["train", "refresh"]:
                         corefes = corefrmfemap[devex.frame.id]
                     else:
                         corefes = {}
+                    print(devex.get_str())
                     u, l, t = evaluate_example_argid(devex.invertedfes, dargmax, corefes, len(devex.tokens), NOTANFEID)
                     ures = np.add(ures, u)
                     labldres = np.add(labldres, l)
