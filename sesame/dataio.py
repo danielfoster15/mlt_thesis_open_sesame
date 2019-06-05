@@ -89,34 +89,29 @@ def read_conll(conll_file, syn_type=None):
     return examples, missingargs, totalexamples
 
 def create_target_lu_map():
-    #for target id, do later
-    sys.stderr.write("\nReading the lexical unit index file: {}\n".format(LU_INDEX))
-
-    lu_index_file = open(LU_INDEX, "rb")
-    tree = et.parse(lu_index_file)
-    root = tree.getroot()
-
     multiplicity = 0
     repeated = 0
     total = 0
 
     target_lu_map = {}
     lu_names = set([])
-    for lu in root.iter('{http://framenet.icsi.berkeley.edu}lu'):
-        lu_name = lu.attrib["name"]
-        lu_names.add(lu_name)
-
-        target_name = lu_name.split('.')[0]
-        LUDICT.addstr(target_name)
-        if target_name not in target_lu_map:
-            target_lu_map[target_name] = set([])
-        else:
-            repeated += 1
-        target_lu_map[target_name].add(lu_name)
-        if len(target_lu_map[target_name]) > multiplicity:
-            multiplicity = len(target_lu_map[target_name])
-        total += 1
-    lu_index_file.close()
+    for frame_file in os.listdir(FRAME_DIR):
+        with open(FRAME_DIR+'/'+frame_file, 'r') as f:
+            for line in f:
+                line = line.split()
+                if line[0] == 'LUs':
+                    for lu_name in line[1:]:
+                        lu_names.add(lu_name)
+                        target_name = lu_name.split('.')[0]
+                        LUDICT.addstr(target_name)
+                        if target_name not in target_lu_map:
+                            target_lu_map[target_name] = set([])
+                        else:
+                            repeated += 1
+                        target_lu_map[target_name].add(lu_name)
+                        if len(target_lu_map[target_name]) > multiplicity:
+                            multiplicity = len(target_lu_map[target_name])
+                        total += 1
 
     sys.stderr.write("# unique targets = {}\n".format(len(target_lu_map)))
     sys.stderr.write("# total targets = {}\n".format(total))
