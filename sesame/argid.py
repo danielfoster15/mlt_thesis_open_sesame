@@ -12,6 +12,8 @@ from discrete_argid_feats import ArgPosition, OutHeads, SpanWidth
 from raw_data import make_data_instance
 from semafor_evaluation import convert_conll_to_frame_elements
 
+reload(sys)  # Reload does the trick!
+sys.setdefaultencoding('UTF8')
 
 optpr = OptionParser()
 optpr.add_option("--testf", dest="test_conll", help="Annotated CoNLL test file", metavar="FILE", default=TEST_CONLL)
@@ -671,11 +673,11 @@ def get_loss(factorexprs, gold_fes, valid_fes, sentlen):
         return get_hinge_loss(factorexprs, gold_fes, valid_fes, sentlen)
 
     goldfactors = [Factor(span[0], span[1], feid) for feid in gold_fes for span in gold_fes[feid]]
-    #print([key.to_str(FEDICT) for key in factorexprs.keys()])
-    #print([gf.to_str(FEDICT) for gf in goldfactors])
-    #for gf in goldfactors:
-        #print(gf.to_str(FEDICT))
-        #print('factorexprs: ', factorexprs[gf])
+    print([key.to_str(FEDICT) for key in factorexprs.keys()])
+    print([gf.to_str(FEDICT) for gf in goldfactors])
+    for gf in goldfactors:
+        print(gf.to_str(FEDICT))
+        print('factorexprs: ', factorexprs[gf])
     numeratorexprs = [factorexprs[gf] for gf in goldfactors]
     numerator = esum(numeratorexprs)
 

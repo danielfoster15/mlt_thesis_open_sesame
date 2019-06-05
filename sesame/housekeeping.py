@@ -142,7 +142,7 @@ def filter_long_ex(dataset, use_span_clip, allowed_spanlen, notanfeid):
     longestfespan = 0
     tmpdataset = []
     for ex in dataset:
-        #print(ex.get_str())
+        print(ex.get_str())
         haslongfe = False
         # print "before", ex.invertedfes
         for feid in ex.invertedfes:
