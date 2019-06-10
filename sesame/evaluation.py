@@ -118,7 +118,7 @@ def labeled_eval(corefes, goldfes, predargmax, notanfeid):
 
 def token_level_eval(sentlen, goldfes, predargmax, notanfeid):
     goldtoks = [0 for _ in xrange(sentlen)]
-    print(goldfes)
+    #print(goldfes)
     for feid in goldfes:
         for span in goldfes[feid]:
             for s in xrange(span[0], span[1]+1):
