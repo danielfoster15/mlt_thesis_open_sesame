@@ -12,7 +12,7 @@ from discrete_argid_feats import ArgPosition, OutHeads, SpanWidth
 from raw_data import make_data_instance
 from semafor_evaluation import convert_conll_to_frame_elements
 
-reload(sys)  # Reload does the trick!
+reload(sys)
 sys.setdefaultencoding('UTF8')
 
 optpr = OptionParser()
@@ -81,10 +81,11 @@ frmfemap, corefrmfemap, _ = read_frame_maps()
 #frmfemap[FRAMEDICT.getid("Measurable_attributes")].append(FEDICT.getid("Dimension"))
 #frmfemap[FRAMEDICT.getid("Removing")].append(FEDICT.getid("Frequency"))
 
+#use word vectors
 if USE_WV:
     wvs = get_wvec_map()
     PRETDIM = len(wvs.values()[0])
-
+#user hierarchy of frame relations
 if USE_HIER:
     frmrelmap, feparents = read_frame_relations()
 
@@ -239,14 +240,19 @@ sys.stderr.write("\n_____________________\n\n")
 
 model = dy.Model()
 adam = dy.AdamTrainer(model, 0.0005, 0.01, 0.9999, 1e-8)
-
+#lookup dictionary thing for tokens in the vocabulary
 v_x = model.add_lookup_parameters((VOCDICT.size(), TOKDIM))
+#lookup dictionary thing for parts of speech
 p_x = model.add_lookup_parameters((POSDICT.size(), POSDIM))
-
+#lookup dictionary for LUs based on the LUDICT dictionary of base LU words
 lu_x = model.add_lookup_parameters((LUDICT.size(), LUDIM))
+#lookup dictionary for LU parts of speech
 lp_x = model.add_lookup_parameters((LUPOSDICT.size(), LUPOSDIM))
+#lookup dictionary for frames
 frm_x = model.add_lookup_parameters((FRAMEDICT.size(), FRMDIM))
+#lookup dictionary for BIOS tags
 ap_x = model.add_lookup_parameters((ArgPosition.size(), ARGPOSDIM))
+#lookup dictionary for how long a sentence is?
 sp_x = model.add_lookup_parameters((SpanWidth.size(), SPANDIM))
 
 if USE_DEPS:
@@ -255,9 +261,9 @@ if USE_DEPS:
 
 if USE_CONSTITS:
     ct_x = model.add_lookup_parameters((CLABELDICT.size(), PHRASEDIM))
-
+#lookup dict for FEs from FEDICT
 fe_x = model.add_lookup_parameters((FEDICT.size(), FEDIM))
-
+#use word vectors
 if USE_WV:
     e_x = model.add_lookup_parameters((VOCDICT.size(), PRETDIM))
     for wordid in wvs:
