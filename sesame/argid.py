@@ -285,6 +285,9 @@ baserevlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMINPDIM, model)
 w_bi = model.add_parameters((LSTMINPDIM, 2 * LSTMINPDIM))
 b_bi = model.add_parameters((LSTMINPDIM, 1))
 
+w_uni = model.add_parameters((LSTMINPDIM, LSTMINPDIM))
+b_uni = model.add_parameters((LSTMINPDIM, 1))
+
 tgtlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model)
 ctxtlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model)
 
@@ -320,7 +323,7 @@ if USE_PTB_CONSTITS:
 
 def get_base_embeddings(trainmode, unkdtokens, tg_start, sentence):
     sentlen = len(unkdtokens)
-
+    #embedding_x
     if trainmode:
         emb_x = [dy.noise(v_x[tok], 0.1) for tok in unkdtokens]
     else:
@@ -347,6 +350,7 @@ def get_base_embeddings(trainmode, unkdtokens, tg_start, sentence):
     baserev = brinit.transduce(reversed(embposdist_x))
     basebi_x = [dy.rectify(w_bi * dy.concatenate([basefwd[eidx], baserev[sentlen - eidx - 1]]) +
                     b_bi) for eidx in xrange(sentlen)]
+    baseuni_x = [dy.rectify(w_uni * basefwd[eidx] + b_uni) for eidx in xrange(sentlen)]
 
     if USE_DEPS:
         dhead_x = [embposdist_x[dephead] for dephead in sentence.depheads]
@@ -356,7 +360,7 @@ def get_base_embeddings(trainmode, unkdtokens, tg_start, sentence):
                         b_di) for j in xrange(sentlen)]
         basebi_x = baseinp_x
 
-    return basebi_x
+    return baseuni_x
 
 
 def get_target_frame_embeddings(embposdist_x, tfdict):
