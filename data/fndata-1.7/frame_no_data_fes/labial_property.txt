@@ -1,0 +1,3 @@
+Frame	labial_property
+LUs	labial.n	denti-labial.n	
+FEs	subclass	language_variety

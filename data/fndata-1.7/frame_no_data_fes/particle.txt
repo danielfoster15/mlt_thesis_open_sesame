@@ -1,0 +1,3 @@
+Frame	particle
+LUs	particle.n	
+FEs	language_variety	subclass

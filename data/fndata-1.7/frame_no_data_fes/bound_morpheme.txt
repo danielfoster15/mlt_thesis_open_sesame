@@ -1,0 +1,3 @@
+Frame	bound_morpheme
+LUs	conjugation.n	declension.n	inflection.n	inflexion.n	
+FEs	language_variety	subclass	location	

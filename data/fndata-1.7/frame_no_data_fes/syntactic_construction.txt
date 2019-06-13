@@ -1,0 +1,3 @@
+Frame	syntactic_construction
+LUs	construction.n	
+FEs	language_variety	name	subclass

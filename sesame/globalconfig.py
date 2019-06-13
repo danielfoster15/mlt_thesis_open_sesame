@@ -15,16 +15,16 @@ DEBUG_MODE = configuration["debug_mode"]
 # The following variables are held constant throughout the repository. Change at your own peril!
 
 PARSER_DATA_DIR = DATA_DIR + "neural/fn" + VERSION + "/"
-TRAIN_FTE = PARSER_DATA_DIR + "fn" + VERSION + ".fulltext.train.syntaxnet.conll"
+TRAIN_FTE = PARSER_DATA_DIR + "fn" + VERSION + ".fulltext.train.syntaxnet_no_data_fes.conll"
 TRAIN_EXEMPLAR = PARSER_DATA_DIR + "fn" + VERSION + ".exemplar.train.syntaxnet.conll"
-DEV_CONLL = PARSER_DATA_DIR + "fn" + VERSION + ".dev.syntaxnet.conll"
-TEST_CONLL = PARSER_DATA_DIR + "fn" + VERSION + ".test.syntaxnet.conll"
+DEV_CONLL = PARSER_DATA_DIR + "fn" + VERSION + ".dev.syntaxnet_no_data_fes.conll"
+TEST_CONLL = PARSER_DATA_DIR + "fn" + VERSION + ".test.syntaxnet_no_data_fes.conll"
 
 FN_DATA_DIR = DATA_DIR + "fndata-" + VERSION + "/"
 #LU_INDEX = FN_DATA_DIR + "luIndex.xml"
 LU_DIR = FN_DATA_DIR + "lu/"
 FULLTEXT_DIR = FN_DATA_DIR + "fulltext/"
-FRAME_DIR = FN_DATA_DIR + "frame/"
+FRAME_DIR = FN_DATA_DIR + "frame_no_data_fes/"
 FRAME_REL_FILE = FN_DATA_DIR + "frRelation.xml"
 
 #TEST_FILES = [

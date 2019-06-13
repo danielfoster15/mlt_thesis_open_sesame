@@ -1,0 +1,3 @@
+Frame	adposition
+LUs	postposition.n	preposition.n	
+FEs	language_variety	subclass	base

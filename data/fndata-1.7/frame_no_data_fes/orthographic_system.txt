@@ -1,0 +1,3 @@
+Frame	orthographic_system
+LUs	orthography.n	
+FEs	language_variety	subclass

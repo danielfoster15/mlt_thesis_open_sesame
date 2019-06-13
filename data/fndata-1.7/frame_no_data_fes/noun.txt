@@ -1,0 +1,3 @@
+Frame	noun
+LUs	noun.n	gerund.n	
+FEs	language_variety	subclass

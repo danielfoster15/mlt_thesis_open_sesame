@@ -27,7 +27,7 @@ optpr.add_option("--loss", type="choice", choices=["log", "softmaxm", "hinge"], 
 optpr.add_option("--cost", type="choice", choices=["hamming", "recall"], default="recall")
 optpr.add_option("--roc", type="int", default=2)
 optpr.add_option("--hier", action="store_true", default=False)
-optpr.add_option("--syn", type="choice", choices=["dep", "constit", "none"], default="none")
+optpr.add_option("--syn", type="choice", choices=["dep", "constit", "depconstit", "none"], default="none")
 optpr.add_option("--ptb", action="store_true", default=False)
 optpr.add_option("--raw_input", type="str", metavar="FILE")
 optpr.add_option("--config", type="str", metavar="FILE")
@@ -52,9 +52,9 @@ if options.mode in ["test", "predict"]:
 USE_WV = True
 USE_HIER = options.hier
 USE_DEPS = USE_CONSTITS = False
-if options.syn == "dep":
+if options.syn == "dep" or options.syn == "depconstit":
     USE_DEPS = True
-elif options.syn == "constit":
+elif options.syn == "constit" or options.syn == "depconstit":
     USE_CONSTITS = True
 USE_PTB_CONSTITS = options.ptb
 SAVE_FOR_ENSEMBLE = (options.mode == "test") and options.saveensemble
@@ -208,7 +208,7 @@ if USE_DEPS:
     ALL_FEATS_DIM += OUTHEADDIM + PATHDIM
 
 if USE_CONSTITS:
-    ALL_FEATS_DIM += 1 + PHRASEDIM  # is a constit and what is it
+    ALL_FEATS_DIM += 1 + PHRASEDIM
     ALL_FEATS_DIM += PATHDIM
 
 NUMEPOCHS = configuration["num_epochs"]
@@ -360,7 +360,7 @@ def get_base_embeddings(trainmode, unkdtokens, tg_start, sentence):
                         b_di) for j in xrange(sentlen)]
         basebi_x = baseinp_x
 
-    return baseuni_x
+    return basebi_x
 
 
 def get_target_frame_embeddings(embposdist_x, tfdict):

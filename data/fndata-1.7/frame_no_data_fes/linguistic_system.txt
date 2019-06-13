@@ -1,0 +1,3 @@
+Frame	linguistic_system
+LUs	variety.n	speech.n	dialect.n	standard.n	language.n	grammar.n
+FEs	language_subfamily	language_family	language_group	language	name	subclass	location	spoken_by	

@@ -1,0 +1,3 @@
+Frame	segment
+LUs	consonant.n	vowel.n	
+FEs	subclass	position	language_variety	reference_language

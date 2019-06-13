@@ -1,0 +1,3 @@
+Frame	phonological_system
+LUs	phonology.n	
+FEs	language_variety	

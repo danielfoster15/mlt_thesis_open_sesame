@@ -1,0 +1,3 @@
+Frame	tone_property
+LUs	accent.n	tone.n	pitch.n	
+FEs	language_variety	subclass

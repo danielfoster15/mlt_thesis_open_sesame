@@ -1,0 +1,3 @@
+Frame	adjectival
+LUs	adjective.n	comparative.n	positive.n	superlative.n	
+FEs	language_variety	subclass

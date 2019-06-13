@@ -1,0 +1,3 @@
+Frame	frm_sign
+LUs	denote.v	express.v	indicate.v	mark.v	
+FEs	indicator	indicated	language_variety	reference_language	condition	frequency	certainty	

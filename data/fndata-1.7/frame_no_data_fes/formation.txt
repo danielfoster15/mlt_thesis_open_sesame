@@ -1,0 +1,3 @@
+Frame	formation
+LUs	form.v	build.v	create.v	
+FEs	formed_entity	formed_from	process	degree	certainty 	language_variety	reference_language	condition

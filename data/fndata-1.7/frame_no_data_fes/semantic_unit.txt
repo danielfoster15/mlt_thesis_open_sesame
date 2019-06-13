@@ -1,0 +1,3 @@
+Frame	semantic_unit
+LUs	meaning.n	signification.n	sense.n	
+FEs	subclass	language_variety

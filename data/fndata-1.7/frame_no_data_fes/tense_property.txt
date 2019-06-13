@@ -1,0 +1,3 @@
+Frame	tense_property
+LUs	past.n	present.n	future.n	habitual.n	tense.n	
+FEs	subclass	language_variety	lexeme

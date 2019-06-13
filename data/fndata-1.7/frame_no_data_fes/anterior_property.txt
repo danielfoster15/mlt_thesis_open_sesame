@@ -1,0 +1,3 @@
+Frame	anterior_property
+LUs	alveolar.n	dental.n	
+FEs	language_variety	subclass

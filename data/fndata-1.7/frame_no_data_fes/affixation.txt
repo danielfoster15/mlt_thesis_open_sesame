@@ -1,0 +1,3 @@
+Frame	affixation
+LUs	affix.v	affixed.a	infix.v	infixed.a	postfixed.a	prefix.v	suffix.v	suffixed.a	prefixed.a	conjugate.v	conjugated.a	
+FEs	stem	affix	language_user	anthropomorphic_entity	language_variety	frequency	manner	purpose	condition	position	degree	result	reference_language	location	evidence

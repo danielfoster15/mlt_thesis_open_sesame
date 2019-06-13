@@ -1,0 +1,3 @@
+Frame	polarity_property
+LUs	negation.n	negative.n	
+FEs	subclass	

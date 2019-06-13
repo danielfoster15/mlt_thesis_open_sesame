@@ -1,0 +1,3 @@
+Frame	frm_sequence
+LUs	follow.v	order.n	precede.v	put.v	succession.v	
+FEs	entity_1	entity_2	order	entities	language_variety	reference_language	condition	frequency	certainty

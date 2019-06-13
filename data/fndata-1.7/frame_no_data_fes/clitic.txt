@@ -1,0 +1,3 @@
+Frame	clitic
+LUs	enclitic.n	
+FEs

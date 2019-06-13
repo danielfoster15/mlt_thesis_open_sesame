@@ -1,0 +1,3 @@
+Frame	nasality_property
+LUs	nasal.n	
+FEs	language_variety	subclass	position

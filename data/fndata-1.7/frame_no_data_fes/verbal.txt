@@ -1,0 +1,3 @@
+Frame	verbal
+LUs	copula.n	auxiliary.n	verb.n	intransitive.n	transitive.n	
+FEs	language_variety	subclass

@@ -1,0 +1,3 @@
+Frame	article
+LUs	article.n	
+FEs	language_variety	subclass

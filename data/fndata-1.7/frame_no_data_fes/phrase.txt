@@ -1,0 +1,3 @@
+Frame	phrase
+LUs	phrase.n	
+FEs	subclass	language_variety

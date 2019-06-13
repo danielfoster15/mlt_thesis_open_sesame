@@ -1,0 +1,3 @@
+Frame	agreement
+LUs	agree.v	agreement.n	
+FEs	participant_1	participant_2	manner	degree	frequency	language_variety	reference_language	condition	

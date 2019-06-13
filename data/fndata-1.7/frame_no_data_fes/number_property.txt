@@ -1,0 +1,3 @@
+Frame	number_property
+LUs	dual.n	number.n	plural.n	singular.n	
+FEs	subclass	language_variety

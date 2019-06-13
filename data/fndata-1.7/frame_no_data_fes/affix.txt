@@ -1,0 +1,3 @@
+Frame	affix
+LUs	suffix.n	infix.n	prefix.n	
+FEs	subclass	language_variety

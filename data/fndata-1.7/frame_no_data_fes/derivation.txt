@@ -1,0 +1,3 @@
+Frame	derivation
+LUs	derived.a	changed.a	transform.v	take.v	
+FEs	word	derivational_morpheme	null_morpheme	part_of_speech	dni	condition	degree	means	

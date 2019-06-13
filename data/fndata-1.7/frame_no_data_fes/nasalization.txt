@@ -1,0 +1,3 @@
+Frame	nasalization
+LUs	nasalize.v	nasalization.n	
+FEs	script	subclass	language_variety

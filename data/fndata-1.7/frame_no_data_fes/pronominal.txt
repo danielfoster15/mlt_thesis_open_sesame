@@ -1,0 +1,3 @@
+Frame	pronominal
+LUs	demonstrative.n	pronoun.n	
+FEs	language_variety	subclass

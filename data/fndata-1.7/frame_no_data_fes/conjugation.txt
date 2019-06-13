@@ -1,0 +1,3 @@
+Frame	conjugation
+LUs	conjugate.v	agree.v	inflected.a	change.v	marked.a	conjugated.a	take.v	
+FEs	verb	grammatical_category	argument	dni	morpheme	null_morpheme	degree	manner	condition	means	agent	

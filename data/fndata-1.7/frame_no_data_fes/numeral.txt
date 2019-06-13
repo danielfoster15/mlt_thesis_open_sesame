@@ -1,0 +1,3 @@
+Frame	numeral
+LUs	numeral.n	number.n	distributive.n	cardinal.n	multiplicative.n	ordinal.n	
+FEs	language_variety	subclass	range

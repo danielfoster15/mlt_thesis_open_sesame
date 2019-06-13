@@ -1,0 +1,3 @@
+Frame	linguistic_sign
+LUs	sign.n	
+FEs	subclass	frequency	language_variety
