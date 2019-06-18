@@ -259,6 +259,21 @@ def get_wvec_map():
     return wd_vecs
 
 
+def get_chvec_map():
+    if not os.path.exists(CHARACTER_EMBEDDINGS):
+        raise Exception("Pretrained embeddings file not found!", CHARACTER_EMBEDDINGS)
+    sys.stderr.write("\nReading pretrained embeddings from {} ...\n".format(CHARACTER_EMBEDDINGS))
+    if CHARACTER_EMBEDDINGS.endswith('txt'):
+        embs_file = CHARACTER_EMBEDDINGS
+    else:
+        raise Exception('Pretrained embeddings file needs to be a text file, not archive!',
+                        CHARACTER_EMBEDDINGS)
+    wvf = open(embs_file, 'r')
+    wvf.readline()
+    ch_vecs = {CHARDICT.addstr(line.split(' ')[0]):
+                [float(f) for f in line.strip().split(' ')[1:]] for line in wvf}
+    return ch_vecs
+
 def get_chains(node, inherit_map, path):
     if node in inherit_map:
         for par in inherit_map[node]:

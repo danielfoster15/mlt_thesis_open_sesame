@@ -5,6 +5,7 @@ from frame_semantic_graph import LexicalUnit, Frame, FrameElement, FrameSemParse
 from housekeeping import *
 
 VOCDICT = FspDict()
+CHARDICT = FspDict()
 LEMDICT = FspDict()
 POSDICT = FspDict()
 FRAMEDICT = FspDict()

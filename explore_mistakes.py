@@ -21,11 +21,10 @@ recall_problems = []
 precision_problems = []
 for gold, prediction in list(zip(gold_FEs, predicted_FEs)):
 	if gold != prediction:
-		#print('gold: ',gold,' prediction: ', prediction)
 		if prediction == 'O':
 			recall_problems.append(gold)
 		else:
-			precision_problems.append(gold)
+			precision_problems.append((gold, prediction))
 
 
 
