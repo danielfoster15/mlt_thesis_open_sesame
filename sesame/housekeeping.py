@@ -71,6 +71,7 @@ class FspDict:
         if self._locked:
             raise Exception("dictionary already locked!")
         self.addstr(UNK)
+        self.addstr(UNKCHR)
         self._locked = True
         self._unseens = set([])
 
@@ -113,6 +114,19 @@ def unk_replace_tokens(tokens, replaced, vocdict, unkprob, unktoken):
             replaced.append(unktoken)
         else:
             replaced.append(t)
+
+def unk_replace_characters(characters, replaced, chardict, unkprob, unkchar):
+    """
+    replaces singleton tokens in the train set with UNK with a probability UNK_PROB
+    :param tokens: original token IDs
+    :param replaced: replaced token IDs
+    :return:
+    """
+    for c in characters:
+        if chardict.is_singleton(c) and random.random() < unkprob:
+            replaced.append(unkchar)
+        else:
+            replaced.append(c)
 
 
 def extract_spans(indices):

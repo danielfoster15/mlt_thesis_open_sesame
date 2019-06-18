@@ -67,6 +67,7 @@ class FrameSemParse(object):
 
     def __init__(self, sentence):
         self.tokens = sentence.tokens
+        self.chars = sentence.chars
         self.postags = sentence.postags
         self.lemmas = sentence.lemmas
         # TODO(Swabha): add some inheritance, etc.

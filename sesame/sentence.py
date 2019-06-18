@@ -8,16 +8,19 @@ class Sentence(object):
     The same sentence can be associated with multiple frame-semantic parses"""
 
     # TODO(Swabha): add inheritance for constit sentence vs dep sentence
-    def __init__(self, syn_type, elements=None, tokens=None, postags=None, lemmas=None, sentnum=None):
+    def __init__(self, syn_type, elements=None, tokens=None, chars=None, postags=None, lemmas=None, sentnum=None):
         if elements:
             self.sent_num = elements[0].sent_num
             self.tokens = [e.form for e in elements]
+            self.chars = [char for sublist in [e.chars for e in elements] for char in sublist]
             self.postags = [e.nltk_pos for e in elements]
             self.lemmas = [e.nltk_lemma for e in elements]
         if sentnum:
             self.sent_num = sentnum
         if tokens:
             self.tokens = tokens
+        if chars:
+            self.chars = chars
         if postags:
             self.postags = postags
         if lemmas:

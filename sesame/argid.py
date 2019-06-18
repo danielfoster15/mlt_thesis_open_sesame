@@ -94,6 +94,7 @@ if USE_HIER:
 lock_dicts()
 # Default labels - in CoNLL format these correspond to _
 UNKTOKEN = VOCDICT.getid(UNK)
+UNKCHAR = CHARDICT.getid(UNKCHR)
 NOTANLU = LUDICT.getid(EMPTY_LABEL)
 NOTANFEID = FEDICT.getid(EMPTY_FE)  # O in CoNLL format.
 
@@ -131,7 +132,7 @@ configuration = {"train": train_conll,
                  "unk_prob": 0.1,
                  "dropout_rate": 0.01,
                  "token_dim": 60,
-                 "character_dim": 75,
+                 "character_dim": 101,
                  "pos_dim": 4,
                  "lu_dim": 64,
                  "lu_pos_dim": 2,
@@ -336,6 +337,12 @@ b_z = model.add_parameters((HIDDENDIM, 1))
 w_f = model.add_parameters((1, HIDDENDIM))
 b_f = model.add_parameters((1, 1))
 
+ch_z = model.add_parameters((HIDDENDIM, ALL_FEATS_DIM))
+bch_z = model.add_parameters((HIDDENDIM, 1))
+ch_f = model.add_parameters((1, HIDDENDIM))
+bch_f = model.add_parameters((1, 1))
+
+
 ################################################################################################
 # if FE_CLASSIFIER:
 #     fe_pathfwdlstm = dy.LSTMBuilder(LSTMDEPTH, PHRASEDIM, PATHLSTMDIM, model)
@@ -421,7 +428,7 @@ def get_base_character_embeddings(trainmode, unkdcharacters, tg_start):
         for j in xrange(sentlen):
             if unkdcharacters[j] in chvs:
                 nonupdatedchv = dy.nobackprop(e_x[unkdcharacters[j]])
-                baseinp_x[j] = baseinp_x[j] + ch_e * nonupdatedwv + bch_e
+                baseinp_x[j] = baseinp_x[j] + ch_e * nonupdatedchv + bch_e
 
     embdist_x = [dy.rectify(baseinp_x[j]) for j in xrange(sentlen)]
     #print(' this is embpostdist: ' , embposdist_x, '\n\n this is baseinp_x:  ', baseinp_x, '\n\n\n\n\n')
@@ -541,7 +548,7 @@ def get_cpath_embeddings(sentence):
     return phrpaths
 
 
-def get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, spaths_x=None, cpaths_x=None):
+def get_factor_expressions(fws, bws, tfemb, tf_char_emb, tfdict, valid_fes, sentence, spaths_x=None, cpaths_x=None):
     factexprs = {}
     sentlen = len(fws)
 
@@ -558,7 +565,7 @@ def get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, spaths_
             spanwidth = sp_x[SpanWidth.howlongisspan(i, j)]
             spanpos = ap_x[ArgPosition.whereisarg((i, j), targetspan)]
 
-            fbemb_ij_basic = dy.concatenate([fws[i][j], bws[i][j], tfemb, spanlen, logspanlen, spanwidth, spanpos])
+            fbemb_ij_basic = dy.concatenate([fws[i][j], bws[i][j], tfemb, tf_char_emb, spanlen, logspanlen, spanwidth, spanpos])
             if USE_DEPS:
                 outs = oh_s[OutHeads.getnumouts(i, j, sentence.outheads)]
                 shp = spaths_x[sentence.shortest_paths[(i, j, targetspan[0])]]
@@ -578,7 +585,7 @@ def get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, spaths_
                 else:
                     fefixed = fe_x[y]
                 fbemb_ijy = dy.concatenate([fefixed, fbemb_ij])
-                factexprs[fctr] = w_f * dy.rectify(w_z * fbemb_ijy + b_z) + b_f
+                factexprs[fctr] = w_f * ch_f * dy.rectify(w_z * ch_z * fbemb_ijy + b_z +bch_z) + b_f +bch_f
     return factexprs
 
 
@@ -878,7 +885,7 @@ def decode(factexprscalars, sentlen, valid_fes):
     return mergedargmax
 
 
-def identify_fes(unkdtoks, sentence, tfdict, goldfes=None, testidx=None):
+def identify_fes(unkdtoks, unkdchars, sentence, tfdict, goldfes=None, testidx=None):
     dy.renew_cg()
     trainmode = (goldfes is not None)
 
@@ -892,6 +899,9 @@ def identify_fes(unkdtoks, sentence, tfdict, goldfes=None, testidx=None):
     embpos_x = get_base_embeddings(trainmode, unkdtoks, tg_start, sentence)
     tfemb, frame = get_target_frame_embeddings(embpos_x, tfdict)
 
+    embchars_x = get_base_character_embeddings(trainmode, unkdchars, tg_start)
+    tf_char_emb, ch_frame = get_target_frame_embeddings(embchars_x, tfdict)
+
     fws, bws = get_span_embeddings(embpos_x)
     valid_fes = frmfemap[frame.id] + [NOTANFEID]
     if USE_DEPS:
@@ -901,7 +911,7 @@ def identify_fes(unkdtoks, sentence, tfdict, goldfes=None, testidx=None):
         cpaths_x = get_cpath_embeddings(sentence)
         factor_exprs = get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, cpaths_x=cpaths_x)
     else:
-        factor_exprs = get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence)
+        factor_exprs = get_factor_expressions(fws, bws, tfemb, tf_char_emb, tfdict, valid_fes, sentence)
 
     if trainmode:
         segrnnloss = get_loss(factor_exprs, goldfes, valid_fes, sentlen)
@@ -1007,9 +1017,7 @@ if options.mode in ["train", "refresh"]:
             unkedtoks = []
             unkedchars = []
             unk_replace_tokens(trex.tokens, unkedtoks, VOCDICT, UNK_PROB, UNKTOKEN)
-
-            ##I STOPPED HERE KEEP WORKING HERE 18.6.19###
-            unk_replace_characters(THISTHISTIHS)
+            unk_replace_characters(trex.chars, unkedchars, CHARDICT, UNK_PROB, UNKCHAR)
 
 
             if USE_PTB_CONSTITS and type(trex) == Sentence:  # a PTB example
@@ -1018,6 +1026,7 @@ if options.mode in ["train", "refresh"]:
                                                       trex.constitspans.keys())
             else:  # an FN example
                 trexloss, taggedinex = identify_fes(unkedtoks,
+                                                    unkedchars,
                                                     trex.sentence,
                                                     trex.targetframedict,
                                                     goldfes=trex.invertedfes)

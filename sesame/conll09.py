@@ -26,6 +26,10 @@ class CoNLL09Element:
         lufields = ['_', '_']
         self.id = int(ele[0])
         self.form = VOCDICT.addstr(ele[1].lower())
+        characters = []
+        for c in ele[1].lower():
+            characters.append(c)
+        self.chars = [CHARDICT.addstr(c) for c in characters]
         self.nltk_lemma = LEMDICT.addstr(ele[3])
         self.fn_pos = ele[4]  # Not a gold POS tag, provided by taggers used in FrameNet, ignore.
         self.nltk_pos = POSDICT.addstr(ele[5])
@@ -94,6 +98,7 @@ class CoNLL09Example(FrameSemParse):
 
     def __init__(self, sentence, elements):
         FrameSemParse.__init__(self, sentence)
+       #print(sentence)
         # not in parent class
         self._elements = elements
         self.sent_num = elements[0].sent_num
@@ -254,6 +259,7 @@ class CoNLL09Example(FrameSemParse):
 
 def lock_dicts():
     VOCDICT.lock()
+    CHARDICT.lock()
     LEMDICT.lock()
     POSDICT.lock()
     FRAMEDICT.lock()
@@ -266,6 +272,7 @@ def lock_dicts():
 
 def post_train_lock_dicts():
     VOCDICT.post_train_lock()
+    CHARDICT.post_train_lock()
     LEMDICT.post_train_lock()
     POSDICT.post_train_lock()
     FRAMEDICT.post_train_lock()
