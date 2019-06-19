@@ -27,7 +27,7 @@ class CoNLL09Element:
         self.id = int(ele[0])
         self.form = VOCDICT.addstr(ele[1].lower())
         characters = []
-        for c in ele[1].lower():
+        for c in ele[1]:
             characters.append(c)
         self.chars = [CHARDICT.addstr(c) for c in characters]
         self.nltk_lemma = LEMDICT.addstr(ele[3])

@@ -132,7 +132,7 @@ configuration = {"train": train_conll,
                  "unk_prob": 0.1,
                  "dropout_rate": 0.01,
                  "token_dim": 60,
-                 "character_dim": 101,
+                 "character_dim": 300,
                  "pos_dim": 4,
                  "lu_dim": 64,
                  "lu_pos_dim": 2,
@@ -178,7 +178,7 @@ LUPOSDIM = configuration["lu_pos_dim"]
 FRMDIM = configuration["frame_dim"]
 FEDIM = configuration["fe_dim"]
 INPDIM = TOKDIM + POSDIM + 1
-CHINPDIM= CHDIM
+CHINPDIM= CHDIM + 1
 
 PATHLSTMDIM = configuration["path_lstm_dim"]
 PATHDIM = configuration["path_dim"]
@@ -427,7 +427,7 @@ def get_base_character_embeddings(trainmode, unkdcharacters, tg_start):
     if USE_CHV:
         for j in xrange(sentlen):
             if unkdcharacters[j] in chvs:
-                nonupdatedchv = dy.nobackprop(e_x[unkdcharacters[j]])
+                nonupdatedchv = dy.nobackprop(ch_x[unkdcharacters[j]])
                 baseinp_x[j] = baseinp_x[j] + ch_e * nonupdatedchv + bch_e
 
     embdist_x = [dy.rectify(baseinp_x[j]) for j in xrange(sentlen)]
@@ -565,7 +565,7 @@ def get_factor_expressions(fws, bws, tfemb, tf_char_emb, tfdict, valid_fes, sent
             spanwidth = sp_x[SpanWidth.howlongisspan(i, j)]
             spanpos = ap_x[ArgPosition.whereisarg((i, j), targetspan)]
 
-            fbemb_ij_basic = dy.concatenate([fws[i][j], bws[i][j], tfemb, tf_char_emb, spanlen, logspanlen, spanwidth, spanpos])
+            fbemb_ij_basic = dy.concatenate([fws[i][j], bws[i][j], tf_char_emb, spanlen, logspanlen, spanwidth, spanpos])
             if USE_DEPS:
                 outs = oh_s[OutHeads.getnumouts(i, j, sentence.outheads)]
                 shp = spaths_x[sentence.shortest_paths[(i, j, targetspan[0])]]
@@ -585,7 +585,7 @@ def get_factor_expressions(fws, bws, tfemb, tf_char_emb, tfdict, valid_fes, sent
                 else:
                     fefixed = fe_x[y]
                 fbemb_ijy = dy.concatenate([fefixed, fbemb_ij])
-                factexprs[fctr] = w_f * ch_f * dy.rectify(w_z * ch_z * fbemb_ijy + b_z +bch_z) + b_f +bch_f
+                factexprs[fctr] = w_f * dy.rectify(w_z * fbemb_ijy + b_z) + b_f
     return factexprs
 
 
@@ -903,6 +903,7 @@ def identify_fes(unkdtoks, unkdchars, sentence, tfdict, goldfes=None, testidx=No
     tf_char_emb, ch_frame = get_target_frame_embeddings(embchars_x, tfdict)
 
     fws, bws = get_span_embeddings(embpos_x)
+    chfws, chbws = get_span_embeddings(embchars_x)
     valid_fes = frmfemap[frame.id] + [NOTANFEID]
     if USE_DEPS:
         spaths_x = get_deppath_embeddings(sentence, embpos_x)
@@ -911,7 +912,7 @@ def identify_fes(unkdtoks, unkdchars, sentence, tfdict, goldfes=None, testidx=No
         cpaths_x = get_cpath_embeddings(sentence)
         factor_exprs = get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, cpaths_x=cpaths_x)
     else:
-        factor_exprs = get_factor_expressions(fws, bws, tfemb, tf_char_emb, tfdict, valid_fes, sentence)
+        factor_exprs = get_factor_expressions(chfws, chbws, tfemb, tf_char_emb, tfdict, valid_fes, sentence)
 
     if trainmode:
         segrnnloss = get_loss(factor_exprs, goldfes, valid_fes, sentlen)
@@ -1045,6 +1046,7 @@ if options.mode in ["train", "refresh"]:
                 for devex in devexamples:
 
                     dargmax = identify_fes(devex.tokens,
+                                           devex.chars,
                                            devex.sentence,
                                            devex.targetframedict)
                     if devex.frame.id in corefrmfemap:
