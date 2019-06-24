@@ -149,8 +149,8 @@ configuration = {"train": train_conll,
                  "use_dropout": USE_DROPOUT,
                  "pretrained_embedding_dim": PRETDIM,
                  "pretrained_character_embeddings_dim": PRETCHDIM,
-                 "num_epochs": 10 if not options.exemplar else 25,
-                 "patience": 3,
+                 "num_epochs": 25 if not options.exemplar else 25,
+                 "patience": 25,
                  "eval_after_every_epochs": 100,
                  "dev_eval_epoch_frequency": 5}
 configuration_file = os.path.join(model_dir, "configuration.json")
@@ -204,7 +204,7 @@ ALL_FEATS_DIM = 2 * LSTMDIM \
                 + ARGPOSDIM \
                 + SPANDIM \
                 + 2  # spanlen and log spanlen features and is a constitspan
-
+ALL_FEATS_DIM = 920
 
 if USE_DEPS:
     DEPHEADDIM = LSTMINPDIM + POSDIM
@@ -548,7 +548,7 @@ def get_cpath_embeddings(sentence):
     return phrpaths
 
 
-def get_factor_expressions(fws, bws, tfemb, tf_char_emb, tfdict, valid_fes, sentence, spaths_x=None, cpaths_x=None):
+def get_factor_expressions(fws, bws, tfemb, chfws, chbws, tf_char_emb, tfdict, valid_fes, sentence, spaths_x=None, cpaths_x=None):
     factexprs = {}
     sentlen = len(fws)
 
@@ -565,7 +565,11 @@ def get_factor_expressions(fws, bws, tfemb, tf_char_emb, tfdict, valid_fes, sent
             spanwidth = sp_x[SpanWidth.howlongisspan(i, j)]
             spanpos = ap_x[ArgPosition.whereisarg((i, j), targetspan)]
 
-            fbemb_ij_basic = dy.concatenate([fws[i][j], bws[i][j], tf_char_emb, spanlen, logspanlen, spanwidth, spanpos])
+            fbemb_ij_basic = dy.concatenate([fws[i][j], bws[i][j], tfemb, spanlen, logspanlen, spanwidth, spanpos])
+            fbemb_ij_character = dy.concatenate([chfws[i][j], chbws[i][j], tf_char_emb, spanlen, logspanlen, spanwidth, spanpos])
+
+            fbemb_combined = dy.concatenate([fbemb_ij_basic, fbemb_ij_character])
+
             if USE_DEPS:
                 outs = oh_s[OutHeads.getnumouts(i, j, sentence.outheads)]
                 shp = spaths_x[sentence.shortest_paths[(i, j, targetspan[0])]]
@@ -576,7 +580,7 @@ def get_factor_expressions(fws, bws, tfemb, tf_char_emb, tfdict, valid_fes, sent
                 phrp = cpaths_x[sentence.cpaths[(i, j, targetspan[0])]]
                 fbemb_ij = dy.concatenate([fbemb_ij_basic, isconstit, lca, phrp])
             else:
-                fbemb_ij = fbemb_ij_basic
+                fbemb_ij = fbemb_combined
 
             for y in valid_fes:
                 fctr = Factor(i, j, y)
@@ -912,7 +916,7 @@ def identify_fes(unkdtoks, unkdchars, sentence, tfdict, goldfes=None, testidx=No
         cpaths_x = get_cpath_embeddings(sentence)
         factor_exprs = get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, cpaths_x=cpaths_x)
     else:
-        factor_exprs = get_factor_expressions(chfws, chbws, tfemb, tf_char_emb, tfdict, valid_fes, sentence)
+        factor_exprs = get_factor_expressions(fws, bws, tfemb, chfws, chbws, tf_char_emb, tfdict, valid_fes, sentence)
 
     if trainmode:
         segrnnloss = get_loss(factor_exprs, goldfes, valid_fes, sentlen)
