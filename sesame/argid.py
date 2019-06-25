@@ -144,8 +144,10 @@ configuration = {"train": train_conll,
                  "dependency_relation_dim": 8,
                  "lstm_input_dim": 64,
                  "lstm_dim": 64,
+                 "chlstm_dim": 300,
                  "lstm_depth": 1,
                  "hidden_dim": 64,
+                 "hidden_ch_dim": 300,
                  "use_dropout": USE_DROPOUT,
                  "pretrained_embedding_dim": PRETDIM,
                  "pretrained_character_embeddings_dim": PRETCHDIM,
@@ -187,24 +189,31 @@ if USE_CONSTITS:
     PHRASEDIM = configuration["phrase_dim"]
 
 LSTMINPDIM = configuration["lstm_input_dim"]
+CHLSTMINPDIM = 300
 LSTMDIM = configuration["lstm_dim"]
+CHLSTMDIM = configuration["chlstm_dim"]
 LSTMDEPTH = configuration["lstm_depth"]
 HIDDENDIM = configuration["hidden_dim"]
+HIDDENCHDIM = configuration["hidden_ch_dim"]
 
 ARGPOSDIM = ArgPosition.size()
 SPANDIM = SpanWidth.size()
 
 ALL_FEATS_DIM = 2 * LSTMDIM \
+                + 2 * CHLSTMDIM \
                 + LUDIM \
                 + LUPOSDIM \
                 + FRMDIM \
                 + LSTMINPDIM \
+                + CHLSTMINPDIM \
                 + LSTMDIM \
+                + CHLSTMDIM \
                 + FEDIM \
                 + ARGPOSDIM \
                 + SPANDIM \
                 + 2  # spanlen and log spanlen features and is a constitspan
-ALL_FEATS_DIM = 920
+
+ALL_FEATS_DIM = 1864
 
 if USE_DEPS:
     DEPHEADDIM = LSTMINPDIM + POSDIM
@@ -250,7 +259,7 @@ adam = dy.AdamTrainer(model, 0.0005, 0.01, 0.9999, 1e-8)
 #lookup dictionary thing for tokens in the vocabulary
 v_x = model.add_lookup_parameters((VOCDICT.size(), TOKDIM))
 #lookup dictionary for characterset
-ch_x = model.add_lookup_parameters((VOCDICT.size(), TOKDIM))
+ch_x = model.add_lookup_parameters((VOCDICT.size(), CHDIM))
 
 #lookup dictionary thing for parts of speech
 p_x = model.add_lookup_parameters((POSDICT.size(), POSDIM))
@@ -287,34 +296,45 @@ if USE_CHV:
     ch_x = model.add_lookup_parameters((CHARDICT.size(), PRETCHDIM))
     for chid in chvs:
         e_x.init_row(wordid, wvs[wordid])
-    ch_e = model.add_parameters((LSTMINPDIM, PRETCHDIM))
-    bch_e = model.add_parameters((LSTMINPDIM, 1))
+    ch_e = model.add_parameters((CHLSTMINPDIM, PRETCHDIM))
+    bch_e = model.add_parameters((CHLSTMINPDIM, 1))
 
 w_i = model.add_parameters((LSTMINPDIM, INPDIM))
 b_i = model.add_parameters((LSTMINPDIM, 1))
 
-ch_i = model.add_parameters((LSTMINPDIM, CHINPDIM))
-bch_i = model.add_parameters((LSTMINPDIM, 1))
+ch_i = model.add_parameters((CHLSTMINPDIM, CHINPDIM))
+bch_i = model.add_parameters((CHLSTMINPDIM, 1))
 
 builders = [
     dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model),
    dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model)
 ]
 
+chbuilders = [
+    dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMDIM, model),
+   dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMDIM, model)
+]
+
 basefwdlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMINPDIM, model)
 baserevlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMINPDIM, model)
+
+charfwdlstm = dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMINPDIM, model)
+charrevlstm = dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMINPDIM, model)
 
 w_bi = model.add_parameters((LSTMINPDIM, 2 * LSTMINPDIM))
 b_bi = model.add_parameters((LSTMINPDIM, 1))
 
-ch_bi = model.add_parameters((LSTMINPDIM, 2 * LSTMINPDIM))
-bch_bi = model.add_parameters((LSTMINPDIM, 1))
+ch_bi = model.add_parameters((CHLSTMINPDIM, 2 * CHLSTMINPDIM))
+bch_bi = model.add_parameters((CHLSTMINPDIM, 1))
 
 # w_uni = model.add_parameters((LSTMINPDIM, LSTMINPDIM))
 # b_uni = model.add_parameters((LSTMINPDIM, 1))
 
 tgtlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model)
 ctxtlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model)
+
+chtgtlstm = dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMDIM, model)
+chctxtlstm = dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMDIM, model)
 
 if USE_DEPS:
     w_di = model.add_parameters((LSTMINPDIM, LSTMINPDIM + DEPHEADDIM + DEPRELDIM))
@@ -337,20 +357,11 @@ b_z = model.add_parameters((HIDDENDIM, 1))
 w_f = model.add_parameters((1, HIDDENDIM))
 b_f = model.add_parameters((1, 1))
 
-ch_z = model.add_parameters((HIDDENDIM, ALL_FEATS_DIM))
-bch_z = model.add_parameters((HIDDENDIM, 1))
-ch_f = model.add_parameters((1, HIDDENDIM))
+ch_z = model.add_parameters((HIDDENCHDIM, ALL_FEATS_DIM))
+bch_z = model.add_parameters((HIDDENCHDIM, 1))
+ch_f = model.add_parameters((1, HIDDENCHDIM))
 bch_f = model.add_parameters((1, 1))
 
-
-################################################################################################
-# if FE_CLASSIFIER:
-#     fe_pathfwdlstm = dy.LSTMBuilder(LSTMDEPTH, PHRASEDIM, PATHLSTMDIM, model)
-#     fe_pathrevlstm = dy.LSTMBuilder(LSTMDEPTH, PHRASEDIM, PATHLSTMDIM, model)
-#
-#     w_fe = model.add_parameters((PATHDIM, 2 * PATHLSTMDIM))
-#     b_fe = model.add_parameters((PATHDIM, 1))
-################################################################################################
 
 if USE_PTB_CONSTITS:
     w_c = model.add_parameters((2, LSTMDIM))
@@ -415,30 +426,30 @@ def get_base_character_embeddings(trainmode, unkdcharacters, tg_start):
     sentlen = len(unkdcharacters)
     #embedding_x
     if trainmode:
-        emb_x = [dy.noise(ch_x[char], 0.1) for char in unkdcharacters]
+        chemb_x = [dy.noise(ch_x[char], 0.1) for char in unkdcharacters]
     else:
-        emb_x = [ch_x[char] for char in unkdcharacters]
+        chemb_x = [ch_x[char] for char in unkdcharacters]
     dist_x = [dy.scalarInput(i - tg_start + 1) for i in xrange(sentlen)]
     #here you are giving as base input a matrix of vectors representing the sentence with embedding, part of speach,
     #and dist_x (don't know what this is, scalarInput) and telling it what position in the sentence each goes
     #this is the input layer
-    baseinp_x = [(ch_i * dy.concatenate([emb_x[j], dist_x[j]]) + bch_i) for j in xrange(sentlen)]
+    basechinp_x = [(ch_i * dy.concatenate([chemb_x[j], dist_x[j]]) + bch_i) for j in xrange(sentlen)]
 
     if USE_CHV:
         for j in xrange(sentlen):
             if unkdcharacters[j] in chvs:
                 nonupdatedchv = dy.nobackprop(ch_x[unkdcharacters[j]])
-                baseinp_x[j] = baseinp_x[j] + ch_e * nonupdatedchv + bch_e
+                basechinp_x[j] = basechinp_x[j] + ch_e * nonupdatedchv + bch_e
 
-    embdist_x = [dy.rectify(baseinp_x[j]) for j in xrange(sentlen)]
+    chembdist_x = [dy.rectify(basechinp_x[j]) for j in xrange(sentlen)]
     #print(' this is embpostdist: ' , embposdist_x, '\n\n this is baseinp_x:  ', baseinp_x, '\n\n\n\n\n')
     if USE_DROPOUT:
-        basefwdlstm.set_dropout(DROPOUT_RATE)
-        baserevlstm.set_dropout(DROPOUT_RATE)
-    bfinit = basefwdlstm.initial_state()
-    basefwd = bfinit.transduce(embdist_x)
-    brinit = baserevlstm.initial_state()
-    baserev = brinit.transduce(reversed(embdist_x))
+        charfwdlstm.set_dropout(DROPOUT_RATE)
+        charrevlstm.set_dropout(DROPOUT_RATE)
+    bfinit = charfwdlstm.initial_state()
+    basefwd = bfinit.transduce(chembdist_x)
+    brinit = charrevlstm.initial_state()
+    baserev = brinit.transduce(reversed(chembdist_x))
     #this is the first hidden layer, the green one with back and forth arrows
     basechbi_x = [dy.rectify(ch_bi * dy.concatenate([basefwd[eidx], baserev[sentlen - eidx - 1]]) +
                     bch_bi) for eidx in xrange(sentlen)]
@@ -476,7 +487,35 @@ def get_target_frame_embeddings(embposdist_x, tfdict):
     tfemb = dy.concatenate([lu_v, lp_v, frame_v, target_x, ctxt_x])
 
     return tfemb, frame
+def get_target_frame_character_embeddings(embposdist_x, tfdict):
+    tfkeys = sorted(tfdict)
+    tg_start = tfkeys[0]
+    sentlen = len(embposdist_x)
 
+    # Adding target word feature
+    lu, frame = tfdict[tg_start]
+    tginit = chtgtlstm.initial_state()
+    target_x = tginit.transduce(embposdist_x[tg_start: tg_start + len(tfkeys) + 1])[-1]
+
+    # Adding context features
+    ctxt = range(tg_start - 1, tfkeys[-1] + 2)
+    if ctxt[0] < 0: ctxt = ctxt[1:]
+    if ctxt[-1] > sentlen: ctxt = ctxt[:-1]
+    c_init = chctxtlstm.initial_state()
+    ctxt_x = c_init.transduce(embposdist_x[ctxt[0]:ctxt[-1]])[-1]
+
+    # Adding features specific to LU and frame
+    lu_v = lu_x[lu.id]
+    lp_v = lp_x[lu.posid]
+
+    if USE_HIER and frame.id in frmrelmap:
+        #print('hi, frameid  :', frame.id)
+        frame_v = dy.esum([frm_x[frame.id]] + [frm_x[par] for par in frmrelmap[frame.id]])
+    else:
+        frame_v = frm_x[frame.id]
+    tfemb = dy.concatenate([lu_v, lp_v, frame_v, target_x, ctxt_x])
+
+    return tfemb, frame
 
 def get_span_embeddings(embpos_x):
     sentlen = len(embpos_x)
@@ -510,7 +549,38 @@ def get_span_embeddings(embpos_x):
             bws[i - k][i] = tmpbws[k]
 
     return fws, bws
+def get_character_span_embeddings(embpos_x):
+    sentlen = len(embpos_x)
+    fws = [[None for _ in xrange(sentlen)] for _ in xrange(sentlen)]
+    bws = [[None for _ in xrange(sentlen)] for _ in xrange(sentlen)]
 
+    if USE_DROPOUT:
+        chbuilders[0].set_dropout(DROPOUT_RATE)
+        chbuilders[1].set_dropout(DROPOUT_RATE)
+
+    for i in xrange(sentlen):
+        fw_init = chbuilders[0].initial_state()
+        tmpfws = fw_init.transduce(embpos_x[i:])
+        if len(tmpfws) != sentlen - i:
+            raise Exception("incorrect number of forwards", len(tmpfws), i, sentlen)
+
+        spanend = sentlen
+        if USE_SPAN_CLIP: spanend = min(sentlen, i + ALLOWED_SPANLEN + 1)
+        for j in xrange(i, spanend):
+            # for j in xrange(i, sentlen):
+            fws[i][j] = tmpfws[j - i]
+
+        bw_init = chbuilders[1].initial_state()
+        tmpbws = bw_init.transduce(reversed(embpos_x[:i + 1]))
+        if len(tmpbws) != i + 1:
+            raise Exception("incorrect number of backwards", i, len(tmpbws))
+        spansize = i + 1
+        if USE_SPAN_CLIP and spansize - 1 > ALLOWED_SPANLEN:
+            spansize = ALLOWED_SPANLEN + 1
+        for k in xrange(spansize):
+            bws[i - k][i] = tmpbws[k]
+
+    return fws, bws
 
 def get_deppath_embeddings(sentence, embpos_x):
     spaths = {}
@@ -904,10 +974,10 @@ def identify_fes(unkdtoks, unkdchars, sentence, tfdict, goldfes=None, testidx=No
     tfemb, frame = get_target_frame_embeddings(embpos_x, tfdict)
 
     embchars_x = get_base_character_embeddings(trainmode, unkdchars, tg_start)
-    tf_char_emb, ch_frame = get_target_frame_embeddings(embchars_x, tfdict)
+    tf_char_emb, ch_frame = get_target_frame_character_embeddings(embchars_x, tfdict)
 
     fws, bws = get_span_embeddings(embpos_x)
-    chfws, chbws = get_span_embeddings(embchars_x)
+    chfws, chbws = get_character_span_embeddings(embchars_x)
     valid_fes = frmfemap[frame.id] + [NOTANFEID]
     if USE_DEPS:
         spaths_x = get_deppath_embeddings(sentence, embpos_x)
