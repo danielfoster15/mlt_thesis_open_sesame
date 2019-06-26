@@ -95,6 +95,7 @@ lock_dicts()
 # Default labels - in CoNLL format these correspond to _
 UNKTOKEN = VOCDICT.getid(UNK)
 UNKCHAR = CHARDICT.getid(UNKCHR)
+CHARPAD= CHARDICT.getid(CHRPAD)
 NOTANLU = LUDICT.getid(EMPTY_LABEL)
 NOTANFEID = FEDICT.getid(EMPTY_FE)  # O in CoNLL format.
 

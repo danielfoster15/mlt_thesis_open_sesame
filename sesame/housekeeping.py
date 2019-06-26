@@ -72,6 +72,7 @@ class FspDict:
             raise Exception("dictionary already locked!")
         self.addstr(UNK)
         self.addstr(UNKCHR)
+        self.addstr(CHRPAD)
         self._locked = True
         self._unseens = set([])
 

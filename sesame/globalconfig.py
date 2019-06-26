@@ -80,6 +80,7 @@ CONSTIT_MAP = {
 # Label settings
 UNK = "UNK"
 UNKCHR = "€"
+CHRPAD = "<EOS>"
 EMPTY_LABEL = "_"
 EMPTY_FE = "O"
 
