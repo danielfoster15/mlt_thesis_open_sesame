@@ -128,6 +128,7 @@ configuration = {"train": train_conll,
                  "use_hierarchy": USE_HIER,
                  "use_span_clip": USE_SPAN_CLIP,
                  "allowed_max_span_length": 20,
+                 "allowed_max_character_span_length": 100,
                  "using_dependency_parses": USE_DEPS,
                  "using_constituency_parses": USE_CONSTITS,
                  "using_scaffold_loss": USE_PTB_CONSTITS,
@@ -148,6 +149,7 @@ configuration = {"train": train_conll,
                  "path_dim": 64,
                  "dependency_relation_dim": 8,
                  "lstm_input_dim": 64,
+                 "chlstm_input_dim": 50,
                  "lstm_dim": 64,
                  "chlstm_dim": 50,
                  "lstm_depth": 1,
@@ -175,6 +177,7 @@ else:
 UNK_PROB = configuration["unk_prob"]
 DROPOUT_RATE = configuration["dropout_rate"]
 ALLOWED_SPANLEN = configuration["allowed_max_span_length"]
+ALLOWED_CHAR_SPANLEN = configuration["allowed_max_character_span_length"]
 
 TOKDIM = configuration["token_dim"]
 CHDIM = configuration["character_dim"]
@@ -194,7 +197,7 @@ if USE_CONSTITS:
     PHRASEDIM = configuration["phrase_dim"]
 
 LSTMINPDIM = configuration["lstm_input_dim"]
-CHLSTMINPDIM = 50
+CHLSTMINPDIM = configuration["chlstm_input_dim"]
 LSTMDIM = configuration["lstm_dim"]
 CHLSTMDIM = configuration["chlstm_dim"]
 LSTMDEPTH = configuration["lstm_depth"]
@@ -572,7 +575,7 @@ def get_character_span_embeddings(embpos_x):
             raise Exception("incorrect number of forwards", len(tmpfws), i, sentlen)
 
         spanend = sentlen
-        if USE_SPAN_CLIP: spanend = min(sentlen, i + ALLOWED_SPANLEN + 1)
+        if USE_SPAN_CLIP: spanend = min(sentlen, i + ALLOWED_CHAR_SPANLEN + 1)
         for j in xrange(i, spanend):
             # for j in xrange(i, sentlen):
             fws[i][j] = tmpfws[j - i]
@@ -582,8 +585,8 @@ def get_character_span_embeddings(embpos_x):
         if len(tmpbws) != i + 1:
             raise Exception("incorrect number of backwards", i, len(tmpbws))
         spansize = i + 1
-        if USE_SPAN_CLIP and spansize - 1 > ALLOWED_SPANLEN:
-            spansize = ALLOWED_SPANLEN + 1
+        if USE_SPAN_CLIP and spansize - 1 > ALLOWED_CHAR_SPANLEN:
+            spansize = ALLOWED_CHAR_SPANLEN + 1
         for k in xrange(spansize):
             bws[i - k][i] = tmpbws[k]
 
