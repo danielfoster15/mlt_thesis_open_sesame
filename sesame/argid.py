@@ -31,6 +31,7 @@ optpr.add_option("--syn", type="choice", choices=["dep", "constit", "depconstit"
 optpr.add_option("--ptb", action="store_true", default=False)
 optpr.add_option("--raw_input", type="str", metavar="FILE")
 optpr.add_option("--config", type="str", metavar="FILE")
+optpr.add_option("--dynet-gpu", action="store_true")
 (options, args) = optpr.parse_args()
 
 model_dir = "logs/{}/".format(options.model_name)
@@ -92,6 +93,8 @@ if USE_HIER:
     frmrelmap, feparents = read_frame_relations()
 
 lock_dicts()
+
+
 # Default labels - in CoNLL format these correspond to _
 UNKTOKEN = VOCDICT.getid(UNK)
 UNKCHAR = CHARDICT.getid(UNKCHR)
@@ -133,7 +136,7 @@ configuration = {"train": train_conll,
                  "unk_prob": 0.1,
                  "dropout_rate": 0.01,
                  "token_dim": 60,
-                 "character_dim": 300,
+                 "character_dim": 50,
                  "pos_dim": 4,
                  "lu_dim": 64,
                  "lu_pos_dim": 2,
@@ -145,15 +148,15 @@ configuration = {"train": train_conll,
                  "dependency_relation_dim": 8,
                  "lstm_input_dim": 64,
                  "lstm_dim": 64,
-                 "chlstm_dim": 300,
+                 "chlstm_dim": 50,
                  "lstm_depth": 1,
                  "hidden_dim": 64,
-                 "hidden_ch_dim": 300,
+                 "hidden_ch_dim": 50,
                  "use_dropout": USE_DROPOUT,
                  "pretrained_embedding_dim": PRETDIM,
                  "pretrained_character_embeddings_dim": PRETCHDIM,
-                 "num_epochs": 25 if not options.exemplar else 25,
-                 "patience": 25,
+                 "num_epochs": 15 if not options.exemplar else 25,
+                 "patience": 3,
                  "eval_after_every_epochs": 100,
                  "dev_eval_epoch_frequency": 5}
 configuration_file = os.path.join(model_dir, "configuration.json")
@@ -190,7 +193,7 @@ if USE_CONSTITS:
     PHRASEDIM = configuration["phrase_dim"]
 
 LSTMINPDIM = configuration["lstm_input_dim"]
-CHLSTMINPDIM = 300
+CHLSTMINPDIM = 50
 LSTMDIM = configuration["lstm_dim"]
 CHLSTMDIM = configuration["chlstm_dim"]
 LSTMDEPTH = configuration["lstm_depth"]
@@ -214,7 +217,7 @@ ALL_FEATS_DIM = 2 * LSTMDIM \
                 + SPANDIM \
                 + 2  # spanlen and log spanlen features and is a constitspan
 
-ALL_FEATS_DIM = 1864
+ALL_FEATS_DIM = 864
 
 if USE_DEPS:
     DEPHEADDIM = LSTMINPDIM + POSDIM
@@ -289,14 +292,16 @@ fe_x = model.add_lookup_parameters((FEDICT.size(), FEDIM))
 if USE_WV:
     e_x = model.add_lookup_parameters((VOCDICT.size(), PRETDIM))
     for wordid in wvs:
+        #dict of all vectors for each word
         e_x.init_row(wordid, wvs[wordid])
     w_e = model.add_parameters((LSTMINPDIM, PRETDIM))
     b_e = model.add_parameters((LSTMINPDIM, 1))
 
 if USE_CHV:
+    #dict of all vectors for each character
     ch_x = model.add_lookup_parameters((CHARDICT.size(), PRETCHDIM))
     for chid in chvs:
-        e_x.init_row(wordid, wvs[wordid])
+        ch_x.init_row(chid, chvs[chid])
     ch_e = model.add_parameters((CHLSTMINPDIM, PRETCHDIM))
     bch_e = model.add_parameters((CHLSTMINPDIM, 1))
 

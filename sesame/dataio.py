@@ -4,8 +4,10 @@ import os
 import sys
 import tarfile
 import xml.etree.ElementTree as et
+import numpy as np
 
 from nltk.corpus import BracketParseCorpusReader
+from sklearn.decomposition import PCA
 
 from conll09 import *
 from globalconfig import *
@@ -272,6 +274,24 @@ def get_chvec_map():
     wvf.readline()
     ch_vecs = {CHARDICT.addstr(line.split(' ')[0]):
                 [float(f) for f in line.strip().split(' ')[1:]] for line in wvf}
+    CHARDICT.lock()
+    print(CHARDICT.size())
+    ch_vecs_array = np.zeros((CHARDICT.size(), 300))
+    char_indices = enumerate(list(CHARDICT._strtoint.keys()))
+    for i, c in char_indices:
+        idx = CHARDICT.addstr(c)
+        if idx in ch_vecs.keys():
+            ch_vec = ch_vecs[CHARDICT.addstr(c)]
+            ch_vecs_array[i] = ch_vec
+    #print(ch_vecs_array)
+    pca = PCA(n_components=50)
+    pca.fit(ch_vecs_array)
+    ch_vecs_pca = np.array(pca.transform(ch_vecs_array))
+    wvf = open(embs_file, 'r')
+    wvf.readline()
+    print([f for f in ch_vecs_pca[0]])
+    ch_vecs = {CHARDICT.addstr(line.split(' ')[0]):[float(f) for f in ch_vecs_pca[CHARDICT.addstr(line.split(' ')[0])]] for line in wvf}
+
     return ch_vecs
 
 def get_chains(node, inherit_map, path):
