@@ -128,7 +128,7 @@ configuration = {"train": train_conll,
                  "use_hierarchy": USE_HIER,
                  "use_span_clip": USE_SPAN_CLIP,
                  "allowed_max_span_length": 20,
-                 "allowed_max_character_span_length": 100,
+                 "allowed_max_character_span_length": 20,
                  "using_dependency_parses": USE_DEPS,
                  "using_constituency_parses": USE_CONSTITS,
                  "using_scaffold_loss": USE_PTB_CONSTITS,
@@ -221,7 +221,7 @@ ALL_FEATS_DIM = 2 * LSTMDIM \
                 + SPANDIM \
                 + 2  # spanlen and log spanlen features and is a constitspan
 
-ALL_FEATS_DIM = 864
+ALL_FEATS_DIM = 429
 
 if USE_DEPS:
     DEPHEADDIM = LSTMINPDIM + POSDIM
@@ -265,7 +265,9 @@ sys.stderr.write("\n_____________________\n\n")
 model = dy.Model()
 adam = dy.AdamTrainer(model, 0.0005, 0.01, 0.9999, 1e-8)
 #lookup dictionary thing for tokens in the vocabulary
-v_x = model.add_lookup_parameters((VOCDICT.size(), TOKDIM))
+#################################################################
+#v_x = model.add_lookup_parameters((VOCDICT.size(), TOKDIM))
+#################################################################
 #lookup dictionary for characterset
 ch_x = model.add_lookup_parameters((VOCDICT.size(), CHDIM))
 
@@ -283,24 +285,24 @@ ap_x = model.add_lookup_parameters((ArgPosition.size(), ARGPOSDIM))
 #lookup dictionary for how long a sentence is?
 sp_x = model.add_lookup_parameters((SpanWidth.size(), SPANDIM))
 
-
-if USE_DEPS:
-    dr_x = model.add_lookup_parameters((DEPRELDICT.size(), DEPRELDIM))
-    oh_s = model.add_lookup_parameters((OutHeads.size(), OUTHEADDIM))
-
-if USE_CONSTITS:
-    ct_x = model.add_lookup_parameters((CLABELDICT.size(), PHRASEDIM))
+# if USE_DEPS:
+#     dr_x = model.add_lookup_parameters((DEPRELDICT.size(), DEPRELDIM))
+#     oh_s = model.add_lookup_parameters((OutHeads.size(), OUTHEADDIM))
+#
+# if USE_CONSTITS:
+#     ct_x = model.add_lookup_parameters((CLABELDICT.size(), PHRASEDIM))
 #lookup dict for FEs from FEDICT
 fe_x = model.add_lookup_parameters((FEDICT.size(), FEDIM))
 #use word vectors
-if USE_WV:
-    e_x = model.add_lookup_parameters((VOCDICT.size(), PRETDIM))
-    for wordid in wvs:
-        #dict of all vectors for each word
-        e_x.init_row(wordid, wvs[wordid])
-    w_e = model.add_parameters((LSTMINPDIM, PRETDIM))
-    b_e = model.add_parameters((LSTMINPDIM, 1))
-
+#################################################################
+# if USE_WV:
+#     e_x = model.add_lookup_parameters((VOCDICT.size(), PRETDIM))
+#     for wordid in wvs:
+#         #dict of all vectors for each word
+#         e_x.init_row(wordid, wvs[wordid])
+#     w_e = model.add_parameters((LSTMINPDIM, PRETDIM))
+#     b_e = model.add_parameters((LSTMINPDIM, 1))
+#################################################################
 if USE_CHV:
     #dict of all vectors for each character
     ch_x = model.add_lookup_parameters((CHARDICT.size(), PRETCHDIM))
@@ -308,65 +310,64 @@ if USE_CHV:
         ch_x.init_row(chid, chvs[chid])
     ch_e = model.add_parameters((CHLSTMINPDIM, PRETCHDIM))
     bch_e = model.add_parameters((CHLSTMINPDIM, 1))
-
-w_i = model.add_parameters((LSTMINPDIM, INPDIM))
-b_i = model.add_parameters((LSTMINPDIM, 1))
+#
+# w_i = model.add_parameters((LSTMINPDIM, INPDIM))
+# b_i = model.add_parameters((LSTMINPDIM, 1))
 
 ch_i = model.add_parameters((CHLSTMINPDIM, CHINPDIM))
 bch_i = model.add_parameters((CHLSTMINPDIM, 1))
-
-builders = [
-    dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model),
-   dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model)
-]
-
+#################################################################
+#builders = [
+    #dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model),
+  # dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model)
+#]
+#################################################################
 chbuilders = [
     dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMDIM, model),
    dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMDIM, model)
 ]
-
-basefwdlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMINPDIM, model)
-baserevlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMINPDIM, model)
-
+#################################################################
+#basefwdlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMINPDIM, model)
+#baserevlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMINPDIM, model)
+#################################################################
 charfwdlstm = dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMINPDIM, model)
 charrevlstm = dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMINPDIM, model)
-
-w_bi = model.add_parameters((LSTMINPDIM, 2 * LSTMINPDIM))
-b_bi = model.add_parameters((LSTMINPDIM, 1))
-
+#################################################################
+# w_bi = model.add_parameters((LSTMINPDIM, 2 * LSTMINPDIM))
+# b_bi = model.add_parameters((LSTMINPDIM, 1))
+#################################################################
 ch_bi = model.add_parameters((CHLSTMINPDIM, 2 * CHLSTMINPDIM))
 bch_bi = model.add_parameters((CHLSTMINPDIM, 1))
 
-# w_uni = model.add_parameters((LSTMINPDIM, LSTMINPDIM))
-# b_uni = model.add_parameters((LSTMINPDIM, 1))
 
-tgtlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model)
-ctxtlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model)
-
+#################################################################
+# tgtlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model)
+# ctxtlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model)
+##################################################################
 chtgtlstm = dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMDIM, model)
 chctxtlstm = dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMDIM, model)
 
-if USE_DEPS:
-    w_di = model.add_parameters((LSTMINPDIM, LSTMINPDIM + DEPHEADDIM + DEPRELDIM))
-    b_di = model.add_parameters((LSTMINPDIM, 1))
-
-    pathfwdlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, PATHLSTMDIM, model)
-    pathrevlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, PATHLSTMDIM, model)
-
-    w_p = model.add_parameters((PATHDIM, 2 * PATHLSTMDIM))
-    b_p = model.add_parameters((PATHDIM, 1))
-elif USE_CONSTITS:
-    cpathfwdlstm = dy.LSTMBuilder(LSTMDEPTH, PHRASEDIM, PATHLSTMDIM, model)
-    cpathrevlstm = dy.LSTMBuilder(LSTMDEPTH, PHRASEDIM, PATHLSTMDIM, model)
-
-    w_cp = model.add_parameters((PATHDIM, 2 * PATHLSTMDIM))
-    b_cp = model.add_parameters((PATHDIM, 1))
-
-w_z = model.add_parameters((HIDDENDIM, ALL_FEATS_DIM))
-b_z = model.add_parameters((HIDDENDIM, 1))
-w_f = model.add_parameters((1, HIDDENDIM))
-b_f = model.add_parameters((1, 1))
-
+# if USE_DEPS:
+#     w_di = model.add_parameters((LSTMINPDIM, LSTMINPDIM + DEPHEADDIM + DEPRELDIM))
+#     b_di = model.add_parameters((LSTMINPDIM, 1))
+#
+#     pathfwdlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, PATHLSTMDIM, model)
+#     pathrevlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, PATHLSTMDIM, model)
+#
+#     w_p = model.add_parameters((PATHDIM, 2 * PATHLSTMDIM))
+#     b_p = model.add_parameters((PATHDIM, 1))
+# elif USE_CONSTITS:
+#     cpathfwdlstm = dy.LSTMBuilder(LSTMDEPTH, PHRASEDIM, PATHLSTMDIM, model)
+#     cpathrevlstm = dy.LSTMBuilder(LSTMDEPTH, PHRASEDIM, PATHLSTMDIM, model)
+#
+#     w_cp = model.add_parameters((PATHDIM, 2 * PATHLSTMDIM))
+#     b_cp = model.add_parameters((PATHDIM, 1))
+####################################################
+# w_z = model.add_parameters((HIDDENDIM, ALL_FEATS_DIM))
+# b_z = model.add_parameters((HIDDENDIM, 1))
+# w_f = model.add_parameters((1, HIDDENDIM))
+# b_f = model.add_parameters((1, 1))
+#######################################################
 ch_z = model.add_parameters((HIDDENCHDIM, ALL_FEATS_DIM))
 bch_z = model.add_parameters((HIDDENCHDIM, 1))
 ch_f = model.add_parameters((1, HIDDENCHDIM))
@@ -561,8 +562,8 @@ def get_span_embeddings(embpos_x):
     return fws, bws
 def get_character_span_embeddings(embpos_x):
     sentlen = len(embpos_x)
-    fws = [[None for _ in xrange(sentlen)] for _ in xrange(sentlen)]
-    bws = [[None for _ in xrange(sentlen)] for _ in xrange(sentlen)]
+    chfws = [[None for _ in xrange(sentlen)] for _ in xrange(sentlen)]
+    chbws = [[None for _ in xrange(sentlen)] for _ in xrange(sentlen)]
 
     if USE_DROPOUT:
         chbuilders[0].set_dropout(DROPOUT_RATE)
@@ -578,7 +579,7 @@ def get_character_span_embeddings(embpos_x):
         if USE_SPAN_CLIP: spanend = min(sentlen, i + ALLOWED_CHAR_SPANLEN + 1)
         for j in xrange(i, spanend):
             # for j in xrange(i, sentlen):
-            fws[i][j] = tmpfws[j - i]
+            chfws[i][j] = tmpfws[j - i]
 
         bw_init = chbuilders[1].initial_state()
         tmpbws = bw_init.transduce(reversed(embpos_x[:i + 1]))
@@ -588,49 +589,50 @@ def get_character_span_embeddings(embpos_x):
         if USE_SPAN_CLIP and spansize - 1 > ALLOWED_CHAR_SPANLEN:
             spansize = ALLOWED_CHAR_SPANLEN + 1
         for k in xrange(spansize):
-            bws[i - k][i] = tmpbws[k]
+            chbws[i - k][i] = tmpbws[k]
 
-    return fws, bws
+    return chfws, chbws
 
-def get_deppath_embeddings(sentence, embpos_x):
-    spaths = {}
-    for spath in set(sentence.shortest_paths.values()):
-        shp = [embpos_x[node] for node in spath]
-        if USE_DROPOUT:
-            pathfwdlstm.set_dropout(DROPOUT_RATE)
-            pathrevlstm.set_dropout(DROPOUT_RATE)
-        pfinit = pathfwdlstm.initial_state()
-        pathfwd = pfinit.transduce(shp)
-        prinit = pathrevlstm.initial_state()
-        pathrev = prinit.transduce(reversed(shp))
-
-        pathlstm = dy.rectify(w_p * dy.concatenate([pathfwd[-1], pathrev[-1]]) + b_p)
-
-        spaths[spath] = pathlstm
-    return spaths
-
-
-def get_cpath_embeddings(sentence):
-    phrpaths = {}
-    for phrpath in set(sentence.cpaths.values()):
-        shp = [ct_x[node] for node in phrpath]
-        if USE_DROPOUT:
-            cpathfwdlstm.set_dropout(DROPOUT_RATE)
-            cpathrevlstm.set_dropout(DROPOUT_RATE)
-        cpfinit = cpathfwdlstm.initial_state()
-        cpathfwd = cpfinit.transduce(shp)
-        cprinit = cpathrevlstm.initial_state()
-        cpathrev = cprinit.transduce(reversed(shp))
-
-        cpathlstm = dy.rectify(w_cp * dy.concatenate([cpathfwd[-1], cpathrev[-1]]) + b_cp)
-
-        phrpaths[phrpath] = cpathlstm
-    return phrpaths
+# def get_deppath_embeddings(sentence, embpos_x):
+#     spaths = {}
+#     for spath in set(sentence.shortest_paths.values()):
+#         shp = [embpos_x[node] for node in spath]
+#         if USE_DROPOUT:
+#             pathfwdlstm.set_dropout(DROPOUT_RATE)
+#             pathrevlstm.set_dropout(DROPOUT_RATE)
+#         pfinit = pathfwdlstm.initial_state()
+#         pathfwd = pfinit.transduce(shp)
+#         prinit = pathrevlstm.initial_state()
+#         pathrev = prinit.transduce(reversed(shp))
+#
+#         pathlstm = dy.rectify(w_p * dy.concatenate([pathfwd[-1], pathrev[-1]]) + b_p)
+#
+#         spaths[spath] = pathlstm
+#     return spaths
 
 
-def get_factor_expressions(fws, bws, tfemb, chfws, chbws, tf_char_emb, tfdict, valid_fes, sentence, spaths_x=None, cpaths_x=None):
+# def get_cpath_embeddings(sentence):
+#     phrpaths = {}
+#     for phrpath in set(sentence.cpaths.values()):
+#         shp = [ct_x[node] for node in phrpath]
+#         if USE_DROPOUT:
+#             cpathfwdlstm.set_dropout(DROPOUT_RATE)
+#             cpathrevlstm.set_dropout(DROPOUT_RATE)
+#         cpfinit = cpathfwdlstm.initial_state()
+#         cpathfwd = cpfinit.transduce(shp)
+#         cprinit = cpathrevlstm.initial_state()
+#         cpathrev = cprinit.transduce(reversed(shp))
+#
+#         cpathlstm = dy.rectify(w_cp * dy.concatenate([cpathfwd[-1], cpathrev[-1]]) + b_cp)
+#
+#         phrpaths[phrpath] = cpathlstm
+#     return phrpaths
+
+
+def get_factor_expressions(chfws, chbws, tf_char_emb, tfdict, valid_fes, sentence, spaths_x=None, cpaths_x=None):
     factexprs = {}
-    sentlen = len(fws)
+    #sentlen = len(fws)
+    sentlen = len(chfws)
 
     sortedtfd = sorted(tfdict.keys())
     targetspan = (sortedtfd[0], sortedtfd[-1])
@@ -645,22 +647,22 @@ def get_factor_expressions(fws, bws, tfemb, chfws, chbws, tf_char_emb, tfdict, v
             spanwidth = sp_x[SpanWidth.howlongisspan(i, j)]
             spanpos = ap_x[ArgPosition.whereisarg((i, j), targetspan)]
 
-            fbemb_ij_basic = dy.concatenate([fws[i][j], bws[i][j], tfemb, spanlen, logspanlen, spanwidth, spanpos])
+            #fbemb_ij_basic = dy.concatenate([fws[i][j], bws[i][j], tfemb, spanlen, logspanlen, spanwidth, spanpos])
             fbemb_ij_character = dy.concatenate([chfws[i][j], chbws[i][j], tf_char_emb, spanlen, logspanlen, spanwidth, spanpos])
 
-            fbemb_combined = dy.concatenate([fbemb_ij_basic, fbemb_ij_character])
+            #fbemb_combined = dy.concatenate([fbemb_ij_basic, fbemb_ij_character])
 
-            if USE_DEPS:
-                outs = oh_s[OutHeads.getnumouts(i, j, sentence.outheads)]
-                shp = spaths_x[sentence.shortest_paths[(i, j, targetspan[0])]]
-                fbemb_ij = dy.concatenate([fbemb_ij_basic, outs, shp])
-            elif USE_CONSTITS:
-                isconstit = dy.scalarInput((i, j) in sentence.constitspans)
-                lca = ct_x[sentence.lca[(i, j)][1]]
-                phrp = cpaths_x[sentence.cpaths[(i, j, targetspan[0])]]
-                fbemb_ij = dy.concatenate([fbemb_ij_basic, isconstit, lca, phrp])
-            else:
-                fbemb_ij = fbemb_combined
+            # if USE_DEPS:
+            #     outs = oh_s[OutHeads.getnumouts(i, j, sentence.outheads)]
+            #     shp = spaths_x[sentence.shortest_paths[(i, j, targetspan[0])]]
+            #     fbemb_ij = dy.concatenate([fbemb_ij_basic, outs, shp])
+            # elif USE_CONSTITS:
+            #     isconstit = dy.scalarInput((i, j) in sentence.constitspans)
+            #     lca = ct_x[sentence.lca[(i, j)][1]]
+            #     phrp = cpaths_x[sentence.cpaths[(i, j, targetspan[0])]]
+            #     fbemb_ij = dy.concatenate([fbemb_ij_basic, isconstit, lca, phrp])
+            #else:
+            fbemb_ij = fbemb_ij_character
 
             for y in valid_fes:
                 fctr = Factor(i, j, y)
@@ -669,21 +671,14 @@ def get_factor_expressions(fws, bws, tfemb, chfws, chbws, tf_char_emb, tfdict, v
                 else:
                     fefixed = fe_x[y]
                 fbemb_ijy = dy.concatenate([fefixed, fbemb_ij])
-                factexprs[fctr] = w_f * dy.rectify(w_z * fbemb_ijy + b_z) + b_f
+                factexprs[fctr] = ch_f * dy.rectify(ch_z * fbemb_ijy + bch_z) + bch_f
     return factexprs
 
 
-def denominator_check(n, k):
-    ssum = [k]
-    for _ in xrange(1, n):
-        ssum.append(sum(ssum) * k + k)
-    return ssum
-
-
-def hamming_cost(factor, goldfactors):
-    if factor in goldfactors:
-        return dy.scalarInput(0)
-    return dy.scalarInput(1)
+# def hamming_cost(factor, goldfactors):
+#     if factor in goldfactors:
+#         return dy.scalarInput(0)
+#     return dy.scalarInput(1)
 
 
 def recall_oriented_cost(factor, goldfactors):
@@ -714,26 +709,26 @@ def cost(factor, goldfactors):
         raise Exception("undefined cost type", options.cost)
 
 
-def get_logloss_partition(factorexprs, valid_fes, sentlen):
-    logalpha = [None for _ in xrange(sentlen)]
-    # ssum = lossformula(sentlen, len(valid_fes))
-    for j in xrange(sentlen):
-        # full length spans
-        spanscores = []
-        if not USE_SPAN_CLIP or j <= ALLOWED_SPANLEN:
-            spanscores = [factorexprs[Factor(0, j, y)] for y in valid_fes]
-        # recursive case
-        istart = 0
-        if USE_SPAN_CLIP and j > ALLOWED_SPANLEN: istart = max(0, j - ALLOWED_SPANLEN - 1)
-        for i in xrange(istart, j):
-            facscores = [logalpha[i] + factorexprs[Factor(i + 1, j, y)] for y in valid_fes]
-            spanscores.extend(facscores)
-
-        if not USE_SPAN_CLIP and len(spanscores) != len(valid_fes) * (j + 1):
-            raise Exception("counting errors")
-        logalpha[j] = dy.logsumexp(spanscores)
-
-    return logalpha[sentlen - 1]
+# def get_logloss_partition(factorexprs, valid_fes, sentlen):
+#     logalpha = [None for _ in xrange(sentlen)]
+#     # ssum = lossformula(sentlen, len(valid_fes))
+#     for j in xrange(sentlen):
+#         # full length spans
+#         spanscores = []
+#         if not USE_SPAN_CLIP or j <= ALLOWED_SPANLEN:
+#             spanscores = [factorexprs[Factor(0, j, y)] for y in valid_fes]
+#         # recursive case
+#         istart = 0
+#         if USE_SPAN_CLIP and j > ALLOWED_SPANLEN: istart = max(0, j - ALLOWED_SPANLEN - 1)
+#         for i in xrange(istart, j):
+#             facscores = [logalpha[i] + factorexprs[Factor(i + 1, j, y)] for y in valid_fes]
+#             spanscores.extend(facscores)
+#
+#         if not USE_SPAN_CLIP and len(spanscores) != len(valid_fes) * (j + 1):
+#             raise Exception("counting errors")
+#         logalpha[j] = dy.logsumexp(spanscores)
+#
+#     return logalpha[sentlen - 1]
 
 
 def get_softmax_margin_partition(factorexprs, goldfactors, valid_fes, sentlen):
@@ -760,95 +755,95 @@ def get_softmax_margin_partition(factorexprs, goldfactors, valid_fes, sentlen):
 
     return logalpha[sentlen - 1]
 
-
-def get_hinge_partition(factorexprs, goldfacs, valid_fes, sentlen):
-    alpha = [None for _ in xrange(sentlen)]
-    backpointers = [None for _ in xrange(sentlen)]
-
-    for j in xrange(sentlen):
-        # full length spans
-        bestscore = float("-inf")
-        if not USE_SPAN_CLIP or j <= ALLOWED_SPANLEN:
-            for y in valid_fes:
-                factor = Factor(0, j, y)
-                facscore = factorexprs[factor] + cost(factor, goldfacs)
-                if facscore.scalar_value() > bestscore:
-                    bestscore = facscore.scalar_value()
-                    alpha[j] = facscore
-                    backpointers[j] = (0, y)
-
-        # recursive case
-        istart = 0
-        if USE_SPAN_CLIP and j > ALLOWED_SPANLEN: istart = max(0, j - ALLOWED_SPANLEN - 1)
-        for i in xrange(istart, j):
-            for y in valid_fes:
-                factor = Factor(i + 1, j, y)
-                facscore = alpha[i] + factorexprs[factor] + cost(factor, goldfacs)
-                if facscore.scalar_value() > bestscore:
-                    bestscore = facscore.scalar_value()
-                    alpha[j] = facscore
-                    backpointers[j] = (i + 1, y)
-
-    predfactors = []
-    j = sentlen - 1
-    i = backpointers[j][0]
-    while i >= 0:
-        fe = backpointers[j][1]
-        predfactors.append(Factor(i, j, fe))
-        if i == 0:
-            break
-        j = i - 1
-        i = backpointers[j][0]
-    return alpha[sentlen - 1], predfactors
-
-
-def get_hinge_loss(factorexprs, gold_fes, valid_fes, sentlen):
-    goldfactors = [Factor(span[0], span[1], feid) for feid in gold_fes for span in gold_fes[feid]]
-    numeratorexprs = [factorexprs[gf] for gf in goldfactors]
-    numerator = dy.esum(numeratorexprs)
-
-    denominator, predfactors = get_hinge_partition(factorexprs, goldfactors, valid_fes, sentlen)
-
-    if set(predfactors) == set(goldfactors):
-        return None
-
-    hingeloss = denominator - numerator
-    if denominator.scalar_value() < numerator.scalar_value():
-        raise Exception("ERROR: predicted cost less than gold!",
-                        denominator.scalar_value(),
-                        numerator.scalar_value(),
-                        hingeloss.scalar_value())
-    return hingeloss
-
-
-def get_constit_loss(fws, bws, goldspans):
-    if not USE_PTB_CONSTITS:
-        raise Exception("should not be using the constit loss now!", USE_PTB_CONSTITS)
-
-    if len(goldspans) == 0:
-        return None, 0
-
-    losses = []
-    sentlen = len(fws)
-
-    for j in xrange(sentlen):
-        istart = 0
-        if USE_SPAN_CLIP and j > ALLOWED_SPANLEN: istart = max(0, j - ALLOWED_SPANLEN)
-        for i in xrange(istart, j + 1):
-            constit_ij = w_c * dy.rectify(w_fb * dy.concatenate([fws[i][j], bws[i][j]]) + b_fb) + b_c
-            logloss = log_softmax(constit_ij)
-
-            isconstit = int((i, j) in goldspans)
-            losses.append(pick(logloss, isconstit))
-
-    ptbconstitloss = dy.scalarInput(DELTA) * -dy.esum(losses)
-    numspanstagged = len(losses)
-    return ptbconstitloss, numspanstagged
+#
+# def get_hinge_partition(factorexprs, goldfacs, valid_fes, sentlen):
+#     alpha = [None for _ in xrange(sentlen)]
+#     backpointers = [None for _ in xrange(sentlen)]
+#
+#     for j in xrange(sentlen):
+#         # full length spans
+#         bestscore = float("-inf")
+#         if not USE_SPAN_CLIP or j <= ALLOWED_SPANLEN:
+#             for y in valid_fes:
+#                 factor = Factor(0, j, y)
+#                 facscore = factorexprs[factor] + cost(factor, goldfacs)
+#                 if facscore.scalar_value() > bestscore:
+#                     bestscore = facscore.scalar_value()
+#                     alpha[j] = facscore
+#                     backpointers[j] = (0, y)
+#
+#         # recursive case
+#         istart = 0
+#         if USE_SPAN_CLIP and j > ALLOWED_SPANLEN: istart = max(0, j - ALLOWED_SPANLEN - 1)
+#         for i in xrange(istart, j):
+#             for y in valid_fes:
+#                 factor = Factor(i + 1, j, y)
+#                 facscore = alpha[i] + factorexprs[factor] + cost(factor, goldfacs)
+#                 if facscore.scalar_value() > bestscore:
+#                     bestscore = facscore.scalar_value()
+#                     alpha[j] = facscore
+#                     backpointers[j] = (i + 1, y)
+#
+#     predfactors = []
+#     j = sentlen - 1
+#     i = backpointers[j][0]
+#     while i >= 0:
+#         fe = backpointers[j][1]
+#         predfactors.append(Factor(i, j, fe))
+#         if i == 0:
+#             break
+#         j = i - 1
+#         i = backpointers[j][0]
+#     return alpha[sentlen - 1], predfactors
+#
+#
+# def get_hinge_loss(factorexprs, gold_fes, valid_fes, sentlen):
+#     goldfactors = [Factor(span[0], span[1], feid) for feid in gold_fes for span in gold_fes[feid]]
+#     numeratorexprs = [factorexprs[gf] for gf in goldfactors]
+#     numerator = dy.esum(numeratorexprs)
+#
+#     denominator, predfactors = get_hinge_partition(factorexprs, goldfactors, valid_fes, sentlen)
+#
+#     if set(predfactors) == set(goldfactors):
+#         return None
+#
+#     hingeloss = denominator - numerator
+#     if denominator.scalar_value() < numerator.scalar_value():
+#         raise Exception("ERROR: predicted cost less than gold!",
+#                         denominator.scalar_value(),
+#                         numerator.scalar_value(),
+#                         hingeloss.scalar_value())
+#     return hingeloss
+#
+#
+# def get_constit_loss(fws, bws, goldspans):
+#     if not USE_PTB_CONSTITS:
+#         raise Exception("should not be using the constit loss now!", USE_PTB_CONSTITS)
+#
+#     if len(goldspans) == 0:
+#         return None, 0
+#
+#     losses = []
+#     sentlen = len(fws)
+#
+#     for j in xrange(sentlen):
+#         istart = 0
+#         if USE_SPAN_CLIP and j > ALLOWED_SPANLEN: istart = max(0, j - ALLOWED_SPANLEN)
+#         for i in xrange(istart, j + 1):
+#             constit_ij = w_c * dy.rectify(w_fb * dy.concatenate([fws[i][j], bws[i][j]]) + b_fb) + b_c
+#             logloss = log_softmax(constit_ij)
+#
+#             isconstit = int((i, j) in goldspans)
+#             losses.append(pick(logloss, isconstit))
+#
+#     ptbconstitloss = dy.scalarInput(DELTA) * -dy.esum(losses)
+#     numspanstagged = len(losses)
+#     return ptbconstitloss, numspanstagged
 
 
 def get_loss(factorexprs, gold_fes, valid_fes, sentlen):
-    if options.loss == "hinge":
-        return get_hinge_loss(factorexprs, gold_fes, valid_fes, sentlen)
+    # if options.loss == "hinge":
+    #     return get_hinge_loss(factorexprs, gold_fes, valid_fes, sentlen)
 
     goldfactors = [Factor(span[0], span[1], feid) for feid in gold_fes for span in gold_fes[feid]]
     #print([key.to_str(FEDICT) for key in factorexprs.keys()])
@@ -859,9 +854,9 @@ def get_loss(factorexprs, gold_fes, valid_fes, sentlen):
     numeratorexprs = [factorexprs[gf] for gf in goldfactors]
     numerator = dy.esum(numeratorexprs)
 
-    if options.loss == "log":
-        partition = get_logloss_partition(factorexprs, valid_fes, sentlen)
-    elif options.loss == "softmaxm":
+    # if options.loss == "log":
+    #     partition = get_logloss_partition(factorexprs, valid_fes, sentlen)
+    if options.loss == "softmaxm":
         partition = get_softmax_margin_partition(factorexprs, goldfactors, valid_fes, sentlen)
     else:
         raise Exception("undefined loss function", options.loss)
@@ -980,38 +975,38 @@ def identify_fes(unkdtoks, unkdchars, sentence, tfdict, goldfes=None, testidx=No
     tfkeys = sorted(tfdict)
     tg_start = tfkeys[0]
 
-    embpos_x = get_base_embeddings(trainmode, unkdtoks, tg_start, sentence)
-    tfemb, frame = get_target_frame_embeddings(embpos_x, tfdict)
+    # embpos_x = get_base_embeddings(trainmode, unkdtoks, tg_start, sentence)
+    # tfemb, frame = get_target_frame_embeddings(embpos_x, tfdict)
 
     embchars_x = get_base_character_embeddings(trainmode, unkdchars, tg_start)
     tf_char_emb, ch_frame = get_target_frame_character_embeddings(embchars_x, tfdict)
 
-    fws, bws = get_span_embeddings(embpos_x)
+    #fws, bws = get_span_embeddings(embpos_x)
     chfws, chbws = get_character_span_embeddings(embchars_x)
-    valid_fes = frmfemap[frame.id] + [NOTANFEID]
-    if USE_DEPS:
-        spaths_x = get_deppath_embeddings(sentence, embpos_x)
-        factor_exprs = get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, spaths_x=spaths_x)
-    elif USE_CONSTITS:
-        cpaths_x = get_cpath_embeddings(sentence)
-        factor_exprs = get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, cpaths_x=cpaths_x)
-    else:
-        factor_exprs = get_factor_expressions(fws, bws, tfemb, chfws, chbws, tf_char_emb, tfdict, valid_fes, sentence)
+    valid_fes = frmfemap[ch_frame.id] + [NOTANFEID]
+    # if USE_DEPS:
+    #     spaths_x = get_deppath_embeddings(sentence, embpos_x)
+    #     factor_exprs = get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, spaths_x=spaths_x)
+    # elif USE_CONSTITS:
+    #     cpaths_x = get_cpath_embeddings(sentence)
+    #     factor_exprs = get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, cpaths_x=cpaths_x)
+    # else:
+    factor_exprs = get_factor_expressions(chfws, chbws, tf_char_emb, tfdict, valid_fes, sentence)
 
     if trainmode:
         segrnnloss = get_loss(factor_exprs, goldfes, valid_fes, sentlen)
-        if USE_PTB_CONSTITS:
-            goldspans = []
-            for feid in goldfes:
-                if feid == NOTANFEID: continue
-                goldspans.extend(goldfes[feid])
-
-            constitloss, numspans = get_constit_loss(fws, bws, goldspans)
-            if segrnnloss is not None and constitloss is not None:
-                # segrnnloss of 1 segmentation vs all, globally normalized
-                return segrnnloss + constitloss, 1 + numspans
-            elif segrnnloss is None:
-                return constitloss, numspans
+        # if USE_PTB_CONSTITS:
+        #     goldspans = []
+        #     for feid in goldfes:
+        #         if feid == NOTANFEID: continue
+        #         goldspans.extend(goldfes[feid])
+        #
+        #     constitloss, numspans = get_constit_loss(cfws, bws, goldspans)
+        #     if segrnnloss is not None and constitloss is not None:
+        #         # segrnnloss of 1 segmentation vs all, globally normalized
+        #         return segrnnloss + constitloss, 1 + numspans
+        #     elif segrnnloss is None:
+        #         return constitloss, numspans
         return segrnnloss, 1  # segrnnloss of 1 segmentation vs all, globally normalized
     else:
         if SAVE_FOR_ENSEMBLE:
@@ -1028,13 +1023,13 @@ def identify_fes(unkdtoks, unkdchars, sentence, tfdict, goldfes=None, testidx=No
         return argmax
 
 
-def identify_spans(unkdtoks, sentence, goldspans):
-    renew_cg()
-
-    embpos_x = get_base_embeddings(True, unkdtoks, 0, sentence)
-    fws, bws = get_span_embeddings(embpos_x)
-
-    return get_constit_loss(fws, bws, goldspans)
+# def identify_spans(unkdtoks, sentence, goldspans):
+#     renew_cg()
+#
+#     embpos_x = get_base_embeddings(True, unkdtoks, 0, sentence)
+#     fws, bws = get_span_embeddings(embpos_x)
+#
+#     return get_constit_loss(fws, bws, goldspans)
 
 
 def print_as_conll(golds, pred_targmaps):
