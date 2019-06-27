@@ -81,6 +81,7 @@ CONSTIT_MAP = {
 UNK = "UNK"
 UNKCHR = "€"
 CHRPAD = "<EOS>"
+CHRSPACE=' '
 EMPTY_LABEL = "_"
 EMPTY_FE = "O"
 
