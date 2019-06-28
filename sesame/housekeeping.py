@@ -73,7 +73,6 @@ class FspDict:
         self.addstr(UNK)
         self.addstr(UNKCHR)
         self.addstr(CHRPAD)
-        self.addstr(CHRSPACE)
         self._locked = True
         self._unseens = set([])
 
@@ -117,13 +116,14 @@ def unk_replace_tokens(tokens, replaced, vocdict, unkprob, unktoken):
         else:
             replaced.append(t)
 
-def unk_replace_characters(characters, replaced, chardict, unkprob, unkchar):
+def unk_replace_characters(characters, replaced, chardict, unkprob, unkchar, CHARPAD, CHARSPACE):
     """
     replaces singleton tokens in the train set with UNK with a probability UNK_PROB
     :param tokens: original token IDs
     :param replaced: replaced token IDs
     :return:
     """
+    characters = [CHARPAD] + [CHARSPACE] + characters + [CHARPAD]
     for c in characters:
         if chardict.is_singleton(c) and random.random() < unkprob:
             replaced.append(unkchar)

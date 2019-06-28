@@ -29,7 +29,7 @@ class CoNLL09Element:
         characters = []
         for c in ele[1]:
             characters.append(c)
-        characters = ["<EOS>"] + characters + ["<EOS>"]
+        characters = characters + [' ']
         self.chars = [CHARDICT.addstr(c) for c in characters]
         self.nltk_lemma = LEMDICT.addstr(ele[3])
         self.fn_pos = ele[4]  # Not a gold POS tag, provided by taggers used in FrameNet, ignore.

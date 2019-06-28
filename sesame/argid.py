@@ -265,9 +265,9 @@ sys.stderr.write("\n_____________________\n\n")
 model = dy.Model()
 adam = dy.AdamTrainer(model, 0.0005, 0.01, 0.9999, 1e-8)
 #lookup dictionary thing for tokens in the vocabulary
-#################################################################
-#v_x = model.add_lookup_parameters((VOCDICT.size(), TOKDIM))
-#################################################################
+################################################################
+v_x = model.add_lookup_parameters((VOCDICT.size(), TOKDIM))
+################################################################
 #lookup dictionary for characterset
 ch_x = model.add_lookup_parameters((VOCDICT.size(), CHDIM))
 
@@ -294,15 +294,15 @@ sp_x = model.add_lookup_parameters((SpanWidth.size(), SPANDIM))
 #lookup dict for FEs from FEDICT
 fe_x = model.add_lookup_parameters((FEDICT.size(), FEDIM))
 #use word vectors
-#################################################################
-# if USE_WV:
-#     e_x = model.add_lookup_parameters((VOCDICT.size(), PRETDIM))
-#     for wordid in wvs:
-#         #dict of all vectors for each word
-#         e_x.init_row(wordid, wvs[wordid])
-#     w_e = model.add_parameters((LSTMINPDIM, PRETDIM))
-#     b_e = model.add_parameters((LSTMINPDIM, 1))
-#################################################################
+################################################################
+if USE_WV:
+    e_x = model.add_lookup_parameters((VOCDICT.size(), PRETDIM))
+    for wordid in wvs:
+        #dict of all vectors for each word
+        e_x.init_row(wordid, wvs[wordid])
+    w_e = model.add_parameters((LSTMINPDIM, PRETDIM))
+    b_e = model.add_parameters((LSTMINPDIM, 1))
+################################################################
 if USE_CHV:
     #dict of all vectors for each character
     ch_x = model.add_lookup_parameters((CHARDICT.size(), PRETCHDIM))
@@ -311,39 +311,39 @@ if USE_CHV:
     ch_e = model.add_parameters((CHLSTMINPDIM, PRETCHDIM))
     bch_e = model.add_parameters((CHLSTMINPDIM, 1))
 #
-# w_i = model.add_parameters((LSTMINPDIM, INPDIM))
-# b_i = model.add_parameters((LSTMINPDIM, 1))
+w_i = model.add_parameters((LSTMINPDIM, INPDIM))
+b_i = model.add_parameters((LSTMINPDIM, 1))
 
 ch_i = model.add_parameters((CHLSTMINPDIM, CHINPDIM))
 bch_i = model.add_parameters((CHLSTMINPDIM, 1))
-#################################################################
-#builders = [
-    #dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model),
-  # dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model)
-#]
-#################################################################
+################################################################
+builders = [
+    dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model),
+  dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model)
+]
+################################################################
 chbuilders = [
     dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMDIM, model),
    dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMDIM, model)
 ]
-#################################################################
-#basefwdlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMINPDIM, model)
-#baserevlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMINPDIM, model)
-#################################################################
+################################################################
+basefwdlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMINPDIM, model)
+baserevlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMINPDIM, model)
+################################################################
 charfwdlstm = dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMINPDIM, model)
 charrevlstm = dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMINPDIM, model)
-#################################################################
-# w_bi = model.add_parameters((LSTMINPDIM, 2 * LSTMINPDIM))
-# b_bi = model.add_parameters((LSTMINPDIM, 1))
-#################################################################
+################################################################
+w_bi = model.add_parameters((LSTMINPDIM, 2 * LSTMINPDIM))
+b_bi = model.add_parameters((LSTMINPDIM, 1))
+################################################################
 ch_bi = model.add_parameters((CHLSTMINPDIM, 2 * CHLSTMINPDIM))
 bch_bi = model.add_parameters((CHLSTMINPDIM, 1))
 
 
+################################################################
+tgtlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model)
+ctxtlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model)
 #################################################################
-# tgtlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model)
-# ctxtlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model)
-##################################################################
 chtgtlstm = dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMDIM, model)
 chctxtlstm = dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMDIM, model)
 
@@ -362,12 +362,12 @@ chctxtlstm = dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMDIM, model)
 #
 #     w_cp = model.add_parameters((PATHDIM, 2 * PATHLSTMDIM))
 #     b_cp = model.add_parameters((PATHDIM, 1))
-####################################################
-# w_z = model.add_parameters((HIDDENDIM, ALL_FEATS_DIM))
-# b_z = model.add_parameters((HIDDENDIM, 1))
-# w_f = model.add_parameters((1, HIDDENDIM))
-# b_f = model.add_parameters((1, 1))
-#######################################################
+###################################################
+w_z = model.add_parameters((HIDDENDIM, ALL_FEATS_DIM))
+b_z = model.add_parameters((HIDDENDIM, 1))
+w_f = model.add_parameters((1, HIDDENDIM))
+b_f = model.add_parameters((1, 1))
+######################################################
 ch_z = model.add_parameters((HIDDENCHDIM, ALL_FEATS_DIM))
 bch_z = model.add_parameters((HIDDENCHDIM, 1))
 ch_f = model.add_parameters((1, HIDDENCHDIM))
@@ -975,13 +975,13 @@ def identify_fes(unkdtoks, unkdchars, sentence, tfdict, goldfes=None, testidx=No
     tfkeys = sorted(tfdict)
     tg_start = tfkeys[0]
 
-    # embpos_x = get_base_embeddings(trainmode, unkdtoks, tg_start, sentence)
-    # tfemb, frame = get_target_frame_embeddings(embpos_x, tfdict)
+    embpos_x = get_base_embeddings(trainmode, unkdtoks, tg_start, sentence)
+    tfemb, frame = get_target_frame_embeddings(embpos_x, tfdict)
 
     embchars_x = get_base_character_embeddings(trainmode, unkdchars, tg_start)
     tf_char_emb, ch_frame = get_target_frame_character_embeddings(embchars_x, tfdict)
 
-    #fws, bws = get_span_embeddings(embpos_x)
+    fws, bws = get_span_embeddings(embpos_x)
     chfws, chbws = get_character_span_embeddings(embchars_x)
     valid_fes = frmfemap[ch_frame.id] + [NOTANFEID]
     # if USE_DEPS:
@@ -991,8 +991,9 @@ def identify_fes(unkdtoks, unkdchars, sentence, tfdict, goldfes=None, testidx=No
     #     cpaths_x = get_cpath_embeddings(sentence)
     #     factor_exprs = get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, cpaths_x=cpaths_x)
     # else:
+    ################################################################################################
     factor_exprs = get_factor_expressions(chfws, chbws, tf_char_emb, tfdict, valid_fes, sentence)
-
+    ################################################################################################
     if trainmode:
         segrnnloss = get_loss(factor_exprs, goldfes, valid_fes, sentlen)
         # if USE_PTB_CONSTITS:
@@ -1097,7 +1098,7 @@ if options.mode in ["train", "refresh"]:
             unkedtoks = []
             unkedchars = []
             unk_replace_tokens(trex.tokens, unkedtoks, VOCDICT, UNK_PROB, UNKTOKEN)
-            unk_replace_characters(trex.chars, unkedchars, CHARDICT, UNK_PROB, UNKCHAR)
+            unk_replace_characters(trex.chars, unkedchars, CHARDICT, UNK_PROB, UNKCHAR, CHARPAD, CHARSPACE)
 
 
             if USE_PTB_CONSTITS and type(trex) == Sentence:  # a PTB example

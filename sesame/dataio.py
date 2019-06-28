@@ -275,7 +275,7 @@ def get_chvec_map():
     ch_vecs = {CHARDICT.addstr(line.split(' ')[0]):
                 [float(f) for f in line.strip().split(' ')[1:]] for line in wvf}
     CHARDICT.lock()
-    print(CHARDICT.size())
+    #print(CHARDICT.size())
     ch_vecs_array = np.zeros((CHARDICT.size(), 300))
     char_indices = enumerate(list(CHARDICT._strtoint.keys()))
     for i, c in char_indices:
@@ -289,7 +289,7 @@ def get_chvec_map():
     ch_vecs_pca = np.array(pca.transform(ch_vecs_array))
     wvf = open(embs_file, 'r')
     wvf.readline()
-    print([f for f in ch_vecs_pca[0]])
+    #print([f for f in ch_vecs_pca[0]])
     ch_vecs = {CHARDICT.addstr(line.split(' ')[0]):[float(f) for f in ch_vecs_pca[CHARDICT.addstr(line.split(' ')[0])]] for line in wvf}
 
     return ch_vecs
