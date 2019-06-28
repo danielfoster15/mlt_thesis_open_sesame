@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import re
+
 from copy import deepcopy
 
 from frame_semantic_graph import LexicalUnit, Frame, FrameElement, FrameSemParse
@@ -29,7 +31,13 @@ class CoNLL09Element:
         characters = []
         for c in ele[1]:
             characters.append(c)
-        characters = characters + [' ']
+        ooachars = []
+        for character in characters:
+            if re.sub(r'[ -~]', '', character) == '':
+                ooachars.append(character)
+            else:
+                ooachars.append('OOA')
+        characters = ooachars + [' ']
         self.chars = [CHARDICT.addstr(c) for c in characters]
         self.nltk_lemma = LEMDICT.addstr(ele[3])
         self.fn_pos = ele[4]  # Not a gold POS tag, provided by taggers used in FrameNet, ignore.
