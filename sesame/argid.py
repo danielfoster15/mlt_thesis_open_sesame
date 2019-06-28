@@ -220,8 +220,8 @@ ALL_FEATS_DIM = 2 * LSTMDIM \
                 + ARGPOSDIM \
                 + SPANDIM \
                 + 2  # spanlen and log spanlen features and is a constitspan
-
-ALL_FEATS_DIM = 429
+print(ALL_FEATS_DIM)
+ALL_FEATS_DIM = 457
 
 if USE_DEPS:
     DEPHEADDIM = LSTMINPDIM + POSDIM
@@ -568,14 +568,19 @@ def get_character_span_embeddings(embpos_x):
     if USE_DROPOUT:
         chbuilders[0].set_dropout(DROPOUT_RATE)
         chbuilders[1].set_dropout(DROPOUT_RATE)
-
+    #for every integer in the range of the length of the sentence
     for i in xrange(sentlen):
         fw_init = chbuilders[0].initial_state()
+        #in a list of every embedding from i to the end of the sentence
         tmpfws = fw_init.transduce(embpos_x[i:])
+        #check the number of embeddings forward
         if len(tmpfws) != sentlen - i:
             raise Exception("incorrect number of forwards", len(tmpfws), i, sentlen)
 
         spanend = sentlen
+        #if using span clip? the end of the span is the minimum of the length of the sentence
+        #e.g. 100 and the length of i e.g. 50 + allowed span len e.g. 20 +1 =71
+        #in a sentence of 100 characters when we are at 50 the span is then 50 to 71
         if USE_SPAN_CLIP: spanend = min(sentlen, i + ALLOWED_CHAR_SPANLEN + 1)
         for j in xrange(i, spanend):
             # for j in xrange(i, sentlen):
@@ -629,10 +634,10 @@ def get_character_span_embeddings(embpos_x):
 #     return phrpaths
 
 
-def get_factor_expressions(chfws, chbws, tf_char_emb, tfdict, valid_fes, sentence, spaths_x=None, cpaths_x=None):
+def get_factor_expressions(fws, bws, tf_char_emb, tfdict, valid_fes, sentence, spaths_x=None, cpaths_x=None):
     factexprs = {}
     #sentlen = len(fws)
-    sentlen = len(chfws)
+    sentlen = len(fws)
 
     sortedtfd = sorted(tfdict.keys())
     targetspan = (sortedtfd[0], sortedtfd[-1])
@@ -648,7 +653,7 @@ def get_factor_expressions(chfws, chbws, tf_char_emb, tfdict, valid_fes, sentenc
             spanpos = ap_x[ArgPosition.whereisarg((i, j), targetspan)]
 
             #fbemb_ij_basic = dy.concatenate([fws[i][j], bws[i][j], tfemb, spanlen, logspanlen, spanwidth, spanpos])
-            fbemb_ij_character = dy.concatenate([chfws[i][j], chbws[i][j], tf_char_emb, spanlen, logspanlen, spanwidth, spanpos])
+            fbemb_ij_character = dy.concatenate([fws[i][j], bws[i][j], tf_char_emb, spanlen, logspanlen, spanwidth, spanpos])
 
             #fbemb_combined = dy.concatenate([fbemb_ij_basic, fbemb_ij_character])
 
@@ -671,7 +676,7 @@ def get_factor_expressions(chfws, chbws, tf_char_emb, tfdict, valid_fes, sentenc
                 else:
                     fefixed = fe_x[y]
                 fbemb_ijy = dy.concatenate([fefixed, fbemb_ij])
-                factexprs[fctr] = ch_f * dy.rectify(ch_z * fbemb_ijy + bch_z) + bch_f
+                factexprs[fctr] = w_f * dy.rectify(w_z * fbemb_ijy + b_z) + b_f
     return factexprs
 
 
@@ -992,7 +997,7 @@ def identify_fes(unkdtoks, unkdchars, sentence, tfdict, goldfes=None, testidx=No
     #     factor_exprs = get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, cpaths_x=cpaths_x)
     # else:
     ################################################################################################
-    factor_exprs = get_factor_expressions(chfws, chbws, tf_char_emb, tfdict, valid_fes, sentence)
+    factor_exprs = get_factor_expressions(fws, bws, tf_char_emb, tfdict, valid_fes, sentence)
     ################################################################################################
     if trainmode:
         segrnnloss = get_loss(factor_exprs, goldfes, valid_fes, sentlen)
