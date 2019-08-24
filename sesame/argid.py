@@ -30,7 +30,8 @@ optpr.add_option("--hier", action="store_true", default=False)
 optpr.add_option("--syn", type="choice", choices=["dep", "constit", "depconstit", "none"], default="none")
 optpr.add_option("--ptb", action="store_true", default=False)
 optpr.add_option("--raw_input", type="str", metavar="FILE")
-optpr.add_option("--config", qtype="str", metavar="FILE")
+optpr.add_option("--config", type="str", metavar="FILE")
+optpr.add_option("--character_based", action = "store_true")
 optpr.add_option("--dynet-gpu", action="store_true")
 (options, args) = optpr.parse_args()
 
@@ -52,7 +53,10 @@ FE_CLASSIFIER = True
 if options.mode in ["test", "predict"]:
     USE_DROPOUT = False
 USE_WV = True
-USE_CHV = True
+if options.character_based:
+    USE_CHV = True
+else:
+    USE_CHV = False
 USE_HIER = options.hier
 USE_DEPS = USE_CONSTITS = False
 if options.syn == "dep" or options.syn == "depconstit":
@@ -97,9 +101,10 @@ lock_dicts()
 
 # Default labels - in CoNLL format these correspond to _
 UNKTOKEN = VOCDICT.getid(UNK)
-UNKCHAR = CHARDICT.getid(UNKCHR)
-CHARPAD= CHARDICT.getid(CHRPAD)
-CHARSPACE = CHARDICT.getid(CHRSPACE)
+if USE_CHV:
+    UNKCHAR = CHARDICT.getid(UNKCHR)
+    CHARPAD= CHARDICT.getid(CHRPAD)
+    CHARSPACE = CHARDICT.getid(CHRSPACE)
 NOTANLU = LUDICT.getid(EMPTY_LABEL)
 NOTANFEID = FEDICT.getid(EMPTY_FE)  # O in CoNLL format.
 
@@ -123,45 +128,81 @@ else:
     raise Exception("Invalid parser mode", options.mode)
 
 # Default configurations.
-configuration = {"train": train_conll,
-                 "use_exemplar": options.exemplar,
-                 "use_hierarchy": USE_HIER,
-                 "use_span_clip": USE_SPAN_CLIP,
-                 "allowed_max_span_length": 20,
-                 "allowed_max_character_span_length": 20,
-                 "using_dependency_parses": USE_DEPS,
-                 "using_constituency_parses": USE_CONSTITS,
-                 "using_scaffold_loss": USE_PTB_CONSTITS,
-                 "loss_type": options.loss,
-                 "cost_type": options.cost,
-                 "recall_oriented_cost": RECALL_ORIENTED_COST,
-                 "unk_prob": 0.1,
-                 "dropout_rate": 0.01,
-                 "token_dim": 60,
-                 "character_dim": 50,
-                 "pos_dim": 4,
-                 "lu_dim": 64,
-                 "lu_pos_dim": 2,
-                 "frame_dim": 100,
-                 "fe_dim": 50,
-                 "phrase_dim": 16,
-                 "path_lstm_dim": 64,
-                 "path_dim": 64,
-                 "dependency_relation_dim": 8,
-                 "lstm_input_dim": 64,
-                 "chlstm_input_dim": 50,
-                 "lstm_dim": 64,
-                 "chlstm_dim": 50,
-                 "lstm_depth": 1,
-                 "hidden_dim": 64,
-                 "hidden_ch_dim": 50,
-                 "use_dropout": USE_DROPOUT,
-                 "pretrained_embedding_dim": PRETDIM,
-                 "pretrained_character_embeddings_dim": PRETCHDIM,
-                 "num_epochs": 15 if not options.exemplar else 25,
-                 "patience": 3,
-                 "eval_after_every_epochs": 100,
-                 "dev_eval_epoch_frequency": 5}
+if USE_CHV:
+    configuration = {"train": train_conll,
+                     "use_exemplar": options.exemplar,
+                     "use_hierarchy": USE_HIER,
+                     "use_span_clip": USE_SPAN_CLIP,
+                     "allowed_max_span_length": 20,
+                     "allowed_max_character_span_length": 20,
+                     "using_dependency_parses": USE_DEPS,
+                     "using_constituency_parses": USE_CONSTITS,
+                     "using_scaffold_loss": USE_PTB_CONSTITS,
+                     "loss_type": options.loss,
+                     "cost_type": options.cost,
+                     "recall_oriented_cost": RECALL_ORIENTED_COST,
+                     "unk_prob": 0.1,
+                     "dropout_rate": 0.01,
+                     "token_dim": 60,
+                     "character_dim": 50,
+                     "pos_dim": 4,
+                     "lu_dim": 64,
+                     "lu_pos_dim": 2,
+                     "frame_dim": 100,
+                     "fe_dim": 50,
+                     "phrase_dim": 16,
+                     "path_lstm_dim": 64,
+                     "path_dim": 64,
+                     "dependency_relation_dim": 8,
+                     "lstm_input_dim": 64,
+                     "chlstm_input_dim": 50,
+                     "lstm_dim": 64,
+                     "chlstm_dim": 50,
+                     "lstm_depth": 1,
+                     "hidden_dim": 64,
+                     "hidden_ch_dim": 50,
+                     "use_dropout": USE_DROPOUT,
+                     "pretrained_embedding_dim": PRETDIM,
+                     "pretrained_character_embeddings_dim": PRETCHDIM,
+                     "num_epochs": 15 if not options.exemplar else 25,
+                     "patience": 3,
+                     "eval_after_every_epochs": 100,
+                     "dev_eval_epoch_frequency": 5}
+else:
+    configuration = {"train": train_conll,
+                     "use_exemplar": options.exemplar,
+                     "use_hierarchy": USE_HIER,
+                     "use_span_clip": USE_SPAN_CLIP,
+                     "allowed_max_span_length": 20,
+                     "allowed_max_character_span_length": 20,
+                     "using_dependency_parses": USE_DEPS,
+                     "using_constituency_parses": USE_CONSTITS,
+                     "using_scaffold_loss": USE_PTB_CONSTITS,
+                     "loss_type": options.loss,
+                     "cost_type": options.cost,
+                     "recall_oriented_cost": RECALL_ORIENTED_COST,
+                     "unk_prob": 0.1,
+                     "dropout_rate": 0.01,
+                     "token_dim": 60,
+                     "pos_dim": 4,
+                     "lu_dim": 64,
+                     "lu_pos_dim": 2,
+                     "frame_dim": 100,
+                     "fe_dim": 50,
+                     "phrase_dim": 16,
+                     "path_lstm_dim": 64,
+                     "path_dim": 64,
+                     "dependency_relation_dim": 8,
+                     "lstm_input_dim": 64,
+                     "lstm_dim": 64,
+                     "lstm_depth": 1,
+                     "hidden_dim": 64,
+                     "use_dropout": USE_DROPOUT,
+                     "pretrained_embedding_dim": PRETDIM,
+                     "num_epochs": 15 if not options.exemplar else 25,
+                     "patience": 3,
+                     "eval_after_every_epochs": 100,
+                     "dev_eval_epoch_frequency": 5}
 configuration_file = os.path.join(model_dir, "configuration.json")
 if options.mode == "train":
     if options.config:
@@ -174,13 +215,12 @@ else:
     json_file = open(configuration_file, "r")
     configuration = json.load(json_file)
 
+
 UNK_PROB = configuration["unk_prob"]
 DROPOUT_RATE = configuration["dropout_rate"]
 ALLOWED_SPANLEN = configuration["allowed_max_span_length"]
-ALLOWED_CHAR_SPANLEN = configuration["allowed_max_character_span_length"]
 
 TOKDIM = configuration["token_dim"]
-CHDIM = configuration["character_dim"]
 POSDIM = configuration["pos_dim"]
 LUDIM = configuration["lu_dim"]
 LUPOSDIM = configuration["lu_pos_dim"]
@@ -188,7 +228,11 @@ LUPOSDIM = configuration["lu_pos_dim"]
 FRMDIM = configuration["frame_dim"]
 FEDIM = configuration["fe_dim"]
 INPDIM = TOKDIM + POSDIM + 1
-CHINPDIM= CHDIM + 1
+if USE_CHV:
+    ALLOWED_CHAR_SPANLEN = configuration["allowed_max_character_span_length"]
+    CHDIM = configuration["character_dim"]
+    CHINPDIM = CHDIM + 1
+
 
 PATHLSTMDIM = configuration["path_lstm_dim"]
 PATHDIM = configuration["path_dim"]
@@ -197,32 +241,42 @@ if USE_CONSTITS:
     PHRASEDIM = configuration["phrase_dim"]
 
 LSTMINPDIM = configuration["lstm_input_dim"]
-CHLSTMINPDIM = configuration["chlstm_input_dim"]
 LSTMDIM = configuration["lstm_dim"]
-CHLSTMDIM = configuration["chlstm_dim"]
 LSTMDEPTH = configuration["lstm_depth"]
 HIDDENDIM = configuration["hidden_dim"]
-HIDDENCHDIM = configuration["hidden_ch_dim"]
+
+if USE_CHV:
+    CHLSTMINPDIM = configuration["chlstm_input_dim"]
+    CHLSTMDIM = configuration["chlstm_dim"]
+    HIDDENCHDIM = configuration["hidden_ch_dim"]
 
 ARGPOSDIM = ArgPosition.size()
 SPANDIM = SpanWidth.size()
-
-ALL_FEATS_DIM = 2 * LSTMDIM \
-                + 2 * CHLSTMDIM \
-                + LUDIM \
-                + LUPOSDIM \
-                + FRMDIM \
-                + LSTMINPDIM \
-                + CHLSTMINPDIM \
-                + LSTMDIM \
-                + CHLSTMDIM \
-                + FEDIM \
-                + ARGPOSDIM \
-                + SPANDIM \
-                + 2  # spanlen and log spanlen features and is a constitspan
-print(ALL_FEATS_DIM)
-ALL_FEATS_DIM = 457
-
+if USE_CHV:
+    ALL_FEATS_DIM = 2 * LSTMDIM \
+                    + 2 * CHLSTMDIM \
+                    + LUDIM \
+                    + LUPOSDIM \
+                    + FRMDIM \
+                    + LSTMINPDIM \
+                    + CHLSTMINPDIM \
+                    + LSTMDIM \
+                    + CHLSTMDIM \
+                    + FEDIM \
+                    + ARGPOSDIM \
+                    + SPANDIM \
+                    + 2  # spanlen and log spanlen features and is a constitspan
+else:
+    ALL_FEATS_DIM = 2 * LSTMDIM \
+                    + LUDIM \
+                    + LUPOSDIM \
+                    + FRMDIM \
+                    + LSTMINPDIM \
+                    + LSTMDIM \
+                    + FEDIM \
+                    + ARGPOSDIM \
+                    + SPANDIM \
+                    + 2  # spanlen and log spanlen features and is a constitspan
 if USE_DEPS:
     DEPHEADDIM = LSTMINPDIM + POSDIM
     DEPRELDIM = configuration["dependency_relation_dim"]
@@ -269,7 +323,8 @@ adam = dy.AdamTrainer(model, 0.0005, 0.01, 0.9999, 1e-8)
 v_x = model.add_lookup_parameters((VOCDICT.size(), TOKDIM))
 ################################################################
 #lookup dictionary for characterset
-ch_x = model.add_lookup_parameters((VOCDICT.size(), CHDIM))
+if USE_CHV:
+    ch_x = model.add_lookup_parameters((VOCDICT.size(), CHDIM))
 
 #lookup dictionary thing for parts of speech
 p_x = model.add_lookup_parameters((POSDICT.size(), POSDIM))
@@ -285,12 +340,12 @@ ap_x = model.add_lookup_parameters((ArgPosition.size(), ARGPOSDIM))
 #lookup dictionary for how long a sentence is?
 sp_x = model.add_lookup_parameters((SpanWidth.size(), SPANDIM))
 
-# if USE_DEPS:
-#     dr_x = model.add_lookup_parameters((DEPRELDICT.size(), DEPRELDIM))
-#     oh_s = model.add_lookup_parameters((OutHeads.size(), OUTHEADDIM))
-#
-# if USE_CONSTITS:
-#     ct_x = model.add_lookup_parameters((CLABELDICT.size(), PHRASEDIM))
+if USE_DEPS:
+    dr_x = model.add_lookup_parameters((DEPRELDICT.size(), DEPRELDIM))
+    oh_s = model.add_lookup_parameters((OutHeads.size(), OUTHEADDIM))
+
+if USE_CONSTITS:
+    ct_x = model.add_lookup_parameters((CLABELDICT.size(), PHRASEDIM))
 #lookup dict for FEs from FEDICT
 fe_x = model.add_lookup_parameters((FEDICT.size(), FEDIM))
 #use word vectors
@@ -314,64 +369,70 @@ if USE_CHV:
 w_i = model.add_parameters((LSTMINPDIM, INPDIM))
 b_i = model.add_parameters((LSTMINPDIM, 1))
 
-ch_i = model.add_parameters((CHLSTMINPDIM, CHINPDIM))
-bch_i = model.add_parameters((CHLSTMINPDIM, 1))
+if USE_CHV:
+    ch_i = model.add_parameters((CHLSTMINPDIM, CHINPDIM))
+    bch_i = model.add_parameters((CHLSTMINPDIM, 1))
 ################################################################
 builders = [
     dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model),
   dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model)
 ]
 ################################################################
-chbuilders = [
-    dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMDIM, model),
-   dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMDIM, model)
-]
+if USE_CHV:
+    chbuilders = [
+        dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMDIM, model),
+    dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMDIM, model)
+    ]
 ################################################################
 basefwdlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMINPDIM, model)
 baserevlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMINPDIM, model)
 ################################################################
-charfwdlstm = dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMINPDIM, model)
-charrevlstm = dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMINPDIM, model)
+if USE_CHV:
+    charfwdlstm = dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMINPDIM, model)
+    charrevlstm = dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMINPDIM, model)
 ################################################################
 w_bi = model.add_parameters((LSTMINPDIM, 2 * LSTMINPDIM))
 b_bi = model.add_parameters((LSTMINPDIM, 1))
 ################################################################
-ch_bi = model.add_parameters((CHLSTMINPDIM, 2 * CHLSTMINPDIM))
-bch_bi = model.add_parameters((CHLSTMINPDIM, 1))
+if USE_CHV:
+    ch_bi = model.add_parameters((CHLSTMINPDIM, 2 * CHLSTMINPDIM))
+    bch_bi = model.add_parameters((CHLSTMINPDIM, 1))
 
 
 ################################################################
 tgtlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model)
 ctxtlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, LSTMDIM, model)
 #################################################################
-chtgtlstm = dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMDIM, model)
-chctxtlstm = dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMDIM, model)
+if USE_CHV:
+    chtgtlstm = dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMDIM, model)
+    chctxtlstm = dy.LSTMBuilder(LSTMDEPTH, CHLSTMINPDIM, CHLSTMDIM, model)
 
-# if USE_DEPS:
-#     w_di = model.add_parameters((LSTMINPDIM, LSTMINPDIM + DEPHEADDIM + DEPRELDIM))
-#     b_di = model.add_parameters((LSTMINPDIM, 1))
-#
-#     pathfwdlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, PATHLSTMDIM, model)
-#     pathrevlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, PATHLSTMDIM, model)
-#
-#     w_p = model.add_parameters((PATHDIM, 2 * PATHLSTMDIM))
-#     b_p = model.add_parameters((PATHDIM, 1))
-# elif USE_CONSTITS:
-#     cpathfwdlstm = dy.LSTMBuilder(LSTMDEPTH, PHRASEDIM, PATHLSTMDIM, model)
-#     cpathrevlstm = dy.LSTMBuilder(LSTMDEPTH, PHRASEDIM, PATHLSTMDIM, model)
-#
-#     w_cp = model.add_parameters((PATHDIM, 2 * PATHLSTMDIM))
-#     b_cp = model.add_parameters((PATHDIM, 1))
+if USE_DEPS:
+    w_di = model.add_parameters((LSTMINPDIM, LSTMINPDIM + DEPHEADDIM + DEPRELDIM))
+    b_di = model.add_parameters((LSTMINPDIM, 1))
+
+    pathfwdlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, PATHLSTMDIM, model)
+    pathrevlstm = dy.LSTMBuilder(LSTMDEPTH, LSTMINPDIM, PATHLSTMDIM, model)
+
+    w_p = model.add_parameters((PATHDIM, 2 * PATHLSTMDIM))
+    b_p = model.add_parameters((PATHDIM, 1))
+elif USE_CONSTITS:
+    cpathfwdlstm = dy.LSTMBuilder(LSTMDEPTH, PHRASEDIM, PATHLSTMDIM, model)
+    cpathrevlstm = dy.LSTMBuilder(LSTMDEPTH, PHRASEDIM, PATHLSTMDIM, model)
+
+    w_cp = model.add_parameters((PATHDIM, 2 * PATHLSTMDIM))
+    b_cp = model.add_parameters((PATHDIM, 1))
 ###################################################
 w_z = model.add_parameters((HIDDENDIM, ALL_FEATS_DIM))
 b_z = model.add_parameters((HIDDENDIM, 1))
 w_f = model.add_parameters((1, HIDDENDIM))
 b_f = model.add_parameters((1, 1))
 ######################################################
-ch_z = model.add_parameters((HIDDENCHDIM, ALL_FEATS_DIM))
-bch_z = model.add_parameters((HIDDENCHDIM, 1))
-ch_f = model.add_parameters((1, HIDDENCHDIM))
-bch_f = model.add_parameters((1, 1))
+if USE_CHV:
+    ch_z = model.add_parameters((HIDDENCHDIM, ALL_FEATS_DIM))
+    bch_z = model.add_parameters((HIDDENCHDIM, 1))
+    ch_f = model.add_parameters((1, HIDDENCHDIM))
+    bch_f = model.add_parameters((1, 1))
 
 
 if USE_PTB_CONSTITS:
@@ -429,44 +490,44 @@ def get_base_embeddings(trainmode, unkdtokens, tg_start, sentence):
         basebi_x = baseinp_x
 
     return basebi_x
+if USE_CHV:
+    def get_base_character_embeddings(trainmode, unkdcharacters, tg_start):
+        #print(sentence)
+        #print('this is unkd tokens    :', unkdtokens)
+        #print('this is tg_start  :', tg_start)
+        sentlen = len(unkdcharacters)
+        #embedding_x
+        if trainmode:
+            chemb_x = [dy.noise(ch_x[char], 0.1) for char in unkdcharacters]
+        else:
+            chemb_x = [ch_x[char] for char in unkdcharacters]
+        dist_x = [dy.scalarInput(i - tg_start + 1) for i in xrange(sentlen)]
+        #here you are giving as base input a matrix of vectors representing the sentence with embedding, part of speach,
+        #and dist_x (don't know what this is, scalarInput) and telling it what position in the sentence each goes
+        #this is the input layer
+        basechinp_x = [(ch_i * dy.concatenate([chemb_x[j], dist_x[j]]) + bch_i) for j in xrange(sentlen)]
 
-def get_base_character_embeddings(trainmode, unkdcharacters, tg_start):
-    #print(sentence)
-    #print('this is unkd tokens    :', unkdtokens)
-    #print('this is tg_start  :', tg_start)
-    sentlen = len(unkdcharacters)
-    #embedding_x
-    if trainmode:
-        chemb_x = [dy.noise(ch_x[char], 0.1) for char in unkdcharacters]
-    else:
-        chemb_x = [ch_x[char] for char in unkdcharacters]
-    dist_x = [dy.scalarInput(i - tg_start + 1) for i in xrange(sentlen)]
-    #here you are giving as base input a matrix of vectors representing the sentence with embedding, part of speach,
-    #and dist_x (don't know what this is, scalarInput) and telling it what position in the sentence each goes
-    #this is the input layer
-    basechinp_x = [(ch_i * dy.concatenate([chemb_x[j], dist_x[j]]) + bch_i) for j in xrange(sentlen)]
+        if USE_CHV:
+            for j in xrange(sentlen):
+                if unkdcharacters[j] in chvs:
+                    nonupdatedchv = dy.nobackprop(ch_x[unkdcharacters[j]])
+                    basechinp_x[j] = basechinp_x[j] + ch_e * nonupdatedchv + bch_e
 
-    if USE_CHV:
-        for j in xrange(sentlen):
-            if unkdcharacters[j] in chvs:
-                nonupdatedchv = dy.nobackprop(ch_x[unkdcharacters[j]])
-                basechinp_x[j] = basechinp_x[j] + ch_e * nonupdatedchv + bch_e
-
-    chembdist_x = [dy.rectify(basechinp_x[j]) for j in xrange(sentlen)]
-    #print(' this is embpostdist: ' , embposdist_x, '\n\n this is baseinp_x:  ', baseinp_x, '\n\n\n\n\n')
-    if USE_DROPOUT:
-        charfwdlstm.set_dropout(DROPOUT_RATE)
-        charrevlstm.set_dropout(DROPOUT_RATE)
-    bfinit = charfwdlstm.initial_state()
-    basefwd = bfinit.transduce(chembdist_x)
-    brinit = charrevlstm.initial_state()
-    baserev = brinit.transduce(reversed(chembdist_x))
-    #this is the first hidden layer, the green one with back and forth arrows
-    basechbi_x = [dy.rectify(ch_bi * dy.concatenate([basefwd[eidx], baserev[sentlen - eidx - 1]]) +
-                    bch_bi) for eidx in xrange(sentlen)]
+        chembdist_x = [dy.rectify(basechinp_x[j]) for j in xrange(sentlen)]
+        #print(' this is embpostdist: ' , embposdist_x, '\n\n this is baseinp_x:  ', baseinp_x, '\n\n\n\n\n')
+        if USE_DROPOUT:
+            charfwdlstm.set_dropout(DROPOUT_RATE)
+            charrevlstm.set_dropout(DROPOUT_RATE)
+        bfinit = charfwdlstm.initial_state()
+        basefwd = bfinit.transduce(chembdist_x)
+        brinit = charrevlstm.initial_state()
+        baserev = brinit.transduce(reversed(chembdist_x))
+        #this is the first hidden layer, the green one with back and forth arrows
+        basechbi_x = [dy.rectify(ch_bi * dy.concatenate([basefwd[eidx], baserev[sentlen - eidx - 1]]) +
+                        bch_bi) for eidx in xrange(sentlen)]
 
 
-    return basechbi_x
+        return basechbi_x
 
 
 def get_target_frame_embeddings(embposdist_x, tfdict):
@@ -498,35 +559,36 @@ def get_target_frame_embeddings(embposdist_x, tfdict):
     tfemb = dy.concatenate([lu_v, lp_v, frame_v, target_x, ctxt_x])
 
     return tfemb, frame
-def get_target_frame_character_embeddings(embposdist_x, tfdict):
-    tfkeys = sorted(tfdict)
-    tg_start = tfkeys[0]
-    sentlen = len(embposdist_x)
+if USE_CHV:
+    def get_target_frame_character_embeddings(embposdist_x, tfdict):
+        tfkeys = sorted(tfdict)
+        tg_start = tfkeys[0]
+        sentlen = len(embposdist_x)
 
-    # Adding target word feature
-    lu, frame = tfdict[tg_start]
-    tginit = chtgtlstm.initial_state()
-    target_x = tginit.transduce(embposdist_x[tg_start: tg_start + len(tfkeys) + 1])[-1]
+        # Adding target word feature
+        lu, frame = tfdict[tg_start]
+        tginit = chtgtlstm.initial_state()
+        target_x = tginit.transduce(embposdist_x[tg_start: tg_start + len(tfkeys) + 1])[-1]
 
-    # Adding context features
-    ctxt = range(tg_start - 1, tfkeys[-1] + 2)
-    if ctxt[0] < 0: ctxt = ctxt[1:]
-    if ctxt[-1] > sentlen: ctxt = ctxt[:-1]
-    c_init = chctxtlstm.initial_state()
-    ctxt_x = c_init.transduce(embposdist_x[ctxt[0]:ctxt[-1]])[-1]
+        # Adding context features
+        ctxt = range(tg_start - 1, tfkeys[-1] + 2)
+        if ctxt[0] < 0: ctxt = ctxt[1:]
+        if ctxt[-1] > sentlen: ctxt = ctxt[:-1]
+        c_init = chctxtlstm.initial_state()
+        ctxt_x = c_init.transduce(embposdist_x[ctxt[0]:ctxt[-1]])[-1]
 
-    # Adding features specific to LU and frame
-    lu_v = lu_x[lu.id]
-    lp_v = lp_x[lu.posid]
+        # Adding features specific to LU and frame
+        lu_v = lu_x[lu.id]
+        lp_v = lp_x[lu.posid]
 
-    if USE_HIER and frame.id in frmrelmap:
-        #print('hi, frameid  :', frame.id)
-        frame_v = dy.esum([frm_x[frame.id]] + [frm_x[par] for par in frmrelmap[frame.id]])
-    else:
-        frame_v = frm_x[frame.id]
-    tfemb = dy.concatenate([lu_v, lp_v, frame_v, target_x, ctxt_x])
+        if USE_HIER and frame.id in frmrelmap:
+            #print('hi, frameid  :', frame.id)
+            frame_v = dy.esum([frm_x[frame.id]] + [frm_x[par] for par in frmrelmap[frame.id]])
+        else:
+            frame_v = frm_x[frame.id]
+        tfemb = dy.concatenate([lu_v, lp_v, frame_v, target_x, ctxt_x])
 
-    return tfemb, frame
+        return tfemb, frame
 
 def get_span_embeddings(embpos_x):
     sentlen = len(embpos_x)
@@ -560,81 +622,44 @@ def get_span_embeddings(embpos_x):
             bws[i - k][i] = tmpbws[k]
 
     return fws, bws
-def get_character_span_embeddings(embpos_x):
-    sentlen = len(embpos_x)
-    chfws = [[None for _ in xrange(sentlen)] for _ in xrange(sentlen)]
-    chbws = [[None for _ in xrange(sentlen)] for _ in xrange(sentlen)]
 
-    if USE_DROPOUT:
-        chbuilders[0].set_dropout(DROPOUT_RATE)
-        chbuilders[1].set_dropout(DROPOUT_RATE)
-    #for every integer in the range of the length of the sentence
-    for i in xrange(sentlen):
-        fw_init = chbuilders[0].initial_state()
-        #in a list of every embedding from i to the end of the sentence
-        tmpfws = fw_init.transduce(embpos_x[i:])
-        #check the number of embeddings forward
-        if len(tmpfws) != sentlen - i:
-            raise Exception("incorrect number of forwards", len(tmpfws), i, sentlen)
+def get_deppath_embeddings(sentence, embpos_x):
+    spaths = {}
+    for spath in set(sentence.shortest_paths.values()):
+        shp = [embpos_x[node] for node in spath]
+        if USE_DROPOUT:
+            pathfwdlstm.set_dropout(DROPOUT_RATE)
+            pathrevlstm.set_dropout(DROPOUT_RATE)
+        pfinit = pathfwdlstm.initial_state()
+        pathfwd = pfinit.transduce(shp)
+        prinit = pathrevlstm.initial_state()
+        pathrev = prinit.transduce(reversed(shp))
 
-        spanend = sentlen
-        #if using span clip? the end of the span is the minimum of the length of the sentence
-        #e.g. 100 and the length of i e.g. 50 + allowed span len e.g. 20 +1 =71
-        #in a sentence of 100 characters when we are at 50 the span is then 50 to 71
-        if USE_SPAN_CLIP: spanend = min(sentlen, i + ALLOWED_CHAR_SPANLEN + 1)
-        for j in xrange(i, spanend):
-            # for j in xrange(i, sentlen):
-            chfws[i][j] = tmpfws[j - i]
+        pathlstm = dy.rectify(w_p * dy.concatenate([pathfwd[-1], pathrev[-1]]) + b_p)
 
-        bw_init = chbuilders[1].initial_state()
-        tmpbws = bw_init.transduce(reversed(embpos_x[:i + 1]))
-        if len(tmpbws) != i + 1:
-            raise Exception("incorrect number of backwards", i, len(tmpbws))
-        spansize = i + 1
-        if USE_SPAN_CLIP and spansize - 1 > ALLOWED_CHAR_SPANLEN:
-            spansize = ALLOWED_CHAR_SPANLEN + 1
-        for k in xrange(spansize):
-            chbws[i - k][i] = tmpbws[k]
-
-    return chfws, chbws
-
-# def get_deppath_embeddings(sentence, embpos_x):
-#     spaths = {}
-#     for spath in set(sentence.shortest_paths.values()):
-#         shp = [embpos_x[node] for node in spath]
-#         if USE_DROPOUT:
-#             pathfwdlstm.set_dropout(DROPOUT_RATE)
-#             pathrevlstm.set_dropout(DROPOUT_RATE)
-#         pfinit = pathfwdlstm.initial_state()
-#         pathfwd = pfinit.transduce(shp)
-#         prinit = pathrevlstm.initial_state()
-#         pathrev = prinit.transduce(reversed(shp))
-#
-#         pathlstm = dy.rectify(w_p * dy.concatenate([pathfwd[-1], pathrev[-1]]) + b_p)
-#
-#         spaths[spath] = pathlstm
-#     return spaths
+        spaths[spath] = pathlstm
+    return spaths
 
 
-# def get_cpath_embeddings(sentence):
-#     phrpaths = {}
-#     for phrpath in set(sentence.cpaths.values()):
-#         shp = [ct_x[node] for node in phrpath]
-#         if USE_DROPOUT:
-#             cpathfwdlstm.set_dropout(DROPOUT_RATE)
-#             cpathrevlstm.set_dropout(DROPOUT_RATE)
-#         cpfinit = cpathfwdlstm.initial_state()
-#         cpathfwd = cpfinit.transduce(shp)
-#         cprinit = cpathrevlstm.initial_state()
-#         cpathrev = cprinit.transduce(reversed(shp))
-#
-#         cpathlstm = dy.rectify(w_cp * dy.concatenate([cpathfwd[-1], cpathrev[-1]]) + b_cp)
-#
-#         phrpaths[phrpath] = cpathlstm
-#     return phrpaths
+def get_cpath_embeddings(sentence):
+    phrpaths = {}
+    for phrpath in set(sentence.cpaths.values()):
+        shp = [ct_x[node] for node in phrpath]
+        if USE_DROPOUT:
+            cpathfwdlstm.set_dropout(DROPOUT_RATE)
+            cpathrevlstm.set_dropout(DROPOUT_RATE)
+        cpfinit = cpathfwdlstm.initial_state()
+        cpathfwd = cpfinit.transduce(shp)
+        cprinit = cpathrevlstm.initial_state()
+        cpathrev = cprinit.transduce(reversed(shp))
+
+        cpathlstm = dy.rectify(w_cp * dy.concatenate([cpathfwd[-1], cpathrev[-1]]) + b_cp)
+
+        phrpaths[phrpath] = cpathlstm
+    return phrpaths
 
 
-def get_factor_expressions(fws, bws, tf_char_emb, tfdict, valid_fes, sentence, spaths_x=None, cpaths_x=None):
+def get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, spaths_x=None, cpaths_x=None):
     factexprs = {}
     #sentlen = len(fws)
     sentlen = len(fws)
@@ -652,22 +677,22 @@ def get_factor_expressions(fws, bws, tf_char_emb, tfdict, valid_fes, sentence, s
             spanwidth = sp_x[SpanWidth.howlongisspan(i, j)]
             spanpos = ap_x[ArgPosition.whereisarg((i, j), targetspan)]
 
-            #fbemb_ij_basic = dy.concatenate([fws[i][j], bws[i][j], tfemb, spanlen, logspanlen, spanwidth, spanpos])
-            fbemb_ij_character = dy.concatenate([fws[i][j], bws[i][j], tf_char_emb, spanlen, logspanlen, spanwidth, spanpos])
+            fbemb_ij_basic = dy.concatenate([fws[i][j], bws[i][j], tfemb, spanlen, logspanlen, spanwidth, spanpos])
+            if USE_CHV:
+                fbemb_ij_character = dy.concatenate([fws[i][j], bws[i][j], tfemb, spanlen, logspanlen, spanwidth, spanpos])
 
-            #fbemb_combined = dy.concatenate([fbemb_ij_basic, fbemb_ij_character])
 
-            # if USE_DEPS:
-            #     outs = oh_s[OutHeads.getnumouts(i, j, sentence.outheads)]
-            #     shp = spaths_x[sentence.shortest_paths[(i, j, targetspan[0])]]
-            #     fbemb_ij = dy.concatenate([fbemb_ij_basic, outs, shp])
-            # elif USE_CONSTITS:
-            #     isconstit = dy.scalarInput((i, j) in sentence.constitspans)
-            #     lca = ct_x[sentence.lca[(i, j)][1]]
-            #     phrp = cpaths_x[sentence.cpaths[(i, j, targetspan[0])]]
-            #     fbemb_ij = dy.concatenate([fbemb_ij_basic, isconstit, lca, phrp])
-            #else:
-            fbemb_ij = fbemb_ij_character
+            if USE_DEPS:
+                outs = oh_s[OutHeads.getnumouts(i, j, sentence.outheads)]
+                shp = spaths_x[sentence.shortest_paths[(i, j, targetspan[0])]]
+                fbemb_ij = dy.concatenate([fbemb_ij_basic, outs, shp])
+            elif USE_CONSTITS:
+                isconstit = dy.scalarInput((i, j) in sentence.constitspans)
+                lca = ct_x[sentence.lca[(i, j)][1]]
+                phrp = cpaths_x[sentence.cpaths[(i, j, targetspan[0])]]
+                fbemb_ij = dy.concatenate([fbemb_ij_basic, isconstit, lca, phrp])
+            elif USE_CHV:
+                fbemb_ij = fbemb_ij_character
 
             for y in valid_fes:
                 fctr = Factor(i, j, y)
@@ -680,10 +705,10 @@ def get_factor_expressions(fws, bws, tf_char_emb, tfdict, valid_fes, sentence, s
     return factexprs
 
 
-# def hamming_cost(factor, goldfactors):
-#     if factor in goldfactors:
-#         return dy.scalarInput(0)
-#     return dy.scalarInput(1)
+def hamming_cost(factor, goldfactors):
+    if factor in goldfactors:
+        return dy.scalarInput(0)
+    return dy.scalarInput(1)
 
 
 def recall_oriented_cost(factor, goldfactors):
@@ -714,26 +739,26 @@ def cost(factor, goldfactors):
         raise Exception("undefined cost type", options.cost)
 
 
-# def get_logloss_partition(factorexprs, valid_fes, sentlen):
-#     logalpha = [None for _ in xrange(sentlen)]
-#     # ssum = lossformula(sentlen, len(valid_fes))
-#     for j in xrange(sentlen):
-#         # full length spans
-#         spanscores = []
-#         if not USE_SPAN_CLIP or j <= ALLOWED_SPANLEN:
-#             spanscores = [factorexprs[Factor(0, j, y)] for y in valid_fes]
-#         # recursive case
-#         istart = 0
-#         if USE_SPAN_CLIP and j > ALLOWED_SPANLEN: istart = max(0, j - ALLOWED_SPANLEN - 1)
-#         for i in xrange(istart, j):
-#             facscores = [logalpha[i] + factorexprs[Factor(i + 1, j, y)] for y in valid_fes]
-#             spanscores.extend(facscores)
-#
-#         if not USE_SPAN_CLIP and len(spanscores) != len(valid_fes) * (j + 1):
-#             raise Exception("counting errors")
-#         logalpha[j] = dy.logsumexp(spanscores)
-#
-#     return logalpha[sentlen - 1]
+def get_logloss_partition(factorexprs, valid_fes, sentlen):
+    logalpha = [None for _ in xrange(sentlen)]
+    # ssum = lossformula(sentlen, len(valid_fes))
+    for j in xrange(sentlen):
+        # full length spans
+        spanscores = []
+        if not USE_SPAN_CLIP or j <= ALLOWED_SPANLEN:
+            spanscores = [factorexprs[Factor(0, j, y)] for y in valid_fes]
+        # recursive case
+        istart = 0
+        if USE_SPAN_CLIP and j > ALLOWED_SPANLEN: istart = max(0, j - ALLOWED_SPANLEN - 1)
+        for i in xrange(istart, j):
+            facscores = [logalpha[i] + factorexprs[Factor(i + 1, j, y)] for y in valid_fes]
+            spanscores.extend(facscores)
+
+        if not USE_SPAN_CLIP and len(spanscores) != len(valid_fes) * (j + 1):
+            raise Exception("counting errors")
+        logalpha[j] = dy.logsumexp(spanscores)
+
+    return logalpha[sentlen - 1]
 
 
 def get_softmax_margin_partition(factorexprs, goldfactors, valid_fes, sentlen):
@@ -969,7 +994,7 @@ def decode(factexprscalars, sentlen, valid_fes):
     return mergedargmax
 
 
-def identify_fes(unkdtoks, unkdchars, sentence, tfdict, goldfes=None, testidx=None):
+def identify_fes(unkdtoks, sentence, tfdict, unkdchars=None, goldfes=None, testidx=None):
     dy.renew_cg()
     trainmode = (goldfes is not None)
 
@@ -981,24 +1006,23 @@ def identify_fes(unkdtoks, unkdchars, sentence, tfdict, goldfes=None, testidx=No
     tg_start = tfkeys[0]
 
     embpos_x = get_base_embeddings(trainmode, unkdtoks, tg_start, sentence)
-    tfemb, frame = get_target_frame_embeddings(embpos_x, tfdict)
 
-    embchars_x = get_base_character_embeddings(trainmode, unkdchars, tg_start)
-    tf_char_emb, ch_frame = get_target_frame_character_embeddings(embchars_x, tfdict)
-
+    if unkdchars:
+        embchars_x = get_base_character_embeddings(trainmode, unkdchars, tg_start)
+        tfemb, frame = get_target_frame_character_embeddings(embchars_x, tfdict)
+    else:
+        tfemb, frame = get_target_frame_embeddings(embpos_x, tfdict)
     fws, bws = get_span_embeddings(embpos_x)
-    chfws, chbws = get_character_span_embeddings(embchars_x)
-    valid_fes = frmfemap[ch_frame.id] + [NOTANFEID]
-    # if USE_DEPS:
-    #     spaths_x = get_deppath_embeddings(sentence, embpos_x)
-    #     factor_exprs = get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, spaths_x=spaths_x)
-    # elif USE_CONSTITS:
-    #     cpaths_x = get_cpath_embeddings(sentence)
-    #     factor_exprs = get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, cpaths_x=cpaths_x)
-    # else:
-    ################################################################################################
-    factor_exprs = get_factor_expressions(fws, bws, tf_char_emb, tfdict, valid_fes, sentence)
-    ################################################################################################
+    valid_fes = frmfemap[frame.id] + [NOTANFEID]
+    if USE_DEPS:
+        spaths_x = get_deppath_embeddings(sentence, embpos_x)
+        factor_exprs = get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, spaths_x=spaths_x)
+    elif USE_CONSTITS:
+        cpaths_x = get_cpath_embeddings(sentence)
+        factor_exprs = get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, cpaths_x=cpaths_x)
+    else:
+        factor_exprs = get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence)
+
     if trainmode:
         segrnnloss = get_loss(factor_exprs, goldfes, valid_fes, sentlen)
         # if USE_PTB_CONSTITS:
@@ -1029,13 +1053,13 @@ def identify_fes(unkdtoks, unkdchars, sentence, tfdict, goldfes=None, testidx=No
         return argmax
 
 
-# def identify_spans(unkdtoks, sentence, goldspans):
-#     renew_cg()
-#
-#     embpos_x = get_base_embeddings(True, unkdtoks, 0, sentence)
-#     fws, bws = get_span_embeddings(embpos_x)
-#
-#     return get_constit_loss(fws, bws, goldspans)
+def identify_spans(unkdtoks, sentence, goldspans):
+    renew_cg()
+
+    embpos_x = get_base_embeddings(True, unkdtoks, 0, sentence)
+    fws, bws = get_span_embeddings(embpos_x)
+
+    return get_constit_loss(fws, bws, goldspans)
 
 
 def print_as_conll(golds, pred_targmaps):
@@ -1101,9 +1125,10 @@ if options.mode in ["train", "refresh"]:
                 starttime = time.time()
 
             unkedtoks = []
-            unkedchars = []
             unk_replace_tokens(trex.tokens, unkedtoks, VOCDICT, UNK_PROB, UNKTOKEN)
-            unk_replace_characters(trex.chars, unkedchars, CHARDICT, UNK_PROB, UNKCHAR, CHARPAD, CHARSPACE)
+            if USE_CHV:
+                unkedchars = []
+                unk_replace_characters(trex.chars, unkedchars, CHARDICT, UNK_PROB, UNKCHAR, CHARPAD, CHARSPACE)
 
 
             if USE_PTB_CONSTITS and type(trex) == Sentence:  # a PTB example
@@ -1111,11 +1136,17 @@ if options.mode in ["train", "refresh"]:
                                                       trex,
                                                       trex.constitspans.keys())
             else:  # an FN example
-                trexloss, taggedinex = identify_fes(unkedtoks,
-                                                    unkedchars,
-                                                    trex.sentence,
-                                                    trex.targetframedict,
-                                                    goldfes=trex.invertedfes)
+                if USE_CHV:
+                    trexloss, taggedinex = identify_fes(unkedtoks,
+                                                        trex.sentence,
+                                                        trex.targetframedict,
+                                                        unkedchars=unkedchars,
+                                                        goldfes=trex.invertedfes)
+                else:
+                    trexloss, taggedinex = identify_fes(unkedtoks,
+                                                        trex.sentence,
+                                                        trex.targetframedict,
+                                                        goldfes=trex.invertedfes)
             # tagged += taggedinex
 
             if trexloss is not None:
