@@ -12,7 +12,7 @@ class Sentence(object):
         if elements:
             self.sent_num = elements[0].sent_num
             self.tokens = [e.form for e in elements]
-            self.chars = [char for sublist in [e.chars for e in elements] for char in sublist]
+            self.chars = [c for charlist in [e.chars for e in elements] for c in charlist]
             self.postags = [e.nltk_pos for e in elements]
             self.lemmas = [e.nltk_lemma for e in elements]
         if sentnum:

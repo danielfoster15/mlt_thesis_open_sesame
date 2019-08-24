@@ -2,6 +2,7 @@
 import codecs
 import os
 import sys
+import re
 import tarfile
 import xml.etree.ElementTree as et
 import numpy as np
@@ -244,23 +245,6 @@ def read_related_lus():
 
     return lu_to_frame_dict, related_lus
 
-
-def get_wvec_map():
-    if not os.path.exists(EMBEDDINGS_FILE):
-        raise Exception("Pretrained embeddings file not found!", EMBEDDINGS_FILE)
-    sys.stderr.write("\nReading pretrained embeddings from {} ...\n".format(EMBEDDINGS_FILE))
-    if EMBEDDINGS_FILE.endswith('txt'):
-        embs_file = EMBEDDINGS_FILE
-    else:
-        raise Exception('Pretrained embeddings file needs to be a text file, not archive!',
-                        EMBEDDINGS_FILE)
-    wvf = open(embs_file, 'r')
-    wvf.readline()
-    wd_vecs = {VOCDICT.addstr(line.split(' ')[0]):
-                [float(f) for f in line.strip().split(' ')[1:]] for line in wvf}
-    return wd_vecs
-
-
 def get_chvec_map():
     if not os.path.exists(CHARACTER_EMBEDDINGS):
         raise Exception("Pretrained embeddings file not found!", CHARACTER_EMBEDDINGS)
@@ -271,28 +255,53 @@ def get_chvec_map():
         raise Exception('Pretrained embeddings file needs to be a text file, not archive!',
                         CHARACTER_EMBEDDINGS)
     wvf = open(embs_file, 'r')
-    wvf.readline()
-    ch_vecs = {CHARDICT.addstr(line.split(' ')[0]):
-                [float(f) for f in line.strip().split(' ')[1:]] for line in wvf}
-    CHARDICT.lock()
+    ch_vecs = {}
+    for line in wvf:
+        char = line.split(' ')[0]
+        vec = [float(f) for f in line.split(' ')[1:]]
+        ch_vecs[CHARDICT.addstr(char)] = vec
+    #CHARDICT.lock()
     #print(CHARDICT.size())
-    ch_vecs_array = np.zeros((CHARDICT.size(), 300))
-    char_indices = enumerate(list(CHARDICT._strtoint.keys()))
-    for i, c in char_indices:
-        idx = CHARDICT.addstr(c)
-        if idx in ch_vecs.keys():
-            ch_vec = ch_vecs[CHARDICT.addstr(c)]
-            ch_vecs_array[i] = ch_vec
+    #ch_vecs_array = np.zeros((CHARDICT.size(), 300))
+    #char_indices = enumerate(list(CHARDICT._strtoint.keys()))
+    #for i, c in char_indices:
+     #   idx = CHARDICT.addstr(c)
+      #  if idx in ch_vecs.keys():
+       #     ch_vec = ch_vecs[CHARDICT.addstr(c)]
+        #    ch_vecs_array[i] = ch_vec
     #print(ch_vecs_array)
-    pca = PCA(n_components=50)
-    pca.fit(ch_vecs_array)
-    ch_vecs_pca = np.array(pca.transform(ch_vecs_array))
-    wvf = open(embs_file, 'r')
-    wvf.readline()
+    #pca = PCA(n_components=97)
+    #pca.fit(ch_vecs_array)
+    #ch_vecs_pca = np.array(pca.transform(ch_vecs_array))
+    #wvf = open(embs_file, 'r')
+    #wvf.readline()
     #print([f for f in ch_vecs_pca[0]])
-    ch_vecs = {CHARDICT.addstr(line.split(' ')[0]):[float(f) for f in ch_vecs_pca[CHARDICT.addstr(line.split(' ')[0])]] for line in wvf}
+    #ch_vecs = {CHARDICT.addstr(line.split(' ')[0]):[float(f) for f in ch_vecs_pca[CHARDICT.addstr(line.split(' ')[0])]] for line in wvf}
 
     return ch_vecs
+
+def get_wvec_map():
+    if not os.path.exists(EMBEDDINGS_FILE):
+        raise Exception("Pretrained embeddings file not found!", EMBEDDINGS_FILE)
+    sys.stderr.write("\nReading pretrained embeddings from {} ...\n".format(EMBEDDINGS_FILE))
+    if EMBEDDINGS_FILE.endswith('txt') and EMBEDDINGS_ADDITION.endswith('txt'):
+        embs_file = EMBEDDINGS_FILE
+        mimick_embs = EMBEDDINGS_ADDITION
+    else:
+        raise Exception('Pretrained embeddings file needs to be a text file, not archive!',
+                        EMBEDDINGS_FILE)
+    wvf = open(embs_file, 'r')
+    wvf.readline()
+    wd_vecs = {VOCDICT.addstr(line.split(' ')[0]):
+                [float(f) for f in line.strip().split(' ')[1:]] for line in wvf}
+    wvf_add = open(mimick_embs, 'r')
+    wvf_add.readline()
+    for line in wvf_add:
+        vec, emb = VOCDICT.addstr(line.strip().split(' ')[0]), [float(f) for f in line.strip().split(' ')[1:]]
+        wd_vecs[vec] = emb
+    return wd_vecs
+
+
 
 def get_chains(node, inherit_map, path):
     if node in inherit_map:
