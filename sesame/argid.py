@@ -32,6 +32,7 @@ optpr.add_option("--ptb", action="store_true", default=False)
 optpr.add_option("--raw_input", type="str", metavar="FILE")
 optpr.add_option("--config", type="str", metavar="FILE")
 optpr.add_option("--character_based", action = "store_true")
+optpr.add_option("--no_data_fes", action = "store_true")
 optpr.add_option("--dynet-gpu", action="store_true")
 (options, args) = optpr.parse_args()
 
@@ -40,10 +41,12 @@ model_file_name = "{}best-argid-{}-model".format(model_dir, VERSION)
 if not os.path.exists(model_dir):
     os.makedirs(model_dir)
 
-if options.exemplar:
-    train_conll = TRAIN_EXEMPLAR
-    # TODO(Swabha): Still don"t have exemplar constituent parses.
+if options.no_data_fes:
+    train_conll = TRAIN_FTE_NO_DATA_FES
+    options.test_conll = TEST_CONLL_NO_DATA_FES
+    frame_dir = FRAME_DIR_NO_DATA_FES
 else:
+    frame_dir = FRAME_DIR
     train_conll = TRAIN_FTE
     train_constits = TRAIN_FTE_CONSTITS
 
@@ -83,15 +86,15 @@ if USE_PTB_CONSTITS:
 trainexamples, _, _ = read_conll(train_conll, options.syn)
 post_train_lock_dicts()
 
-frmfemap, corefrmfemap, _ = read_frame_maps()
+frmfemap, corefrmfemap, _ = read_frame_maps(frame_dir)
 
 #use word vectors
 if USE_WV:
     wvs = get_wvec_map()
     PRETDIM = len(wvs.values()[0])
-if USE_CHV:
-    chvs = get_chvec_map()
-    PRETCHDIM = len(chvs.values()[0])
+
+chvs = get_chvec_map()
+PRETCHDIM = len(chvs.values()[0])
 #user hierarchy of frame relations
 if USE_HIER:
     frmrelmap, feparents = read_frame_relations()
@@ -101,18 +104,21 @@ lock_dicts()
 
 # Default labels - in CoNLL format these correspond to _
 UNKTOKEN = VOCDICT.getid(UNK)
-if USE_CHV:
-    UNKCHAR = CHARDICT.getid(UNKCHR)
-    CHARPAD= CHARDICT.getid(CHRPAD)
-    CHARSPACE = CHARDICT.getid(CHRSPACE)
+UNKCHAR = CHARDICT.getid(UNKCHR)
+CHARPAD= CHARDICT.getid(CHRPAD)
+CHARSPACE = CHARDICT.getid(CHRSPACE)
 NOTANLU = LUDICT.getid(EMPTY_LABEL)
 NOTANFEID = FEDICT.getid(EMPTY_FE)  # O in CoNLL format.
 
 
 if options.mode in ["train", "refresh"]:
-    devexamples, _, _ = read_conll(DEV_CONLL, options.syn)
+    if options.no_data_fes:
+        devexamples, _, _ = read_conll(DEV_CONLL_NO_DATA_FES, options.syn)
+    else:
+        devexamples, _, _ = read_conll(DEV_CONLL, options.syn)
     out_conll_file = "{}predicted-{}-argid-dev.conll".format(model_dir, VERSION)
 elif options.mode in ["test", "ensemble"]:
+    print(options.test_conll)
     devexamples, _, _ = read_conll(options.test_conll, options.syn)
     out_conll_file = "{}predicted-{}-argid-test.conll".format(model_dir, VERSION)
     fe_file = "{}predicted-{}-argid-test.fes".format(model_dir, VERSION)
@@ -174,7 +180,6 @@ else:
                      "use_hierarchy": USE_HIER,
                      "use_span_clip": USE_SPAN_CLIP,
                      "allowed_max_span_length": 20,
-                     "allowed_max_character_span_length": 20,
                      "using_dependency_parses": USE_DEPS,
                      "using_constituency_parses": USE_CONSTITS,
                      "using_scaffold_loss": USE_PTB_CONSTITS,
@@ -199,7 +204,7 @@ else:
                      "hidden_dim": 64,
                      "use_dropout": USE_DROPOUT,
                      "pretrained_embedding_dim": PRETDIM,
-                     "num_epochs": 15 if not options.exemplar else 25,
+                     "num_epochs": 10 if not options.exemplar else 25,
                      "patience": 3,
                      "eval_after_every_epochs": 100,
                      "dev_eval_epoch_frequency": 5}
@@ -228,6 +233,7 @@ LUPOSDIM = configuration["lu_pos_dim"]
 FRMDIM = configuration["frame_dim"]
 FEDIM = configuration["fe_dim"]
 INPDIM = TOKDIM + POSDIM + 1
+
 if USE_CHV:
     ALLOWED_CHAR_SPANLEN = configuration["allowed_max_character_span_length"]
     CHDIM = configuration["character_dim"]
@@ -244,7 +250,6 @@ LSTMINPDIM = configuration["lstm_input_dim"]
 LSTMDIM = configuration["lstm_dim"]
 LSTMDEPTH = configuration["lstm_depth"]
 HIDDENDIM = configuration["hidden_dim"]
-
 if USE_CHV:
     CHLSTMINPDIM = configuration["chlstm_input_dim"]
     CHLSTMDIM = configuration["chlstm_dim"]
@@ -316,6 +321,57 @@ print_data_status(CLABELDICT, "Constit Labels")
 print_data_status(DEPRELDICT, "Dependency Relations")
 sys.stderr.write("\n_____________________\n\n")
 
+
+ALL_FEATS_DIM = 2 * LSTMDIM \
+                + LUDIM \
+                + LUPOSDIM \
+                + FRMDIM \
+                + LSTMINPDIM \
+                + LSTMDIM \
+                + FEDIM \
+                + ARGPOSDIM \
+                + SPANDIM \
+                + 2  # spanlen and log spanlen features and is a constitspan
+
+
+if USE_DEPS:
+    DEPHEADDIM = LSTMINPDIM + POSDIM
+    DEPRELDIM = configuration["dependency_relation_dim"]
+    OUTHEADDIM = OutHeads.size()
+
+    PATHLSTMINPDIM = DEPHEADDIM + DEPRELDIM
+    ALL_FEATS_DIM += OUTHEADDIM + PATHDIM
+
+if USE_CONSTITS:
+    ALL_FEATS_DIM += 1 + PHRASEDIM  # is a constit and what is it
+    ALL_FEATS_DIM += PATHDIM
+
+NUMEPOCHS = configuration["num_epochs"]
+PATIENCE = configuration["patience"]
+LOSS_EVAL_EPOCH = configuration["eval_after_every_epochs"]
+DEV_EVAL_EPOCHS = configuration["dev_eval_epoch_frequency"] * LOSS_EVAL_EPOCH
+
+trainexamples = filter_long_ex(trainexamples, USE_SPAN_CLIP, ALLOWED_SPANLEN, NOTANFEID)
+
+sys.stderr.write("\nPARSER SETTINGS (see {})\n_____________________\n".format(configuration_file))
+for key in sorted(configuration):
+    sys.stderr.write("{}:\t{}\n".format(key.upper(), configuration[key]))
+
+sys.stderr.write("\n")
+
+def print_data_status(fsp_dict, vocab_str):
+    sys.stderr.write("# {} = {}\n\tUnseen in dev/test = {}\n\tUnlearnt in dev/test = {}\n".format(
+        vocab_str, fsp_dict.size(), fsp_dict.num_unks()[0], fsp_dict.num_unks()[1]))
+
+print_data_status(VOCDICT, "Tokens")
+print_data_status(POSDICT, "POS tags")
+print_data_status(LUDICT, "LUs")
+print_data_status(LUPOSDICT, "LU POS tags")
+print_data_status(FRAMEDICT, "Frames")
+print_data_status(FEDICT, "FEs")
+print_data_status(CLABELDICT, "Constit Labels")
+print_data_status(DEPRELDICT, "Dependency Relations")
+sys.stderr.write("\n_____________________\n\n")
 model = dy.Model()
 adam = dy.AdamTrainer(model, 0.0005, 0.01, 0.9999, 1e-8)
 #lookup dictionary thing for tokens in the vocabulary
@@ -456,7 +512,7 @@ def get_base_embeddings(trainmode, unkdtokens, tg_start, sentence):
         emb_x = [v_x[tok] for tok in unkdtokens]
     pos_x = [p_x[pos] for pos in sentence.postags]
     dist_x = [dy.scalarInput(i - tg_start + 1) for i in xrange(sentlen)]
-    #here you are giving as base input a matrix of vectors representing the sentence with embedding, part of speach,
+    #here you are giving as base input a matrix of vectors representing the sentence with embedding, part of speech,
     #and dist_x (don't know what this is, scalarInput) and telling it what position in the sentence each goes
     #this is the input layer
     baseinp_x = [(w_i * dy.concatenate([emb_x[j], pos_x[j], dist_x[j]]) + b_i) for j in xrange(sentlen)]
@@ -479,7 +535,6 @@ def get_base_embeddings(trainmode, unkdtokens, tg_start, sentence):
     #this is the first hidden layer, the green one with back and forth arrows
     basebi_x = [dy.rectify(w_bi * dy.concatenate([basefwd[eidx], baserev[sentlen - eidx - 1]]) +
                     b_bi) for eidx in xrange(sentlen)]
-    # baseuni_x = [dy.rectify(w_uni * basefwd[eidx] + b_uni) for eidx in xrange(sentlen)]
 
     if USE_DEPS:
         dhead_x = [embposdist_x[dephead] for dephead in sentence.depheads]
@@ -557,7 +612,6 @@ def get_target_frame_embeddings(embposdist_x, tfdict):
     else:
         frame_v = frm_x[frame.id]
     tfemb = dy.concatenate([lu_v, lp_v, frame_v, target_x, ctxt_x])
-
     return tfemb, frame
 if USE_CHV:
     def get_target_frame_character_embeddings(embposdist_x, tfdict):
@@ -661,7 +715,6 @@ def get_cpath_embeddings(sentence):
 
 def get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, spaths_x=None, cpaths_x=None):
     factexprs = {}
-    #sentlen = len(fws)
     sentlen = len(fws)
 
     sortedtfd = sorted(tfdict.keys())
@@ -677,9 +730,7 @@ def get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, spaths_
             spanwidth = sp_x[SpanWidth.howlongisspan(i, j)]
             spanpos = ap_x[ArgPosition.whereisarg((i, j), targetspan)]
 
-            fbemb_ij_basic = dy.concatenate([fws[i][j], bws[i][j], tfemb, spanlen, logspanlen, spanwidth, spanpos])
-            if USE_CHV:
-                fbemb_ij_character = dy.concatenate([fws[i][j], bws[i][j], tfemb, spanlen, logspanlen, spanwidth, spanpos])
+            fbemb_ij = dy.concatenate([fws[i][j], bws[i][j], tfemb, spanlen, logspanlen, spanwidth, spanpos])
 
 
             if USE_DEPS:
@@ -691,8 +742,6 @@ def get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, spaths_
                 lca = ct_x[sentence.lca[(i, j)][1]]
                 phrp = cpaths_x[sentence.cpaths[(i, j, targetspan[0])]]
                 fbemb_ij = dy.concatenate([fbemb_ij_basic, isconstit, lca, phrp])
-            elif USE_CHV:
-                fbemb_ij = fbemb_ij_character
 
             for y in valid_fes:
                 fctr = Factor(i, j, y)
@@ -1096,6 +1145,7 @@ logger = open("{}/argid-prediction-analysis.log".format(model_dir), "w")
 
 if options.mode in ["test", "refresh", "predict"]:
     sys.stderr.write("Reloading model from {} ...\n".format(model_file_name))
+    print([(x.shape(), x) for x in model.parameters_list()])
     model.populate(model_file_name)
 
 best_dev_f1 = 0.0
@@ -1160,16 +1210,19 @@ if options.mode in ["train", "refresh"]:
                 predictions = []
 
                 for devex in devexamples:
-
-                    dargmax = identify_fes(devex.tokens,
-                                           devex.chars,
-                                           devex.sentence,
-                                           devex.targetframedict)
+                    if USE_CHV:
+                        dargmax = identify_fes(devex.tokens,
+                                               devex.sentence,
+                                               devex.chars,
+                                               devex.targetframedict)
+                    else:
+                        dargmax = identify_fes(devex.tokens,
+                                               devex.sentence,
+                                               devex.targetframedict)
                     if devex.frame.id in corefrmfemap:
                         corefes = corefrmfemap[devex.frame.id]
                     else:
                         corefes = {}
-                    #print(devex.get_str())
                     u, l, t = evaluate_example_argid(devex.invertedfes, dargmax, corefes, len(devex.tokens), NOTANFEID)
                     ures = np.add(ures, u)
                     labldres = np.add(labldres, l)

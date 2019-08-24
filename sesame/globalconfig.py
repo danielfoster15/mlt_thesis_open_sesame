@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import json
 import sys
-
 config_json = open("configurations/global_config.json", "r")
 configuration = json.load(config_json)
 for key in sorted(configuration):
@@ -12,7 +11,6 @@ DATA_DIR = configuration["data_directory"]
 EMBEDDINGS_FILE = configuration["embeddings_file"]
 CHARACTER_EMBEDDINGS = configuration["character_embeddings"]
 DEBUG_MODE = configuration["debug_mode"]
-
 # The following variables are held constant throughout the repository. Change at your own peril!
 
 PARSER_DATA_DIR = DATA_DIR + "neural/fn" + VERSION + "/"
@@ -22,6 +20,13 @@ DEV_CONLL = PARSER_DATA_DIR + "fn" + VERSION + ".dev.syntaxnet.conll"
 TEST_CONLL = PARSER_DATA_DIR + "fn" + VERSION + ".test.syntaxnet.conll"
 
 FN_DATA_DIR = DATA_DIR + "fndata-" + VERSION + "/"
+PARSER_DATA_DIR = DATA_DIR + "neural/fn" + VERSION + "/"
+
+TRAIN_FTE_NO_DATA_FES = PARSER_DATA_DIR + "fn" + VERSION + ".fulltext.train.syntaxnet_no_data_fes.conll"
+DEV_CONLL_NO_DATA_FES = PARSER_DATA_DIR + "fn" + VERSION + ".dev.syntaxnet_no_data_fes.conll"
+TEST_CONLL_NO_DATA_FES = PARSER_DATA_DIR + "fn" + VERSION + ".test.syntaxnet_no_data_fes.conll"
+FRAME_DIR_NO_DATA_FES = FN_DATA_DIR + "frame_no_data_fes/"
+
 #LU_INDEX = FN_DATA_DIR + "luIndex.xml"
 LU_DIR = FN_DATA_DIR + "lu/"
 FULLTEXT_DIR = FN_DATA_DIR + "fulltext/"

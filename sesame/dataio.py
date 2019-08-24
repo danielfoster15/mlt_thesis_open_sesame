@@ -90,15 +90,15 @@ def read_conll(conll_file, syn_type=None):
         analyze_constits_fes(examples)
     return examples, missingargs, totalexamples
 
-def create_target_lu_map():
+def create_target_lu_map(frame_dir):
     multiplicity = 0
     repeated = 0
     total = 0
 
     target_lu_map = {}
     lu_names = set([])
-    for frame_file in os.listdir(FRAME_DIR):
-        with open(FRAME_DIR+'/'+frame_file, 'r') as f:
+    for frame_file in os.listdir(frame_dir):
+        with open(frame_dir+'/'+frame_file, 'r') as f:
             for line in f:
                 line = line.split()
                 if line[0] == 'LUs':
@@ -155,8 +155,8 @@ def read_fes_lus(frame_file):
     return frid, fes, corefes, lus
 
 
-def read_frame_maps():
-    sys.stderr.write("\nReading the frame-element - frame map from {} ...\n".format(FRAME_DIR))
+def read_frame_maps(frame_dir):
+    sys.stderr.write("\nReading the frame-element - frame map from {} ...\n".format(frame_dir))
 
     frmfemap = {}
     corefrmfemap = {}
@@ -164,8 +164,8 @@ def read_frame_maps():
     maxfesforframe = 0
     longestframe = None
 
-    for f in os.listdir(FRAME_DIR):
-        framef = os.path.join(FRAME_DIR, f)
+    for f in os.listdir(frame_dir):
+        framef = os.path.join(frame_dir, f)
         if framef.endswith("xsl"):
             continue
         frm, fes, corefes, lus = read_fes_lus(framef)
@@ -183,8 +183,8 @@ def read_frame_maps():
     return frmfemap, corefrmfemap, lufrmmap
 
 
-def read_related_lus():
-    sys.stderr.write("\nReading the frame-LU map from " + FRAME_DIR + " ...\n")
+def read_related_lus(frame_dir):
+    sys.stderr.write("\nReading the frame-LU map from " + frame_dir + " ...\n")
 
     lu_to_frame_dict = {}
     tot_frames = 0.
@@ -196,8 +196,8 @@ def read_related_lus():
     max_lus = 0
     longestfrm = None
 
-    for f in os.listdir(FRAME_DIR):
-        framef = os.path.join(FRAME_DIR, f)
+    for f in os.listdir(frame_dir):
+        framef = os.path.join(frame_dir, f)
         if framef.endswith("xsl"):
             continue
         tot_frames += 1
@@ -261,7 +261,7 @@ def get_wvec_map():
     return wd_vecs
 
 
-def get_chvec_map():
+def get_chvec_map(use_pca=False):
     if not os.path.exists(CHARACTER_EMBEDDINGS):
         raise Exception("Pretrained embeddings file not found!", CHARACTER_EMBEDDINGS)
     sys.stderr.write("\nReading pretrained embeddings from {} ...\n".format(CHARACTER_EMBEDDINGS))
@@ -275,8 +275,7 @@ def get_chvec_map():
     ch_vecs = {CHARDICT.addstr(line.split(' ')[0]):
                 [float(f) for f in line.strip().split(' ')[1:]] for line in wvf}
     CHARDICT.lock()
-    #print(CHARDICT.size())
-    ch_vecs_array = np.zeros((CHARDICT.size(), 300))
+    ch_vecs_array = np.zeros((CHARDICT.size(), len(ch_vecs[1])))
     char_indices = enumerate(list(CHARDICT._strtoint.keys()))
     for i, c in char_indices:
         idx = CHARDICT.addstr(c)
@@ -284,13 +283,14 @@ def get_chvec_map():
             ch_vec = ch_vecs[CHARDICT.addstr(c)]
             ch_vecs_array[i] = ch_vec
     #print(ch_vecs_array)
-    pca = PCA(n_components=50)
-    pca.fit(ch_vecs_array)
-    ch_vecs_pca = np.array(pca.transform(ch_vecs_array))
-    wvf = open(embs_file, 'r')
-    wvf.readline()
-    #print([f for f in ch_vecs_pca[0]])
-    ch_vecs = {CHARDICT.addstr(line.split(' ')[0]):[float(f) for f in ch_vecs_pca[CHARDICT.addstr(line.split(' ')[0])]] for line in wvf}
+    if use_pca:
+        pca = PCA(n_components=50)
+        pca.fit(ch_vecs_array)
+        ch_vecs_pca = np.array(pca.transform(ch_vecs_array))
+        wvf = open(embs_file, 'r')
+        wvf.readline()
+        #print([f for f in ch_vecs_pca[0]])
+        ch_vecs = {CHARDICT.addstr(line.split(' ')[0]):[float(f) for f in ch_vecs_pca[CHARDICT.addstr(line.split(' ')[0])]] for line in wvf}
 
     return ch_vecs
 
