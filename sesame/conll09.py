@@ -8,7 +8,6 @@ from housekeeping import *
 
 VOCDICT = FspDict()
 CHARDICT = FspDict()
-CHARTOKDICT = FspDict()
 LEMDICT = FspDict()
 POSDICT = FspDict()
 FRAMEDICT = FspDict()
@@ -28,19 +27,18 @@ class CoNLL09Element:
         ele = conll_line.encode('utf-8').split("\t")
         lufields = ['_', '_']
         self.id = int(ele[0])
-        characters = []
-        for c in ele[1].lower():
-            characters.append(c)
-        characters = characters + [' ']
-        #ooachars = []
-        #for character in characters:
-         #   if re.sub(r'[ -~]', '', character) == '':
-          #      ooachars.append(character)
-           # else:
-            #    ooachars.append('OOA')
-        #characters = ooachars
-        self.chars = [CHARDICT.addstr(c) for c in characters]
         self.form = VOCDICT.addstr(ele[1].lower())
+        characters = []
+        for c in ele[1]:
+            characters.append(c)
+        ooachars = []
+        for character in characters:
+            if re.sub(r'[ -~]', '', character) == '':
+                ooachars.append(character)
+            else:
+                ooachars.append('OOA')
+        characters = ooachars + [' ']
+        self.chars = [CHARDICT.addstr(c) for c in characters]
         self.nltk_lemma = LEMDICT.addstr(ele[3])
         self.fn_pos = ele[4]  # Not a gold POS tag, provided by taggers used in FrameNet, ignore.
         self.nltk_pos = POSDICT.addstr(ele[5])
@@ -270,7 +268,6 @@ class CoNLL09Example(FrameSemParse):
 
 def lock_dicts():
     VOCDICT.lock()
-    CHARDICT.lock()
     LEMDICT.lock()
     POSDICT.lock()
     FRAMEDICT.lock()

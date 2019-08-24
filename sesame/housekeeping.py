@@ -73,7 +73,6 @@ class FspDict:
         self.addstr(UNK)
         self.addstr(UNKCHR)
         self.addstr(CHRPAD)
-        self.addstr(CHRSPACE)
         self._locked = True
         self._unseens = set([])
 

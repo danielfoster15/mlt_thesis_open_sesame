@@ -10,7 +10,6 @@ for key in sorted(configuration):
 VERSION = str(configuration["version"])
 DATA_DIR = configuration["data_directory"]
 EMBEDDINGS_FILE = configuration["embeddings_file"]
-EMBEDDINGS_ADDITION = configuration["embeddings_addition"]
 CHARACTER_EMBEDDINGS = configuration["character_embeddings"]
 DEBUG_MODE = configuration["debug_mode"]
 

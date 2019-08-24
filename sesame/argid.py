@@ -7,8 +7,6 @@ import time
 import dynet as dy
 from optparse import OptionParser
 
-
-
 from evaluation import *
 from discrete_argid_feats import ArgPosition, OutHeads, SpanWidth
 from raw_data import make_data_instance
@@ -32,9 +30,8 @@ optpr.add_option("--hier", action="store_true", default=False)
 optpr.add_option("--syn", type="choice", choices=["dep", "constit", "depconstit", "none"], default="none")
 optpr.add_option("--ptb", action="store_true", default=False)
 optpr.add_option("--raw_input", type="str", metavar="FILE")
-optpr.add_option("--config", type="str", metavar="FILE")
+optpr.add_option("--config", qtype="str", metavar="FILE")
 optpr.add_option("--dynet-gpu", action="store_true")
-optpr.add_option("--character_based", action="store_true")
 (options, args) = optpr.parse_args()
 
 model_dir = "logs/{}/".format(options.model_name)
@@ -55,7 +52,7 @@ FE_CLASSIFIER = True
 if options.mode in ["test", "predict"]:
     USE_DROPOUT = False
 USE_WV = True
-USE_CHV = options.character_based
+USE_CHV = True
 USE_HIER = options.hier
 USE_DEPS = USE_CONSTITS = False
 if options.syn == "dep" or options.syn == "depconstit":
@@ -88,14 +85,9 @@ frmfemap, corefrmfemap, _ = read_frame_maps()
 if USE_WV:
     wvs = get_wvec_map()
     PRETDIM = len(wvs.values()[0])
-
 if USE_CHV:
-    print('using character vectors')
     chvs = get_chvec_map()
     PRETCHDIM = len(chvs.values()[0])
-else:
-    PRETCHDIM = None
-
 #user hierarchy of frame relations
 if USE_HIER:
     frmrelmap, feparents = read_frame_relations()
@@ -146,7 +138,7 @@ configuration = {"train": train_conll,
                  "unk_prob": 0.1,
                  "dropout_rate": 0.01,
                  "token_dim": 60,
-                 "character_dim": 100,
+                 "character_dim": 50,
                  "pos_dim": 4,
                  "lu_dim": 64,
                  "lu_pos_dim": 2,
@@ -157,12 +149,12 @@ configuration = {"train": train_conll,
                  "path_dim": 64,
                  "dependency_relation_dim": 8,
                  "lstm_input_dim": 64,
-                 "chlstm_input_dim": 64,
+                 "chlstm_input_dim": 50,
                  "lstm_dim": 64,
-                 "chlstm_dim": 64,
+                 "chlstm_dim": 50,
                  "lstm_depth": 1,
                  "hidden_dim": 64,
-                 "hidden_ch_dim": 64,
+                 "hidden_ch_dim": 50,
                  "use_dropout": USE_DROPOUT,
                  "pretrained_embedding_dim": PRETDIM,
                  "pretrained_character_embeddings_dim": PRETCHDIM,
@@ -215,28 +207,21 @@ HIDDENCHDIM = configuration["hidden_ch_dim"]
 ARGPOSDIM = ArgPosition.size()
 SPANDIM = SpanWidth.size()
 
-if USE_CHV:
-    ALL_FEATS_DIM = 2 * CHLSTMDIM \
-                    + LUDIM \
-                    + LUPOSDIM \
-                    + FRMDIM \
-                    + CHLSTMINPDIM \
-                    + CHLSTMDIM \
-                    + FEDIM \
-                    + ARGPOSDIM \
-                    + SPANDIM \
-                    + 2  # spanlen and log spanlen features and is a constitspan
-else:
-    ALL_FEATS_DIM = 2 * LSTMDIM \
-                    + LUDIM \
-                    + LUPOSDIM \
-                    + FRMDIM \
-                    + LSTMINPDIM \
-                    + LSTMDIM \
-                    + FEDIM \
-                    + ARGPOSDIM \
-                    + SPANDIM \
-                    + 2  # spanlen and log spanlen features and is a constitspan
+ALL_FEATS_DIM = 2 * LSTMDIM \
+                + 2 * CHLSTMDIM \
+                + LUDIM \
+                + LUPOSDIM \
+                + FRMDIM \
+                + LSTMINPDIM \
+                + CHLSTMINPDIM \
+                + LSTMDIM \
+                + CHLSTMDIM \
+                + FEDIM \
+                + ARGPOSDIM \
+                + SPANDIM \
+                + 2  # spanlen and log spanlen features and is a constitspan
+print(ALL_FEATS_DIM)
+ALL_FEATS_DIM = 457
 
 if USE_DEPS:
     DEPHEADDIM = LSTMINPDIM + POSDIM
@@ -284,7 +269,7 @@ adam = dy.AdamTrainer(model, 0.0005, 0.01, 0.9999, 1e-8)
 v_x = model.add_lookup_parameters((VOCDICT.size(), TOKDIM))
 ################################################################
 #lookup dictionary for characterset
-ch_x = model.add_lookup_parameters((CHARDICT.size(), CHDIM))
+ch_x = model.add_lookup_parameters((VOCDICT.size(), CHDIM))
 
 #lookup dictionary thing for parts of speech
 p_x = model.add_lookup_parameters((POSDICT.size(), POSDIM))
@@ -649,7 +634,7 @@ def get_character_span_embeddings(embpos_x):
 #     return phrpaths
 
 
-def get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, spaths_x=None, cpaths_x=None):
+def get_factor_expressions(fws, bws, tf_char_emb, tfdict, valid_fes, sentence, spaths_x=None, cpaths_x=None):
     factexprs = {}
     #sentlen = len(fws)
     sentlen = len(fws)
@@ -667,8 +652,10 @@ def get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, spaths_
             spanwidth = sp_x[SpanWidth.howlongisspan(i, j)]
             spanpos = ap_x[ArgPosition.whereisarg((i, j), targetspan)]
 
-            fbemb_ij_basic = dy.concatenate([fws[i][j], bws[i][j], tfemb, spanlen, logspanlen, spanwidth, spanpos])
+            #fbemb_ij_basic = dy.concatenate([fws[i][j], bws[i][j], tfemb, spanlen, logspanlen, spanwidth, spanpos])
+            fbemb_ij_character = dy.concatenate([fws[i][j], bws[i][j], tf_char_emb, spanlen, logspanlen, spanwidth, spanpos])
 
+            #fbemb_combined = dy.concatenate([fbemb_ij_basic, fbemb_ij_character])
 
             # if USE_DEPS:
             #     outs = oh_s[OutHeads.getnumouts(i, j, sentence.outheads)]
@@ -680,7 +667,7 @@ def get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, spaths_
             #     phrp = cpaths_x[sentence.cpaths[(i, j, targetspan[0])]]
             #     fbemb_ij = dy.concatenate([fbemb_ij_basic, isconstit, lca, phrp])
             #else:
-            fbemb_ij = fbemb_ij_basic
+            fbemb_ij = fbemb_ij_character
 
             for y in valid_fes:
                 fctr = Factor(i, j, y)
@@ -689,10 +676,7 @@ def get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, spaths_
                 else:
                     fefixed = fe_x[y]
                 fbemb_ijy = dy.concatenate([fefixed, fbemb_ij])
-                if USE_CHV:
-                    factexprs[fctr] = ch_f * dy.rectify(ch_z * fbemb_ijy + bch_z) + bch_f
-                else:
-                    factexprs[fctr] = w_f * dy.rectify(w_z * fbemb_ijy + b_z) + b_f
+                factexprs[fctr] = w_f * dy.rectify(w_z * fbemb_ijy + b_z) + b_f
     return factexprs
 
 
@@ -1003,7 +987,8 @@ def identify_fes(unkdtoks, unkdchars, sentence, tfdict, goldfes=None, testidx=No
     tf_char_emb, ch_frame = get_target_frame_character_embeddings(embchars_x, tfdict)
 
     fws, bws = get_span_embeddings(embpos_x)
-    valid_fes = frmfemap[frame.id] + [NOTANFEID]
+    chfws, chbws = get_character_span_embeddings(embchars_x)
+    valid_fes = frmfemap[ch_frame.id] + [NOTANFEID]
     # if USE_DEPS:
     #     spaths_x = get_deppath_embeddings(sentence, embpos_x)
     #     factor_exprs = get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, spaths_x=spaths_x)
@@ -1012,10 +997,7 @@ def identify_fes(unkdtoks, unkdchars, sentence, tfdict, goldfes=None, testidx=No
     #     factor_exprs = get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence, cpaths_x=cpaths_x)
     # else:
     ################################################################################################
-    if USE_CHV:
-        factor_exprs = get_factor_expressions(fws, bws, tf_char_emb, tfdict, valid_fes, sentence)
-    else:
-        factor_exprs = get_factor_expressions(fws, bws, tfemb, tfdict, valid_fes, sentence)
+    factor_exprs = get_factor_expressions(fws, bws, tf_char_emb, tfdict, valid_fes, sentence)
     ################################################################################################
     if trainmode:
         segrnnloss = get_loss(factor_exprs, goldfes, valid_fes, sentlen)
