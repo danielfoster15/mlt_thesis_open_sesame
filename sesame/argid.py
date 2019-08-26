@@ -138,7 +138,7 @@ configuration = {"train": train_conll,
                  "unk_prob": 0.1,
                  "dropout_rate": 0.01,
                  "token_dim": 60,
-                 "character_dim": 50,
+                 "character_dim": 98,
                  "pos_dim": 4,
                  "lu_dim": 64,
                  "lu_pos_dim": 2,
@@ -981,13 +981,13 @@ def identify_fes(unkdtoks, unkdchars, sentence, tfdict, goldfes=None, testidx=No
     tg_start = tfkeys[0]
 
     embpos_x = get_base_embeddings(trainmode, unkdtoks, tg_start, sentence)
-    tfemb, frame = get_target_frame_embeddings(embpos_x, tfdict)
+    #tfemb, frame = get_target_frame_embeddings(embpos_x, tfdict)
 
     embchars_x = get_base_character_embeddings(trainmode, unkdchars, tg_start)
     tf_char_emb, ch_frame = get_target_frame_character_embeddings(embchars_x, tfdict)
 
     fws, bws = get_span_embeddings(embpos_x)
-    chfws, chbws = get_character_span_embeddings(embchars_x)
+    #chfws, chbws = get_character_span_embeddings(embchars_x)
     valid_fes = frmfemap[ch_frame.id] + [NOTANFEID]
     # if USE_DEPS:
     #     spaths_x = get_deppath_embeddings(sentence, embpos_x)

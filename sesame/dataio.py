@@ -284,7 +284,7 @@ def get_chvec_map():
             ch_vec = ch_vecs[CHARDICT.addstr(c)]
             ch_vecs_array[i] = ch_vec
     #print(ch_vecs_array)
-    pca = PCA(n_components=50)
+    pca = PCA(n_components=98)
     pca.fit(ch_vecs_array)
     ch_vecs_pca = np.array(pca.transform(ch_vecs_array))
     wvf = open(embs_file, 'r')
