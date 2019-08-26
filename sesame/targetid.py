@@ -20,6 +20,7 @@ optpr.add_option("--mode", dest="mode", type="choice",
 optpr.add_option("-n", "--model_name", help="Name of model directory to save model to.")
 optpr.add_option("--raw_input", type="str", metavar="FILE")
 optpr.add_option("--config", type="str", metavar="FILE")
+optpr.add_option("--no_data_fes", action="store_true")
 (options, args) = optpr.parse_args()
 
 model_dir = "logs/{}/".format(options.model_name)
@@ -27,6 +28,10 @@ model_file_name = "{}best-targetid-{}-model".format(model_dir, VERSION)
 if not os.path.exists(model_dir):
     os.makedirs(model_dir)
 
+if options.no_data_fes:
+    frame_dir = FRAME_DIR_NO_DATA_FES
+else:
+    frame_dir = FRAME_DIR
 train_conll = TRAIN_FTE
 
 USE_DROPOUT = True
@@ -66,7 +71,7 @@ train_examples, _, _ = read_conll(train_conll)
 combined_train = combine_examples(train_examples)
 
 # Need to read all LUs before locking the dictionaries.
-target_lu_map, lu_names = create_target_lu_map()
+target_lu_map, lu_names = create_target_lu_map(frame_dir)
 post_train_lock_dicts()
 
 # Read pretrained word embeddings.
@@ -86,9 +91,10 @@ elif options.mode  == "test":
     out_conll_file = "{}predicted-{}-targetid-test.conll".format(model_dir, VERSION)
 elif options.mode == "predict":
     assert options.raw_input is not None
-    with open(options.raw_input, "r") as fin:
-        instances = [make_data_instance(line, i) for i,line in enumerate(fin)]
-    out_conll_file = "{}predicted-targets.conll".format(model_dir)
+    with open(options.raw_input, "rb") as fin:
+        instances = [make_data_instance(line.decode(encoding='UTF-8',errors='strict'), i) for i,line in enumerate(fin) if line is not '\n']
+    filename = options.raw_input.split('/')[-1].split('.')[0]
+    out_conll_file = "{}/lingfn_comparison/predicted-targets_{}.conll".format(model_dir, filename)
 else:
     raise Exception("Invalid parser mode", options.mode)
 

@@ -30,7 +30,7 @@ class CoNLL09Element:
         self.form = VOCDICT.addstr(ele[1].lower())
         characters = []
         for c in ele[1]:
-            characters.append(c.lower())
+            characters.append(c)
         ooachars = []
         for character in characters:
             if re.sub(r'[ -~]', '', character) == '':

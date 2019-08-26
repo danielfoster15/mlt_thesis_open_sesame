@@ -93,7 +93,7 @@ if USE_WV:
     wvs = get_wvec_map()
     PRETDIM = len(wvs.values()[0])
 
-chvs = get_chvec_map()
+chvs = get_chvec_map(use_pca=True)
 PRETCHDIM = len(chvs.values()[0])
 #user hierarchy of frame relations
 if USE_HIER:
@@ -118,7 +118,6 @@ if options.mode in ["train", "refresh"]:
         devexamples, _, _ = read_conll(DEV_CONLL, options.syn)
     out_conll_file = "{}predicted-{}-argid-dev.conll".format(model_dir, VERSION)
 elif options.mode in ["test", "ensemble"]:
-    print(options.test_conll)
     devexamples, _, _ = read_conll(options.test_conll, options.syn)
     out_conll_file = "{}predicted-{}-argid-test.conll".format(model_dir, VERSION)
     fe_file = "{}predicted-{}-argid-test.fes".format(model_dir, VERSION)
@@ -150,7 +149,7 @@ if USE_CHV:
                      "unk_prob": 0.1,
                      "dropout_rate": 0.01,
                      "token_dim": 60,
-                     "character_dim": 50,
+                     "character_dim": 98,
                      "pos_dim": 4,
                      "lu_dim": 64,
                      "lu_pos_dim": 2,
@@ -161,12 +160,12 @@ if USE_CHV:
                      "path_dim": 64,
                      "dependency_relation_dim": 8,
                      "lstm_input_dim": 64,
-                     "chlstm_input_dim": 50,
+                     "chlstm_input_dim": 98,
                      "lstm_dim": 64,
-                     "chlstm_dim": 50,
+                     "chlstm_dim": 64,
                      "lstm_depth": 1,
                      "hidden_dim": 64,
-                     "hidden_ch_dim": 50,
+                     "hidden_ch_dim": 98,
                      "use_dropout": USE_DROPOUT,
                      "pretrained_embedding_dim": PRETDIM,
                      "pretrained_character_embeddings_dim": PRETCHDIM,
@@ -834,90 +833,90 @@ def get_softmax_margin_partition(factorexprs, goldfactors, valid_fes, sentlen):
 
     return logalpha[sentlen - 1]
 
-#
-# def get_hinge_partition(factorexprs, goldfacs, valid_fes, sentlen):
-#     alpha = [None for _ in xrange(sentlen)]
-#     backpointers = [None for _ in xrange(sentlen)]
-#
-#     for j in xrange(sentlen):
-#         # full length spans
-#         bestscore = float("-inf")
-#         if not USE_SPAN_CLIP or j <= ALLOWED_SPANLEN:
-#             for y in valid_fes:
-#                 factor = Factor(0, j, y)
-#                 facscore = factorexprs[factor] + cost(factor, goldfacs)
-#                 if facscore.scalar_value() > bestscore:
-#                     bestscore = facscore.scalar_value()
-#                     alpha[j] = facscore
-#                     backpointers[j] = (0, y)
-#
-#         # recursive case
-#         istart = 0
-#         if USE_SPAN_CLIP and j > ALLOWED_SPANLEN: istart = max(0, j - ALLOWED_SPANLEN - 1)
-#         for i in xrange(istart, j):
-#             for y in valid_fes:
-#                 factor = Factor(i + 1, j, y)
-#                 facscore = alpha[i] + factorexprs[factor] + cost(factor, goldfacs)
-#                 if facscore.scalar_value() > bestscore:
-#                     bestscore = facscore.scalar_value()
-#                     alpha[j] = facscore
-#                     backpointers[j] = (i + 1, y)
-#
-#     predfactors = []
-#     j = sentlen - 1
-#     i = backpointers[j][0]
-#     while i >= 0:
-#         fe = backpointers[j][1]
-#         predfactors.append(Factor(i, j, fe))
-#         if i == 0:
-#             break
-#         j = i - 1
-#         i = backpointers[j][0]
-#     return alpha[sentlen - 1], predfactors
-#
-#
-# def get_hinge_loss(factorexprs, gold_fes, valid_fes, sentlen):
-#     goldfactors = [Factor(span[0], span[1], feid) for feid in gold_fes for span in gold_fes[feid]]
-#     numeratorexprs = [factorexprs[gf] for gf in goldfactors]
-#     numerator = dy.esum(numeratorexprs)
-#
-#     denominator, predfactors = get_hinge_partition(factorexprs, goldfactors, valid_fes, sentlen)
-#
-#     if set(predfactors) == set(goldfactors):
-#         return None
-#
-#     hingeloss = denominator - numerator
-#     if denominator.scalar_value() < numerator.scalar_value():
-#         raise Exception("ERROR: predicted cost less than gold!",
-#                         denominator.scalar_value(),
-#                         numerator.scalar_value(),
-#                         hingeloss.scalar_value())
-#     return hingeloss
-#
-#
-# def get_constit_loss(fws, bws, goldspans):
-#     if not USE_PTB_CONSTITS:
-#         raise Exception("should not be using the constit loss now!", USE_PTB_CONSTITS)
-#
-#     if len(goldspans) == 0:
-#         return None, 0
-#
-#     losses = []
-#     sentlen = len(fws)
-#
-#     for j in xrange(sentlen):
-#         istart = 0
-#         if USE_SPAN_CLIP and j > ALLOWED_SPANLEN: istart = max(0, j - ALLOWED_SPANLEN)
-#         for i in xrange(istart, j + 1):
-#             constit_ij = w_c * dy.rectify(w_fb * dy.concatenate([fws[i][j], bws[i][j]]) + b_fb) + b_c
-#             logloss = log_softmax(constit_ij)
-#
-#             isconstit = int((i, j) in goldspans)
-#             losses.append(pick(logloss, isconstit))
-#
-#     ptbconstitloss = dy.scalarInput(DELTA) * -dy.esum(losses)
-#     numspanstagged = len(losses)
-#     return ptbconstitloss, numspanstagged
+
+def get_hinge_partition(factorexprs, goldfacs, valid_fes, sentlen):
+    alpha = [None for _ in xrange(sentlen)]
+    backpointers = [None for _ in xrange(sentlen)]
+
+    for j in xrange(sentlen):
+        # full length spans
+        bestscore = float("-inf")
+        if not USE_SPAN_CLIP or j <= ALLOWED_SPANLEN:
+            for y in valid_fes:
+                factor = Factor(0, j, y)
+                facscore = factorexprs[factor] + cost(factor, goldfacs)
+                if facscore.scalar_value() > bestscore:
+                    bestscore = facscore.scalar_value()
+                    alpha[j] = facscore
+                    backpointers[j] = (0, y)
+
+        # recursive case
+        istart = 0
+        if USE_SPAN_CLIP and j > ALLOWED_SPANLEN: istart = max(0, j - ALLOWED_SPANLEN - 1)
+        for i in xrange(istart, j):
+            for y in valid_fes:
+                factor = Factor(i + 1, j, y)
+                facscore = alpha[i] + factorexprs[factor] + cost(factor, goldfacs)
+                if facscore.scalar_value() > bestscore:
+                    bestscore = facscore.scalar_value()
+                    alpha[j] = facscore
+                    backpointers[j] = (i + 1, y)
+
+    predfactors = []
+    j = sentlen - 1
+    i = backpointers[j][0]
+    while i >= 0:
+        fe = backpointers[j][1]
+        predfactors.append(Factor(i, j, fe))
+        if i == 0:
+            break
+        j = i - 1
+        i = backpointers[j][0]
+    return alpha[sentlen - 1], predfactors
+
+
+def get_hinge_loss(factorexprs, gold_fes, valid_fes, sentlen):
+    goldfactors = [Factor(span[0], span[1], feid) for feid in gold_fes for span in gold_fes[feid]]
+    numeratorexprs = [factorexprs[gf] for gf in goldfactors]
+    numerator = dy.esum(numeratorexprs)
+
+    denominator, predfactors = get_hinge_partition(factorexprs, goldfactors, valid_fes, sentlen)
+
+    if set(predfactors) == set(goldfactors):
+        return None
+
+    hingeloss = denominator - numerator
+    if denominator.scalar_value() < numerator.scalar_value():
+        raise Exception("ERROR: predicted cost less than gold!",
+                        denominator.scalar_value(),
+                        numerator.scalar_value(),
+                        hingeloss.scalar_value())
+    return hingeloss
+
+
+def get_constit_loss(fws, bws, goldspans):
+    if not USE_PTB_CONSTITS:
+        raise Exception("should not be using the constit loss now!", USE_PTB_CONSTITS)
+
+    if len(goldspans) == 0:
+        return None, 0
+
+    losses = []
+    sentlen = len(fws)
+
+    for j in xrange(sentlen):
+        istart = 0
+        if USE_SPAN_CLIP and j > ALLOWED_SPANLEN: istart = max(0, j - ALLOWED_SPANLEN)
+        for i in xrange(istart, j + 1):
+            constit_ij = w_c * dy.rectify(w_fb * dy.concatenate([fws[i][j], bws[i][j]]) + b_fb) + b_c
+            logloss = log_softmax(constit_ij)
+
+            isconstit = int((i, j) in goldspans)
+            losses.append(pick(logloss, isconstit))
+
+    ptbconstitloss = dy.scalarInput(DELTA) * -dy.esum(losses)
+    numspanstagged = len(losses)
+    return ptbconstitloss, numspanstagged
 
 
 def get_loss(factorexprs, gold_fes, valid_fes, sentlen):
@@ -1074,18 +1073,18 @@ def identify_fes(unkdtoks, sentence, tfdict, unkdchars=None, goldfes=None, testi
 
     if trainmode:
         segrnnloss = get_loss(factor_exprs, goldfes, valid_fes, sentlen)
-        # if USE_PTB_CONSTITS:
-        #     goldspans = []
-        #     for feid in goldfes:
-        #         if feid == NOTANFEID: continue
-        #         goldspans.extend(goldfes[feid])
-        #
-        #     constitloss, numspans = get_constit_loss(cfws, bws, goldspans)
-        #     if segrnnloss is not None and constitloss is not None:
-        #         # segrnnloss of 1 segmentation vs all, globally normalized
-        #         return segrnnloss + constitloss, 1 + numspans
-        #     elif segrnnloss is None:
-        #         return constitloss, numspans
+        if USE_PTB_CONSTITS:
+            goldspans = []
+            for feid in goldfes:
+                if feid == NOTANFEID: continue
+                goldspans.extend(goldfes[feid])
+
+            constitloss, numspans = get_constit_loss(cfws, bws, goldspans)
+            if segrnnloss is not None and constitloss is not None:
+                # segrnnloss of 1 segmentation vs all, globally normalized
+                return segrnnloss + constitloss, 1 + numspans
+            elif segrnnloss is None:
+                return constitloss, numspans
         return segrnnloss, 1  # segrnnloss of 1 segmentation vs all, globally normalized
     else:
         if SAVE_FOR_ENSEMBLE:
@@ -1190,7 +1189,7 @@ if options.mode in ["train", "refresh"]:
                     trexloss, taggedinex = identify_fes(unkedtoks,
                                                         trex.sentence,
                                                         trex.targetframedict,
-                                                        unkedchars=unkedchars,
+                                                        unkdchars=unkedchars,
                                                         goldfes=trex.invertedfes)
                 else:
                     trexloss, taggedinex = identify_fes(unkedtoks,
@@ -1213,8 +1212,8 @@ if options.mode in ["train", "refresh"]:
                     if USE_CHV:
                         dargmax = identify_fes(devex.tokens,
                                                devex.sentence,
-                                               devex.chars,
-                                               devex.targetframedict)
+                                               devex.targetframedict,
+                                               unkdchars=devex.chars,)
                     else:
                         dargmax = identify_fes(devex.tokens,
                                                devex.sentence,

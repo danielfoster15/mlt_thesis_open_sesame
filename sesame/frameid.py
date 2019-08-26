@@ -18,6 +18,7 @@ optpr.add_option("--hier", action="store_true", default=False)
 optpr.add_option("--exemplar", action="store_true", default=False)
 optpr.add_option("--raw_input", type="str", metavar="FILE")
 optpr.add_option("--config", type="str", metavar="FILE")
+optpr.add_option("--no_data_fes", action="store_true")
 (options, args) = optpr.parse_args()
 
 model_dir = "logs/{}/".format(options.model_name)
@@ -29,6 +30,10 @@ if options.exemplar:
     train_conll = TRAIN_EXEMPLAR
 else:
     train_conll = TRAIN_FTE
+if options.no_data_fes:
+    frame_dir = FRAME_DIR_NO_DATA_FES
+else:
+    frame_dir = FRAME_DIR
 
 USE_DROPOUT = True
 if options.mode in ["test", "predict"]:
@@ -62,7 +67,7 @@ trainexamples, m, t = read_conll(train_conll)
 find_multitokentargets(trainexamples, "train")
 
 post_train_lock_dicts()
-lufrmmap, relatedlus = read_related_lus()
+lufrmmap, relatedlus = read_related_lus(frame_dir)
 if USE_WV:
     pretrained_embeddings_map = get_wvec_map()
     PRETRAINED_DIM = len(pretrained_embeddings_map.values()[0])
