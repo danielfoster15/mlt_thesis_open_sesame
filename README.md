@@ -44,25 +44,19 @@ To train a model, execute:
 $ python -m sesame.$MODEL --mode train --model_name $MODEL_NAME
 ```
 
-The $MODELs are specified below. Training saves the best model on validation data in the directory `logs/$MODEL_NAME/best-$MODEL-1.7-model`. The same directory will also save a `configurations.json` containing current model configuration.
+The $MODELs are called argid (FE identification), frameid (Frame identification), and targetid (LU identification). Training saves the best model on validation data in the directory `logs/$MODEL_NAME/best-$MODEL-1.7-model`. The same directory will also save a `configurations.json` containing current model configuration.
 
 If training gets interrupted, it can be restarted from the last saved checkpoint by specifying `--mode refresh`.
 
 ## Pre-trained Models
 
-The downloads need to be placed under the base-directory. On extraction, these will create a `logs/` directory containing pre-trained models for target identification, frame identification using gold targets, and argument identification using gold targets and frames.
+The pretrained model from my MLT thesis is here *To be attached*
 
-*Note* There is a [known open issue](https://github.com/swabhs/open-sesame/issues/15) about pretrained models not being able to replicate the reported performance on a different machine. It is recommended to train and test from scratch - performance can be replicated (within a small margin of error) to the performance reported below.
-
-|           |  FN 1.5 Dev | FN 1.5 Test | FN 1.5 Models                                                                             |  FN 1.7 Dev | FN 1.7 Test | FN 1.7 Models                                                                             |
-|-----------|------------:|------------:|------------------------------------------------------------------------------------------------------|------------:|------------:|------------------------------------------------------------------------------------------------------|
-| Target ID |       79.85 |       73.23 | [Download](https://drive.google.com/open?id=1xrBKFOwdqLDim2X3kGysV6B8k1ThXDZh) | 80.26 | 73.25 | [Download](https://drive.google.com/open?id=1sS0OPw1uYxeOUK0drkvfZsFkRNgnVUAC) |
-| Frame ID  |       89.27 |       86.40 | [Download](https://drive.google.com/open?id=1Ma1h1x8QDsJFQW047_9KvNLblkxlDdGb) | 89.74 | 86.55 | [Download](https://drive.google.com/open?id=1me1V0CrZF5HVWiDBqZ4LHZVSpsWfW3-8)  |
-| Arg ID    |       60.60 |       59.48 | [Download](https://drive.google.com/open?id=1TopWIEvmzQ8MBypo-xrCAokW4bZg1oGz) | 61.21 | 61.36 | [Download](https://drive.google.com/open?id=1ys-DIGhJSHgt8VjstMtlkPnYqtlzMSHe)  |
+*Note* According to open-SESAME there is a [known open issue](https://github.com/swabhs/open-sesame/issues/15) about pretrained models not being able to replicate the reported performance on a different machine. I did not experience this, but performance should be replicable with training and testing from scratch.
 
 ## Test
 
-The different models for target identification, frame identification and argument identification, *need to be executed in that order*.
+The different models for target identification, frame identification and argument identification, *need to be executed in that order*. This means the argid model, for example, should be tested with given LUs and Frames.
 To test under a given model, execute:
 
 ```sh
@@ -107,17 +101,4 @@ $ python -m sesame.argid --mode predict \
 
 The resulting frame-semantic parses will be written to `logs/fn1.7-pretrained-argid/predicted-args.conll` in the same CoNLL 2009-like format.
 
-## Contact and Reference
-
-For questions and usage issues, please contact `sswayamd@alumni.cmu.edu`. If you use open-sesame for research, please cite [our paper](https://arxiv.org/pdf/1706.09528.pdf) as follows:
-
-```
-@article{swayamdipta:17,
-  title={{Frame-Semantic Parsing with Softmax-Margin Segmental RNNs and a Syntactic Scaffold}},
-  author={Swabha Swayamdipta and Sam Thomson and Chris Dyer and Noah A. Smith},
-  journal={arXiv preprint arXiv:1706.09528},
-  year={2017}
-}
-```
-Copyright [2018] [Swabha Swayamdipta]
 
