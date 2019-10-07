@@ -58,6 +58,7 @@ if options.mode in ["test", "predict"]:
 USE_WV = True
 if options.character_based:
     USE_CHV = True
+    print('using character-based model')
 else:
     USE_CHV = False
 USE_HIER = options.hier
@@ -160,12 +161,12 @@ if USE_CHV:
                      "path_dim": 64,
                      "dependency_relation_dim": 8,
                      "lstm_input_dim": 64,
-                     "chlstm_input_dim": 98,
+                     "chlstm_input_dim": 50,
                      "lstm_dim": 64,
-                     "chlstm_dim": 64,
+                     "chlstm_dim": 50,
                      "lstm_depth": 1,
                      "hidden_dim": 64,
-                     "hidden_ch_dim": 98,
+                     "hidden_ch_dim": 50,
                      "use_dropout": USE_DROPOUT,
                      "pretrained_embedding_dim": PRETDIM,
                      "pretrained_character_embeddings_dim": PRETCHDIM,
@@ -257,19 +258,18 @@ if USE_CHV:
 ARGPOSDIM = ArgPosition.size()
 SPANDIM = SpanWidth.size()
 if USE_CHV:
+
     ALL_FEATS_DIM = 2 * LSTMDIM \
-                    + 2 * CHLSTMDIM \
                     + LUDIM \
                     + LUPOSDIM \
                     + FRMDIM \
-                    + LSTMINPDIM \
                     + CHLSTMINPDIM \
-                    + LSTMDIM \
                     + CHLSTMDIM \
                     + FEDIM \
                     + ARGPOSDIM \
                     + SPANDIM \
                     + 2  # spanlen and log spanlen features and is a constitspan
+
 else:
     ALL_FEATS_DIM = 2 * LSTMDIM \
                     + LUDIM \
@@ -319,18 +319,6 @@ print_data_status(FEDICT, "FEs")
 print_data_status(CLABELDICT, "Constit Labels")
 print_data_status(DEPRELDICT, "Dependency Relations")
 sys.stderr.write("\n_____________________\n\n")
-
-
-ALL_FEATS_DIM = 2 * LSTMDIM \
-                + LUDIM \
-                + LUPOSDIM \
-                + FRMDIM \
-                + LSTMINPDIM \
-                + LSTMDIM \
-                + FEDIM \
-                + ARGPOSDIM \
-                + SPANDIM \
-                + 2  # spanlen and log spanlen features and is a constitspan
 
 
 if USE_DEPS:
@@ -1144,7 +1132,6 @@ logger = open("{}/argid-prediction-analysis.log".format(model_dir), "w")
 
 if options.mode in ["test", "refresh", "predict"]:
     sys.stderr.write("Reloading model from {} ...\n".format(model_file_name))
-    print([(x.shape(), x) for x in model.parameters_list()])
     model.populate(model_file_name)
 
 best_dev_f1 = 0.0
