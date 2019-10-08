@@ -366,8 +366,7 @@ adam = dy.AdamTrainer(model, 0.0005, 0.01, 0.9999, 1e-8)
 v_x = model.add_lookup_parameters((VOCDICT.size(), TOKDIM))
 ################################################################
 #lookup dictionary for characterset
-if USE_CHV:
-    ch_x = model.add_lookup_parameters((VOCDICT.size(), CHDIM))
+ch_x = model.add_lookup_parameters((VOCDICT.size(), CHDIM))
 
 #lookup dictionary thing for parts of speech
 p_x = model.add_lookup_parameters((POSDICT.size(), POSDIM))
@@ -1200,7 +1199,7 @@ if options.mode in ["train", "refresh"]:
                         dargmax = identify_fes(devex.tokens,
                                                devex.sentence,
                                                devex.targetframedict,
-                                               unkdchars=devex.chars,)
+                                               unkdchars=devex.chars)
                     else:
                         dargmax = identify_fes(devex.tokens,
                                                devex.sentence,
@@ -1286,10 +1285,16 @@ elif options.mode == "test":
     for tidx, testex in enumerate(devexamples, 1):
         if tidx % 100 == 0:
             sys.stderr.write(str(tidx) + "...")
-        testargmax = identify_fes(testex.tokens,
-                                  testex.sentence,
-                                  testex.targetframedict,
-                                  testidx=tidx - 1)
+        if USE_CHV:
+            testargmax = identify_fes(testex.tokens,
+                                      testex.sentence,
+                                      testex.targetframedict,
+                                      testidx=tidx - 1, unkdchars=testex.chars)
+        else:
+            testargmax = identify_fes(testex.tokens,
+                                      testex.sentence,
+                                      testex.targetframedict,
+                                      testidx=tidx - 1)
         testpredictions.append(testargmax)
 
     sys.stderr.write(" [took %.3fs]\n" % (time.time() - teststarttime))
