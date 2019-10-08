@@ -1310,9 +1310,15 @@ elif options.mode == "test":
 elif options.mode == "predict":
     predictions = []
     for instance in instances:
-        prediction = identify_fes(instance.tokens,
-                                  instance.sentence,
-                                  instance.targetframedict)
+        if USE_CHV:
+            prediction = identify_fes(instance.tokens,
+                                      instance.sentence,
+                                      instance.targetframedict,
+                                      unkdchars=instance.chars)
+        else:
+            prediction = identify_fes(instance.tokens,
+                                      instance.sentence,
+                                      instance.targetframedict)
         predictions.append(prediction)
     sys.stderr.write("Printing output in CoNLL format to {}\n".format(out_conll_file))
     print_as_conll(instances, predictions)
