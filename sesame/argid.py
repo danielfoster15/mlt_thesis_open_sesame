@@ -150,7 +150,7 @@ if USE_CHV:
                      "unk_prob": 0.1,
                      "dropout_rate": 0.01,
                      "token_dim": 60,
-                     "character_dim": 98,
+                     "character_dim": 50,
                      "pos_dim": 4,
                      "lu_dim": 64,
                      "lu_pos_dim": 2,
